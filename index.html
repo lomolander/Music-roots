@@ -5,55 +5,167 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0f1014">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<title>Music Roots – YouTube Player</title>
+<title>Music Roots</title>
 <style>
-:root{--bg:#0f1014;--panel:#191b22;--panel2:#242731;--text:#f5f2eb;--muted:#a1a2ad;--line:rgba(255,255,255,.09);--accent:#f2c86a;--red:#ff0033;--green:#80d0aa}
-*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 12% 0,#2a2130 0,transparent 34%),linear-gradient(#11131a,#0f1014);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif}
+:root{--bg:#0f1014;--panel:#191b22;--panel2:#242731;--text:#f5f2eb;--muted:#a1a2ad;--line:rgba(255,255,255,.09);--accent:#f2c86a;--green:#80d0aa;--pink:#ef7ca7}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(circle at 12% 0,#2a2130 0,transparent 34%),linear-gradient(#11131a,#0f1014);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif}
 button{font:inherit}.app{max-width:540px;margin:auto;padding:env(safe-area-inset-top) 18px calc(36px + env(safe-area-inset-bottom))}
-.topbar{display:flex;align-items:center;justify-content:space-between;padding:18px 0}.brand{display:flex;align-items:center;gap:11px}.logo{display:grid;place-items:center;width:42px;height:42px;border-radius:14px;background:var(--accent);color:#17130c;font-weight:900}.brand strong{display:block}.brand small{display:block;font-size:10px;color:var(--muted)}
+.topbar{display:flex;align-items:center;padding:18px 0}.brand{display:flex;align-items:center;gap:11px}.logo{display:grid;place-items:center;width:42px;height:42px;border-radius:14px;background:var(--accent);color:#17130c;font-weight:900}.brand strong{display:block}.brand small{display:block;font-size:10px;color:var(--muted)}
 .card{background:linear-gradient(145deg,#232029,#17191f);border:1px solid var(--line);border-radius:27px;padding:22px;box-shadow:0 24px 70px rgba(0,0,0,.32)}.kicker{font-size:10px;letter-spacing:1.45px;color:var(--accent);font-weight:900}.card h1{font-size:31px;line-height:1.08;letter-spacing:-1px;margin:9px 0 18px}
-.player-wrap{overflow:hidden;border-radius:18px;background:#000;aspect-ratio:16/9;border:1px solid rgba(255,255,255,.08)}#player{width:100%;height:100%}
-.youtube-btn,.primary,.answer{width:100%;border:0;border-radius:15px;padding:15px 17px;font-weight:850;cursor:pointer}.youtube-btn{margin-top:13px;background:var(--red);color:#fff}.youtube-btn:disabled{opacity:.55}.note{color:var(--muted);font-size:11px;line-height:1.45;margin:9px 2px 17px}
-.answers{display:grid;gap:10px}.answer{display:flex;gap:12px;align-items:center;text-align:left;background:var(--panel2);border:1px solid var(--line);color:var(--text)}.answer span{display:grid;place-items:center;width:29px;height:29px;border-radius:9px;background:#31343e;font-weight:900}.answer.correct{border-color:var(--green);background:rgba(128,208,170,.12)}.answer.wrong{border-color:#ef7ca7;background:rgba(239,124,167,.1)}
+.audio-box{background:#101218;border-radius:18px;padding:15px}.audio-row{display:flex;align-items:center;gap:13px}.play{width:54px;height:54px;border:0;border-radius:50%;background:var(--pink);color:white;font-size:19px}.wave{display:flex;align-items:center;justify-content:space-between;flex:1;height:44px}.wave i{width:3px;height:14px;border-radius:6px;background:#666a76}.wave.playing i{animation:pulse .6s ease-in-out infinite alternate}.wave i:nth-child(2n){animation-delay:.12s}.wave i:nth-child(3n){animation-delay:.24s}@keyframes pulse{to{height:39px;background:var(--accent)}}.source{font-size:11px;color:var(--muted);margin-top:9px}.status{font-size:11px;color:var(--muted);margin-top:6px}
+.answers{display:grid;gap:10px;margin-top:18px}.answer,.primary{width:100%;border:0;border-radius:15px;padding:15px 17px;font-weight:850;cursor:pointer}.answer{display:flex;gap:12px;align-items:center;text-align:left;background:var(--panel2);border:1px solid var(--line);color:var(--text)}.answer span{display:grid;place-items:center;width:29px;height:29px;border-radius:9px;background:#31343e}.answer.correct{border-color:var(--green);background:rgba(128,208,170,.12)}.answer.wrong{border-color:var(--pink);background:rgba(239,124,167,.1)}
 .feedback{margin-top:14px;background:#11131a;border-radius:14px;padding:15px;line-height:1.45}.feedback strong{color:var(--accent)}.primary{margin-top:12px;background:var(--accent);color:#17130c}.hidden{display:none!important}
-.song{margin-top:14px;background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:20px}.song h2{font-size:28px;margin:7px 0}.song p{color:var(--muted);line-height:1.5}.facts{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:13px}.facts div{background:var(--panel2);padding:13px;border-radius:14px}.facts small{display:block;color:var(--muted);font-size:9px;letter-spacing:1px;margin-bottom:4px}.scenario{margin-top:12px;background:linear-gradient(145deg,#1c2931,#17191f);border:1px solid rgba(127,156,245,.22);border-radius:18px;padding:17px}.scenario h3{margin:5px 0}.scenario p{margin-bottom:0}.status{font-size:11px;color:var(--muted);margin-top:8px;text-align:center}
+.song{margin-top:14px;background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:20px}.song h2{font-size:28px;margin:7px 0}.song p{color:var(--muted);line-height:1.5}.facts{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:13px}.facts div{background:var(--panel2);padding:13px;border-radius:14px}.facts small{display:block;color:var(--muted);font-size:9px;letter-spacing:1px;margin-bottom:4px}.scenario{margin-top:12px;background:linear-gradient(145deg,#1c2931,#17191f);border:1px solid rgba(127,156,245,.22);border-radius:18px;padding:17px}.yt{margin-top:14px;overflow:hidden;border-radius:16px;aspect-ratio:16/9}.yt iframe{width:100%;height:100%;border:0}
 </style>
 </head>
 <body>
 <div class="app">
-<header class="topbar"><div class="brand"><div class="logo">MR</div><div><strong>Music Roots</strong><small>Player YouTube – test</small></div></div></header>
+<header class="topbar"><div class="brand"><div class="logo">MR</div><div><strong>Music Roots</strong><small>Deezer → Apple fallback</small></div></div></header>
+
 <section class="card">
-<span class="kicker">INDOVINA L’ARTISTA</span><h1>Chi interpreta questo brano?</h1>
-<div class="player-wrap"><div id="player"></div></div>
-<button id="listenBtn" class="youtube-btn" disabled>▶ Ascolta 10 secondi su YouTube</button>
-<div id="status" class="status">Caricamento del player ufficiale YouTube…</div>
-<p class="note">Il player resta visibile e riconoscibile come richiesto da YouTube. Su iPhone il primo avvio richiede un tocco.</p>
-<div class="answers" id="answers">
+<span class="kicker">INDOVINA L’ARTISTA</span>
+<h1>Chi interpreta questo brano?</h1>
+
+<div class="audio-box">
+  <div class="audio-row">
+    <button id="playBtn" class="play" disabled>▶</button>
+    <div class="wave" id="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  </div>
+  <div id="source" class="source">Ricerca preview ufficiale…</div>
+  <div id="status" class="status"></div>
+  <audio id="audio" preload="none"></audio>
+</div>
+
+<div class="answers">
 <button class="answer" data-ok="false"><span>A</span>Incognito</button>
 <button class="answer" data-ok="true"><span>B</span>Jamiroquai</button>
 <button class="answer" data-ok="false"><span>C</span>Simply Red</button>
 <button class="answer" data-ok="false"><span>D</span>The Brand New Heavies</button>
 </div>
+
 <div id="feedback" class="feedback hidden"></div>
 <button id="openSong" class="primary hidden">Apri scheda del brano</button>
 </section>
+
 <section id="songCard" class="song hidden">
-<span class="kicker">SCHEDA DEL BRANO</span><h2>Virtual Insanity</h2><p><strong>Jamiroquai · 1996</strong></p>
-<div class="facts"><div><small>ALBUM</small><b>Travelling Without Moving</b></div><div><small>GENERE</small><b>Acid Jazz</b></div><div><small>SOTTOGENERE</small><b>Jazz-Funk</b></div><div><small>PAESE</small><b>Regno Unito</b></div></div>
-<h3>Significato</h3><p>Il testo riflette sul progresso tecnologico, il consumismo e il rischio che la modernità allontani l’uomo dalla natura e dalla vita autentica.</p>
-<div class="scenario"><span class="kicker">SCENARIO</span><h3>Londra · metà anni ’90</h3><p>Acid jazz, Britpop e trip hop convivono nella cultura britannica. The Jazz Café e Ronnie Scott’s sono luoghi simbolo; Incognito, Brand New Heavies, Galliano e Corduroy rappresentano la scena acid jazz.</p></div>
+<span class="kicker">SCHEDA DEL BRANO</span>
+<h2>Virtual Insanity</h2>
+<p><strong>Jamiroquai · 1996</strong></p>
+<div class="facts">
+<div><small>ALBUM</small><b>Travelling Without Moving</b></div>
+<div><small>GENERE</small><b>Acid Jazz</b></div>
+<div><small>SOTTOGENERE</small><b>Jazz-Funk</b></div>
+<div><small>PAESE</small><b>Regno Unito</b></div>
+</div>
+<h3>Significato</h3>
+<p>Il testo riflette sul progresso tecnologico, il consumismo e il rischio che la modernità allontani l’uomo dalla natura e dalla vita autentica.</p>
+<div class="scenario">
+<span class="kicker">SCENARIO</span>
+<h3>Londra · metà anni ’90</h3>
+<p>Acid jazz, Britpop e trip hop convivono nella cultura britannica. The Jazz Café e Ronnie Scott’s sono luoghi simbolo; Incognito, Brand New Heavies, Galliano e Corduroy rappresentano la scena acid jazz.</p>
+</div>
+<div class="yt">
+<iframe src="https://www.youtube.com/embed/4JkIs37a2JE?playsinline=1&rel=0" title="Virtual Insanity – video ufficiale" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 </section>
 </div>
-<script src="https://www.youtube.com/iframe_api"></script>
+
 <script>
-let player,stopTimer;
-const statusEl=document.getElementById('status'),listenBtn=document.getElementById('listenBtn');
-function onYouTubeIframeAPIReady(){
- player=new YT.Player('player',{width:'100%',height:'100%',videoId:'4JkIs37a2JE',playerVars:{playsinline:1,controls:1,rel:0,modestbranding:1,start:46},events:{onReady:()=>{listenBtn.disabled=false;statusEl.textContent='Player YouTube pronto.';},onError:e=>statusEl.textContent='Errore YouTube: codice '+e.data}});
+const TRACK={artist:"Jamiroquai",title:"Virtual Insanity"};
+const audio=document.getElementById("audio");
+const playBtn=document.getElementById("playBtn");
+const source=document.getElementById("source");
+const status=document.getElementById("status");
+const wave=document.getElementById("wave");
+let stopTimer=null;
+
+function setPreview(url,label){
+  audio.src=url;
+  source.textContent="Preview ufficiale: "+label;
+  status.textContent="Pronta.";
+  playBtn.disabled=false;
 }
-listenBtn.addEventListener('click',()=>{if(!player||!player.seekTo)return;clearTimeout(stopTimer);player.seekTo(46,true);player.playVideo();statusEl.textContent='Riproduzione in corso…';stopTimer=setTimeout(()=>{player.pauseVideo();statusEl.textContent='Clip terminata dopo circa 10 secondi.';},10000);});
+
+function appleFallback(){
+  source.textContent="Deezer non disponibile. Provo Apple…";
+  const term=encodeURIComponent(TRACK.artist+" "+TRACK.title);
+  fetch("https://itunes.apple.com/search?term="+term+"&entity=song&limit=10&country=IT")
+    .then(r=>r.json())
+    .then(data=>{
+      const result=(data.results||[]).find(x =>
+        x.previewUrl &&
+        (x.artistName||"").toLowerCase().includes("jamiroquai") &&
+        (x.trackName||"").toLowerCase().includes("virtual insanity")
+      ) || (data.results||[]).find(x=>x.previewUrl);
+      if(result && result.previewUrl) setPreview(result.previewUrl,"Apple");
+      else throw new Error("Nessuna preview Apple");
+    })
+    .catch(()=>{
+      source.textContent="Preview non disponibile.";
+      status.textContent="Per questo brano non è stata trovata una preview ufficiale.";
+    });
+}
+
+function deezerCallback(data){
+  try{
+    const result=(data.data||[]).find(x =>
+      x.preview &&
+      (x.artist?.name||"").toLowerCase().includes("jamiroquai") &&
+      (x.title||"").toLowerCase().includes("virtual insanity")
+    ) || (data.data||[]).find(x=>x.preview);
+    if(result && result.preview) setPreview(result.preview,"Deezer");
+    else appleFallback();
+  }catch(e){appleFallback();}
+}
+window.deezerCallback=deezerCallback;
+
+function loadDeezer(){
+  const q=encodeURIComponent('artist:"Jamiroquai" track:"Virtual Insanity"');
+  const s=document.createElement("script");
+  s.src="https://api.deezer.com/search?q="+q+"&output=jsonp&callback=deezerCallback";
+  s.onerror=appleFallback;
+  document.body.appendChild(s);
+  setTimeout(()=>{if(playBtn.disabled) appleFallback();},5000);
+}
+loadDeezer();
+
+playBtn.addEventListener("click",()=>{
+  if(!audio.src)return;
+  clearTimeout(stopTimer);
+  audio.currentTime=0;
+  audio.play().then(()=>{
+    wave.classList.add("playing");
+    playBtn.textContent="■";
+    status.textContent="Riproduzione in corso…";
+    stopTimer=setTimeout(()=>{
+      audio.pause();
+      audio.currentTime=0;
+      wave.classList.remove("playing");
+      playBtn.textContent="▶";
+      status.textContent="Clip terminata dopo 10 secondi.";
+    },10000);
+  }).catch(()=>status.textContent="Tocca di nuovo Play per avviare l’audio.");
+});
+audio.addEventListener("ended",()=>{wave.classList.remove("playing");playBtn.textContent="▶";});
+
 let answered=false;
-document.querySelectorAll('.answer').forEach(btn=>btn.addEventListener('click',()=>{if(answered)return;answered=true;document.querySelectorAll('.answer').forEach(b=>{b.disabled=true;if(b.dataset.ok==='true')b.classList.add('correct')});const ok=btn.dataset.ok==='true';if(!ok)btn.classList.add('wrong');const f=document.getElementById('feedback');f.innerHTML=ok?'<strong>Esatto!</strong><br>Il brano è Virtual Insanity dei Jamiroquai.':'<strong>Risposta corretta: Jamiroquai.</strong><br>Il brano è Virtual Insanity.';f.classList.remove('hidden');document.getElementById('openSong').classList.remove('hidden');}));
-document.getElementById('openSong').addEventListener('click',()=>{document.getElementById('songCard').classList.remove('hidden');document.getElementById('songCard').scrollIntoView({behavior:'smooth'});});
+document.querySelectorAll(".answer").forEach(btn=>btn.addEventListener("click",()=>{
+  if(answered)return;
+  answered=true;
+  document.querySelectorAll(".answer").forEach(b=>{b.disabled=true;if(b.dataset.ok==="true")b.classList.add("correct")});
+  const ok=btn.dataset.ok==="true";
+  if(!ok)btn.classList.add("wrong");
+  const f=document.getElementById("feedback");
+  f.innerHTML=ok?'<strong>Esatto!</strong><br>Il brano è Virtual Insanity dei Jamiroquai.':'<strong>Risposta corretta: Jamiroquai.</strong><br>Il brano è Virtual Insanity.';
+  f.classList.remove("hidden");
+  document.getElementById("openSong").classList.remove("hidden");
+}));
+
+document.getElementById("openSong").addEventListener("click",()=>{
+  document.getElementById("songCard").classList.remove("hidden");
+  document.getElementById("songCard").scrollIntoView({behavior:"smooth"});
+});
 </script>
-</body></html>
+</body>
+</html>
