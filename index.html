@@ -41,6 +41,25 @@ button,input{font:inherit}
 .yt{margin-top:14px;overflow:hidden;border-radius:16px;aspect-ratio:16/9}.yt iframe{width:100%;height:100%;border:0}
 .result{text-align:center;margin-top:54px}.result .big{font-size:64px;font-weight:900;color:var(--accent)}.result small{color:var(--muted)}
 @media(max-width:390px){.hero h1{font-size:34px}}
+
+.bottom-nav{position:sticky;bottom:12px;z-index:20;display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:22px;padding:8px;background:rgba(24,26,33,.92);backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:19px}
+.bottom-nav button{border:0;background:transparent;color:var(--muted);padding:10px 5px;border-radius:12px;font-size:11px;font-weight:750}
+.bottom-nav button.active{background:var(--panel2);color:var(--text)}
+.home-actions{display:grid;gap:10px;margin-top:14px}
+.home-actions button{display:flex;align-items:center;justify-content:space-between;width:100%;border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:18px;padding:18px;text-align:left}
+.home-actions b{display:block;font-size:18px}.home-actions small{display:block;color:var(--muted);margin-top:4px}.home-actions span{font-size:24px}
+.family-grid,.scenario-grid,.route-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.family-card,.scenario-card,.route-card{border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:18px;padding:16px;text-align:left}
+.family-card b,.scenario-card b,.route-card b{display:block;font-size:17px;margin-bottom:5px}
+.family-card small,.scenario-card small,.route-card small{color:var(--muted);line-height:1.35}
+.genre-list{display:grid;gap:8px;margin-top:12px}
+.genre-list button{width:100%;border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:14px;padding:14px;text-align:left}
+.genre-detail{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:20px}
+.genre-detail h2{font-size:30px;margin:8px 0}.genre-detail p{color:var(--muted);line-height:1.55}
+.route-steps{border-left:2px solid rgba(255,255,255,.12);padding-left:18px;margin:18px 0}
+.route-steps div{position:relative;margin-bottom:17px}.route-steps div:before{content:"";position:absolute;width:9px;height:9px;border-radius:50%;background:var(--accent);left:-23px;top:5px}
+.route-steps b{display:block}.route-steps small{color:var(--muted)}
+
 </style>
 </head>
 <body>
@@ -52,16 +71,103 @@ button,input{font:inherit}
 
 <section id="home" class="screen active">
 <div class="hero">
-<span class="kicker">VERSIONE 0.3</span>
-<h1>Riconosci il brano.<br>Scopri il suo scenario.</h1>
-<p>Cinque brani reali, preview ufficiali, schede complete e contesto culturale.</p>
+<span class="kicker">MUSIC ROOTS</span>
+<h1>Ascolta, riconosci,<br>segui le radici.</h1>
+<p>Gioca con i brani, esplora i generi e scopri gli scenari e i percorsi che hanno cambiato la musica.</p>
 <button class="primary" id="startBtn">Inizia il quiz</button>
 </div>
-<div class="home-grid"><div><small>QUIZ</small><b>5</b></div><div><small>BRANI</small><b>5</b></div><div><small>SCENARI</small><b>5</b></div></div>
-<h2 class="catalog-title">Esplora i brani</h2>
-<div id="catalog" class="catalog"></div>
+
+<div class="home-grid">
+<div><small>QUIZ</small><b>5</b></div>
+<div><small>GENERI</small><b>40+</b></div>
+<div><small>PERCORSI</small><b>8</b></div>
+</div>
+
+<div class="home-actions">
+<button onclick="show('explore')"><div><b>Esplora i generi</b><small>Rock, pop, jazz, elettronica, world e altro</small></div><span>🌳</span></button>
+<button onclick="show('scenarios')"><div><b>Scenari</b><small>Club, città, movimenti e periodi storici</small></div><span>🗺️</span></button>
+<button onclick="show('routes')"><div><b>Percorsi Sonori</b><small>Segui l’evoluzione da un genere all’altro</small></div><span>🎧</span></button>
+</div>
+
+<div class="bottom-nav">
+<button class="active" onclick="show('home')">⌂ Home</button>
+<button onclick="startQuiz()">▶ Quiz</button>
+<button onclick="show('explore')">🌳 Esplora</button>
+<button onclick="show('routes')">🎧 Percorsi</button>
+</div>
 </section>
 
+
+<section id="explore" class="screen">
+<div class="quiz-head"><button class="icon" onclick="show('home')">←</button><span class="pill">ESPLORA I GENERI</span></div>
+<div class="family-grid">
+<button class="family-card" onclick="openFamily('Rock')"><b>🎸 Rock</b><small>Rock & Roll, Punk, Post-punk, Britpop, Grunge...</small></button>
+<button class="family-card" onclick="openFamily('Pop')"><b>🎤 Pop</b><small>Synth-pop, Sophisti-pop, Dream Pop, Dance Pop...</small></button>
+<button class="family-card" onclick="openFamily('Jazz')"><b>🎷 Jazz</b><small>Swing, Bebop, Cool Jazz, Fusion, Acid Jazz...</small></button>
+<button class="family-card" onclick="openFamily('Electronic')"><b>🎛 Electronic</b><small>House, Techno, Ambient, Trip Hop, Jungle...</small></button>
+<button class="family-card" onclick="openFamily('SoulFunk')"><b>🕺 Soul · Funk · Disco</b><small>Motown, Philly Soul, Funk, Disco, Boogie...</small></button>
+<button class="family-card" onclick="openFamily('HipHop')"><b>🎙 Hip Hop</b><small>Old School, Boom Bap, G-Funk, Trap...</small></button>
+<button class="family-card" onclick="openFamily('World')"><b>🌍 World</b><small>Bossa Nova, Samba, Afrobeat, Reggae, Fado...</small></button>
+<button class="family-card" onclick="openFamily('Roots')"><b>🪕 Roots</b><small>Blues, Gospel, Country, Folk, Bluegrass...</small></button>
+</div>
+<div class="bottom-nav">
+<button onclick="show('home')">⌂ Home</button><button onclick="startQuiz()">▶ Quiz</button><button class="active">🌳 Esplora</button><button onclick="show('routes')">🎧 Percorsi</button>
+</div>
+</section>
+
+<section id="family" class="screen">
+<div class="quiz-head"><button class="icon" onclick="show('explore')">←</button><span class="pill" id="familyTitle">FAMIGLIA</span></div>
+<div class="genre-detail">
+<span class="kicker">SOTTOGENERI</span>
+<h2 id="familyHeading"></h2>
+<p id="familyIntro"></p>
+<div id="genreList" class="genre-list"></div>
+</div>
+</section>
+
+<section id="genre" class="screen">
+<div class="quiz-head"><button class="icon" onclick="show('family')">←</button><span class="pill">SCHEDA GENERE</span></div>
+<div class="genre-detail" id="genreDetail"></div>
+</section>
+
+<section id="scenarios" class="screen">
+<div class="quiz-head"><button class="icon" onclick="show('home')">←</button><span class="pill">SCENARI</span></div>
+<div class="scenario-grid">
+<button class="scenario-card" onclick="openScenarioCard('Blitz')"><b>The Blitz</b><small>Londra · New Romantic · 1979–1981</small></button>
+<button class="scenario-card" onclick="openScenarioCard('Factory')"><b>Factory Manchester</b><small>Manchester · Post-punk · Haçienda</small></button>
+<button class="scenario-card" onclick="openScenarioCard('DiscoNY')"><b>New York Disco</b><small>Studio 54 · Paradise Garage · fine anni ’70</small></button>
+<button class="scenario-card" onclick="openScenarioCard('Bristol')"><b>Bristol Sound</b><small>Dub · Hip Hop · Trip Hop</small></button>
+<button class="scenario-card" onclick="openScenarioCard('Chicago')"><b>Chicago House</b><small>Warehouse · Frankie Knuckles · anni ’80</small></button>
+<button class="scenario-card" onclick="openScenarioCard('Bossa')"><b>Rio Bossa Nova</b><small>Rio de Janeiro · fine anni ’50</small></button>
+</div>
+</section>
+
+<section id="scenarioDetail" class="screen">
+<div class="quiz-head"><button class="icon" onclick="show('scenarios')">←</button><span class="pill">SCENARIO</span></div>
+<div class="genre-detail" id="scenarioDetailCard"></div>
+</section>
+
+<section id="routes" class="screen">
+<div class="quiz-head"><button class="icon" onclick="show('home')">←</button><span class="pill">PERCORSI SONORI</span></div>
+<div class="route-grid">
+<button class="route-card" onclick="openRoute('discohouse')"><b>Dalla Disco alla House</b><small>Chic → Paradise Garage → Chicago House</small></button>
+<button class="route-card" onclick="openRoute('synthpop')"><b>La nascita del Synth-pop</b><small>Kraftwerk → Bowie → Visage → Pet Shop Boys</small></button>
+<button class="route-card" onclick="openRoute('punkwave')"><b>Dal Punk alla New Wave</b><small>CBGB → Post-punk → New Romantic</small></button>
+<button class="route-card" onclick="openRoute('triphop')"><b>Le radici del Trip Hop</b><small>Dub → Hip Hop → Bristol Sound</small></button>
+<button class="route-card" onclick="openRoute('soultacid')"><b>Dal Soul all’Acid Jazz</b><small>Soul → Funk → Jazz-Funk → Acid Jazz</small></button>
+<button class="route-card" onclick="openRoute('bossa')"><b>Bossa Nova: samba e jazz</b><small>Samba-canção → Cool Jazz → Bossa Nova</small></button>
+<button class="route-card" onclick="openRoute('bluesrock')"><b>Dal Blues al Rock</b><small>Delta Blues → Rock & Roll → Rock</small></button>
+<button class="route-card" onclick="openRoute('french')"><b>La French Touch</b><small>Disco → House → Filter House</small></button>
+</div>
+<div class="bottom-nav">
+<button onclick="show('home')">⌂ Home</button><button onclick="startQuiz()">▶ Quiz</button><button onclick="show('explore')">🌳 Esplora</button><button class="active">🎧 Percorsi</button>
+</div>
+</section>
+
+<section id="routeDetail" class="screen">
+<div class="quiz-head"><button class="icon" onclick="show('routes')">←</button><span class="pill">PERCORSO SONORO</span></div>
+<div class="genre-detail" id="routeDetailCard"></div>
+</section>
 <section id="quiz" class="screen">
 <div class="quiz-head"><button class="icon" id="quizHome">←</button><div class="progress"><span id="bar"></span></div><b id="counter"></b></div>
 <div class="card">
@@ -273,6 +379,73 @@ $("#nextBtn").onclick=()=>{if(idx<tracks.length-1){idx++;renderQuiz()}else finis
 $("#detailBack").onclick=()=>show("quiz");
 $("#continueBtn").onclick=()=>{if(idx<tracks.length-1){idx++;renderQuiz();show("quiz")}else finish()};
 $("#restartBtn").onclick=startQuiz;$("#resultHome").onclick=()=>show("home");
+
+const genreFamilies={
+Rock:{intro:"Dalle radici blues e rock & roll alle forme alternative contemporanee.",genres:["Rock & Roll","Garage Rock","Psychedelic Rock","Progressive Rock","Glam Rock","Hard Rock","Punk","Post-punk","New Wave","Alternative Rock","Britpop","Grunge","Shoegaze","Goth Rock"]},
+Pop:{intro:"La musica pop cambia con tecnologia, radio, club culture e nuove estetiche.",genres:["Pop","Baroque Pop","Synth-pop","Sophisti-pop","Dance Pop","Electropop","Dream Pop","Indie Pop","Teen Pop","Hyperpop"]},
+Jazz:{intro:"Una famiglia in continua evoluzione, dall’improvvisazione tradizionale alle contaminazioni moderne.",genres:["Ragtime","Swing","Bebop","Cool Jazz","Hard Bop","Modal Jazz","Free Jazz","Jazz Fusion","Soul Jazz","Acid Jazz","Nu Jazz","Smooth Jazz"]},
+Electronic:{intro:"Tecnologia, club e sperimentazione: dalla musica ambient alle piste da ballo.",genres:["Ambient","Industrial","EBM","Electro","House","Deep House","Acid House","Techno","Detroit Techno","Breakbeat","Big Beat","Trip Hop","Jungle","Drum & Bass","UK Garage","Dubstep"]},
+SoulFunk:{intro:"Voce, groove e cultura del ballo: una linea che collega gospel, soul, funk, disco e house.",genres:["Soul","Motown","Southern Soul","Philly Soul","Northern Soul","Funk","P-Funk","Boogie","Disco","Italo Disco","Hi-NRG","Neo Soul"]},
+HipHop:{intro:"DJ, MC, breakdance e produzione: dalle origini nel Bronx alle scene globali.",genres:["Old School","Golden Age","Boom Bap","Conscious Rap","G-Funk","Alternative Hip Hop","Trap","Drill","Lo-fi Hip Hop"]},
+World:{intro:"Tradizioni locali e contaminazioni internazionali.",genres:["Bossa Nova","Samba","MPB","Afrobeat","Highlife","Reggae","Dub","Ska","Dancehall","Flamenco","Fado","Tango","Raï"]},
+Roots:{intro:"Le fondamenta popolari della musica moderna.",genres:["Blues","Delta Blues","Chicago Blues","Gospel","Country","Bluegrass","Folk","Americana"]}
+};
+const genreInfo={
+"Punk":{where:"New York · Londra",when:"1975–1982",roots:"Garage Rock · Pub Rock · Proto-punk",children:"Post-punk · Hardcore · New Wave",artists:"Ramones · Sex Pistols · The Clash · Patti Smith",scenario:"CBGB · 100 Club · The Roxy"},
+"Acid Jazz":{where:"Londra",when:"fine anni ’80–anni ’90",roots:"Jazz-Funk · Soul · Rare Groove · Hip Hop",children:"Nu Jazz · Broken Beat",artists:"Jamiroquai · Incognito · Brand New Heavies · Galliano",scenario:"The Jazz Café · Gilles Peterson · Acid Jazz Records"},
+"Bossa Nova":{where:"Rio de Janeiro",when:"fine anni ’50–anni ’60",roots:"Samba · Samba-canção · Cool Jazz",children:"MPB · Jazz brasiliano · Lounge",artists:"João Gilberto · Antônio Carlos Jobim · Vinicius de Moraes",scenario:"Rio · appartamenti di Zona Sul · Brasile modernista"},
+"Disco":{where:"New York · Philadelphia",when:"anni ’70",roots:"Soul · Funk · Philly Soul",children:"House · Hi-NRG · Boogie",artists:"Chic · Donna Summer · Sister Sledge · Cerrone",scenario:"Studio 54 · Paradise Garage · club culture"},
+"Trip Hop":{where:"Bristol",when:"primi anni ’90",roots:"Dub · Hip Hop · Soul · Post-punk",children:"Downtempo · Cinematic Electronica",artists:"Massive Attack · Portishead · Tricky",scenario:"The Wild Bunch · Bristol Sound"},
+"Synth-pop":{where:"Regno Unito · Europa",when:"fine anni ’70–anni ’80",roots:"Krautrock · Post-punk · Art Pop",children:"Electropop · New Romantic · Futurepop",artists:"Kraftwerk · Ultravox · Depeche Mode · Pet Shop Boys",scenario:"The Blitz · club elettronici · MTV"},
+"House":{where:"Chicago",when:"primi anni ’80",roots:"Disco · Soul · Electro",children:"Deep House · Acid House · Garage House · Tech House",artists:"Frankie Knuckles · Marshall Jefferson · Mr. Fingers",scenario:"The Warehouse · Music Box · Chicago club culture"},
+"Jazz":{where:"New Orleans · Stati Uniti",when:"inizio Novecento",roots:"Blues · Ragtime · Spiritual",children:"Swing · Bebop · Cool Jazz · Fusion",artists:"Louis Armstrong · Duke Ellington · Miles Davis · John Coltrane",scenario:"New Orleans · Harlem · club jazz"},
+"Rock":{where:"Stati Uniti · Regno Unito",when:"anni ’50 in poi",roots:"Blues · Country · Gospel · R&B",children:"Punk · Metal · Alternative · Indie",artists:"Elvis Presley · The Beatles · Rolling Stones · Jimi Hendrix",scenario:"Sun Studios · Liverpool · festival culture"},
+"Pop":{where:"Internazionale",when:"anni ’50 in poi",roots:"Tin Pan Alley · Rock & Roll · Soul",children:"Synth-pop · Dance Pop · Electropop",artists:"The Beatles · Madonna · Michael Jackson · Prince",scenario:"Radio · MTV · industria discografica"}
+};
+const scenarioCards={
+Blitz:{title:"The Blitz e i New Romantics",period:"Londra · 1979–1981",text:"Steve Strange e Rusty Egan trasformano una serata del Blitz Club in un laboratorio di musica elettronica, teatralità e identità visiva.",people:"Steve Strange · Rusty Egan · Boy George · Marilyn · Spandau Ballet",events:"Il punk perde centralità; sintetizzatori e videoclip definiscono una nuova estetica pop."},
+Factory:{title:"Factory Manchester",period:"Manchester · 1978–1988",text:"Factory Records unisce musica, grafica, club culture e rigenerazione urbana.",people:"Tony Wilson · Peter Saville · New Order · A Certain Ratio · Haçienda",events:"Il declino industriale convive con una delle scene creative più influenti del Regno Unito."},
+DiscoNY:{title:"New York Disco",period:"New York · 1975–1980",text:"La disco nasce e cresce nei club come spazio di libertà, comunità e sperimentazione sonora.",people:"Studio 54 · Paradise Garage · Larry Levan · Chic · Grace Jones",events:"Crisi urbana, liberazione sessuale e cultura del ballo trasformano la città."},
+Bristol:{title:"Bristol Sound",period:"Bristol · 1983–1994",text:"Dub, hip hop, soul e punk si mescolano nei sound system e nelle crew cittadine.",people:"The Wild Bunch · Massive Attack · Tricky · Portishead · Smith & Mighty",events:"Una scena multiculturale costruisce il linguaggio che verrà chiamato trip hop."},
+Chicago:{title:"Chicago House",period:"Chicago · primi anni ’80",text:"DJ e produttori rielaborano disco e soul con drum machine, remix e lunghe notti nei club.",people:"The Warehouse · Frankie Knuckles · Ron Hardy · Marshall Jefferson",events:"La disco sopravvive underground e diventa house."},
+Bossa:{title:"Rio e la Bossa Nova",period:"Rio de Janeiro · 1958–1964",text:"Samba e jazz si incontrano in una musica più intima, armonicamente sofisticata e urbana.",people:"João Gilberto · Jobim · Vinicius de Moraes · Nara Leão",events:"Il Brasile modernista guarda al futuro tra ottimismo culturale e trasformazioni politiche."}
+};
+const routes={
+discohouse:{title:"Dalla Disco alla House",steps:[["Soul e Funk","Groove, basso e cultura del ballo."],["Disco","La pista diventa il centro dell’esperienza."],["Paradise Garage","Il DJ estende e trasforma i brani."],["Chicago House","Drum machine e remix costruiscono un nuovo linguaggio."]]},
+synthpop:{title:"La nascita del Synth-pop",steps:[["Krautrock","Elettronica ripetitiva e sperimentazione."],["Bowie a Berlino","Art pop e nuove tecnologie."],["Ultravox e Visage","Sintetizzatori e romanticismo europeo."],["Pet Shop Boys","Il synth-pop diventa pop globale."]]},
+punkwave:{title:"Dal Punk alla New Wave",steps:[["Garage e Proto-punk","Urgenza e semplicità."],["Punk","Rottura culturale e musicale."],["Post-punk","Sperimentazione, dub e art school."],["New Wave","Elettronica, pop e immagine."]]},
+triphop:{title:"Le radici del Trip Hop",steps:[["Dub","Spazio, basso e remix."],["Hip Hop","Beat, campionamento e cultura urbana."],["Sound system di Bristol","Contaminazione multiculturale."],["Trip Hop","Atmosfere lente e cinematografiche."]]},
+soultacid:{title:"Dal Soul all’Acid Jazz",steps:[["Gospel e Soul","Voce, call and response, intensità."],["Funk","Il groove diventa protagonista."],["Jazz-Funk","Improvvisazione e ritmo."],["Acid Jazz","Club culture, rare groove e hip hop."]]},
+bossa:{title:"Bossa Nova: samba e jazz",steps:[["Samba-canção","Melodia e tradizione urbana."],["Cool Jazz","Armonie morbide e spazio."],["João Gilberto","Voce intima e chitarra sincopata."],["Bossa Nova","Rio diventa un suono globale."]]},
+bluesrock:{title:"Dal Blues al Rock",steps:[["Delta Blues","Voce, chitarra e racconto."],["Chicago Blues","Amplificazione e città."],["Rock & Roll","Ritmo, gioventù e cultura pop."],["Rock","Una famiglia globale di sottogeneri."]]},
+french:{title:"La French Touch",steps:[["Disco e Funk","Campioni e groove."],["Chicago House","Cassa in quattro e club culture."],["Filter House","Filtri, compressione e loop."],["French Touch","Daft Punk, Cassius, Stardust."]]}
+};
+function openFamily(key){
+ const f=genreFamilies[key];$("#familyTitle").textContent=key.toUpperCase();$("#familyHeading").textContent=key==="SoulFunk"?"Soul · Funk · Disco":key;$("#familyIntro").textContent=f.intro;$("#genreList").innerHTML="";
+ f.genres.forEach(g=>{const b=document.createElement("button");b.textContent=g;b.onclick=()=>openGenre(g);$("#genreList").appendChild(b)});show("family");
+}
+function openGenre(name){
+ const d=genreInfo[name]||{where:"Origini internazionali",when:"periodo variabile",roots:"Influenze multiple",children:"Numerosi sottogeneri",artists:"Scheda in ampliamento",scenario:"Scenario in ampliamento"};
+ $("#genreDetail").innerHTML=`<span class="kicker">GENERE</span><h2>${name}</h2>
+ <div class="facts"><div><small>DOVE</small><b>${d.where}</b></div><div><small>PERIODO</small><b>${d.when}</b></div></div>
+ <div class="section-label">RADICI</div><div class="info-card"><p>${d.roots}</p></div>
+ <div class="section-label">EVOLUZIONE</div><div class="info-card"><p>${d.children}</p></div>
+ <div class="section-label">ARTISTI FONDAMENTALI</div><div class="info-card"><p>${d.artists}</p></div>
+ <div class="section-label">SCENARIO</div><div class="info-card"><p>${d.scenario}</p></div>
+ <button class="primary" onclick="startQuiz()">Gioca il quiz</button>`;show("genre");
+}
+function openScenarioCard(key){
+ const s=scenarioCards[key];$("#scenarioDetailCard").innerHTML=`<span class="kicker">SCENARIO</span><h2>${s.title}</h2><p><b>${s.period}</b></p>
+ <div class="section-label">CONTESTO</div><div class="info-card"><p>${s.text}</p></div>
+ <div class="section-label">LUOGHI E FIGURE</div><div class="info-card"><p>${s.people}</p></div>
+ <div class="section-label">COSA STAVA SUCCEDENDO</div><div class="info-card"><p>${s.events}</p></div>`;show("scenarioDetail");
+}
+function openRoute(key){
+ const r=routes[key];$("#routeDetailCard").innerHTML=`<span class="kicker">PERCORSO SONORO</span><h2>${r.title}</h2>
+ <div class="route-steps">${r.steps.map(x=>`<div><b>${x[0]}</b><small>${x[1]}</small></div>`).join("")}</div>
+ <button class="primary" onclick="startQuiz()">Mettiti alla prova</button>`;show("routeDetail");
+}
+
 renderCatalog();
 </script>
 </body>
