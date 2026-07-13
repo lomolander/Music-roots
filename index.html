@@ -42,9 +42,6 @@ button,input{font:inherit}
 .result{text-align:center;margin-top:54px}.result .big{font-size:64px;font-weight:900;color:var(--accent)}.result small{color:var(--muted)}
 @media(max-width:390px){.hero h1{font-size:34px}}
 
-.bottom-nav{position:sticky;bottom:12px;z-index:20;display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:22px;padding:8px;background:rgba(24,26,33,.92);backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:19px}
-.bottom-nav button{border:0;background:transparent;color:var(--muted);padding:10px 5px;border-radius:12px;font-size:11px;font-weight:750}
-.bottom-nav button.active{background:var(--panel2);color:var(--text)}
 .home-actions{display:grid;gap:10px;margin-top:14px}
 .home-actions button{display:flex;align-items:center;justify-content:space-between;width:100%;border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:18px;padding:18px;text-align:left}
 .home-actions b{display:block;font-size:18px}.home-actions small{display:block;color:var(--muted);margin-top:4px}.home-actions span{font-size:24px}
@@ -60,6 +57,19 @@ button,input{font:inherit}
 .route-steps div{position:relative;margin-bottom:17px}.route-steps div:before{content:"";position:absolute;width:9px;height:9px;border-radius:50%;background:var(--accent);left:-23px;top:5px}
 .route-steps b{display:block}.route-steps small{color:var(--muted)}
 
+
+.top-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:8px 0 18px;padding:6px;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:16px}
+.top-tabs button{position:relative;border:0;background:transparent;color:var(--muted);padding:11px 6px;border-radius:11px;font-size:11px;font-weight:800;letter-spacing:.1px}
+.top-tabs button.active{background:var(--panel2);color:var(--text)}
+.top-tabs button.active:after{content:"";position:absolute;left:28%;right:28%;bottom:5px;height:2px;background:var(--accent);border-radius:999px}
+.icon-line{width:22px;height:22px;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.home-actions button{min-height:104px;padding:20px}
+.home-actions span{display:flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:14px;background:rgba(255,255,255,.05);color:var(--accent)}
+.home-actions b{font-size:19px}.home-actions small{font-size:12px;line-height:1.4}
+.family-card,.scenario-card,.route-card{min-height:126px;padding:18px}
+.family-card b,.scenario-card b,.route-card b{font-size:18px}
+.family-card small,.scenario-card small,.route-card small{font-size:12px}
+
 </style>
 </head>
 <body>
@@ -70,10 +80,17 @@ button,input{font:inherit}
 </header>
 
 <section id="home" class="screen active">
+<div class="top-tabs">
+<button class="active" onclick="show('home')">Home</button>
+<button onclick="startQuiz()">Quiz</button>
+<button onclick="show('explore')">Esplora</button>
+<button onclick="show('routes')">Percorsi</button>
+</div>
+
 <div class="hero">
 <span class="kicker">MUSIC ROOTS</span>
-<h1>Ascolta, riconosci,<br>segui le radici.</h1>
-<p>Gioca con i brani, esplora i generi e scopri gli scenari e i percorsi che hanno cambiato la musica.</p>
+<h1>Riconosci.<br>Scopri.<br>Collega.</h1>
+<p>Un modo semplice per giocare con la musica e seguirne generi, scenari e trasformazioni.</p>
 <button class="primary" id="startBtn">Inizia il quiz</button>
 </div>
 
@@ -84,35 +101,28 @@ button,input{font:inherit}
 </div>
 
 <div class="home-actions">
-<button onclick="show('explore')"><div><b>Esplora i generi</b><small>Rock, pop, jazz, elettronica, world e altro</small></div><span>🌳</span></button>
-<button onclick="show('scenarios')"><div><b>Scenari</b><small>Club, città, movimenti e periodi storici</small></div><span>🗺️</span></button>
-<button onclick="show('routes')"><div><b>Percorsi Sonori</b><small>Segui l’evoluzione da un genere all’altro</small></div><span>🎧</span></button>
-</div>
-
-<div class="bottom-nav">
-<button class="active" onclick="show('home')">⌂ Home</button>
-<button onclick="startQuiz()">▶ Quiz</button>
-<button onclick="show('explore')">🌳 Esplora</button>
-<button onclick="show('routes')">🎧 Percorsi</button>
+<button onclick="startQuiz()"><div><b>Quiz</b><small>Metti alla prova il tuo orecchio</small></div><span><svg class="icon-line" viewBox="0 0 24 24"><path d="M9 18V6l10-2v12"/><circle cx="6" cy="18" r="3"/><circle cx="16" cy="16" r="3"/></svg></span></button>
+<button onclick="show('explore')"><div><b>Esplora</b><small>Generi musicali e sottogeneri</small></div><span><svg class="icon-line" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.2"/><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="18" r="2.2"/><path d="M12 7.2v4.3M12 11.5 7.5 16M12 11.5 16.5 16"/></svg></span></button>
+<button onclick="show('scenarios')"><div><b>Scenari</b><small>Luoghi, epoche e movimenti culturali</small></div><span><svg class="icon-line" viewBox="0 0 24 24"><path d="M12 21s6-5.3 6-11a6 6 0 1 0-12 0c0 5.7 6 11 6 11Z"/><circle cx="12" cy="10" r="2.2"/></svg></span></button>
+<button onclick="show('routes')"><div><b>Percorsi Sonori</b><small>Viaggi guidati nella storia della musica</small></div><span><svg class="icon-line" viewBox="0 0 24 24"><circle cx="5" cy="19" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="5" r="2"/><path d="m6.5 17.5 4-4m3-3 4-4"/></svg></span></button>
 </div>
 </section>
 
 
 <section id="explore" class="screen">
+<div class="top-tabs"><button onclick="show('home')">Home</button><button onclick="startQuiz()">Quiz</button><button class="active">Esplora</button><button onclick="show('routes')">Percorsi</button></div>
 <div class="quiz-head"><button class="icon" onclick="show('home')">←</button><span class="pill">ESPLORA I GENERI</span></div>
 <div class="family-grid">
-<button class="family-card" onclick="openFamily('Rock')"><b>🎸 Rock</b><small>Rock & Roll, Punk, Post-punk, Britpop, Grunge...</small></button>
-<button class="family-card" onclick="openFamily('Pop')"><b>🎤 Pop</b><small>Synth-pop, Sophisti-pop, Dream Pop, Dance Pop...</small></button>
-<button class="family-card" onclick="openFamily('Jazz')"><b>🎷 Jazz</b><small>Swing, Bebop, Cool Jazz, Fusion, Acid Jazz...</small></button>
-<button class="family-card" onclick="openFamily('Electronic')"><b>🎛 Electronic</b><small>House, Techno, Ambient, Trip Hop, Jungle...</small></button>
-<button class="family-card" onclick="openFamily('SoulFunk')"><b>🕺 Soul · Funk · Disco</b><small>Motown, Philly Soul, Funk, Disco, Boogie...</small></button>
-<button class="family-card" onclick="openFamily('HipHop')"><b>🎙 Hip Hop</b><small>Old School, Boom Bap, G-Funk, Trap...</small></button>
-<button class="family-card" onclick="openFamily('World')"><b>🌍 World</b><small>Bossa Nova, Samba, Afrobeat, Reggae, Fado...</small></button>
-<button class="family-card" onclick="openFamily('Roots')"><b>🪕 Roots</b><small>Blues, Gospel, Country, Folk, Bluegrass...</small></button>
+<button class="family-card" onclick="openFamily('Rock')"><b>Rock</b><small>Rock & Roll, Punk, Post-punk, Britpop, Grunge...</small></button>
+<button class="family-card" onclick="openFamily('Pop')"><b>Pop</b><small>Synth-pop, Sophisti-pop, Dream Pop, Dance Pop...</small></button>
+<button class="family-card" onclick="openFamily('Jazz')"><b>Jazz</b><small>Swing, Bebop, Cool Jazz, Fusion, Acid Jazz...</small></button>
+<button class="family-card" onclick="openFamily('Electronic')"><b>Electronic</b><small>House, Techno, Ambient, Trip Hop, Jungle...</small></button>
+<button class="family-card" onclick="openFamily('SoulFunk')"><b>Soul · Funk · Disco</b><small>Motown, Philly Soul, Funk, Disco, Boogie...</small></button>
+<button class="family-card" onclick="openFamily('HipHop')"><b>Hip Hop</b><small>Old School, Boom Bap, G-Funk, Trap...</small></button>
+<button class="family-card" onclick="openFamily('World')"><b>World</b><small>Bossa Nova, Samba, Afrobeat, Reggae, Fado...</small></button>
+<button class="family-card" onclick="openFamily('Roots')"><b>Roots</b><small>Blues, Gospel, Country, Folk, Bluegrass...</small></button>
 </div>
-<div class="bottom-nav">
-<button onclick="show('home')">⌂ Home</button><button onclick="startQuiz()">▶ Quiz</button><button class="active">🌳 Esplora</button><button onclick="show('routes')">🎧 Percorsi</button>
-</div>
+
 </section>
 
 <section id="family" class="screen">
@@ -131,6 +141,7 @@ button,input{font:inherit}
 </section>
 
 <section id="scenarios" class="screen">
+<div class="top-tabs"><button onclick="show('home')">Home</button><button onclick="startQuiz()">Quiz</button><button onclick="show('explore')">Esplora</button><button class="active">Scenari</button></div>
 <div class="quiz-head"><button class="icon" onclick="show('home')">←</button><span class="pill">SCENARI</span></div>
 <div class="scenario-grid">
 <button class="scenario-card" onclick="openScenarioCard('Blitz')"><b>The Blitz</b><small>Londra · New Romantic · 1979–1981</small></button>
@@ -148,6 +159,7 @@ button,input{font:inherit}
 </section>
 
 <section id="routes" class="screen">
+<div class="top-tabs"><button onclick="show('home')">Home</button><button onclick="startQuiz()">Quiz</button><button onclick="show('explore')">Esplora</button><button class="active">Percorsi</button></div>
 <div class="quiz-head"><button class="icon" onclick="show('home')">←</button><span class="pill">PERCORSI SONORI</span></div>
 <div class="route-grid">
 <button class="route-card" onclick="openRoute('discohouse')"><b>Dalla Disco alla House</b><small>Chic → Paradise Garage → Chicago House</small></button>
@@ -159,9 +171,7 @@ button,input{font:inherit}
 <button class="route-card" onclick="openRoute('bluesrock')"><b>Dal Blues al Rock</b><small>Delta Blues → Rock & Roll → Rock</small></button>
 <button class="route-card" onclick="openRoute('french')"><b>La French Touch</b><small>Disco → House → Filter House</small></button>
 </div>
-<div class="bottom-nav">
-<button onclick="show('home')">⌂ Home</button><button onclick="startQuiz()">▶ Quiz</button><button onclick="show('explore')">🌳 Esplora</button><button class="active">🎧 Percorsi</button>
-</div>
+
 </section>
 
 <section id="routeDetail" class="screen">
