@@ -16,7 +16,7 @@ button{font:inherit}.app{max-width:540px;margin:auto;padding:env(safe-area-inset
 .audio-box{background:#101218;border-radius:18px;padding:15px}.audio-row{display:flex;align-items:center;gap:13px}.play{width:54px;height:54px;border:0;border-radius:50%;background:var(--pink);color:white;font-size:19px}.wave{display:flex;align-items:center;justify-content:space-between;flex:1;height:44px}.wave i{width:3px;height:14px;border-radius:6px;background:#666a76}.wave.playing i{animation:pulse .6s ease-in-out infinite alternate}.wave i:nth-child(2n){animation-delay:.12s}.wave i:nth-child(3n){animation-delay:.24s}@keyframes pulse{to{height:39px;background:var(--accent)}}.source{font-size:11px;color:var(--muted);margin-top:9px}.status{font-size:11px;color:var(--muted);margin-top:6px}
 .answers{display:grid;gap:10px;margin-top:18px}.answer,.primary{width:100%;border:0;border-radius:15px;padding:15px 17px;font-weight:850;cursor:pointer}.answer{display:flex;gap:12px;align-items:center;text-align:left;background:var(--panel2);border:1px solid var(--line);color:var(--text)}.answer span{display:grid;place-items:center;width:29px;height:29px;border-radius:9px;background:#31343e}.answer.correct{border-color:var(--green);background:rgba(128,208,170,.12)}.answer.wrong{border-color:var(--pink);background:rgba(239,124,167,.1)}
 .feedback{margin-top:14px;background:#11131a;border-radius:14px;padding:15px;line-height:1.45}.feedback strong{color:var(--accent)}.primary{margin-top:12px;background:var(--accent);color:#17130c}.hidden{display:none!important}
-.song{margin-top:14px;background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:20px}.song h2{font-size:28px;margin:7px 0}.song p{color:var(--muted);line-height:1.5}.facts{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:13px}.facts div{background:var(--panel2);padding:13px;border-radius:14px}.facts small{display:block;color:var(--muted);font-size:9px;letter-spacing:1px;margin-bottom:4px}.scenario{margin-top:12px;background:linear-gradient(145deg,#1c2931,#17191f);border:1px solid rgba(127,156,245,.22);border-radius:18px;padding:17px}.yt{margin-top:14px;overflow:hidden;border-radius:16px;aspect-ratio:16/9}.yt iframe{width:100%;height:100%;border:0}
+.song{margin-top:14px;background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:20px}.song h2{font-size:30px;margin:7px 0}.song h3{margin:22px 0 8px}.song p{color:var(--muted);line-height:1.55}.facts{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:13px}.facts div{background:var(--panel2);padding:13px;border-radius:14px}.facts small,.info-card small{display:block;color:var(--muted);font-size:9px;letter-spacing:1px;margin-bottom:4px}.info-card{margin-top:12px;background:var(--panel2);border:1px solid var(--line);border-radius:17px;padding:16px}.info-card strong{display:block;font-size:18px;margin-bottom:5px}.scenario{margin-top:14px;background:linear-gradient(145deg,#1c2931,#17191f);border:1px solid rgba(127,156,245,.22);border-radius:20px;padding:18px}.scenario h3{margin:7px 0}.chips{display:flex;flex-wrap:wrap;gap:7px;margin:11px 0}.chips span{background:rgba(255,255,255,.07);border-radius:999px;padding:7px 10px;font-size:11px}.timeline{border-left:2px solid rgba(255,255,255,.13);padding-left:18px;margin:16px 0}.timeline div{position:relative;margin-bottom:15px}.timeline div:before{content:"";position:absolute;width:9px;height:9px;border-radius:50%;background:var(--accent);left:-23px;top:5px}.timeline b{display:block}.timeline small{color:var(--muted)}.link-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px}.link-grid div{background:var(--panel2);border-radius:14px;padding:13px}.link-grid b{display:block;margin-bottom:4px}.link-grid small{color:var(--muted);line-height:1.35}.yt{margin-top:14px;overflow:hidden;border-radius:16px;aspect-ratio:16/9}.yt iframe{width:100%;height:100%;border:0}.section-label{margin-top:24px;font-size:10px;letter-spacing:1.4px;color:var(--accent);font-weight:900}
 </style>
 </head>
 <body>
@@ -52,19 +52,87 @@ button{font:inherit}.app{max-width:540px;margin:auto;padding:env(safe-area-inset
 <span class="kicker">SCHEDA DEL BRANO</span>
 <h2>Virtual Insanity</h2>
 <p><strong>Jamiroquai · 1996</strong></p>
+
 <div class="facts">
 <div><small>ALBUM</small><b>Travelling Without Moving</b></div>
 <div><small>GENERE</small><b>Acid Jazz</b></div>
 <div><small>SOTTOGENERE</small><b>Jazz-Funk</b></div>
 <div><small>PAESE</small><b>Regno Unito</b></div>
+<div><small>DURATA</small><b>3:49</b></div>
+<div><small>ETICHETTA</small><b>Sony Soho Square</b></div>
+<div><small>AUTORE</small><b>Jay Kay · Toby Smith</b></div>
+<div><small>ALBUM PUBBLICATO</small><b>1996</b></div>
 </div>
-<h3>Significato</h3>
-<p>Il testo riflette sul progresso tecnologico, il consumismo e il rischio che la modernità allontani l’uomo dalla natura e dalla vita autentica.</p>
+
+<div class="section-label">SIGNIFICATO</div>
+<div class="info-card">
+<strong>Progresso o alienazione?</strong>
+<p>Il testo riflette sul rapporto tra tecnologia, consumismo e perdita del contatto con la natura. Immagina un futuro comodo e avanzato, ma anche più artificiale, isolato e difficile da controllare.</p>
+</div>
+
+<div class="section-label">PERCHÉ È IMPORTANTE</div>
+<div class="info-card">
+<strong>L’acid jazz entra nel grande pop internazionale.</strong>
+<p>Il brano ha reso accessibile a un pubblico vastissimo una combinazione di funk, soul, jazz e pop britannico, contribuendo alla notorietà mondiale dei Jamiroquai.</p>
+</div>
+
+<div class="section-label">ANALISI MUSICALE</div>
+<div class="link-grid">
+<div><b>Groove</b><small>Basso elastico e batteria precisa.</small></div>
+<div><b>Tastiere</b><small>Rhodes, clavinet e timbri elettrici caldi.</small></div>
+<div><b>Voce</b><small>Fraseggio soul, agile e ritmico.</small></div>
+<div><b>Atmosfera</b><small>Futuristica, inquieta ma ballabile.</small></div>
+</div>
+
+<div class="section-label">CURIOSITÀ</div>
+<div class="info-card">
+<strong>Una stanza che sembra muoversi.</strong>
+<p>Il video, diretto da Jonathan Glazer, è ricordato per l’illusione ottica del pavimento scorrevole e per una regia che trasforma uno spazio quasi vuoto in una coreografia continua.</p>
+</div>
+
 <div class="scenario">
 <span class="kicker">SCENARIO</span>
 <h3>Londra · metà anni ’90</h3>
-<p>Acid jazz, Britpop e trip hop convivono nella cultura britannica. The Jazz Café e Ronnie Scott’s sono luoghi simbolo; Incognito, Brand New Heavies, Galliano e Corduroy rappresentano la scena acid jazz.</p>
+<div class="chips">
+<span>Acid Jazz</span><span>Britpop</span><span>Trip Hop</span><span>Club culture</span>
 </div>
+<p>La scena britannica vive una forte contaminazione: il Britpop domina l’immaginario popolare, il trip hop arriva da Bristol e nei club londinesi funk, soul, jazz e house continuano a mescolarsi.</p>
+
+<div class="timeline">
+<div><b>1987</b><small>Nasce Acid Jazz Records.</small></div>
+<div><b>1992</b><small>I Jamiroquai firmano con Sony.</small></div>
+<div><b>1996</b><small>Esce Virtual Insanity.</small></div>
+<div><b>1997</b><small>La French Touch si afferma sempre di più in Europa.</small></div>
+</div>
+
+<div class="info-card">
+<small>LUOGHI E FIGURE</small>
+<p>The Jazz Café, Ronnie Scott’s, Gilles Peterson, Incognito, The Brand New Heavies, Galliano e Corduroy.</p>
+</div>
+
+<div class="info-card">
+<small>COSA STAVA SUCCEDENDO</small>
+<p>MTV ha ancora un’enorme influenza, Internet comincia a entrare nella vita quotidiana e la cultura musicale britannica è attraversata da revival, contaminazioni e nuove tecnologie.</p>
+</div>
+</div>
+
+<div class="section-label">ARTISTI COLLEGATI</div>
+<div class="link-grid">
+<div><b>Incognito</b><small>Soul e jazz-funk britannico.</small></div>
+<div><b>Brand New Heavies</b><small>Funk, acid jazz e vocalità soul.</small></div>
+<div><b>Galliano</b><small>Acid jazz più sperimentale.</small></div>
+<div><b>Corduroy</b><small>Jazz-funk strumentale e cinematografico.</small></div>
+</div>
+
+<div class="section-label">ASCOLTA ANCHE</div>
+<div class="link-grid">
+<div><b>Always There</b><small>Incognito</small></div>
+<div><b>Dream On Dreamer</b><small>The Brand New Heavies</small></div>
+<div><b>Prince of Peace</b><small>Galliano</small></div>
+<div><b>Mini</b><small>Corduroy</small></div>
+</div>
+
+<div class="section-label">VIDEO UFFICIALE</div>
 <div class="yt">
 <iframe src="https://www.youtube.com/embed/4JkIs37a2JE?playsinline=1&rel=0" title="Virtual Insanity – video ufficiale" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
