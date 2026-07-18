@@ -1,0 +1,1776 @@
+{
+  "generatedAt": "2026-07-18T14:03:24.960Z",
+  "recordsExamined": 35,
+  "existingPreviewsPreserved": 265,
+  "newPreviewsFound": 13,
+  "previewsStillMissing": 22,
+  "newAssociations": [
+    {
+      "id": 88,
+      "artist": "Leftfield",
+      "title": "Open Up",
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/17/99/af/1799afb1-16d3-131d-af3b-b25f3892abf3/mzaf_16888591500756487581.plus.aac.p.m4a",
+      "source": "itunes"
+    },
+    {
+      "id": 104,
+      "artist": "Steve \"Silk\" Hurley",
+      "title": "Jack Your Body",
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/de/a7/c8/dea7c8ea-5dad-3958-39f7-8ac16c20f990/mzaf_15708809067382742813.plus.aac.p.m4a",
+      "source": "itunes"
+    },
+    {
+      "id": 120,
+      "artist": "Sleezy D",
+      "title": "I've Lost Control",
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/29/18/64/291864d6-6519-935d-f858-cac0c80243cb/mzaf_16465812847026692460.plus.aac.p.m4a",
+      "source": "itunes"
+    },
+    {
+      "id": 129,
+      "artist": "Daft Punk",
+      "title": "Revolution 909",
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/5f/25/76/5f2576f9-8132-669e-8a65-70fbc41a2bda/mzaf_868381861867133924.plus.aac.p.m4a",
+      "source": "itunes"
+    },
+    {
+      "id": 139,
+      "artist": "Tuff Jam",
+      "title": "Need Good Love",
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/d7/0e/b0/d70eb0af-f232-8a15-27fd-1c58e52a6f4c/mzaf_14206185891396249866.plus.aac.p.m4a",
+      "source": "itunes"
+    },
+    {
+      "id": 141,
+      "artist": "Artful Dodger",
+      "title": "Re-Rewind",
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/5a/79/29/5a792963-0b41-175c-5acd-d989b18f1f9f/mzaf_10651615619460884156.plus.aac.p.m4a",
+      "source": "itunes"
+    },
+    {
+      "id": 148,
+      "artist": "Tricky",
+      "title": "Aftermath",
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/a4/cc/c5/a4ccc595-b699-82c0-691c-dd071e994f24/mzaf_7806391434901427877.plus.aac.p.m4a",
+      "source": "itunes"
+    },
+    {
+      "id": 151,
+      "artist": "UNKLE",
+      "title": "Lonely Soul",
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview123/v4/62/5f/04/625f048e-752e-8519-8aa7-d5d681a9fc2f/mzaf_8785013965592997365.plus.aac.p.m4a",
+      "source": "itunes"
+    },
+    {
+      "id": 236,
+      "artist": "India.Arie",
+      "title": "Video",
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/e8/0c/5f/e80c5f63-793f-e709-51fa-b3d108936e0e/mzaf_13406732058080498376.plus.aac.p.m4a",
+      "source": "itunes"
+    },
+    {
+      "id": 271,
+      "artist": "Stan Getz & João Gilberto",
+      "title": "Corcovado (Quiet Nights of Quiet Stars)",
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/05/ff/b8/05ffb84f-3751-0452-f575-55a862c25bff/mzaf_3364031941550380904.plus.aac.p.m4a",
+      "source": "itunes"
+    },
+    {
+      "id": 275,
+      "artist": "Baden Powell & Vinícius de Moraes",
+      "title": "Canto de Ossanha",
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/0b/87/d1/0b87d11f-f656-b537-069a-2fcea33432bf/mzaf_8044544737534729816.plus.aac.p.m4a",
+      "source": "itunes"
+    },
+    {
+      "id": 278,
+      "artist": "Pharoah Sanders",
+      "title": "The Creator Has a Master Plan",
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/cb/52/e2/cb52e2aa-e74b-d000-7811-c38688003b8f/mzaf_4688678106246202136.plus.aac.p.m4a",
+      "source": "itunes"
+    },
+    {
+      "id": 292,
+      "artist": "Goblin",
+      "title": "Profondo Rosso",
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview71/v4/23/fc/22/23fc2274-892e-0070-87b2-7a53471561bb/mzaf_8289486078521315329.plus.aac.p.m4a",
+      "source": "itunes"
+    }
+  ],
+  "stillMissing": [
+    {
+      "id": 16,
+      "artist": "Rhythm Is Rhythm",
+      "title": "Strings of Life"
+    },
+    {
+      "id": 26,
+      "artist": "DJ Falcon & Thomas Bangalter",
+      "title": "Together"
+    },
+    {
+      "id": 27,
+      "artist": "Motorbass",
+      "title": "Pansoul"
+    },
+    {
+      "id": 45,
+      "artist": "OMD",
+      "title": "Enola Gay"
+    },
+    {
+      "id": 105,
+      "artist": "Kerri Chandler",
+      "title": "Atmosphere"
+    },
+    {
+      "id": 107,
+      "artist": "Larry Heard",
+      "title": "The Sun Can't Compare"
+    },
+    {
+      "id": 110,
+      "artist": "Juan Atkins",
+      "title": "No UFO's"
+    },
+    {
+      "id": 114,
+      "artist": "Underground Resistance",
+      "title": "The Final Frontier"
+    },
+    {
+      "id": 116,
+      "artist": "Robert Hood",
+      "title": "Minimal Nation"
+    },
+    {
+      "id": 127,
+      "artist": "Mr. Lee",
+      "title": "Acid Fantaslee"
+    },
+    {
+      "id": 128,
+      "artist": "Thomas Bangalter",
+      "title": "Trax on da Rocks"
+    },
+    {
+      "id": 132,
+      "artist": "Pepe Bradock",
+      "title": "Deep Burnt"
+    },
+    {
+      "id": 174,
+      "artist": "LTJ Bukem",
+      "title": "Horizons"
+    },
+    {
+      "id": 175,
+      "artist": "Roni Size / Reprazent",
+      "title": "Brown Paper Bag"
+    },
+    {
+      "id": 177,
+      "artist": "Adam F",
+      "title": "Circles"
+    },
+    {
+      "id": 178,
+      "artist": "Shy FX",
+      "title": "Original Nuttah"
+    },
+    {
+      "id": 204,
+      "artist": "Arthur Russell",
+      "title": "Is It All Over My Face"
+    },
+    {
+      "id": 223,
+      "artist": "Cybotron",
+      "title": "Techno City"
+    },
+    {
+      "id": 256,
+      "artist": "A Guy Called Gerald",
+      "title": "Pacific State"
+    },
+    {
+      "id": 263,
+      "artist": "Run-D.M.C.",
+      "title": "It's Like That"
+    },
+    {
+      "id": 276,
+      "artist": "Elis Regina & Tom Jobim",
+      "title": "Águas de Março"
+    },
+    {
+      "id": 288,
+      "artist": "Alessandro Alessandroni",
+      "title": "Open Air Parade"
+    }
+  ],
+  "doubtfulExcluded": [
+    {
+      "id": 16,
+      "artist": "Rhythm Is Rhythm",
+      "title": "Strings of Life",
+      "candidates": [
+        {
+          "source": "itunes",
+          "artist": "Derrick May, Mayday & Rhythim Is Rhythim",
+          "title": "Strings Of Life",
+          "album": "Innovator - Soundtrack for the Tenth Planet",
+          "query": "Rhythm Is Rhythm Strings of Life [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Derrick May, Mayday & Rhythim Is Rhythim",
+          "title": "Strings Of Life",
+          "album": "Innovator - Soundtrack for the Tenth Planet",
+          "query": "Rhythm Is Rhythm Strings of Life [US]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Roger Bonner",
+          "title": "Strings of Life",
+          "album": "French Kiss",
+          "query": "Rhythm Is Rhythm Strings of Life [US]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Derrick May, Mayday & Rhythim Is Rhythim",
+          "title": "Strings Of Life",
+          "album": "Innovator - Soundtrack for the Tenth Planet",
+          "query": "Rhythm Is Rhythm Strings of Life [GB]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Derrick May",
+          "title": "Strings of Life",
+          "album": "Innovator",
+          "query": "Rhythm Is Rhythm Strings of Life [GB]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Graeme Park, Mike Pickering, Manchester Camerata & Tim Crooks",
+          "title": "Strings of Life",
+          "album": "Haçienda Classiçal",
+          "query": "Rhythm Is Rhythm Strings of Life [GB]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Carl Hanaghan",
+          "title": "Strings of Life",
+          "album": "Strings of Life - Single",
+          "query": "Rhythm Is Rhythm Strings of Life [GB]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Roger Bonner",
+          "title": "Strings of Life",
+          "album": "French Kiss",
+          "query": "Rhythm Is Rhythm Strings of Life [GB]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "artist": "DJ Falcon & Thomas Bangalter",
+      "title": "Together",
+      "candidates": [
+        {
+          "source": "itunes",
+          "artist": "The xx",
+          "title": "Together",
+          "album": "Fiction - EP",
+          "query": "Together [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Elisa",
+          "title": "Together",
+          "album": "Pearl Days",
+          "query": "Together [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "David Guetta, Hypaton & Bonnie Tyler",
+          "title": "Together",
+          "album": "Together - Single",
+          "query": "Together [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Martin Garrix, Matisse & Sadko",
+          "title": "Together",
+          "album": "Together - Single",
+          "query": "Together [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Bob Sinclar & Steve Edwards",
+          "title": "Together",
+          "album": "Soundz of Freedom (My Ultimate Summer of Love Mix)",
+          "query": "Together [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Laffey",
+          "title": "Together",
+          "album": "A Day At A Time",
+          "query": "Together [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Waylon Payne",
+          "title": "Together",
+          "album": "Wayward",
+          "query": "Together [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Avril Lavigne",
+          "title": "Together",
+          "album": "Under My Skin",
+          "query": "Together [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "artist": "Motorbass",
+      "title": "Pansoul",
+      "candidates": [
+        {
+          "source": "deezer",
+          "artist": "Motorbass",
+          "title": "Fabulous",
+          "album": "Pansoul",
+          "query": "Motorbass Pansoul",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "deezer",
+          "artist": "Motorbass",
+          "title": "Bad Vibes (Dmix)",
+          "album": "Pansoul",
+          "query": "Motorbass Pansoul",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "deezer",
+          "artist": "Motorbass",
+          "title": "Ezio",
+          "album": "Pansoul",
+          "query": "Motorbass Pansoul",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "deezer",
+          "artist": "Motorbass",
+          "title": "Flying Fingers",
+          "album": "Pansoul",
+          "query": "Motorbass Pansoul",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "deezer",
+          "artist": "Motorbass",
+          "title": "Genius",
+          "album": "Pansoul",
+          "query": "Motorbass Pansoul",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "deezer",
+          "artist": "Motorbass",
+          "title": "Neptune",
+          "album": "Pansoul",
+          "query": "Motorbass Pansoul",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "deezer",
+          "artist": "Motorbass",
+          "title": "Pariscyde",
+          "album": "Pansoul",
+          "query": "Motorbass Pansoul",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "deezer",
+          "artist": "Motorbass",
+          "title": "Wan Dence",
+          "album": "Pansoul",
+          "query": "Motorbass Pansoul",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        }
+      ]
+    },
+    {
+      "id": 45,
+      "artist": "OMD",
+      "title": "Enola Gay",
+      "candidates": [
+        {
+          "source": "itunes",
+          "artist": "Orchestral Manoeuvres In the Dark",
+          "title": "Enola Gay",
+          "album": "Organisation",
+          "query": "OMD Enola Gay [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Orchestral Manoeuvres In the Dark",
+          "title": "Enola Gay",
+          "album": "The Best Of Orchestral Manoeuvres In The Dark",
+          "query": "OMD Enola Gay [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Orchestral Manoeuvres In The Dark",
+          "title": "Enola Gay",
+          "album": "The Peel Sessions: 1979-1983",
+          "query": "OMD Enola Gay [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Orchestral Manoeuvres In the Dark",
+          "title": "Enola Gay",
+          "album": "80's - The Platinum Collection",
+          "query": "OMD Enola Gay [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Orchestral Manoeuvres In the Dark",
+          "title": "Enola Gay (Extended Mix)",
+          "album": "Enola Gay (Remixes) - EP",
+          "query": "OMD Enola Gay [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Orchestral Manoeuvres In the Dark",
+          "title": "Enola Gay (Remastered 2019)",
+          "album": "Souvenir",
+          "query": "OMD Enola Gay [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Orchestral Manoeuvres In the Dark",
+          "title": "Enola Gay",
+          "album": "The OMD Singles",
+          "query": "OMD Enola Gay [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Orchestral Manoeuvres In the Dark",
+          "title": "Enola Gay",
+          "album": "Waltz With Bashir (Original Motion Picture Soundtrack)",
+          "query": "OMD Enola Gay [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        }
+      ]
+    },
+    {
+      "id": 105,
+      "artist": "Kerri Chandler",
+      "title": "Atmosphere",
+      "candidates": [
+        {
+          "source": "itunes",
+          "artist": "Kerri Chandler",
+          "title": "Atmosphere (The Lost Dubs)",
+          "album": "Atmosphere (The Lost Dubs) - Single",
+          "query": "Kerri Chandler Atmosphere [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Kerri Chandler",
+          "title": "Rain",
+          "album": "Rain",
+          "query": "Kerri Chandler Atmosphere [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Kerri Chandler",
+          "title": "My Old Friend",
+          "album": "My Old Friend / We Can - EP",
+          "query": "Kerri Chandler Atmosphere [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Kerri Chandler",
+          "title": "Bar a Thym (Extended Mix)",
+          "album": "Essentials",
+          "query": "Kerri Chandler Atmosphere [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Kerri Chandler",
+          "title": "You're in My System (Mixed)",
+          "album": "Defected: Sam Divine in Ibiza, Oct 4, 2019 (DJ Mix)",
+          "query": "Kerri Chandler Atmosphere [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Kerri Chandler",
+          "title": "Atmospheric Beats",
+          "album": "Atmospheric Beats - Single",
+          "query": "Kerri Chandler Atmosphere [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Kerri Chandler",
+          "title": "Change Your Mind (District 8) [Full Vocal] [feat. Troy Denari]",
+          "album": "Change Your Mind (District 8) [feat. Troy Denari] - Single",
+          "query": "Kerri Chandler Atmosphere [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Kerri Chandler",
+          "title": "Atmosphere (The Lost Dubs)",
+          "album": "Atmosphere (The Lost Dubs) - Single",
+          "query": "Kerri Chandler Atmosphere [US]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        }
+      ]
+    },
+    {
+      "id": 107,
+      "artist": "Larry Heard",
+      "title": "The Sun Can't Compare",
+      "candidates": [
+        {
+          "source": "itunes",
+          "artist": "Larry Heard",
+          "title": "The Sun Can't Compare (Long Version) [Mr. White Presents Larry Heard]",
+          "album": "Tapes",
+          "query": "Larry Heard The Sun Can't Compare [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Larry Heard",
+          "title": "The Sun Can't Compare (Long Version) [Mr. White Presents Larry Heard]",
+          "album": "Tapes",
+          "query": "Larry Heard The Sun Can't Compare [GB]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Larry Heard",
+          "title": "The Sun Can't Compare (Long Version) [Mr. White Presents Larry Heard]",
+          "album": "Tapes",
+          "query": "The Larry Heard The Sun Can't Compare [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Larry Heard",
+          "title": "The Sun Can't Compare (Long Version) [Mr. White Presents Larry Heard]",
+          "album": "Tapes",
+          "query": "The Larry Heard The Sun Can't Compare [US]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Space Motion & Kashovski",
+          "title": "The Sun Can't Compare",
+          "album": "The Sun Can't Compare - Single",
+          "query": "The Sun Can't Compare [US]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Space Motion & Kashovski",
+          "title": "The Sun Can't Compare (Extended Mix)",
+          "album": "The Sun Can't Compare - Single",
+          "query": "The Sun Can't Compare [US]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Space Motion & Kashovski",
+          "title": "The Sun Can't Compare",
+          "album": "Glasgow Underground Ibiza 2021",
+          "query": "The Sun Can't Compare [US]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Space Motion & Kashovski",
+          "title": "The Sun Can't Compare",
+          "album": "Glasgow Underground 2021",
+          "query": "The Sun Can't Compare [US]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        }
+      ]
+    },
+    {
+      "id": 110,
+      "artist": "Juan Atkins",
+      "title": "No UFO's",
+      "candidates": [
+        {
+          "source": "deezer",
+          "artist": "Juan Atkins",
+          "title": "Lightyears",
+          "album": "Juan Atkins & Moritz von Oswald Present Borderland: Transport",
+          "query": "Juan Atkins No UFO's",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "deezer",
+          "artist": "Juan Atkins",
+          "title": "Track Ten",
+          "album": "Back To Basics (Part 1)",
+          "query": "Juan Atkins No UFO's",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "deezer",
+          "artist": "Juan Atkins",
+          "title": "Riod",
+          "album": "Juan Atkins & Moritz von Oswald Present Borderland: Transport",
+          "query": "Juan Atkins No UFO's",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "deezer",
+          "artist": "Juan Atkins",
+          "title": "I Love You",
+          "album": "Archiv #07",
+          "query": "Juan Atkins No UFO's",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "deezer",
+          "artist": "Juan Atkins",
+          "title": "The Mission",
+          "album": "Fast Forward",
+          "query": "Juan Atkins No UFO's",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "deezer",
+          "artist": "Juan Atkins",
+          "title": "Transport",
+          "album": "Juan Atkins & Moritz von Oswald Present Borderland: Transport",
+          "query": "Juan Atkins No UFO's",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "deezer",
+          "artist": "Juan Atkins",
+          "title": "Transport (Carl Craig Remix - DJ Deep & Roman Poncet Rework)",
+          "album": "Juan Atkins & Moritz von Oswald Present Borderland: Transport (Remixed)",
+          "query": "Juan Atkins No UFO's",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "deezer",
+          "artist": "Juan Atkins",
+          "title": "Merkur",
+          "album": "Juan Atkins & Moritz von Oswald Present Borderland: Transport",
+          "query": "Juan Atkins No UFO's",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        }
+      ]
+    },
+    {
+      "id": 114,
+      "artist": "Underground Resistance",
+      "title": "The Final Frontier",
+      "candidates": [
+        {
+          "source": "itunes",
+          "artist": "Underground Resistance",
+          "title": "The Final Frontier (Nomadico Remix)",
+          "album": "Tresor 30",
+          "query": "Underground Resistance The Final Frontier [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Underground Resistance",
+          "title": "The Final Frontier (Nomadico Remix) [Mixed]",
+          "album": "Boiler Room: Josey Rebelle at Dekmantel, Amsterdam, Aug 5, 2022 (DJ Mix)",
+          "query": "Underground Resistance The Final Frontier [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Underground Resistance",
+          "title": "The Final Frontier (Nomadico Remix) [Mixed]",
+          "album": "Beats In Space 125: Silent Servant (DJ Mix)",
+          "query": "Underground Resistance The Final Frontier [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Underground Resistance",
+          "title": "The Final Frontier (Nomadico Remix)",
+          "album": "Tresor 30",
+          "query": "Underground Resistance The Final Frontier [US]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Underground Resistance",
+          "title": "The Final Frontier (Nomadico Remix) [Mixed]",
+          "album": "Beats In Space 125: Silent Servant (DJ Mix)",
+          "query": "Underground Resistance The Final Frontier [US]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Underground Resistance",
+          "title": "The Final Frontier (Nomadico Remix) [Mixed]",
+          "album": "Boiler Room: Josey Rebelle at Dekmantel, Amsterdam, Aug 5, 2022 (DJ Mix)",
+          "query": "Underground Resistance The Final Frontier [US]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Underground Resistance",
+          "title": "The Final Frontier (Nomadico Remix)",
+          "album": "Tresor 30",
+          "query": "Underground Resistance The Final Frontier [GB]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Underground Resistance",
+          "title": "The Final Frontier (Nomadico Remix) [Mixed]",
+          "album": "Boiler Room: Josey Rebelle at Dekmantel, Amsterdam, Aug 5, 2022 (DJ Mix)",
+          "query": "Underground Resistance The Final Frontier [GB]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        }
+      ]
+    },
+    {
+      "id": 116,
+      "artist": "Robert Hood",
+      "title": "Minimal Nation",
+      "candidates": [
+        {
+          "source": "itunes",
+          "artist": "Robert Hood",
+          "title": "SH-101",
+          "album": "Minimal Nation",
+          "query": "Robert Hood Minimal Nation [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Robert Hood",
+          "title": "Museum",
+          "album": "Minimal Nation",
+          "query": "Robert Hood Minimal Nation [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Robert Hood",
+          "title": "Ride",
+          "album": "Minimal Nation",
+          "query": "Robert Hood Minimal Nation [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Robert Hood",
+          "title": "Unix",
+          "album": "Minimal Nation",
+          "query": "Robert Hood Minimal Nation [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Robert Hood",
+          "title": "One Touch",
+          "album": "Minimal Nation",
+          "query": "Robert Hood Minimal Nation [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Robert Hood",
+          "title": "Rhythm of Vision",
+          "album": "Minimal Nation",
+          "query": "Robert Hood Minimal Nation [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Robert Hood",
+          "title": "Rhythm of Vision",
+          "album": "Minimal Nation",
+          "query": "Robert Hood Minimal Nation [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Robert Hood",
+          "title": "Sleep Cycle",
+          "album": "Minimal Nation",
+          "query": "Robert Hood Minimal Nation [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        }
+      ]
+    },
+    {
+      "id": 127,
+      "artist": "Mr. Lee",
+      "title": "Acid Fantaslee",
+      "candidates": [
+        {
+          "source": "itunes",
+          "artist": "Mr. Lee",
+          "title": "Acid Pump Up",
+          "album": "The Acid Fantaslee - Single",
+          "query": "Mr. Lee Acid Fantaslee [US]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Mr. Lee",
+          "title": "Art Of Acid",
+          "album": "The Acid Fantaslee - Single",
+          "query": "Mr. Lee Acid Fantaslee [US]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Mr. Lee",
+          "title": "Feels Good",
+          "album": "The Acid Fantaslee - Single",
+          "query": "Mr. Lee Acid Fantaslee [US]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Mr. Lee",
+          "title": "Acid Pump Up",
+          "album": "The Acid Fantaslee - Single",
+          "query": "Mr. Lee Acid Fantaslee [GB]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Mr. Lee",
+          "title": "Art Of Acid",
+          "album": "The Acid Fantaslee - Single",
+          "query": "Mr. Lee Acid Fantaslee [GB]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Mr. Lee",
+          "title": "Feels Good",
+          "album": "The Acid Fantaslee - Single",
+          "query": "Mr. Lee Acid Fantaslee [GB]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Mr. Lee",
+          "title": "Acid Pump Up",
+          "album": "The Acid Fantaslee - Single",
+          "query": "The Mr. Lee Acid Fantaslee [US]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Mr. Lee",
+          "title": "Art Of Acid",
+          "album": "The Acid Fantaslee - Single",
+          "query": "The Mr. Lee Acid Fantaslee [US]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        }
+      ]
+    },
+    {
+      "id": 128,
+      "artist": "Thomas Bangalter",
+      "title": "Trax on da Rocks",
+      "candidates": [
+        {
+          "source": "deezer",
+          "artist": "Thomas Bangalter",
+          "title": "Bangalter: Mythologies: III. Thalestris",
+          "album": "Thomas Bangalter: Mythologies",
+          "query": "Thomas Bangalter Trax on da Rocks",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "deezer",
+          "artist": "Thomas Bangalter",
+          "title": "Bangalter: Mythologies: IX. Zeus",
+          "album": "Thomas Bangalter: Mythologies",
+          "query": "Thomas Bangalter Trax on da Rocks",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "deezer",
+          "artist": "Thomas Bangalter",
+          "title": "Bangalter: Mythologies: XV. Arès",
+          "album": "Thomas Bangalter: Mythologies",
+          "query": "Thomas Bangalter Trax on da Rocks",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "deezer",
+          "artist": "Thomas Bangalter",
+          "title": "Bangalter: Mythologies: XII. Renaissances",
+          "album": "Thomas Bangalter: Mythologies",
+          "query": "Thomas Bangalter Trax on da Rocks",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "deezer",
+          "artist": "Thomas Bangalter",
+          "title": "Bangalter: Mythologies: XIV. Eden",
+          "album": "Thomas Bangalter: Mythologies",
+          "query": "Thomas Bangalter Trax on da Rocks",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "deezer",
+          "artist": "Thomas Bangalter",
+          "title": "Bangalter: Mythologies: XXI. Icare",
+          "album": "Thomas Bangalter: Mythologies",
+          "query": "Thomas Bangalter Trax on da Rocks",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "deezer",
+          "artist": "Thomas Bangalter",
+          "title": "Bangalter: Mythologies: IV. Les Gémeaux I",
+          "album": "Thomas Bangalter: Mythologies",
+          "query": "Thomas Bangalter Trax on da Rocks",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "deezer",
+          "artist": "Thomas Bangalter",
+          "title": "Bangalter: Mythologies: VII. Treize Nuits",
+          "album": "Thomas Bangalter: Mythologies",
+          "query": "Thomas Bangalter Trax on da Rocks",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        }
+      ]
+    },
+    {
+      "id": 132,
+      "artist": "Pepe Bradock",
+      "title": "Deep Burnt",
+      "candidates": [
+        {
+          "source": "itunes",
+          "artist": "Louie Vega",
+          "title": "Deep Burnt (feat. Axel Tosca)",
+          "album": "Expansions In The NYC",
+          "query": "Deep Burnt [US]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Louie Vega",
+          "title": "Deep Burnt (feat. Axel Tosca)",
+          "album": "Another Day In My Life / Deep Burnt - Single",
+          "query": "Deep Burnt [US]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Adriana",
+          "title": "Deep Burnt",
+          "album": "Breathe - EP",
+          "query": "Deep Burnt [US]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Doux",
+          "title": "Deep Burnt",
+          "album": "Presents",
+          "query": "Deep Burnt [US]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Luana SantosX",
+          "title": "Deep Burnt",
+          "album": "Deep Burnt - Single",
+          "query": "Deep Burnt [US]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Luana SantosX",
+          "title": "Deep burnt",
+          "album": "Deep burnt - Single",
+          "query": "Deep Burnt [US]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Louie Vega",
+          "title": "Deep Burnt (feat. Axel Tosca)",
+          "album": "Expansions In The NYC",
+          "query": "Deep Burnt [GB]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Louie Vega",
+          "title": "Deep Burnt (feat. Axel Tosca)",
+          "album": "Another Day In My Life / Deep Burnt - Single",
+          "query": "Deep Burnt [GB]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        }
+      ]
+    },
+    {
+      "id": 174,
+      "artist": "LTJ Bukem",
+      "title": "Horizons",
+      "candidates": [
+        {
+          "source": "itunes",
+          "artist": "LTJ Bukem",
+          "title": "Demons Theme",
+          "album": "Producer 01",
+          "query": "The LTJ Bukem Horizons [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "LTJ Bukem",
+          "title": "Atlantis (I Need You)",
+          "album": "Atlantis (Marky & S.P.Y. Rework)",
+          "query": "The LTJ Bukem Horizons [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "LTJ Bukem",
+          "title": "Music",
+          "album": "Hardcore Energy - Volume One",
+          "query": "The LTJ Bukem Horizons [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "LTJ Bukem",
+          "title": "Demons Theme",
+          "album": "Producer 01",
+          "query": "The LTJ Bukem Horizons [US]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "LTJ Bukem",
+          "title": "Atlantis (I Need You)",
+          "album": "Atlantis (Marky & S.P.Y. Rework)",
+          "query": "The LTJ Bukem Horizons [US]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "LTJ Bukem",
+          "title": "Music",
+          "album": "Hardcore Energy - Volume One",
+          "query": "The LTJ Bukem Horizons [US]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Kevin Di Serna",
+          "title": "Horizons",
+          "album": "Horizons - Single",
+          "query": "Horizons [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Parkway Drive",
+          "title": "Horizons",
+          "album": "Horizons (Deluxe Edition)",
+          "query": "Horizons [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        }
+      ]
+    },
+    {
+      "id": 175,
+      "artist": "Roni Size / Reprazent",
+      "title": "Brown Paper Bag",
+      "candidates": [
+        {
+          "source": "itunes",
+          "artist": "Roni Size & Reprazent",
+          "title": "Brown Paper Bag",
+          "album": "Roni Size Reprazent - New Forms, Vol. 2 (Remastered)",
+          "query": "Roni Size / Reprazent Brown Paper Bag [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Roni Size & Reprazent",
+          "title": "Brown Paper Bag",
+          "album": "New Forms (20th Anniversary Edition)",
+          "query": "Roni Size / Reprazent Brown Paper Bag [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Roni Size & Reprazent",
+          "title": "Brown Paper Bag",
+          "album": "Brown Paper Bag (Remixes)",
+          "query": "Roni Size / Reprazent Brown Paper Bag [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Reprazent & Roni Size",
+          "title": "Brown Paper Bag (feat. William Goodchild & The Emerald Ensemble)",
+          "album": "Live at Colston Hall (feat. William Goodchild & the Emerald Ensemble)",
+          "query": "Roni Size / Reprazent Brown Paper Bag [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Roni Size & Reprazent",
+          "title": "Brown Paper Bag (Roni Size Extended Mix)",
+          "album": "Brown Paper Bag (Remixes)",
+          "query": "Roni Size / Reprazent Brown Paper Bag [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Roni Size & Reprazent",
+          "title": "Brown Paper Bag",
+          "album": "Roni Size Reprazent - New Forms, Vol. 2 (Remastered)",
+          "query": "The Roni Size / Reprazent Brown Paper Bag [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Roni Size & Reprazent",
+          "title": "Brown Paper Bag",
+          "album": "New Forms (20th Anniversary Edition)",
+          "query": "The Roni Size / Reprazent Brown Paper Bag [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Roni Size & Reprazent",
+          "title": "Brown Paper Bag",
+          "album": "Brown Paper Bag (Remixes)",
+          "query": "The Roni Size / Reprazent Brown Paper Bag [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        }
+      ]
+    },
+    {
+      "id": 177,
+      "artist": "Adam F",
+      "title": "Circles",
+      "candidates": [
+        {
+          "source": "itunes",
+          "artist": "Adam F",
+          "title": "Circles (7'' Edit)",
+          "album": "Rave Classics",
+          "query": "Adam F Circles [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Adam F",
+          "title": "Circles (Mixed)",
+          "album": "Rewind: The Classic Jungle Experience (DJ Mix)",
+          "query": "Adam F Circles [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Adam F",
+          "title": "Circles (Pola & Bryson Remix) [Mixed]",
+          "album": "Live from Lyon, France, Oct 24, 2025 (DJ Mix)",
+          "query": "Adam F Circles [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Adam F",
+          "title": "Circles (Oppidan Edit) [Mixed]",
+          "album": "Pride 2023 (DJ Mix)",
+          "query": "Adam F Circles [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Adam F",
+          "title": "Circles (Mixed)",
+          "album": "FABRICLIVE 39: DJ Yoda (DJ Mix)",
+          "query": "Adam F Circles [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Adam F",
+          "title": "Circles (Mixed)",
+          "album": "Fitness: Ride, April 2023 (DJ Mix)",
+          "query": "Adam F Circles [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Adam F",
+          "title": "Circles (Edit) [Mixed]",
+          "album": "Live from Lost Village 2021: Four Tet (DJ Mix)",
+          "query": "Adam F Circles [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Adam F",
+          "title": "Circles (Oppidan Remix) [Mixed]",
+          "album": "Higgo: Live from The Ton Of Brix, London, Oct 6, 2023 (DJ Mix)",
+          "query": "Adam F Circles [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        }
+      ]
+    },
+    {
+      "id": 178,
+      "artist": "Shy FX",
+      "title": "Original Nuttah",
+      "candidates": [
+        {
+          "source": "itunes",
+          "artist": "Shy FX",
+          "title": "Original Nuttah (feat. Uk Apache) [Mixed]",
+          "album": "Shogun Sessions: Flava D (DJ Mix)",
+          "query": "Shy FX Original Nuttah [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Shy FX",
+          "title": "Original Nuttah (feat. Uk Apache) [Mixed]",
+          "album": "Shogun Sessions: Flava D (DJ Mix)",
+          "query": "Shy FX Original Nuttah [GB]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Shy FX",
+          "title": "Original Nuttah (feat. Uk Apache) [Mixed]",
+          "album": "Shogun Sessions: Flava D (DJ Mix)",
+          "query": "The Shy FX Original Nuttah [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Shy FX",
+          "title": "Original Nuttah (feat. Uk Apache) [Mixed]",
+          "album": "Shogun Sessions: Flava D (DJ Mix)",
+          "query": "The Shy FX Original Nuttah [US]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "UK Apachi",
+          "title": "Original Nuttah",
+          "album": "Jungle - The Sound of the Underground",
+          "query": "The Shy FX Original Nuttah [US]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Shy FX",
+          "title": "Original Nuttah (feat. Uk Apache) [Mixed]",
+          "album": "Shogun Sessions: Flava D (DJ Mix)",
+          "query": "The Shy FX Original Nuttah [GB]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Shy FX",
+          "title": "Original Nuttah (feat. Uk Apache) [Mixed]",
+          "album": "Shogun Sessions: Flava D (DJ Mix)",
+          "query": "Original Nuttah [GB]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Magic Drum Orchestra",
+          "title": "Original Nuttah (feat. Bunty)",
+          "album": "The DNA of Rhythm",
+          "query": "Original Nuttah [GB]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        }
+      ]
+    },
+    {
+      "id": 204,
+      "artist": "Arthur Russell",
+      "title": "Is It All Over My Face",
+      "candidates": [
+        {
+          "source": "itunes",
+          "artist": "Arthur Russell",
+          "title": "I Couldn't Say It To Your Face",
+          "album": "Love Is Overtaking Me (Redux)",
+          "query": "Arthur Russell Is It All Over My Face [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Arthur Russell",
+          "title": "I Kissed the Girl from Outer Space",
+          "album": "Iowa Dream",
+          "query": "Arthur Russell Is It All Over My Face [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Arthur Russell",
+          "title": "Big Moon",
+          "album": "Love Is Overtaking Me (Redux)",
+          "query": "Arthur Russell Is It All Over My Face [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Arthur Russell",
+          "title": "Oh Fernanda Why",
+          "album": "Love Is Overtaking Me (Redux)",
+          "query": "Arthur Russell Is It All Over My Face [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Arthur Russell",
+          "title": "I Still Love You",
+          "album": "Iowa Dream",
+          "query": "Arthur Russell Is It All Over My Face [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Arthur Russell",
+          "title": "Arm Around You",
+          "album": "Calling Out of Context",
+          "query": "Arthur Russell Is It All Over My Face [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Arthur Russell",
+          "title": "Another Thought",
+          "album": "Another Thought",
+          "query": "Arthur Russell Is It All Over My Face [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Arthur Russell",
+          "title": "Calling Out of Context",
+          "album": "Calling Out of Context",
+          "query": "Arthur Russell Is It All Over My Face [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        }
+      ]
+    },
+    {
+      "id": 223,
+      "artist": "Cybotron",
+      "title": "Techno City",
+      "candidates": [
+        {
+          "source": "itunes",
+          "artist": "Cybotron",
+          "title": "Techno City (7\" Mix)",
+          "album": "Enter (Deluxe Edition)",
+          "query": "Cybotron Techno City [GB]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Cybotron",
+          "title": "Techno City (12\" Vocal)",
+          "album": "Enter (Deluxe Edition)",
+          "query": "Cybotron Techno City [GB]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Cybotron",
+          "title": "Techno City (12\" Instrumental)",
+          "album": "Enter (Deluxe Edition)",
+          "query": "Cybotron Techno City [GB]",
+          "reason": "Cover, karaoke, tribute o versione strumentale"
+        },
+        {
+          "source": "itunes",
+          "artist": "Cybotron",
+          "title": "Techno City (7\" Mix)",
+          "album": "Upbeat Techno for Kids Parties",
+          "query": "Cybotron Techno City [GB]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Cybotron",
+          "title": "Techno City (7\" Mix)",
+          "album": "Enter (Deluxe Edition)",
+          "query": "Techno City [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Thyron & Anderex",
+          "title": "Techno City",
+          "album": "Xtreme Xtasy",
+          "query": "Techno City [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Renaud Louis-Servais Group",
+          "title": "Techno City (feat. Virgil Donati)",
+          "album": "Epic Circus",
+          "query": "Techno City [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Nexus 21",
+          "title": "Techno City",
+          "album": "The Rhythm of Life",
+          "query": "Techno City [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        }
+      ]
+    },
+    {
+      "id": 256,
+      "artist": "A Guy Called Gerald",
+      "title": "Pacific State",
+      "candidates": [
+        {
+          "source": "itunes",
+          "artist": "A Guy Called Gerald",
+          "title": "Pacific Samba",
+          "album": "Tronic Jazz The Berlin Sessions",
+          "query": "A Guy Called Gerald Pacific State [US]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "A Guy Called Gerald",
+          "title": "Pacific Samba",
+          "album": "Tronic Jazz The Berlin Sessions",
+          "query": "The A Guy Called Gerald Pacific State [US]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "808 State",
+          "title": "Pacific State",
+          "album": "ESP: The 808 State Effect",
+          "query": "Pacific State [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "808 State",
+          "title": "Pacific State",
+          "album": "Clásicos de la Música Electrónica",
+          "query": "Pacific State [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Apiento & Co & Freshro",
+          "title": "Pacific State",
+          "album": "Pacific State / Under Open Skies - Single",
+          "query": "Pacific State [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Roger-M",
+          "title": "Pacific State",
+          "album": "Pacific State - Single",
+          "query": "Pacific State [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "House Of Virus, Peter Brown & Jonathan Ulysses",
+          "title": "Pacific State",
+          "album": "Pacific State - Single",
+          "query": "Pacific State [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Graeme Park, Mike Pickering, Manchester Camerata & Tim Crooks",
+          "title": "Pacific State",
+          "album": "Haçienda Classiçal",
+          "query": "Pacific State [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        }
+      ]
+    },
+    {
+      "id": 263,
+      "artist": "Run-D.M.C.",
+      "title": "It's Like That",
+      "candidates": [
+        {
+          "source": "itunes",
+          "artist": "Run-DMC & Jason Nevins",
+          "title": "It's Like That",
+          "album": "The Best of Run–DMC",
+          "query": "Run-D.M.C. It's Like That [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Run-DMC",
+          "title": "It's Like That",
+          "album": "Greatest Hits",
+          "query": "Run-D.M.C. It's Like That [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Run-DMC",
+          "title": "It's Like That",
+          "album": "Run-D.M.C.",
+          "query": "Run-D.M.C. It's Like That [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Run-DMC",
+          "title": "It's Like That",
+          "album": "The Essential Run DMC",
+          "query": "Run-D.M.C. It's Like That [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Run-DMC",
+          "title": "It's Like That",
+          "album": "RUN-DMC (Expanded Edition)",
+          "query": "Run-D.M.C. It's Like That [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Run-DMC & Jason Nevins",
+          "title": "It's Like That",
+          "album": "90s 100 Hits",
+          "query": "Run-D.M.C. It's Like That [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "RUN-DMC vs. Jason Nevins",
+          "title": "It's Like That",
+          "album": "The Masters Series: Hip Hop",
+          "query": "Run-D.M.C. It's Like That [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Run-DMC & Jason Nevins",
+          "title": "It's Like That",
+          "album": "Party Hits",
+          "query": "Run-D.M.C. It's Like That [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        }
+      ]
+    },
+    {
+      "id": 276,
+      "artist": "Elis Regina & Tom Jobim",
+      "title": "Águas de Março",
+      "candidates": [
+        {
+          "source": "itunes",
+          "artist": "Elis Regina & Antônio Carlos Jobim",
+          "title": "Águas de Março",
+          "album": "Elis & Tom",
+          "query": "Elis Regina & Tom Jobim Águas de Março [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Antônio Carlos Jobim & Elis Regina",
+          "title": "Águas de Março",
+          "album": "Elis Regina Sem Limite",
+          "query": "Elis Regina & Tom Jobim Águas de Março [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Elis Regina & Antônio Carlos Jobim",
+          "title": "Águas De Março",
+          "album": "Personalidade",
+          "query": "Elis Regina & Tom Jobim Águas de Março [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Elis Regina & Antônio Carlos Jobim",
+          "title": "Águas De Março",
+          "album": "Personalidade",
+          "query": "Elis Regina & Tom Jobim Águas de Março [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Elis Regina & Antônio Carlos Jobim",
+          "title": "Águas de Março",
+          "album": "Their Greatest Hits",
+          "query": "Elis Regina & Tom Jobim Águas de Março [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Elis Regina & Antônio Carlos Jobim",
+          "title": "Águas De Março",
+          "album": "The Girl From Ipanema: The Antonio Carlos Jobim Songbook",
+          "query": "Elis Regina & Tom Jobim Águas de Março [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Elis Regina & Antônio Carlos Jobim",
+          "title": "Águas de Março",
+          "album": "Antonio Carlos Jobim's Finest Hour",
+          "query": "Elis Regina & Tom Jobim Águas de Março [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Elis Regina & Antônio Carlos Jobim",
+          "title": "Águas De Março",
+          "album": "Fiesta 70s",
+          "query": "Elis Regina & Tom Jobim Águas de Março [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        }
+      ]
+    },
+    {
+      "id": 288,
+      "artist": "Alessandro Alessandroni",
+      "title": "Open Air Parade",
+      "candidates": [
+        {
+          "source": "itunes",
+          "artist": "Alessandro Alessandroni",
+          "title": "Preludietto",
+          "album": "Open Air Parade",
+          "query": "Alessandro Alessandroni Open Air Parade [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Alessandro Alessandroni",
+          "title": "Vocalisation",
+          "album": "Open Air Parade",
+          "query": "Alessandro Alessandroni Open Air Parade [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Alessandro Alessandroni",
+          "title": "Arioso spirituale",
+          "album": "Open Air Parade",
+          "query": "Alessandro Alessandroni Open Air Parade [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Alessandro Alessandroni",
+          "title": "Spiagge azzurre",
+          "album": "Open Air Parade",
+          "query": "Alessandro Alessandroni Open Air Parade [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Alessandro Alessandroni",
+          "title": "Cielo verde",
+          "album": "Open Air Parade",
+          "query": "Alessandro Alessandroni Open Air Parade [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Alessandro Alessandroni",
+          "title": "Aliante giallo",
+          "album": "Open Air Parade",
+          "query": "Alessandro Alessandroni Open Air Parade [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Alessandro Alessandroni",
+          "title": "Marmittone",
+          "album": "Open Air Parade",
+          "query": "Alessandro Alessandroni Open Air Parade [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        },
+        {
+          "source": "itunes",
+          "artist": "Alessandro Alessandroni",
+          "title": "Parata n°2",
+          "album": "Open Air Parade",
+          "query": "Alessandro Alessandroni Open Air Parade [IT]",
+          "reason": "Artista o titolo non corrispondono esattamente dopo la normalizzazione"
+        }
+      ]
+    }
+  ]
+}

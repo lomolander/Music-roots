@@ -1,5 +1,3 @@
-import previewUrls from "./preview-urls.js";
-
 const catalog = [
   ["Daft Punk", "Around the World", 1997, "French House"],
   ["New Order", "Blue Monday", 1983, "Synth-pop"],
@@ -432,7 +430,7 @@ const questions = catalog.map(([artist, title, year, genre], index) => {
     question: "Qual è il titolo del brano?",
     answers: [title, ...alternatives],
     correctAnswer: title,
-    preview: previewUrls[index + 1] ?? "",
+    preview: "",
   };
 });
 
@@ -661,7 +659,7 @@ const additionalQuestions = additionalTracks.map((track) => ({
   question: "Qual è il titolo del brano?",
   answers: [track.title, ...track.distrattori],
   correctAnswer: track.title,
-  preview: previewUrls[track.id] ?? "",
+  preview: "",
 }));
 
 questions.push(...additionalQuestions);
