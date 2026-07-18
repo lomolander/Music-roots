@@ -492,6 +492,14 @@ button:focus-visible {
   text-align: center;
 }
 
+.player-tap-prompt {
+  margin: 10px 0 0;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+}
+
 .quiz-player.is-unavailable {
   min-height: 168px;
 }

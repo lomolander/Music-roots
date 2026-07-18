@@ -26,6 +26,12 @@ for (let gameIndex = 0; gameIndex < GAMES_TO_SIMULATE; gameIndex += 1) {
     if (!hasValidHttpsPreview(question.preview)) {
       failures.push(`Partita ${gameIndex + 1}, ID ${question.id}: preview non valida`);
     }
+    if (
+      question.previewSource !== "apple" ||
+      question.previewValidated !== true
+    ) {
+      failures.push(`Partita ${gameIndex + 1}, ID ${question.id}: fonte o validazione non Apple`);
+    }
     if (question.answers.length !== 4) {
       failures.push(`Partita ${gameIndex + 1}, ID ${question.id}: ${question.answers.length} opzioni`);
     }

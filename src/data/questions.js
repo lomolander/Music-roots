@@ -1,4 +1,4 @@
-import previewUrls from "./preview-urls.js";
+import applePreviewMetadata from "./apple-preview-metadata.js";
 
 const catalog = [
   ["Daft Punk", "Around the World", 1997, "French House"],
@@ -432,7 +432,11 @@ const questions = catalog.map(([artist, title, year, genre], index) => {
     question: "Qual è il titolo del brano?",
     answers: [title, ...alternatives],
     correctAnswer: title,
-    preview: previewUrls[index + 1] ?? "",
+    ...applePreviewMetadata[index + 1],
+    preview:
+      applePreviewMetadata[index + 1]?.previewValidated === true
+        ? applePreviewMetadata[index + 1].applePreviewUrl
+        : "",
   };
 });
 
@@ -661,7 +665,11 @@ const additionalQuestions = additionalTracks.map((track) => ({
   question: "Qual è il titolo del brano?",
   answers: [track.title, ...track.distrattori],
   correctAnswer: track.title,
-  preview: previewUrls[track.id] ?? "",
+  ...applePreviewMetadata[track.id],
+  preview:
+    applePreviewMetadata[track.id]?.previewValidated === true
+      ? applePreviewMetadata[track.id].applePreviewUrl
+      : "",
 }));
 
 questions.push(...additionalQuestions);

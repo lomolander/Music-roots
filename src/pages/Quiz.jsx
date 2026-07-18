@@ -1,4 +1,11 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import {
+  forwardRef,
+  useCallback,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from "react";
 import { createGameQuestions } from "../lib/quizGame.js";
 
 const NEXT_QUESTION_DELAY = 1100;
@@ -22,110 +29,48 @@ function hasValidPreview(preview) {
   }
 }
 
-function normalizeTrackValue(value) {
-  return String(value ?? "")
-    .normalize("NFKD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/\b(feat(?:uring)?|ft)\.?\s+[^()[\]-]+/gi, " ")
-    .replace(/[^a-z0-9]+/gi, " ")
-    .trim()
-    .toLowerCase();
-}
-
-function isDeezerPreview(preview) {
-  try {
-    return new URL(preview).hostname.endsWith("dzcdn.net");
-  } catch {
-    return false;
-  }
-}
-
-function refreshDeezerPreview(artist, title) {
-  return new Promise((resolve, reject) => {
-    const callbackName = `musicRootsDeezer${Date.now()}${Math.random()
-      .toString(36)
-      .slice(2)}`;
-    const script = document.createElement("script");
-    const timeout = window.setTimeout(() => {
-      cleanup();
-      reject(new Error("Timeout durante il rinnovo della preview Deezer"));
-    }, 12_000);
-
-    const cleanup = () => {
-      window.clearTimeout(timeout);
-      delete window[callbackName];
-      script.remove();
-    };
-
-    window[callbackName] = (payload) => {
-      const match = payload.data?.find(
-        (candidate) =>
-          normalizeTrackValue(candidate.title) === normalizeTrackValue(title) &&
-          normalizeTrackValue(candidate.artist?.name) === normalizeTrackValue(artist),
-      );
-      cleanup();
-
-      if (hasValidPreview(match?.preview)) {
-        resolve(match.preview);
-      } else {
-        reject(new Error("Deezer non ha restituito una corrispondenza esatta"));
-      }
-    };
-
-    script.onerror = () => {
-      cleanup();
-      reject(new Error("Impossibile contattare Deezer"));
-    };
-    const query = encodeURIComponent(`artist:"${artist}" track:"${title}"`);
-    script.src = `https://api.deezer.com/search?q=${query}&limit=10&output=jsonp&callback=${callbackName}`;
-    document.head.appendChild(script);
-  });
-}
-
-function AudioPreview({ preview, artist, title, questionId }) {
+const AudioPreview = forwardRef(function AudioPreview(
+  { preview, questionId, shouldAutoplay, onPlaybackStarted },
+  ref,
+) {
   const audioRef = useRef(null);
-  const [activePreview, setActivePreview] = useState(
-    isDeezerPreview(preview) ? null : preview,
-  );
+  const playResolvedRef = useRef(false);
+  const playingEventRef = useRef(false);
+  const playAttemptRef = useRef(0);
+  const activePreview = preview;
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlayPending, setIsPlayPending] = useState(false);
   const [canPlay, setCanPlay] = useState(false);
-  const [isResolving, setIsResolving] = useState(isDeezerPreview(preview));
+  const [showTapPrompt, setShowTapPrompt] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [errorMessage, setErrorMessage] = useState("");
   const isAvailable = hasValidPreview(preview);
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
 
+  const markPreviewUnavailable = useCallback((reason) => {
+    const audio = audioRef.current;
+    console.error("[Music Roots Player] Anteprima non disponibile:", reason);
+    playAttemptRef.current += 1;
+    if (audio && !audio.paused) audio.pause();
+    setIsPlaying(false);
+    setIsPlayPending(false);
+    setCanPlay(false);
+    setShowTapPrompt(false);
+    setErrorMessage("Anteprima non disponibile");
+  }, []);
+
   useEffect(() => {
     const audio = audioRef.current;
-    let isCurrent = true;
-
-    if (isDeezerPreview(preview)) {
-      refreshDeezerPreview(artist, title)
-        .then((refreshedPreview) => {
-          if (!isCurrent) return;
-          console.info("[Music Roots Player] URL Deezer rinnovato:", refreshedPreview);
-          setActivePreview(refreshedPreview);
-          setErrorMessage("");
-          setIsResolving(false);
-        })
-        .catch((error) => {
-          if (!isCurrent) return;
-          console.error("[Music Roots Player] Rinnovo Deezer non riuscito:", error);
-          setErrorMessage(error.message);
-          setIsResolving(false);
-        });
-    }
-
     return () => {
-      isCurrent = false;
+      playAttemptRef.current += 1;
       if (!audio) return;
       audio.pause();
       if (Number.isFinite(audio.duration)) {
         audio.currentTime = 0;
       }
     };
-  }, [artist, preview, title]);
+  }, [preview]);
 
   useEffect(() => {
     if (activePreview) {
@@ -133,28 +78,104 @@ function AudioPreview({ preview, artist, title, questionId }) {
     }
   }, [activePreview]);
 
-  useLayoutEffect(() => {
+  const playAudio = useCallback(async (mode = "manual") => {
     const audio = audioRef.current;
-    if (!audio || !activePreview) return;
+    if (!audio || !activePreview) {
+      setIsPlaying(false);
+      setShowTapPrompt(true);
+      return false;
+    }
 
-    audio.currentTime = 0;
-    audio.play().catch((error) => {
+    if (!audio.paused) return true;
+
+    const attemptId = playAttemptRef.current + 1;
+    playAttemptRef.current = attemptId;
+
+    setErrorMessage("");
+    setShowTapPrompt(false);
+    setIsPlayPending(true);
+    audio.muted = false;
+    audio.volume = 1;
+
+    if (!audio.src) {
+      audio.src = activePreview;
+      audio.load();
+    }
+
+    if (
+      mode !== "manual" ||
+      audio.ended ||
+      (Number.isFinite(audio.duration) && audio.currentTime >= audio.duration)
+    ) {
+      audio.currentTime = 0;
+    }
+    try {
+      playResolvedRef.current = false;
+      playingEventRef.current = false;
+      let resolvePlaying;
+      const playingPromise = new Promise((resolve) => {
+        resolvePlaying = resolve;
+        audio.addEventListener("playing", resolvePlaying, { once: true });
+      });
+      const playPromise = audio.play();
+      let timeoutId;
+      const playbackTimeout = new Promise((_, reject) => {
+        timeoutId = window.setTimeout(() => {
+          reject(new Error("Timeout: evento playing non ricevuto entro 7 secondi"));
+        }, 7_000);
+      });
+      try {
+        await Promise.race([
+          Promise.all([playPromise, playingPromise]),
+          playbackTimeout,
+        ]);
+      } finally {
+        window.clearTimeout(timeoutId);
+        audio.removeEventListener("playing", resolvePlaying);
+      }
+      if (attemptId !== playAttemptRef.current) return false;
+      setIsPlayPending(false);
+      playResolvedRef.current = true;
+      if (playingEventRef.current && !audio.paused) {
+        setIsPlaying(true);
+        onPlaybackStarted();
+      }
+      return !audio.paused;
+    } catch (error) {
+      if (attemptId !== playAttemptRef.current) return false;
+      setIsPlayPending(false);
       const isExpectedAutoplayBlock =
         error instanceof DOMException &&
-        (error.name === "NotAllowedError" || error.name === "AbortError");
+        error.name === "NotAllowedError";
 
-      if (isExpectedAutoplayBlock) {
+      if (isExpectedAutoplayBlock || mode === "autoplay") {
+        if (!isExpectedAutoplayBlock) {
+          markPreviewUnavailable(error);
+          return false;
+        }
         console.info(
           "[Music Roots Player] Autoplay non consentito; disponibile il controllo manuale.",
         );
         setIsPlaying(false);
-        return;
+        setShowTapPrompt(true);
+        return false;
       }
 
-      console.error("[Music Roots Player] Tentativo autoplay non riuscito:", error);
-      setIsPlaying(false);
-    });
-  }, [activePreview]);
+      console.error("[Music Roots Player] audio.play() non riuscito:", error);
+      markPreviewUnavailable(error);
+      return false;
+    }
+  }, [activePreview, markPreviewUnavailable, onPlaybackStarted]);
+
+  useImperativeHandle(ref, () => ({
+    playInitial: () => playAudio("initial"),
+  }), [playAudio]);
+
+  useEffect(() => {
+    if (shouldAutoplay && activePreview) {
+      playAudio("autoplay");
+    }
+  }, [activePreview, playAudio, shouldAutoplay]);
 
   const togglePlayback = async () => {
     const audio = audioRef.current;
@@ -165,16 +186,7 @@ function AudioPreview({ preview, artist, title, questionId }) {
       return;
     }
 
-    try {
-      setErrorMessage("");
-      await audio.play();
-    } catch (error) {
-      const message =
-        error instanceof Error ? error.message : "Errore di riproduzione sconosciuto";
-      console.error("[Music Roots Player] audio.play() non riuscito:", error);
-      setIsPlaying(false);
-      setErrorMessage(`Impossibile riprodurre l'anteprima: ${message}`);
-    }
+    await playAudio("manual");
   };
 
   const handleSeek = (event) => {
@@ -211,6 +223,7 @@ function AudioPreview({ preview, artist, title, questionId }) {
         src={activePreview ?? undefined}
         preload="metadata"
         playsInline
+        muted={false}
         onLoadedMetadata={(event) => setDuration(event.currentTarget.duration)}
         onDurationChange={(event) => {
           const nextDuration = event.currentTarget.duration;
@@ -226,23 +239,37 @@ function AudioPreview({ preview, artist, title, questionId }) {
         }}
         onPlay={() => {
           console.info("[Music Roots Player] Evento play");
-          setIsPlaying(true);
+        }}
+        onPlaying={() => {
+          console.info("[Music Roots Player] Evento playing");
+          playingEventRef.current = true;
+          if (playResolvedRef.current && !audioRef.current?.paused) {
+            setIsPlaying(true);
+            setShowTapPrompt(false);
+            onPlaybackStarted();
+          }
         }}
         onPause={() => {
           console.info("[Music Roots Player] Evento pause");
+          playResolvedRef.current = false;
+          playingEventRef.current = false;
           setIsPlaying(false);
         }}
         onEnded={() => {
           console.info("[Music Roots Player] Evento ended");
           setIsPlaying(false);
         }}
+        onWaiting={() => {
+          console.info("[Music Roots Player] Evento waiting");
+        }}
+        onStalled={() => markPreviewUnavailable("Evento stalled")}
+        onAbort={() => markPreviewUnavailable("Evento abort")}
         onError={(event) => {
           const code = event.currentTarget.error?.code;
-          const message = `Errore nel caricamento audio${code ? ` (codice ${code})` : ""}.`;
           console.error("[Music Roots Player] Evento error:", event.currentTarget.error);
-          setCanPlay(false);
-          setIsPlaying(false);
-          setErrorMessage(message);
+          markPreviewUnavailable(
+            `Evento error${code ? `, codice ${code}` : ""}`,
+          );
         }}
       />
       <span className="player-glow" aria-hidden="true" />
@@ -252,12 +279,14 @@ function AudioPreview({ preview, artist, title, questionId }) {
         className="play-button"
         type="button"
         onClick={togglePlayback}
-        disabled={isResolving}
+        disabled={isPlayPending}
         aria-label={isPlaying ? "Metti in pausa" : "Riproduci anteprima"}
         aria-pressed={isPlaying}
       >
-        {isResolving
+        {isPlayPending
           ? "Caricamento anteprima…"
+          : errorMessage
+            ? "▶ Ascolta la clip"
           : isPlaying
           ? "❚❚ Pausa"
           : canPlay
@@ -268,6 +297,12 @@ function AudioPreview({ preview, artist, title, questionId }) {
       {errorMessage && (
         <p className="player-error" role="alert">
           {errorMessage}
+        </p>
+      )}
+
+      {showTapPrompt && !errorMessage && (
+        <p className="player-tap-prompt" role="status">
+          Tocca per ascoltare
         </p>
       )}
 
@@ -306,15 +341,17 @@ function AudioPreview({ preview, artist, title, questionId }) {
       </div>
     </div>
   );
-}
+});
 
-export default function Quiz({ onBack }) {
+const Quiz = forwardRef(function Quiz({ onBack }, ref) {
   const [gameQuestions, setGameQuestions] = useState(createGameQuestions);
   const [questionIndex, setQuestionIndex] = useState(0);
   const [selected, setSelected] = useState(null);
   const [score, setScore] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
+  const [hasPlaybackPermission, setHasPlaybackPermission] = useState(false);
   const nextQuestionRef = useRef(null);
+  const playerRef = useRef(null);
 
   const currentQuestion = gameQuestions[questionIndex];
   const quizProgress = ((questionIndex + 1) / gameQuestions.length) * 100;
@@ -322,6 +359,10 @@ export default function Quiz({ onBack }) {
   useEffect(() => {
     return () => clearTimeout(nextQuestionRef.current);
   }, []);
+
+  useImperativeHandle(ref, () => ({
+    startInitialPlayback: () => playerRef.current?.playInitial(),
+  }), []);
 
   const goToNextQuestion = () => {
     setSelected(null);
@@ -363,6 +404,7 @@ export default function Quiz({ onBack }) {
     setSelected(null);
     setScore(0);
     setIsFinished(false);
+    setHasPlaybackPermission(false);
   };
 
   if (isFinished) {
@@ -426,11 +468,14 @@ export default function Quiz({ onBack }) {
         <h1>Indovina il brano</h1>
 
         <AudioPreview
+          ref={playerRef}
           key={`player-${currentQuestion.id}`}
           preview={currentQuestion.preview}
           artist={currentQuestion.artist}
           title={currentQuestion.title}
           questionId={currentQuestion.id}
+          shouldAutoplay={hasPlaybackPermission}
+          onPlaybackStarted={() => setHasPlaybackPermission(true)}
         />
 
         <p className="quiz-question">{currentQuestion.question}</p>
@@ -462,4 +507,6 @@ export default function Quiz({ onBack }) {
       </section>
     </main>
   );
-}
+});
+
+export default Quiz;

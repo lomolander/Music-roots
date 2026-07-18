@@ -1,5 +1,6 @@
 import lomolanderLogo from "./assets/lomolander-logo.png";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { flushSync } from "react-dom";
 import { Music2, Share2, MapPin, Route } from "lucide-react";
 
 import Quiz from "./pages/Quiz";
@@ -30,9 +31,15 @@ const sections = [
 
 export default function App() {
   const [screen, setScreen] = useState("home");
+  const quizRef = useRef(null);
+
+  const startQuiz = () => {
+    flushSync(() => setScreen("quiz"));
+    quizRef.current?.startInitialPlayback();
+  };
 
   if (screen === "quiz") {
-    return <Quiz onBack={() => setScreen("home")} />;
+    return <Quiz ref={quizRef} onBack={() => setScreen("home")} />;
   }
 
   return (
@@ -72,7 +79,7 @@ export default function App() {
         <button
           className="primary-button"
           type="button"
-          onClick={() => setScreen("quiz")}
+          onClick={startQuiz}
         >
           Inizia il quiz
         </button>
@@ -90,7 +97,7 @@ export default function App() {
               key={section.title}
               onClick={() => {
                 if (section.action === "quiz") {
-                  setScreen("quiz");
+                  startQuiz();
                 }
               }}
             >

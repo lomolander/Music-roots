@@ -28,7 +28,12 @@ export function hasValidHttpsPreview(preview) {
 }
 
 export function getPlayableQuestions(source = questions) {
-  return source.filter((question) => hasValidHttpsPreview(question.preview));
+  return source.filter(
+    (question) =>
+      question.previewSource === "apple" &&
+      question.previewValidated === true &&
+      hasValidHttpsPreview(question.preview),
+  );
 }
 
 function createAnswers(question, playableQuestions) {

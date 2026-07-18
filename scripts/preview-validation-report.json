@@ -1,0 +1,498 @@
+{
+  "generatedAt": "2026-07-18T15:13:40.925Z",
+  "previewsChecked": 278,
+  "previewsValid": 208,
+  "previewsRemoved": 70,
+  "removedTracks": [
+    {
+      "id": 9,
+      "artist": "Joe Smooth",
+      "title": "Promised Land",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/0/b/0/0/0b01a1dd1d28f6ad63c4944144b46f9f.mp3?hdnea=exp=1784381362~acl=/api/1/1/0/b/0/0/0b01a1dd1d28f6ad63c4944144b46f9f.mp3*~data=user_id=0,application_id=42~hmac=0f3da0dd54d518d0e9748936c68d590635301b2caa8958b87d803ad288abad32",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 11,
+      "artist": "Frankie Knuckles",
+      "title": "Your Love",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/6/4/d/0/64d1c51d3a1b08298d6b7716b08c0998.mp3?hdnea=exp=1784381364~acl=/api/1/1/6/4/d/0/64d1c51d3a1b08298d6b7716b08c0998.mp3*~data=user_id=0,application_id=42~hmac=fe10c4de7e7dd904971c9f5583c525baf3c9672584e504d68b6384233b95541d",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 13,
+      "artist": "Marshall Jefferson",
+      "title": "Move Your Body",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/4/1/a/0/41a2d127a477b7a38c8b0141d7d0e0d6.mp3?hdnea=exp=1784381366~acl=/api/1/1/4/1/a/0/41a2d127a477b7a38c8b0141d7d0e0d6.mp3*~data=user_id=0,application_id=42~hmac=a3c267642213e219dc541a74a8acea7e0df6625896c2259809e518490773285f",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 17,
+      "artist": "Inner City",
+      "title": "Good Life",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/5/e/6/0/5e697a615af72e8c1c8fb58bc8554fcd.mp3?hdnea=exp=1784381371~acl=/api/1/1/5/e/6/0/5e697a615af72e8c1c8fb58bc8554fcd.mp3*~data=user_id=0,application_id=42~hmac=e9c8f1a8256d3a62a2dd5a41acb4cf1fd735143892820dabe3b8f612748391fa",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 18,
+      "artist": "Robin S.",
+      "title": "Show Me Love",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/e/6/6/0/e66a3f6c1588d9bc3571bc47a69f4fc9.mp3?hdnea=exp=1784381372~acl=/api/1/1/e/6/6/0/e66a3f6c1588d9bc3571bc47a69f4fc9.mp3*~data=user_id=0,application_id=42~hmac=f81be0c97722d9ccce3f06ef466494dee368a6e3fd3d83e6ea61448afd8198bd",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 19,
+      "artist": "Crystal Waters",
+      "title": "Gypsy Woman",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/f/d/e/0/fdef39004cfe756cae378140500bf353.mp3?hdnea=exp=1784381374~acl=/api/1/1/f/d/e/0/fdef39004cfe756cae378140500bf353.mp3*~data=user_id=0,application_id=42~hmac=b5b7fe04adb4546eeb0b0ff2bc24d755edca3ec507af00c81737059f6c1c07c5",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 23,
+      "artist": "Modjo",
+      "title": "Lady (Hear Me Tonight)",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/0/5/1/0/051a8200796fd815cf84e7be93a83fc1.mp3?hdnea=exp=1784381384~acl=/api/1/1/0/5/1/0/051a8200796fd815cf84e7be93a83fc1.mp3*~data=user_id=0,application_id=42~hmac=d91494ce9dd3ef26c41c53285846996ecb8bf4e4cd672e87cedb82e336109725",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 28,
+      "artist": "Bob Sinclar",
+      "title": "I Feel for You",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/6/f/1/0/6f1c3c9f9760fc20822a117836445aa7.mp3?hdnea=exp=1784381389~acl=/api/1/1/6/f/1/0/6f1c3c9f9760fc20822a117836445aa7.mp3*~data=user_id=0,application_id=42~hmac=e779ebd62c0c1ad6024c5fe9893c3c3058950693f212a77987cd2370b1dba9b7",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 37,
+      "artist": "UNKLE",
+      "title": "Rabbit in Your Headlights",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/9/c/c/0/9cc93bbde8ad867fa07664d12117a537.mp3?hdnea=exp=1784381399~acl=/api/1/1/9/c/c/0/9cc93bbde8ad867fa07664d12117a537.mp3*~data=user_id=0,application_id=42~hmac=46fd014b8b16009764a7049fb3817117b0e52c8ea9cec22fb36b801a49965720",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 40,
+      "artist": "Zero 7",
+      "title": "Destiny",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/0/e/7/0/0e7f5b75b2958b71ce5319886836891a.mp3?hdnea=exp=1784381403~acl=/api/1/1/0/e/7/0/0e7f5b75b2958b71ce5319886836891a.mp3*~data=user_id=0,application_id=42~hmac=32a4a707e97396aaaa5236c023a624c1e8cb0a3e85d3cea420c2780f8a9471fb",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 46,
+      "artist": "Eurythmics",
+      "title": "Sweet Dreams (Are Made of This)",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/c/7/6/0/c762b853f6084e40164035a67f8c2e67.mp3?hdnea=exp=1784381409~acl=/api/1/1/c/7/6/0/c762b853f6084e40164035a67f8c2e67.mp3*~data=user_id=0,application_id=42~hmac=a5cf187cf75bd491921268051aed15f3459135c22730889d8db97fc8df46c6f0",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 59,
+      "artist": "Cerrone",
+      "title": "Supernature",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/8/7/7/0/877c83cd4bdebd5af2971d670300ccc2.mp3?hdnea=exp=1784381425~acl=/api/1/1/8/7/7/0/877c83cd4bdebd5af2971d670300ccc2.mp3*~data=user_id=0,application_id=42~hmac=0fade211369eebc5f0e21553a1f0b2b73dbe16054c5e6888778399e4efad46b7",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 64,
+      "artist": "US3",
+      "title": "Cantaloop (Flip Fantasia)",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/c/5/3/0/c53a02d44dde43b4d8d69cd301041972.mp3?hdnea=exp=1784381429~acl=/api/1/1/c/5/3/0/c53a02d44dde43b4d8d69cd301041972.mp3*~data=user_id=0,application_id=42~hmac=df6b05af3d6465db4472b733313d6d48854af9196b8a1eb19284375600f09572",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 76,
+      "artist": "Moby",
+      "title": "Porcelain",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/4/5/9/0/4596ca495043997f8e26ab1ad9928284.mp3?hdnea=exp=1784381441~acl=/api/1/1/4/5/9/0/4596ca495043997f8e26ab1ad9928284.mp3*~data=user_id=0,application_id=42~hmac=334714eb8b8c882010861ad225b99f77c3e212abbf92706470d1c3d4f03b6c75",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 77,
+      "artist": "The Orb",
+      "title": "Little Fluffy Clouds",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/2/3/5/0/235c07ee84ee12295ebd4f09ad91238e.mp3?hdnea=exp=1784381442~acl=/api/1/1/2/3/5/0/235c07ee84ee12295ebd4f09ad91238e.mp3*~data=user_id=0,application_id=42~hmac=822a0a2255d4d02aa70194c816da2f0b311cf54571771792c2410272ceba0da6",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 78,
+      "artist": "Orbital",
+      "title": "Halcyon + On + On",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/3/c/f/0/3cfe6f1c15e927c6eec56bad88ce6fe9.mp3?hdnea=exp=1784381443~acl=/api/1/1/3/c/f/0/3cfe6f1c15e927c6eec56bad88ce6fe9.mp3*~data=user_id=0,application_id=42~hmac=480323562ca42cdc1cb98640f0b5a4e72873758ccdee433e4a1c8eaf09501585",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 80,
+      "artist": "Fatboy Slim",
+      "title": "The Rockafeller Skank",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/4/7/8/0/4786955867ef167fcffc05304b17f039.mp3?hdnea=exp=1784381449~acl=/api/1/1/4/7/8/0/4786955867ef167fcffc05304b17f039.mp3*~data=user_id=0,application_id=42~hmac=cfc8c939dccc23cb9e9698dd2c1561417f679f48b6fa1794c99e435831696878",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 81,
+      "artist": "Propellerheads",
+      "title": "Spybreak!",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/4/f/5/0/4f5a4c6e0eea53837e69034f60f0624b.mp3?hdnea=exp=1784381451~acl=/api/1/1/4/f/5/0/4f5a4c6e0eea53837e69034f60f0624b.mp3*~data=user_id=0,application_id=42~hmac=a044c1c4d72b4053f97840d5ad681afe74d984985d439bfdea45adbe203c46cc",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 83,
+      "artist": "Apollo 440",
+      "title": "Ain't Talkin' 'bout Dub",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/2/9/7/0/29754949bdde175794d3f444f2d0f885.mp3?hdnea=exp=1784381452~acl=/api/1/1/2/9/7/0/29754949bdde175794d3f444f2d0f885.mp3*~data=user_id=0,application_id=42~hmac=772495e035d94719a88329d497c56e5e1d5d7374177c2eeabfb4527eab4d31a5",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 85,
+      "artist": "Basement Jaxx",
+      "title": "Red Alert",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/3/f/b/0/3fb92c9d1ba95d115790445e7138cfa8.mp3?hdnea=exp=1784381454~acl=/api/1/1/3/f/b/0/3fb92c9d1ba95d115790445e7138cfa8.mp3*~data=user_id=0,application_id=42~hmac=2bd1bbc44c5b14780b29ca7307009c035c27e4f9be7f4e0c0b47b4f760002033",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 87,
+      "artist": "Underworld",
+      "title": "Born Slippy .NUXX",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/f/7/c/0/f7cee80e768c59de453420f5ea49f056.mp3?hdnea=exp=1784381456~acl=/api/1/1/f/7/c/0/f7cee80e768c59de453420f5ea49f056.mp3*~data=user_id=0,application_id=42~hmac=c6f4bafe2f83435f5b026c174e27b6a6f8a3a4ee906796875cd1868dc50b4c7f",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 89,
+      "artist": "Faithless",
+      "title": "Insomnia",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/1/d/3/0/1d30450bd5b1d310f00bb1ef2c14f4b1.mp3?hdnea=exp=1784381458~acl=/api/1/1/1/d/3/0/1d30450bd5b1d310f00bb1ef2c14f4b1.mp3*~data=user_id=0,application_id=42~hmac=e2a5254e58551fc9632e132426c7db955c4db00e7d48474761f32b41f2b84b7a",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 90,
+      "artist": "Aphex Twin",
+      "title": "Windowlicker",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/b/6/f/0/b6fc4508fff12f0711adf1b61ed91779.mp3?hdnea=exp=1784381459~acl=/api/1/1/b/6/f/0/b6fc4508fff12f0711adf1b61ed91779.mp3*~data=user_id=0,application_id=42~hmac=662ecc45f446f42c5a546db0efc49fc9ad9581ff492aac914128eef04228c1a7",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 96,
+      "artist": "Vangelis",
+      "title": "Chariots of Fire",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/d/6/f/0/d6f52d0ef3f33c3a037830c3ce4576ee.mp3?hdnea=exp=1784381465~acl=/api/1/1/d/6/f/0/d6f52d0ef3f33c3a037830c3ce4576ee.mp3*~data=user_id=0,application_id=42~hmac=6bb6cc11c91103597354000d0225617a0ac6fb4ea502fdd67c7ac2ce81c98423",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 112,
+      "artist": "Derrick May",
+      "title": "Nude Photo",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/3/5/a/0/35af678bbbee6076ec4e642235c68b11.mp3?hdnea=exp=1784381486~acl=/api/1/1/3/5/a/0/35af678bbbee6076ec4e642235c68b11.mp3*~data=user_id=0,application_id=42~hmac=8dfaf33670c3e1ffe93905a8e61f8288ecac0d3efb26edbd1209db047b595b49",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 113,
+      "artist": "Kevin Saunderson",
+      "title": "Rock to the Beat",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/c/c/7/0/cc75ce0c004eeedcebb87a46b1a8373c.mp3?hdnea=exp=1784381488~acl=/api/1/1/c/c/7/0/cc75ce0c004eeedcebb87a46b1a8373c.mp3*~data=user_id=0,application_id=42~hmac=3e5586997656c102662e8462aedf0fa4a21a71158cb9ee9ad9cb1170d595ccf7",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 122,
+      "artist": "Josh Wink",
+      "title": "Higher State of Consciousness",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/e/5/8/0/e582dc01be126e6beda30a45ed816777.mp3?hdnea=exp=1784381498~acl=/api/1/1/e/5/8/0/e582dc01be126e6beda30a45ed816777.mp3*~data=user_id=0,application_id=42~hmac=035b26eb9eedf6d0e5784ef966bd85c003c5ac122ab2f75be73967e84bc7c644",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 123,
+      "artist": "DJ Pierre",
+      "title": "Box Energy",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/6/a/2/0/6a29fd4a82354d5b50709aab79054bfd.mp3?hdnea=exp=1784381499~acl=/api/1/1/6/a/2/0/6a29fd4a82354d5b50709aab79054bfd.mp3*~data=user_id=0,application_id=42~hmac=57eb97c7e6bd5b52c1f9b06207103bed952a37fc161e1c9445ffa88eb3875749",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 125,
+      "artist": "Humanoid",
+      "title": "Stakker Humanoid",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/9/3/7/0/937a8d89e1cee0c23b3eb277087f5f94.mp3?hdnea=exp=1784381501~acl=/api/1/1/9/3/7/0/937a8d89e1cee0c23b3eb277087f5f94.mp3*~data=user_id=0,application_id=42~hmac=a5ab1b9d8a3404728f21f2c097ba581d17de63093b2f71e0aa33b23c8edd5a26",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 131,
+      "artist": "Étienne de Crécy",
+      "title": "Am I Wrong",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/1/6/0/0/160e5827f253ab7949a293f368af10c0.mp3?hdnea=exp=1784381507~acl=/api/1/1/1/6/0/0/160e5827f253ab7949a293f368af10c0.mp3*~data=user_id=0,application_id=42~hmac=ba6fbbe525d44604037370a7b2dbef0c56e1754e7b8825537333f3822d451fc4",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 133,
+      "artist": "Demon",
+      "title": "You Are My High",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/e/d/f/0/edfd824a6d365def7dfa113c209d0601.mp3?hdnea=exp=1784381510~acl=/api/1/1/e/d/f/0/edfd824a6d365def7dfa113c209d0601.mp3*~data=user_id=0,application_id=42~hmac=42363357bcf64366ff29ca62c23df124883698bd825736b6e8a08b3bfec5318d",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 134,
+      "artist": "The Supermen Lovers",
+      "title": "Starlight",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/5/7/5/0/5752f82b397013cdf9b802a1defb0d4d.mp3?hdnea=exp=1784381510~acl=/api/1/1/5/7/5/0/5752f82b397013cdf9b802a1defb0d4d.mp3*~data=user_id=0,application_id=42~hmac=9bec6b86747741e518a3539fa23f0711f9354981a10bd33d58459b5e8063456e",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 136,
+      "artist": "I:Cube",
+      "title": "Disco Cubizm",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/b/7/4/0/b7427b10304240f2346e49e126668b78.mp3?hdnea=exp=1784381512~acl=/api/1/1/b/7/4/0/b7427b10304240f2346e49e126668b78.mp3*~data=user_id=0,application_id=42~hmac=9ed3a47b143e90f7d04b2536c64585f4489bd1d7112f7ba25a7c06ee912e5fb2",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 137,
+      "artist": "Todd Edwards",
+      "title": "Saved My Life",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/5/6/3/0/563593711dbdf15219e2e659a6381de9.mp3?hdnea=exp=1784381518~acl=/api/1/1/5/6/3/0/563593711dbdf15219e2e659a6381de9.mp3*~data=user_id=0,application_id=42~hmac=a2f84e232f19fb33c5f819181678db69e056b9db19a94e0f4a3fcec71bf7f801",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 138,
+      "artist": "Double 99",
+      "title": "RipGroove",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/3/c/9/0/3c9a73c66b5b2da7727d1f3853967cd9.mp3?hdnea=exp=1784381519~acl=/api/1/1/3/c/9/0/3c9a73c66b5b2da7727d1f3853967cd9.mp3*~data=user_id=0,application_id=42~hmac=48d0d2bf4e20b7cc434415737509496825f858440043cb6dfcae602afc62c281",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 144,
+      "artist": "So Solid Crew",
+      "title": "21 Seconds",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/2/e/b/0/2eb76dafef6969793b320c5cc72cebee.mp3?hdnea=exp=1784381527~acl=/api/1/1/2/e/b/0/2eb76dafef6969793b320c5cc72cebee.mp3*~data=user_id=0,application_id=42~hmac=436d8c2759fd5e26e550b5f310e21f1481d8b390692ba556498a728823f7d4c3",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 155,
+      "artist": "Air",
+      "title": "All I Need",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/a/6/8/0/a688cb8da53168c5890a20ead6b0fdde.mp3?hdnea=exp=1784381543~acl=/api/1/1/a/6/8/0/a688cb8da53168c5890a20ead6b0fdde.mp3*~data=user_id=0,application_id=42~hmac=bcaf51a2cb0ca9008aea3f21f4a2e43062c2dcba71188f84f9067ba776710588",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 179,
+      "artist": "Omni Trio",
+      "title": "Renegade Snares",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/a/1/4/0/a14f055f05a4955e7d64ddd3908c64d6.mp3?hdnea=exp=1784381568~acl=/api/1/1/a/1/4/0/a14f055f05a4955e7d64ddd3908c64d6.mp3*~data=user_id=0,application_id=42~hmac=55b6b457635cae0bce47669179ddfb9495dbf3efe0cc5031ae8784c0a106b09d",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 184,
+      "artist": "Galliano",
+      "title": "Long Time Gone",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/b/1/c/0/b1cc9777a2cbbd461ce4dd190ba60f76.mp3?hdnea=exp=1784381572~acl=/api/1/1/b/1/c/0/b1cc9777a2cbbd461ce4dd190ba60f76.mp3*~data=user_id=0,application_id=42~hmac=c2761f0651bc2a282222c14f619909262980c123da330419210458967e35c6dd",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 185,
+      "artist": "Corduroy",
+      "title": "Mini",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/0/9/0/0/0904d644d0732ef4682d4da9fa559317.mp3?hdnea=exp=1784381573~acl=/api/1/1/0/9/0/0/0904d644d0732ef4682d4da9fa559317.mp3*~data=user_id=0,application_id=42~hmac=01a92a2e4c8317a1b576b875a64512fb1e7a5d90ae6597b36934ef915bd6500c",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 187,
+      "artist": "US3",
+      "title": "Tukka Yoot's Riddim",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/4/1/b/0/41b524131211d1fe23d65e86d0adf3c0.mp3?hdnea=exp=1784381574~acl=/api/1/1/4/1/b/0/41b524131211d1fe23d65e86d0adf3c0.mp3*~data=user_id=0,application_id=42~hmac=23e7a7892db7bb7e7068db43ac6e4b84842beed258bd50f2ed27fc2ee09084e0",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 188,
+      "artist": "Ronny Jordan",
+      "title": "The Jackal",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/a/c/8/0/ac84a688b032d64d63f8045e7c25dc9a.mp3?hdnea=exp=1784381575~acl=/api/1/1/a/c/8/0/ac84a688b032d64d63f8045e7c25dc9a.mp3*~data=user_id=0,application_id=42~hmac=8122b8fce2dc660eef5bdbceaf5f4ec6f0016b5a26d4980c3dfa3bbd67eb13aa",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 191,
+      "artist": "Sly & The Family Stone",
+      "title": "Thank You (Falettinme Be Mice Elf Agin)",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/4/e/8/0/4e8ff36d2fffad149e7fe728eaf22b61.mp3?hdnea=exp=1784381579~acl=/api/1/1/4/e/8/0/4e8ff36d2fffad149e7fe728eaf22b61.mp3*~data=user_id=0,application_id=42~hmac=5a2915127e85d53fe406da36b339aa60415a1d4c9e2e9cd2b74c0a54fc79128a",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 192,
+      "artist": "Earth, Wind & Fire",
+      "title": "September",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/f/f/1/0/ff191ffcc88051796dd077e402aa14c5.mp3?hdnea=exp=1784381581~acl=/api/1/1/f/f/1/0/ff191ffcc88051796dd077e402aa14c5.mp3*~data=user_id=0,application_id=42~hmac=4c0bd39b5744cd690fa9a294ab8a1d5d0b3c7e2a81d54f926f19ac10c82507c2",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 193,
+      "artist": "The Isley Brothers",
+      "title": "It's Your Thing",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/0/d/5/0/0d593ebe6f79cbfe08d08a824a8e92e1.mp3?hdnea=exp=1784381588~acl=/api/1/1/0/d/5/0/0d593ebe6f79cbfe08d08a824a8e92e1.mp3*~data=user_id=0,application_id=42~hmac=c80e0cc782e01179f1dee120a72d6c2ea355a635a6e5a1b7dccdc10cf1dc3b60",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 205,
+      "artist": "Giorgio Moroder",
+      "title": "Chase",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/5/8/b/0/58bdb417336c0acd14a2f1a9561bcc0c.mp3?hdnea=exp=1784381599~acl=/api/1/1/5/8/b/0/58bdb417336c0acd14a2f1a9561bcc0c.mp3*~data=user_id=0,application_id=42~hmac=8e84e3298ddfbf90864f4f9ab92fe23f228684ead856a809a0d9433278469f2b",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 207,
+      "artist": "Alexander Robotnick",
+      "title": "Problèmes d'amour",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/4/5/d/0/45d57d7c299bd4514a55a8b6bb7ed57e.mp3?hdnea=exp=1784381602~acl=/api/1/1/4/5/d/0/45d57d7c299bd4514a55a8b6bb7ed57e.mp3*~data=user_id=0,application_id=42~hmac=b97a6f8fee7e7ff83f7d690e7081ae1fc9470d9eae0752af3550e80ce17c895e",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 209,
+      "artist": "Ryan Paris",
+      "title": "Dolce Vita",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/c/8/b/0/c8b5067fb735116300bafebfe3e66d8e.mp3?hdnea=exp=1784381604~acl=/api/1/1/c/8/b/0/c8b5067fb735116300bafebfe3e66d8e.mp3*~data=user_id=0,application_id=42~hmac=2c2e33c76999c862486dba23b993d17b5c8ff14763f073e7cd6607fcf5af8de4",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 228,
+      "artist": "Peaches",
+      "title": "Fuck the Pain Away",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/1/c/d/0/1cd72cafd0a24cbac5b2e28a757b0a5d.mp3?hdnea=exp=1784381625~acl=/api/1/1/1/c/d/0/1cd72cafd0a24cbac5b2e28a757b0a5d.mp3*~data=user_id=0,application_id=42~hmac=25da907335bbdef03f3a46c487cbe0a3d81273c75652b5d1c7d994c4e2d61507",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 230,
+      "artist": "Erykah Badu",
+      "title": "On & On",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/b/8/9/0/b89aee00048db8ff86677a7ab260dfa5.mp3?hdnea=exp=1784381627~acl=/api/1/1/b/8/9/0/b89aee00048db8ff86677a7ab260dfa5.mp3*~data=user_id=0,application_id=42~hmac=7a8a6447d6ba0bb25db386f7e893dc62574a714de8d6da25bc4c32013f2ef9cd",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 234,
+      "artist": "Bilal",
+      "title": "Soul Sista",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/2/b/a/0/2ba27162c877575bee7fe567710acd18.mp3?hdnea=exp=1784381632~acl=/api/1/1/2/b/a/0/2ba27162c877575bee7fe567710acd18.mp3*~data=user_id=0,application_id=42~hmac=0d00136ae4479296aaf3d5fbfdc5c62e43aa63841e278528191d3e40da6eb1db",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 235,
+      "artist": "Musiq Soulchild",
+      "title": "Just Friends (Sunny)",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/d/d/e/0/dde42ab7e07af63b3051a5380f3daa03.mp3?hdnea=exp=1784381634~acl=/api/1/1/d/d/e/0/dde42ab7e07af63b3051a5380f3daa03.mp3*~data=user_id=0,application_id=42~hmac=5885891fa73842e312a61c2e9a2834d32beb0f34df98fa5109d7b04449bebb0d",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 237,
+      "artist": "Jazzanova",
+      "title": "Fedime's Flight",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/6/7/7/0/67755a3d55d87bba729872ee841081c6.mp3?hdnea=exp=1784381636~acl=/api/1/1/6/7/7/0/67755a3d55d87bba729872ee841081c6.mp3*~data=user_id=0,application_id=42~hmac=59523250886dfd7b647b01c6cd91f225cd3f7ee94f6678b828aead09bf040292",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 239,
+      "artist": "The Cinematic Orchestra",
+      "title": "To Build a Home",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/2/7/2/0/27237f19a8b7d60cd311fc7d828340e4.mp3?hdnea=exp=1784381639~acl=/api/1/1/2/7/2/0/27237f19a8b7d60cd311fc7d828340e4.mp3*~data=user_id=0,application_id=42~hmac=870e5f4887b2ea7073a04e8d44ceefb138f0a6ebce9445f636fc6bb5f62e5920",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 240,
+      "artist": "4hero",
+      "title": "Les Fleur",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/b/8/0/0/b80b5e01f2062fda43fd4c2941d68179.mp3?hdnea=exp=1784381640~acl=/api/1/1/b/8/0/0/b80b5e01f2062fda43fd4c2941d68179.mp3*~data=user_id=0,application_id=42~hmac=ca052493f16221dd25e65edcfaad9279c9f12e37800462eb5d97e6c4a6b99789",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 242,
+      "artist": "Nicola Conte",
+      "title": "Bossa Per Due",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/8/b/d/0/8bd24e1d193786a8a1216671c52b4e80.mp3?hdnea=exp=1784381641~acl=/api/1/1/8/b/d/0/8bd24e1d193786a8a1216671c52b4e80.mp3*~data=user_id=0,application_id=42~hmac=1854588ec22a97bcb03509a0d01b57a2402a3feb8531aac987e9c3f7bcd69339",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 261,
+      "artist": "Grandmaster Flash & The Furious Five",
+      "title": "The Message",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/9/7/7/0/97791b09f6e73d1e6c13f044d791fae8.mp3?hdnea=exp=1784381660~acl=/api/1/1/9/7/7/0/97791b09f6e73d1e6c13f044d791fae8.mp3*~data=user_id=0,application_id=42~hmac=18381f3805ca78a8532340e431780e3861349f46e311547688d2ccf643148340",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 270,
+      "artist": "Antônio Carlos Jobim",
+      "title": "The Girl from Ipanema",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/5/f/e/0/5fed1b70cce51845d5d5cee0f3c5652d.mp3?hdnea=exp=1784381671~acl=/api/1/1/5/f/e/0/5fed1b70cce51845d5d5cee0f3c5652d.mp3*~data=user_id=0,application_id=42~hmac=93ac3f98699079d93129f45c275ffc076f4ea0a1730f4c644859a7bdb94c4b67",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 272,
+      "artist": "Astrud Gilberto",
+      "title": "Água de Beber",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/2/4/9/0/24971e079b2757c9696550ff2bb048b8.mp3?hdnea=exp=1784381674~acl=/api/1/1/2/4/9/0/24971e079b2757c9696550ff2bb048b8.mp3*~data=user_id=0,application_id=42~hmac=f2679252ad9565e4e465eecbfd1b971e0834aed5c4699437de1c752275543c26",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 273,
+      "artist": "Marcos Valle",
+      "title": "Samba de Verão",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/d/0/c/0/d0c62b4c6f4e23d42ad588323cc9dd31.mp3?hdnea=exp=1784381675~acl=/api/1/1/d/0/c/0/d0c62b4c6f4e23d42ad588323cc9dd31.mp3*~data=user_id=0,application_id=42~hmac=fa49edda45b9c6d3045ccb2f4564c415241dd3e89efde5824a9618106faee808",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 274,
+      "artist": "Nara Leão",
+      "title": "O Barquinho",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/f/e/a/0/fea7549a77ec5a3564e7557a50351218.mp3?hdnea=exp=1784381676~acl=/api/1/1/f/e/a/0/fea7549a77ec5a3564e7557a50351218.mp3*~data=user_id=0,application_id=42~hmac=1b5dba2668662333f80cf57b17103d59d300d17d5508157186c5efeacdc7aec3",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 277,
+      "artist": "John Coltrane",
+      "title": "Acknowledgement",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/c/4/e/0/c4e04e174402203d4db554841f47065f.mp3?hdnea=exp=1784381681~acl=/api/1/1/c/4/e/0/c4e04e174402203d4db554841f47065f.mp3*~data=user_id=0,application_id=42~hmac=15bdaa8c5f30a484409b18ac9144ffe67b8732013848b28dae963dfb8e235ce5",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 280,
+      "artist": "Herbie Hancock",
+      "title": "Chameleon",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/2/4/e/0/24ee542c0f59d25622072e9c6cac5eb7.mp3?hdnea=exp=1784381689~acl=/api/1/1/2/4/e/0/24ee542c0f59d25622072e9c6cac5eb7.mp3*~data=user_id=0,application_id=42~hmac=091f1519aee9047dcbfdaefb93b3de628277538e08eb42a128518e9604d33ca0",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 282,
+      "artist": "Weather Report",
+      "title": "Birdland",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/d/b/3/0/db33bf7b11b1219109b451f757817e60.mp3?hdnea=exp=1784381691~acl=/api/1/1/d/b/3/0/db33bf7b11b1219109b451f757817e60.mp3*~data=user_id=0,application_id=42~hmac=7e07c8d5b9f7127b5a56c0e0242e42a857b19d09d1e98d2c49bcadb9bfa58aea",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 286,
+      "artist": "Ennio Morricone",
+      "title": "The Ecstasy of Gold",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/e/7/6/0/e7685c5b5dd0ea8401e337f56376c5fc.mp3?hdnea=exp=1784381695~acl=/api/1/1/e/7/6/0/e7685c5b5dd0ea8401e337f56376c5fc.mp3*~data=user_id=0,application_id=42~hmac=34ef7270e24d0193cfb86b470091d18d500fe94a8b3c5d8ca71fad89fcadc823",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 287,
+      "artist": "Piero Piccioni",
+      "title": "Easy Lovers",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/a/7/2/0/a7245bc1c80ec6a9ec7ec057377d3dd0.mp3?hdnea=exp=1784381696~acl=/api/1/1/a/7/2/0/a7245bc1c80ec6a9ec7ec057377d3dd0.mp3*~data=user_id=0,application_id=42~hmac=1cc876bf7d02756ef2c8efb69c0d730c9ee56fe3793db1a9268433651a20ce64",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 290,
+      "artist": "Armando Trovajoli",
+      "title": "Sessomatto",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/7/6/a/0/76aaa0157b4fa2e1c09c24b981feaf10.mp3?hdnea=exp=1784381699~acl=/api/1/1/7/6/a/0/76aaa0157b4fa2e1c09c24b981feaf10.mp3*~data=user_id=0,application_id=42~hmac=edcb7c551e39d05223b0f3c8888e50da0e2b1a11a4270e8779fb067811497dec",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 291,
+      "artist": "Franco Micalizzi",
+      "title": "Italia a mano armata",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/0/e/b/0/0eb671924924a80f05018d2415371cf6.mp3?hdnea=exp=1784381701~acl=/api/1/1/0/e/b/0/0eb671924924a80f05018d2415371cf6.mp3*~data=user_id=0,application_id=42~hmac=ed92c379f6c40b3f0b82f10e6ef224a999d60f7af245d00118cdf1bfff2f9dcf",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 295,
+      "artist": "FKA twigs",
+      "title": "Two Weeks",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/a/1/0/0/a102bce7062340423a592d53a140eb61.mp3?hdnea=exp=1784381705~acl=/api/1/1/a/1/0/0/a102bce7062340423a592d53a140eb61.mp3*~data=user_id=0,application_id=42~hmac=2df621792f858b403f98be19dbe0904fbd3e1daf32bdeae5036394acd25e3cbd",
+      "reason": "Status HTTP 403"
+    },
+    {
+      "id": 299,
+      "artist": "Fred again..",
+      "title": "Delilah (pull me out of this)",
+      "preview": "https://cdnt-preview.dzcdn.net/api/1/1/6/d/1/0/6d11113574848cf449100918d7aa3b1b.mp3?hdnea=exp=1784381709~acl=/api/1/1/6/d/1/0/6d11113574848cf449100918d7aa3b1b.mp3*~data=user_id=0,application_id=42~hmac=b4de96a507075261dda7e167806190d4265f5fa25e79e59b08f8dab465d7c18d",
+      "reason": "Status HTTP 403"
+    }
+  ]
+}
