@@ -1,9 +1,13 @@
 import lomolanderLogo from "./assets/lomolander-logo.png";
 import { useRef, useState } from "react";
 import { flushSync } from "react-dom";
-import { Music2, Share2, MapPin, Route } from "lucide-react";
+import { Music2, Share2, MapPin, Route, UserRound } from "lucide-react";
 
 import Quiz from "./pages/Quiz";
+import Explore from "./pages/Explore";
+import MusicAtlas from "./pages/MusicAtlas";
+import Connections from "./pages/Connections";
+import Profile from "./pages/Profile";
 
 const sections = [
   {
@@ -16,16 +20,25 @@ const sections = [
     title: "Esplora",
     description: "Scopri generi, sottogeneri e connessioni.",
     icon: Share2,
+    action: "explore",
   },
   {
-    title: "Scenari",
-    description: "Luoghi, epoche e movimenti che hanno cambiato la musica.",
+    title: "Atlante musicale",
+    description: "Città, luoghi e percorsi che hanno fatto viaggiare la musica.",
     icon: MapPin,
+    action: "atlas",
   },
   {
-    title: "Percorsi Sonori",
-    description: "Segui l'evoluzione della musica attraverso storie guidate.",
+    title: "Collegamenti",
+    description: "Naviga tra influenze, artisti, album e brani correlati.",
     icon: Route,
+    action: "connections",
+  },
+  {
+    title: "Profilo",
+    description: "Segui livello, badge, statistiche e progressi.",
+    icon: UserRound,
+    action: "profile",
   },
 ];
 
@@ -40,6 +53,22 @@ export default function App() {
 
   if (screen === "quiz") {
     return <Quiz ref={quizRef} onBack={() => setScreen("home")} />;
+  }
+
+  if (screen === "explore") {
+    return <Explore onBack={() => setScreen("home")} />;
+  }
+
+  if (screen === "atlas") {
+    return <MusicAtlas onBack={() => setScreen("home")} onExplore={() => setScreen("explore")} />;
+  }
+
+  if (screen === "connections") {
+    return <Connections onBack={() => setScreen("home")} />;
+  }
+
+  if (screen === "profile") {
+    return <Profile onBack={() => setScreen("home")} />;
   }
 
   return (
@@ -72,7 +101,7 @@ export default function App() {
         </h1>
 
         <p className="hero-copy">
-          Quiz musicali, generi, scenari e percorsi per scoprire le radici
+          Quiz musicali, generi, geografie e percorsi per scoprire le radici
           della musica.
         </p>
 
@@ -98,6 +127,14 @@ export default function App() {
               onClick={() => {
                 if (section.action === "quiz") {
                   startQuiz();
+                } else if (section.action === "explore") {
+                  setScreen("explore");
+                } else if (section.action === "atlas") {
+                  setScreen("atlas");
+                } else if (section.action === "connections") {
+                  setScreen("connections");
+                } else if (section.action === "profile") {
+                  setScreen("profile");
                 }
               }}
             >

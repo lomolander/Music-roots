@@ -6,7 +6,22 @@ import {
   useRef,
   useState,
 } from "react";
-import { createGameQuestions } from "../lib/quizGame.js";
+import {
+  createGameQuestions,
+  DIFFICULTIES,
+  getPlayableQuestions,
+  getQuizPool,
+  QUIZ_MODES,
+} from "../lib/quizGame.js";
+import questions from "../data/questions.js";
+import {
+  ACHIEVEMENTS,
+  BADGES,
+  levelProgress,
+  loadProgress,
+  recordQuizResult,
+  saveProgress,
+} from "../lib/userProgress.js";
 
 const NEXT_QUESTION_DELAY = 1100;
 
@@ -173,8 +188,10 @@ const AudioPreview = forwardRef(function AudioPreview(
 
   useEffect(() => {
     if (shouldAutoplay && activePreview) {
-      playAudio("autoplay");
+      const autoplayTimer = window.setTimeout(() => playAudio("autoplay"), 0);
+      return () => window.clearTimeout(autoplayTimer);
     }
+    return undefined;
   }, [activePreview, playAudio, shouldAutoplay]);
 
   const togglePlayback = async () => {
@@ -343,18 +360,36 @@ const AudioPreview = forwardRef(function AudioPreview(
   );
 });
 
+function OptionButton({ active, onClick, children }) {
+  return <button className={active ? "quiz-option active" : "quiz-option"} type="button" onClick={onClick}>{children}</button>;
+}
+
+function UnlockList({ title, unlocks, definitions }) {
+  return <div className="unlock-list"><h2>{title}</h2>{unlocks.map((unlock) => { const item = definitions.find((definition) => definition.id === unlock.id); return <p key={unlock.id}><strong>{item?.name ?? unlock.id}</strong><span>{item?.description}</span></p>; })}</div>;
+}
+
 const Quiz = forwardRef(function Quiz({ onBack }, ref) {
-  const [gameQuestions, setGameQuestions] = useState(createGameQuestions);
+  const [screen, setScreen] = useState("setup");
+  const [settings, setSettings] = useState({ mode: "title", scope: "random", genre: "", decade: "", difficulty: "normal" });
+  const [gameQuestions, setGameQuestions] = useState([]);
   const [questionIndex, setQuestionIndex] = useState(0);
   const [selected, setSelected] = useState(null);
   const [score, setScore] = useState(0);
+  const [correctCount, setCorrectCount] = useState(0);
+  const [sessionAnswers, setSessionAnswers] = useState([]);
+  const [progress, setProgress] = useState(loadProgress);
+  const [reward, setReward] = useState(null);
   const [isFinished, setIsFinished] = useState(false);
   const [hasPlaybackPermission, setHasPlaybackPermission] = useState(false);
   const nextQuestionRef = useRef(null);
   const playerRef = useRef(null);
 
   const currentQuestion = gameQuestions[questionIndex];
-  const quizProgress = ((questionIndex + 1) / gameQuestions.length) * 100;
+  const quizProgress = gameQuestions.length ? ((questionIndex + 1) / gameQuestions.length) * 100 : 0;
+  const playable = getPlayableQuestions(questions);
+  const genreOptions = [...new Set(playable.map((question) => question.genre))].sort((left, right) => left.localeCompare(right, "it"));
+  const decadeOptions = [...new Set(playable.map((question) => Math.floor(question.year / 10) * 10))].sort((left, right) => left - right);
+  const availableQuestions = getQuizPool(questions, settings).length;
 
   useEffect(() => {
     return () => clearTimeout(nextQuestionRef.current);
@@ -364,10 +399,14 @@ const Quiz = forwardRef(function Quiz({ onBack }, ref) {
     startInitialPlayback: () => playerRef.current?.playInitial(),
   }), []);
 
-  const goToNextQuestion = () => {
+  const goToNextQuestion = (finalAnswers = sessionAnswers, finalScore = score) => {
     setSelected(null);
 
     if (questionIndex === gameQuestions.length - 1) {
+      const result = recordQuizResult(progress, { ...settings, score: finalScore, answers: finalAnswers });
+      setProgress(result.progress);
+      saveProgress(result.progress);
+      setReward(result);
       setIsFinished(true);
       return;
     }
@@ -380,12 +419,18 @@ const Quiz = forwardRef(function Quiz({ onBack }, ref) {
 
     setSelected(answer);
 
-    if (answer === currentQuestion.correctAnswer) {
-      setScore((current) => current + 10);
+    const isCorrect = answer === currentQuestion.correctAnswer;
+    const nextScore = score + (isCorrect ? currentQuestion.points : 0);
+    const nextAnswers = [...sessionAnswers, { trackId: currentQuestion.id, genre: currentQuestion.genre, correct: isCorrect }];
+    setSessionAnswers(nextAnswers);
+
+    if (isCorrect) {
+      setScore((current) => current + currentQuestion.points);
+      setCorrectCount((current) => current + 1);
     }
 
     nextQuestionRef.current = setTimeout(
-      goToNextQuestion,
+      () => goToNextQuestion(nextAnswers, nextScore),
       NEXT_QUESTION_DELAY,
     );
   };
@@ -399,17 +444,60 @@ const Quiz = forwardRef(function Quiz({ onBack }, ref) {
 
   const restartQuiz = () => {
     clearTimeout(nextQuestionRef.current);
-    setGameQuestions(createGameQuestions());
+    setGameQuestions(createGameQuestions(questions, settings));
     setQuestionIndex(0);
     setSelected(null);
     setScore(0);
+    setCorrectCount(0);
+    setSessionAnswers([]);
+    setReward(null);
     setIsFinished(false);
     setHasPlaybackPermission(false);
+    setScreen("game");
   };
 
-  if (isFinished) {
-    const correctAnswers = score / 10;
+  const startConfiguredQuiz = () => {
+    const game = createGameQuestions(questions, settings);
+    if (!game.length) return;
+    setGameQuestions(game);
+    setQuestionIndex(0);
+    setSelected(null);
+    setScore(0);
+    setCorrectCount(0);
+    setSessionAnswers([]);
+    setReward(null);
+    setIsFinished(false);
+    setHasPlaybackPermission(false);
+    setScreen("game");
+  };
 
+  const changeSettings = (key, value) => setSettings((current) => ({
+    ...current,
+    [key]: value,
+    ...(key === "scope" ? { genre: "", decade: "" } : {}),
+  }));
+
+  if (screen === "setup") {
+    const levelState = levelProgress(progress.xp);
+    return (
+      <main className="app-shell page-enter">
+        <section className="quiz-screen quiz-setup glass-panel">
+          <button className="back-button" type="button" onClick={onBack}>← Torna alla Home</button>
+          <div className="quiz-level-summary"><span>Livello {progress.level}</span><strong>{progress.xp} XP</strong><div><i style={{ width: `${(levelState.current / levelState.required) * 100}%` }} /></div></div>
+          <p className="eyebrow">QUIZ MUSICALE</p><h1>Scegli la sfida</h1>
+          <fieldset className="quiz-options"><legend>Modalità</legend><div className="quiz-option-grid">{Object.entries(QUIZ_MODES).map(([id, item]) => <OptionButton key={id} active={settings.mode === id} onClick={() => changeSettings("mode", id)}>{item.label}</OptionButton>)}</div></fieldset>
+          <fieldset className="quiz-options"><legend>Percorso</legend><div className="quiz-option-grid three-columns"><OptionButton active={settings.scope === "random"} onClick={() => changeSettings("scope", "random")}>Quiz casuale</OptionButton><OptionButton active={settings.scope === "genre"} onClick={() => changeSettings("scope", "genre")}>Singolo genere</OptionButton><OptionButton active={settings.scope === "decade"} onClick={() => changeSettings("scope", "decade")}>Decennio</OptionButton></div></fieldset>
+          {settings.scope === "genre" && <label className="quiz-select-label">Genere<select value={settings.genre} onChange={(event) => changeSettings("genre", event.target.value)}><option value="">Seleziona un genere</option>{genreOptions.map((name) => <option key={name}>{name}</option>)}</select></label>}
+          {settings.scope === "decade" && <label className="quiz-select-label">Decennio<select value={settings.decade} onChange={(event) => changeSettings("decade", event.target.value)}><option value="">Seleziona un decennio</option>{decadeOptions.map((value) => <option key={value} value={value}>Anni {value}</option>)}</select></label>}
+          <fieldset className="quiz-options"><legend>Difficoltà</legend><div className="quiz-option-grid three-columns">{Object.entries(DIFFICULTIES).map(([id, item]) => <OptionButton key={id} active={settings.difficulty === id} onClick={() => changeSettings("difficulty", id)}>{item.label}<small>{item.points} punti</small></OptionButton>)}</div></fieldset>
+          <p className="quiz-availability">{availableQuestions} brani verificati disponibili · fino a 10 domande</p>
+          <button className="primary-button" type="button" onClick={startConfiguredQuiz} disabled={!availableQuestions || (settings.scope === "genre" && !settings.genre) || (settings.scope === "decade" && !settings.decade)}>Inizia il quiz</button>
+        </section>
+      </main>
+    );
+  }
+
+  if (isFinished) {
     return (
       <main className="app-shell page-enter">
         <section className="quiz-screen quiz-result glass-panel">
@@ -417,14 +505,16 @@ const Quiz = forwardRef(function Quiz({ onBack }, ref) {
           <h1>Risultato finale</h1>
 
           <div className="result-score">
-            <strong>{correctAnswers} / {gameQuestions.length}</strong>
+            <strong>{correctCount} / {gameQuestions.length}</strong>
             <span>{score} punti</span>
           </div>
 
+          {reward && <section className="quiz-rewards"><div><strong>+{reward.earnedXp} XP</strong><span>Livello {progress.level}{reward.leveledUp ? " · Nuovo livello!" : ""}</span></div>{reward.newBadges.length > 0 && <UnlockList title="Nuovi badge" unlocks={reward.newBadges} definitions={BADGES} />}{reward.newAchievements.length > 0 && <UnlockList title="Nuovi obiettivi" unlocks={reward.newAchievements} definitions={ACHIEVEMENTS} />}</section>}
+
           <p className="result-message">
-            {correctAnswers >= 8
+            {correctCount >= Math.ceil(gameQuestions.length * 0.8)
               ? "Eccellente orecchio musicale."
-              : correctAnswers >= 5
+              : correctCount >= Math.ceil(gameQuestions.length * 0.5)
                 ? "Ottimo risultato. Continua a esplorare."
                 : "Buon inizio. Riprova e migliora il punteggio."}
           </p>
@@ -432,6 +522,9 @@ const Quiz = forwardRef(function Quiz({ onBack }, ref) {
           <div className="result-actions">
             <button className="primary-button" type="button" onClick={restartQuiz}>
               Rigioca
+            </button>
+            <button className="secondary-button" type="button" onClick={() => setScreen("setup")}>
+              Cambia modalità
             </button>
             <button className="secondary-button" type="button" onClick={onBack}>
               Torna alla Home
@@ -465,7 +558,7 @@ const Quiz = forwardRef(function Quiz({ onBack }, ref) {
         </button>
 
         <p className="eyebrow">QUIZ MUSICALE</p>
-        <h1>Indovina il brano</h1>
+        <h1>{QUIZ_MODES[currentQuestion.quizMode].label}</h1>
 
         <AudioPreview
           ref={playerRef}
@@ -500,9 +593,9 @@ const Quiz = forwardRef(function Quiz({ onBack }, ref) {
         <p className="quiz-score">
           {selected
             ? selected === currentQuestion.correctAnswer
-              ? "Risposta corretta · +10 punti"
-              : `Risposta corretta: ${currentQuestion.correctAnswer}`
-            : `${currentQuestion.artist} · ${currentQuestion.year} · ${currentQuestion.genre}`}
+              ? `Risposta corretta · +${currentQuestion.points} punti`
+              : `Risposta corretta: ${currentQuestion.correctAnswer} · ${currentQuestion.artist} · ${currentQuestion.year} · ${currentQuestion.genre}`
+            : `${DIFFICULTIES[currentQuestion.difficulty].label} · ascolta con attenzione`}
         </p>
       </section>
     </main>

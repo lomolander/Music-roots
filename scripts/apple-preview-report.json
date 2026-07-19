@@ -1,1399 +1,4652 @@
 {
-  "generatedAt": "2026-07-18T15:57:23.722Z",
-  "totalTracks": 300,
-  "validAppleMatches": 262,
-  "excludedTracks": 38,
-  "doubtfulMatches": 27,
-  "unplayablePreviews": 0,
-  "excluded": [
+  "generatedAt": "2026-07-19T02:20:25.308Z",
+  "totalTracks": 1100,
+  "verified": 784,
+  "verifiedPercentage": 71.27,
+  "needs-review": 138,
+  "wrong-version": 100,
+  "no-match": 77,
+  "missing-preview": 1,
+  "checkedThisRun": 0,
+  "recoveredFromCache": 0,
+  "selectedThisRun": 0,
+  "filters": {
+    "onlyNew": true,
+    "status": null,
+    "genre": null,
+    "file": null,
+    "force": false
+  },
+  "byGenre": {
+    "Acid House": {
+      "total": 14,
+      "verified": 12,
+      "needs-review": 2,
+      "wrong-version": 0,
+      "no-match": 0,
+      "missing-preview": 0
+    },
+    "Acid Jazz": {
+      "total": 15,
+      "verified": 14,
+      "needs-review": 0,
+      "wrong-version": 0,
+      "no-match": 1,
+      "missing-preview": 0
+    },
+    "Alternative Rock": {
+      "total": 20,
+      "verified": 16,
+      "needs-review": 2,
+      "wrong-version": 2,
+      "no-match": 0,
+      "missing-preview": 0
+    },
+    "Ambient": {
+      "total": 25,
+      "verified": 17,
+      "needs-review": 3,
+      "wrong-version": 1,
+      "no-match": 4,
+      "missing-preview": 0
+    },
+    "Ambient House": {
+      "total": 1,
+      "verified": 1,
+      "needs-review": 0,
+      "wrong-version": 0,
+      "no-match": 0,
+      "missing-preview": 0
+    },
+    "Ambient Techno": {
+      "total": 1,
+      "verified": 1,
+      "needs-review": 0,
+      "wrong-version": 0,
+      "no-match": 0,
+      "missing-preview": 0
+    },
+    "Big Beat": {
+      "total": 16,
+      "verified": 16,
+      "needs-review": 0,
+      "wrong-version": 0,
+      "no-match": 0,
+      "missing-preview": 0
+    },
+    "Boogie": {
+      "total": 30,
+      "verified": 20,
+      "needs-review": 6,
+      "wrong-version": 2,
+      "no-match": 2,
+      "missing-preview": 0
+    },
+    "Bossa Nova": {
+      "total": 13,
+      "verified": 11,
+      "needs-review": 2,
+      "wrong-version": 0,
+      "no-match": 0,
+      "missing-preview": 0
+    },
+    "Chicago House": {
+      "total": 35,
+      "verified": 12,
+      "needs-review": 9,
+      "wrong-version": 8,
+      "no-match": 6,
+      "missing-preview": 0
+    },
+    "Colonna sonora italiana": {
+      "total": 5,
+      "verified": 4,
+      "needs-review": 0,
+      "wrong-version": 0,
+      "no-match": 1,
+      "missing-preview": 0
+    },
+    "Dance": {
+      "total": 1,
+      "verified": 1,
+      "needs-review": 0,
+      "wrong-version": 0,
+      "no-match": 0,
+      "missing-preview": 0
+    },
+    "Dance Pop": {
+      "total": 15,
+      "verified": 9,
+      "needs-review": 2,
+      "wrong-version": 4,
+      "no-match": 0,
+      "missing-preview": 0
+    },
+    "Deep House": {
+      "total": 17,
+      "verified": 10,
+      "needs-review": 3,
+      "wrong-version": 1,
+      "no-match": 3,
+      "missing-preview": 0
+    },
+    "Detroit Techno": {
+      "total": 11,
+      "verified": 6,
+      "needs-review": 2,
+      "wrong-version": 2,
+      "no-match": 1,
+      "missing-preview": 0
+    },
+    "Disco": {
+      "total": 31,
+      "verified": 29,
+      "needs-review": 2,
+      "wrong-version": 0,
+      "no-match": 0,
+      "missing-preview": 0
+    },
+    "Downtempo": {
+      "total": 30,
+      "verified": 27,
+      "needs-review": 1,
+      "wrong-version": 0,
+      "no-match": 2,
+      "missing-preview": 0
+    },
+    "Dream Pop": {
+      "total": 10,
+      "verified": 8,
+      "needs-review": 0,
+      "wrong-version": 0,
+      "no-match": 2,
+      "missing-preview": 0
+    },
+    "Drum and Bass": {
+      "total": 8,
+      "verified": 4,
+      "needs-review": 3,
+      "wrong-version": 1,
+      "no-match": 0,
+      "missing-preview": 0
+    },
+    "Dub": {
+      "total": 15,
+      "verified": 4,
+      "needs-review": 7,
+      "wrong-version": 1,
+      "no-match": 3,
+      "missing-preview": 0
+    },
+    "Electro": {
+      "total": 9,
+      "verified": 5,
+      "needs-review": 1,
+      "wrong-version": 3,
+      "no-match": 0,
+      "missing-preview": 0
+    },
+    "Electro House": {
+      "total": 2,
+      "verified": 2,
+      "needs-review": 0,
+      "wrong-version": 0,
+      "no-match": 0,
+      "missing-preview": 0
+    },
+    "Electroclash": {
+      "total": 4,
+      "verified": 3,
+      "needs-review": 1,
+      "wrong-version": 0,
+      "no-match": 0,
+      "missing-preview": 0
+    },
+    "Electronic": {
+      "total": 10,
+      "verified": 10,
+      "needs-review": 0,
+      "wrong-version": 0,
+      "no-match": 0,
+      "missing-preview": 0
+    },
+    "Electropop": {
+      "total": 15,
+      "verified": 11,
+      "needs-review": 2,
+      "wrong-version": 2,
+      "no-match": 0,
+      "missing-preview": 0
+    },
+    "French House": {
+      "total": 24,
+      "verified": 17,
+      "needs-review": 0,
+      "wrong-version": 1,
+      "no-match": 6,
+      "missing-preview": 0
+    },
+    "Funk": {
+      "total": 25,
+      "verified": 22,
+      "needs-review": 1,
+      "wrong-version": 2,
+      "no-match": 0,
+      "missing-preview": 0
+    },
+    "Garage House": {
+      "total": 30,
+      "verified": 12,
+      "needs-review": 8,
+      "wrong-version": 6,
+      "no-match": 3,
+      "missing-preview": 1
+    },
+    "Hip Hop": {
+      "total": 48,
+      "verified": 26,
+      "needs-review": 13,
+      "wrong-version": 8,
+      "no-match": 1,
+      "missing-preview": 0
+    },
+    "House": {
+      "total": 20,
+      "verified": 12,
+      "needs-review": 3,
+      "wrong-version": 2,
+      "no-match": 3,
+      "missing-preview": 0
+    },
+    "IDM": {
+      "total": 17,
+      "verified": 12,
+      "needs-review": 1,
+      "wrong-version": 0,
+      "no-match": 4,
+      "missing-preview": 0
+    },
+    "Indie": {
+      "total": 4,
+      "verified": 4,
+      "needs-review": 0,
+      "wrong-version": 0,
+      "no-match": 0,
+      "missing-preview": 0
+    },
+    "Indie Dance": {
+      "total": 2,
+      "verified": 2,
+      "needs-review": 0,
+      "wrong-version": 0,
+      "no-match": 0,
+      "missing-preview": 0
+    },
+    "Indie Rock": {
+      "total": 20,
+      "verified": 18,
+      "needs-review": 1,
+      "wrong-version": 0,
+      "no-match": 1,
+      "missing-preview": 0
+    },
+    "Italo Disco": {
+      "total": 23,
+      "verified": 12,
+      "needs-review": 2,
+      "wrong-version": 7,
+      "no-match": 2,
+      "missing-preview": 0
+    },
+    "Jazz": {
+      "total": 25,
+      "verified": 18,
+      "needs-review": 1,
+      "wrong-version": 5,
+      "no-match": 1,
+      "missing-preview": 0
+    },
+    "Jazz Fusion": {
+      "total": 19,
+      "verified": 16,
+      "needs-review": 0,
+      "wrong-version": 2,
+      "no-match": 1,
+      "missing-preview": 0
+    },
+    "Jazz Rap": {
+      "total": 2,
+      "verified": 2,
+      "needs-review": 0,
+      "wrong-version": 0,
+      "no-match": 0,
+      "missing-preview": 0
+    },
+    "Latin": {
+      "total": 15,
+      "verified": 10,
+      "needs-review": 2,
+      "wrong-version": 2,
+      "no-match": 1,
+      "missing-preview": 0
+    },
+    "Library Music": {
+      "total": 13,
+      "verified": 6,
+      "needs-review": 4,
+      "wrong-version": 0,
+      "no-match": 3,
+      "missing-preview": 0
+    },
+    "MPB": {
+      "total": 15,
+      "verified": 5,
+      "needs-review": 6,
+      "wrong-version": 4,
+      "no-match": 0,
+      "missing-preview": 0
+    },
+    "Madchester": {
+      "total": 6,
+      "verified": 5,
+      "needs-review": 1,
+      "wrong-version": 0,
+      "no-match": 0,
+      "missing-preview": 0
+    },
+    "Motown": {
+      "total": 35,
+      "verified": 30,
+      "needs-review": 3,
+      "wrong-version": 2,
+      "no-match": 0,
+      "missing-preview": 0
+    },
+    "Musica brasiliana": {
+      "total": 10,
+      "verified": 5,
+      "needs-review": 5,
+      "wrong-version": 0,
+      "no-match": 0,
+      "missing-preview": 0
+    },
+    "Musica italiana": {
+      "total": 15,
+      "verified": 10,
+      "needs-review": 2,
+      "wrong-version": 2,
+      "no-match": 1,
+      "missing-preview": 0
+    },
+    "Neo Soul": {
+      "total": 23,
+      "verified": 22,
+      "needs-review": 0,
+      "wrong-version": 0,
+      "no-match": 1,
+      "missing-preview": 0
+    },
+    "New Wave": {
+      "total": 20,
+      "verified": 16,
+      "needs-review": 1,
+      "wrong-version": 2,
+      "no-match": 1,
+      "missing-preview": 0
+    },
+    "Nu Disco": {
+      "total": 8,
+      "verified": 8,
+      "needs-review": 0,
+      "wrong-version": 0,
+      "no-match": 0,
+      "missing-preview": 0
+    },
+    "Nu Jazz": {
+      "total": 8,
+      "verified": 8,
+      "needs-review": 0,
+      "wrong-version": 0,
+      "no-match": 0,
+      "missing-preview": 0
+    },
+    "Philadelphia Soul": {
+      "total": 30,
+      "verified": 27,
+      "needs-review": 0,
+      "wrong-version": 3,
+      "no-match": 0,
+      "missing-preview": 0
+    },
+    "Pop elettronico": {
+      "total": 8,
+      "verified": 7,
+      "needs-review": 1,
+      "wrong-version": 0,
+      "no-match": 0,
+      "missing-preview": 0
+    },
+    "Post Punk": {
+      "total": 23,
+      "verified": 18,
+      "needs-review": 2,
+      "wrong-version": 1,
+      "no-match": 2,
+      "missing-preview": 0
+    },
+    "Post-disco": {
+      "total": 11,
+      "verified": 10,
+      "needs-review": 1,
+      "wrong-version": 0,
+      "no-match": 0,
+      "missing-preview": 0
+    },
+    "Progressive House": {
+      "total": 31,
+      "verified": 8,
+      "needs-review": 11,
+      "wrong-version": 6,
+      "no-match": 6,
+      "missing-preview": 0
+    },
+    "Punk": {
+      "total": 20,
+      "verified": 13,
+      "needs-review": 1,
+      "wrong-version": 4,
+      "no-match": 2,
+      "missing-preview": 0
+    },
+    "R&B": {
+      "total": 30,
+      "verified": 25,
+      "needs-review": 2,
+      "wrong-version": 2,
+      "no-match": 1,
+      "missing-preview": 0
+    },
+    "Reggae": {
+      "total": 20,
+      "verified": 15,
+      "needs-review": 2,
+      "wrong-version": 1,
+      "no-match": 2,
+      "missing-preview": 0
+    },
+    "Shoegaze": {
+      "total": 15,
+      "verified": 9,
+      "needs-review": 3,
+      "wrong-version": 0,
+      "no-match": 3,
+      "missing-preview": 0
+    },
+    "Soul": {
+      "total": 19,
+      "verified": 17,
+      "needs-review": 0,
+      "wrong-version": 2,
+      "no-match": 0,
+      "missing-preview": 0
+    },
+    "Spiritual Jazz": {
+      "total": 4,
+      "verified": 3,
+      "needs-review": 0,
+      "wrong-version": 1,
+      "no-match": 0,
+      "missing-preview": 0
+    },
+    "Synth-pop": {
+      "total": 40,
+      "verified": 34,
+      "needs-review": 3,
+      "wrong-version": 2,
+      "no-match": 1,
+      "missing-preview": 0
+    },
+    "Techno": {
+      "total": 21,
+      "verified": 9,
+      "needs-review": 6,
+      "wrong-version": 2,
+      "no-match": 4,
+      "missing-preview": 0
+    },
+    "Trip Hop": {
+      "total": 29,
+      "verified": 24,
+      "needs-review": 3,
+      "wrong-version": 0,
+      "no-match": 2,
+      "missing-preview": 0
+    },
+    "UK Garage": {
+      "total": 9,
+      "verified": 7,
+      "needs-review": 0,
+      "wrong-version": 2,
+      "no-match": 0,
+      "missing-preview": 0
+    },
+    "World Music": {
+      "total": 10,
+      "verified": 7,
+      "needs-review": 1,
+      "wrong-version": 2,
+      "no-match": 0,
+      "missing-preview": 0
+    }
+  },
+  "unverified": [
     {
       "id": 16,
       "artist": "Rhythm Is Rhythm",
-      "title": "Strings of Life",
-      "reason": "Nessuna corrispondenza esatta; trovati soltanto candidati ambigui",
-      "status": "doubtful",
-      "doubtfulCandidates": [
-        {
-          "appleTrackId": 1678920653,
-          "appleArtistName": "Derrick May, Mayday & Rhythim Is Rhythim",
-          "appleTrackName": "Strings Of Life",
-          "appleCollectionName": "Innovator - Soundtrack for the Tenth Planet"
-        },
-        {
-          "appleTrackId": 1769539868,
-          "appleArtistName": "Roger Bonner",
-          "appleTrackName": "Strings of Life",
-          "appleCollectionName": "French Kiss"
-        },
-        {
-          "appleTrackId": 1804523655,
-          "appleArtistName": "Derrick May",
-          "appleTrackName": "Strings of Life",
-          "appleCollectionName": "Innovator"
-        },
-        {
-          "appleTrackId": 1159323173,
-          "appleArtistName": "Graeme Park, Mike Pickering, Manchester Camerata & Tim Crooks",
-          "appleTrackName": "Strings of Life",
-          "appleCollectionName": "Haçienda Classiçal"
-        },
-        {
-          "appleTrackId": 1116317523,
-          "appleArtistName": "Carl Hanaghan",
-          "appleTrackName": "Strings of Life",
-          "appleCollectionName": "Strings of Life - Single"
-        },
-        {
-          "appleTrackId": 1714003588,
-          "appleArtistName": "Mr Thela",
-          "appleTrackName": "Strings of Life",
-          "appleCollectionName": "Tronics Land Series 2"
-        },
-        {
-          "appleTrackId": 1540823187,
-          "appleArtistName": "Christian Prommer's Drumlesson",
-          "appleTrackName": "Strings of Life",
-          "appleCollectionName": "Drum Lesson, Vol. 1"
-        },
-        {
-          "appleTrackId": 762633308,
-          "appleArtistName": "The Williams Fairey Brass Band",
-          "appleTrackName": "Strings of Life",
-          "appleCollectionName": "Acid Brass"
-        }
-      ],
-      "failedPreviews": []
+      "requestedTitle": "Strings of Life",
+      "genre": "Detroit Techno",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1678920653,
+        "artist": "Derrick May, Mayday & Rhythim Is Rhythim",
+        "title": "Strings Of Life",
+        "album": "Innovator - Soundtrack for the Tenth Planet"
+      }
     },
     {
       "id": 19,
       "artist": "Crystal Waters",
-      "title": "Gypsy Woman",
-      "reason": "Nessuna corrispondenza esatta; trovati soltanto candidati ambigui",
-      "status": "doubtful",
-      "doubtfulCandidates": [
-        {
-          "appleTrackId": 1443855823,
-          "appleArtistName": "Crystal Waters",
-          "appleTrackName": "Gypsy Woman (She's Homeless) (La Da Dee La Da Da) [Basement Boy Strip To The Bone Mix]",
-          "appleCollectionName": "Surprise"
-        },
-        {
-          "appleTrackId": 1434891369,
-          "appleArtistName": "Crystal Waters",
-          "appleTrackName": "Gypsy Woman (She's Homeless) (La Da Dee La Da Da) [Basement Boy Strip To The Bone Mix]",
-          "appleCollectionName": "The Best of Crystal Waters"
-        },
-        {
-          "appleTrackId": 1442830104,
-          "appleArtistName": "Crystal Waters",
-          "appleTrackName": "Gypsy Woman (She's Homeless) [Radio Mix]",
-          "appleCollectionName": "Music for Girls Night Out"
-        },
-        {
-          "appleTrackId": 1443855501,
-          "appleArtistName": "Crystal Waters",
-          "appleTrackName": "Gypsy Woman (She's Homeless) (La Da Dee La Da Da) [Radio Mix]",
-          "appleCollectionName": "Surprise"
-        },
-        {
-          "appleTrackId": 1483162376,
-          "appleArtistName": "Crystal Waters",
-          "appleTrackName": "Gypsy Woman (She's Homeless) [Re-Recorded]",
-          "appleCollectionName": "Gypsy Woman (She's Homeless) Best Of - EP"
-        },
-        {
-          "appleTrackId": 184277928,
-          "appleArtistName": "Crystal Waters",
-          "appleTrackName": "Gypsy Woman (Dj Teddy Douglas Re-edit)",
-          "appleCollectionName": "Basement Boys Productions: Anthology"
-        },
-        {
-          "appleTrackId": 1703888952,
-          "appleArtistName": "Crystal Waters",
-          "appleTrackName": "Gypsy Woman (She's Homeless) (La Da Dee La Da Da) [Radio Edit]",
-          "appleCollectionName": "Gypsy Woman The Collection"
-        },
-        {
-          "appleTrackId": 1443534118,
-          "appleArtistName": "Crystal Waters",
-          "appleTrackName": "Gypsy Woman (She's Homeless) [RobbieG Remix] [Radio Edit]",
-          "appleCollectionName": "Remix The Classics, Vol. 1"
-        }
-      ],
-      "failedPreviews": []
+      "requestedTitle": "Gypsy Woman",
+      "genre": "House",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1443855823,
+        "artist": "Crystal Waters",
+        "title": "Gypsy Woman (She's Homeless) (La Da Dee La Da Da) [Basement Boy Strip To The Bone Mix]",
+        "album": "Surprise"
+      }
     },
     {
       "id": 23,
       "artist": "Modjo",
-      "title": "Lady (Hear Me Tonight)",
-      "reason": "Apple Search temporaneamente non disponibile dopo i retry",
-      "status": "excluded",
-      "doubtfulCandidates": [],
-      "failedPreviews": []
+      "requestedTitle": "Lady (Hear Me Tonight)",
+      "genre": "French House",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
     },
     {
       "id": 26,
       "artist": "DJ Falcon & Thomas Bangalter",
-      "title": "Together",
-      "reason": "Nessuna corrispondenza Apple Music/iTunes",
-      "status": "excluded",
-      "doubtfulCandidates": [],
-      "failedPreviews": []
+      "requestedTitle": "Together",
+      "genre": "French House",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
     },
     {
       "id": 27,
       "artist": "Motorbass",
-      "title": "Pansoul",
-      "reason": "Nessuna corrispondenza Apple Music/iTunes",
-      "status": "excluded",
-      "doubtfulCandidates": [],
-      "failedPreviews": []
-    },
-    {
-      "id": 32,
-      "artist": "DJ Shadow",
-      "title": "Midnight in a Perfect World",
-      "reason": "Apple Search temporaneamente non disponibile dopo i retry",
-      "status": "excluded",
-      "doubtfulCandidates": [],
-      "failedPreviews": []
-    },
-    {
-      "id": 44,
-      "artist": "Yazoo",
-      "title": "Don't Go",
-      "reason": "fetch failed",
-      "status": "excluded",
-      "doubtfulCandidates": [],
-      "failedPreviews": []
-    },
-    {
-      "id": 45,
-      "artist": "OMD",
-      "title": "Enola Gay",
-      "reason": "Nessuna corrispondenza esatta; trovati soltanto candidati ambigui",
-      "status": "doubtful",
-      "doubtfulCandidates": [
-        {
-          "appleTrackId": 714776989,
-          "appleArtistName": "Orchestral Manoeuvres In the Dark",
-          "appleTrackName": "Enola Gay",
-          "appleCollectionName": "Organisation"
-        },
-        {
-          "appleTrackId": 714551817,
-          "appleArtistName": "Orchestral Manoeuvres In the Dark",
-          "appleTrackName": "Enola Gay",
-          "appleCollectionName": "The Best Of Orchestral Manoeuvres In The Dark"
-        },
-        {
-          "appleTrackId": 723878520,
-          "appleArtistName": "Orchestral Manoeuvres In The Dark",
-          "appleTrackName": "Enola Gay",
-          "appleCollectionName": "The Peel Sessions: 1979-1983"
-        },
-        {
-          "appleTrackId": 723469579,
-          "appleArtistName": "Orchestral Manoeuvres In the Dark",
-          "appleTrackName": "Enola Gay",
-          "appleCollectionName": "80's - The Platinum Collection"
-        },
-        {
-          "appleTrackId": 1475851454,
-          "appleArtistName": "Orchestral Manoeuvres In the Dark",
-          "appleTrackName": "Enola Gay (Remastered 2019)",
-          "appleCollectionName": "Souvenir"
-        },
-        {
-          "appleTrackId": 714787294,
-          "appleArtistName": "Orchestral Manoeuvres In the Dark",
-          "appleTrackName": "Enola Gay",
-          "appleCollectionName": "The OMD Singles"
-        },
-        {
-          "appleTrackId": 1514700166,
-          "appleArtistName": "Orchestral Manoeuvres In the Dark",
-          "appleTrackName": "Enola Gay",
-          "appleCollectionName": "Waltz With Bashir (Original Motion Picture Soundtrack)"
-        },
-        {
-          "appleTrackId": 689265184,
-          "appleArtistName": "Orchestral Manoeuvres In the Dark",
-          "appleTrackName": "Enola Gay",
-          "appleCollectionName": "Best of British: Classic Hits from the 80s, 90s and 00s"
-        }
-      ],
-      "failedPreviews": []
-    },
-    {
-      "id": 61,
-      "artist": "The Brand New Heavies",
-      "title": "Dream on Dreamer",
-      "reason": "fetch failed",
-      "status": "excluded",
-      "doubtfulCandidates": [],
-      "failedPreviews": []
+      "requestedTitle": "Pansoul",
+      "genre": "French House",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
     },
     {
       "id": 105,
       "artist": "Kerri Chandler",
-      "title": "Atmosphere",
-      "reason": "Nessuna corrispondenza esatta; trovati soltanto candidati ambigui",
-      "status": "doubtful",
-      "doubtfulCandidates": [
-        {
-          "appleTrackId": 1822363433,
-          "appleArtistName": "Kerri Chandler",
-          "appleTrackName": "Atmosphere (The Lost Dubs)",
-          "appleCollectionName": "Atmosphere (The Lost Dubs) - Single"
-        },
-        {
-          "appleTrackId": 359077809,
-          "appleArtistName": "Kerri Chandler",
-          "appleTrackName": "Rain",
-          "appleCollectionName": "Rain"
-        },
-        {
-          "appleTrackId": 365303269,
-          "appleArtistName": "Kerri Chandler",
-          "appleTrackName": "My Old Friend",
-          "appleCollectionName": "My Old Friend / We Can - EP"
-        },
-        {
-          "appleTrackId": 1732069265,
-          "appleArtistName": "Kerri Chandler",
-          "appleTrackName": "Bar a Thym (Extended Mix)",
-          "appleCollectionName": "Essentials"
-        },
-        {
-          "appleTrackId": 1532280317,
-          "appleArtistName": "Kerri Chandler",
-          "appleTrackName": "You're in My System (Mixed)",
-          "appleCollectionName": "Defected: Sam Divine in Ibiza, Oct 4, 2019 (DJ Mix)"
-        },
-        {
-          "appleTrackId": 1822372308,
-          "appleArtistName": "Kerri Chandler",
-          "appleTrackName": "Atmospheric Beats",
-          "appleCollectionName": "Atmospheric Beats - Single"
-        },
-        {
-          "appleTrackId": 1623380541,
-          "appleArtistName": "Kerri Chandler",
-          "appleTrackName": "Change Your Mind (District 8) [Full Vocal] [feat. Troy Denari]",
-          "appleCollectionName": "Change Your Mind (District 8) [feat. Troy Denari] - Single"
-        }
-      ],
-      "failedPreviews": []
+      "requestedTitle": "Atmosphere",
+      "genre": "Deep House",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1822363433,
+        "artist": "Kerri Chandler",
+        "title": "Atmosphere (The Lost Dubs)",
+        "album": "Atmosphere (The Lost Dubs) - Single"
+      }
     },
     {
       "id": 107,
       "artist": "Larry Heard",
-      "title": "The Sun Can't Compare",
-      "reason": "Nessuna corrispondenza esatta; trovati soltanto candidati ambigui",
-      "status": "doubtful",
-      "doubtfulCandidates": [
-        {
-          "appleTrackId": 698064806,
-          "appleArtistName": "Larry Heard",
-          "appleTrackName": "The Sun Can't Compare (Long Version) [Mr. White Presents Larry Heard]",
-          "appleCollectionName": "Tapes"
-        }
-      ],
-      "failedPreviews": []
+      "requestedTitle": "The Sun Can't Compare",
+      "genre": "Deep House",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 698064806,
+        "artist": "Larry Heard",
+        "title": "The Sun Can't Compare (Long Version) [Mr. White Presents Larry Heard]",
+        "album": "Tapes"
+      }
     },
     {
       "id": 110,
       "artist": "Juan Atkins",
-      "title": "No UFO's",
-      "reason": "Nessuna corrispondenza Apple Music/iTunes",
-      "status": "excluded",
-      "doubtfulCandidates": [],
-      "failedPreviews": []
+      "requestedTitle": "No UFO's",
+      "genre": "Detroit Techno",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
     },
     {
       "id": 113,
       "artist": "Kevin Saunderson",
-      "title": "Rock to the Beat",
-      "reason": "Nessuna corrispondenza esatta; trovati soltanto candidati ambigui",
-      "status": "doubtful",
-      "doubtfulCandidates": [
-        {
-          "appleTrackId": 1239814153,
-          "appleArtistName": "Kevin Saunderson & E-Dancer",
-          "appleTrackName": "Rock to the Beat",
-          "appleCollectionName": "Heavenly Revisited"
-        },
-        {
-          "appleTrackId": 395676049,
-          "appleArtistName": "Kevin Saunderson",
-          "appleTrackName": "Rock to the Beat (Christian Smith & John Selway Remix)",
-          "appleCollectionName": "History Elevate - Remixed"
-        },
-        {
-          "appleTrackId": 1695548006,
-          "appleArtistName": "Reese & Kevin Saunderson",
-          "appleTrackName": "Rock to the Beat",
-          "appleCollectionName": "Rock to the Beat - EP"
-        },
-        {
-          "appleTrackId": 1695552317,
-          "appleArtistName": "Reese & Kevin Saunderson",
-          "appleTrackName": "Rock to the Beat",
-          "appleCollectionName": "Faces and Phases"
-        },
-        {
-          "appleTrackId": 395676047,
-          "appleArtistName": "Kevin Saunderson",
-          "appleTrackName": "Rock to the Beat (Ben Sims Remix)",
-          "appleCollectionName": "History Elevate - Remixed"
-        },
-        {
-          "appleTrackId": 1792914672,
-          "appleArtistName": "Kevin Saunderson",
-          "appleTrackName": "Rock To The Beat (Ben Sims Remix)",
-          "appleCollectionName": "History Elevate Remixed"
-        },
-        {
-          "appleTrackId": 1792914676,
-          "appleArtistName": "Kevin Saunderson",
-          "appleTrackName": "Rock To The Beat (Christian Smith & John Selway Remix)",
-          "appleCollectionName": "History Elevate Remixed"
-        },
-        {
-          "appleTrackId": 1707555518,
-          "appleArtistName": "Kevin Saunderson & E-Dancer",
-          "appleTrackName": "Rock to the Beat",
-          "appleCollectionName": "The Best of Kms Classics, Pt. 2"
-        }
-      ],
-      "failedPreviews": []
+      "requestedTitle": "Rock to the Beat",
+      "genre": "Detroit Techno",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1239814153,
+        "artist": "Kevin Saunderson & E-Dancer",
+        "title": "Rock to the Beat",
+        "album": "Heavenly Revisited"
+      }
     },
     {
       "id": 114,
       "artist": "Underground Resistance",
-      "title": "The Final Frontier",
-      "reason": "Nessuna corrispondenza esatta; trovati soltanto candidati ambigui",
-      "status": "doubtful",
-      "doubtfulCandidates": [
-        {
-          "appleTrackId": 1586597146,
-          "appleArtistName": "Underground Resistance",
-          "appleTrackName": "The Final Frontier (Nomadico Remix)",
-          "appleCollectionName": "Tresor 30"
-        },
-        {
-          "appleTrackId": 1651716416,
-          "appleArtistName": "Underground Resistance",
-          "appleTrackName": "The Final Frontier (Nomadico Remix) [Mixed]",
-          "appleCollectionName": "Boiler Room: Josey Rebelle at Dekmantel, Amsterdam, Aug 5, 2022 (DJ Mix)"
-        },
-        {
-          "appleTrackId": 1725046887,
-          "appleArtistName": "Underground Resistance",
-          "appleTrackName": "The Final Frontier (Nomadico Remix) [Mixed]",
-          "appleCollectionName": "Beats In Space 125: Silent Servant (DJ Mix)"
-        }
-      ],
-      "failedPreviews": []
+      "requestedTitle": "The Final Frontier",
+      "genre": "Detroit Techno",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1586597146,
+        "artist": "Underground Resistance",
+        "title": "The Final Frontier (Nomadico Remix)",
+        "album": "Tresor 30"
+      }
     },
     {
       "id": 116,
       "artist": "Robert Hood",
-      "title": "Minimal Nation",
-      "reason": "Nessuna corrispondenza esatta; trovati soltanto candidati ambigui",
-      "status": "doubtful",
-      "doubtfulCandidates": [
-        {
-          "appleTrackId": 316706660,
-          "appleArtistName": "Robert Hood",
-          "appleTrackName": "SH-101",
-          "appleCollectionName": "Minimal Nation"
-        },
-        {
-          "appleTrackId": 316706655,
-          "appleArtistName": "Robert Hood",
-          "appleTrackName": "Museum",
-          "appleCollectionName": "Minimal Nation"
-        },
-        {
-          "appleTrackId": 316706666,
-          "appleArtistName": "Robert Hood",
-          "appleTrackName": "Ride",
-          "appleCollectionName": "Minimal Nation"
-        },
-        {
-          "appleTrackId": 316706662,
-          "appleArtistName": "Robert Hood",
-          "appleTrackName": "Unix",
-          "appleCollectionName": "Minimal Nation"
-        },
-        {
-          "appleTrackId": 316706654,
-          "appleArtistName": "Robert Hood",
-          "appleTrackName": "One Touch",
-          "appleCollectionName": "Minimal Nation"
-        },
-        {
-          "appleTrackId": 316706661,
-          "appleArtistName": "Robert Hood",
-          "appleTrackName": "Rhythm of Vision",
-          "appleCollectionName": "Minimal Nation"
-        },
-        {
-          "appleTrackId": 316706676,
-          "appleArtistName": "Robert Hood",
-          "appleTrackName": "Rhythm of Vision",
-          "appleCollectionName": "Minimal Nation"
-        },
-        {
-          "appleTrackId": 316706675,
-          "appleArtistName": "Robert Hood",
-          "appleTrackName": "Sleep Cycle",
-          "appleCollectionName": "Minimal Nation"
-        }
-      ],
-      "failedPreviews": []
+      "requestedTitle": "Minimal Nation",
+      "genre": "Detroit Techno",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 316706660,
+        "artist": "Robert Hood",
+        "title": "SH-101",
+        "album": "Minimal Nation"
+      }
     },
     {
       "id": 127,
       "artist": "Mr. Lee",
-      "title": "Acid Fantaslee",
-      "reason": "Nessuna corrispondenza esatta; trovati soltanto candidati ambigui",
-      "status": "doubtful",
-      "doubtfulCandidates": [
-        {
-          "appleTrackId": 1601917411,
-          "appleArtistName": "Mr. Lee",
-          "appleTrackName": "Acid Pump Up",
-          "appleCollectionName": "The Acid Fantaslee - Single"
-        },
-        {
-          "appleTrackId": 1601917401,
-          "appleArtistName": "Mr. Lee",
-          "appleTrackName": "Art Of Acid",
-          "appleCollectionName": "The Acid Fantaslee - Single"
-        },
-        {
-          "appleTrackId": 1601917407,
-          "appleArtistName": "Mr. Lee",
-          "appleTrackName": "Feels Good",
-          "appleCollectionName": "The Acid Fantaslee - Single"
-        }
-      ],
-      "failedPreviews": []
+      "requestedTitle": "Acid Fantaslee",
+      "genre": "Acid House",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1601917411,
+        "artist": "Mr. Lee",
+        "title": "Acid Pump Up",
+        "album": "The Acid Fantaslee - Single"
+      }
     },
     {
       "id": 128,
       "artist": "Thomas Bangalter",
-      "title": "Trax on da Rocks",
-      "reason": "Nessuna corrispondenza Apple Music/iTunes",
-      "status": "excluded",
-      "doubtfulCandidates": [],
-      "failedPreviews": []
+      "requestedTitle": "Trax on da Rocks",
+      "genre": "French House",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
     },
     {
       "id": 132,
       "artist": "Pepe Bradock",
-      "title": "Deep Burnt",
-      "reason": "Nessuna corrispondenza Apple Music/iTunes",
-      "status": "excluded",
-      "doubtfulCandidates": [],
-      "failedPreviews": []
-    },
-    {
-      "id": 144,
-      "artist": "So Solid Crew",
-      "title": "21 Seconds",
-      "reason": "Nessuna corrispondenza esatta; trovati soltanto candidati ambigui",
-      "status": "doubtful",
-      "doubtfulCandidates": [
-        {
-          "appleTrackId": 1458134056,
-          "appleArtistName": "So Solid Crew",
-          "appleTrackName": "21 Seconds (12\" Version)",
-          "appleCollectionName": "21 Seconds - Single"
-        },
-        {
-          "appleTrackId": 1503425406,
-          "appleArtistName": "So Solid Crew",
-          "appleTrackName": "21 Seconds (12\" Version)",
-          "appleCollectionName": "21 Seconds - Single"
-        },
-        {
-          "appleTrackId": 1479239163,
-          "appleArtistName": "DJ Spoony",
-          "appleTrackName": "21 Seconds (feat. So Solid Crew)",
-          "appleCollectionName": "Garage Classical"
-        },
-        {
-          "appleTrackId": 1503425407,
-          "appleArtistName": "So Solid Crew",
-          "appleTrackName": "21 Seconds (Live Acoustic at BBC Radio 1, 2001)",
-          "appleCollectionName": "21 Seconds - Single"
-        },
-        {
-          "appleTrackId": 1503425040,
-          "appleArtistName": "So Solid Crew",
-          "appleTrackName": "21 Seconds (Drum ‘n’ Bass Remix)",
-          "appleCollectionName": "21 Seconds - Single"
-        },
-        {
-          "appleTrackId": 1503425041,
-          "appleArtistName": "So Solid Crew",
-          "appleTrackName": "21 Seconds (Live at BBC Radio 1 Lamacq, 2002)",
-          "appleCollectionName": "21 Seconds - Single"
-        },
-        {
-          "appleTrackId": 1458134060,
-          "appleArtistName": "So Solid Crew",
-          "appleTrackName": "21 Seconds (DJ Swiss & Dan Da Man Remix Vocal)",
-          "appleCollectionName": "21 Seconds - Single"
-        },
-        {
-          "appleTrackId": 1503425042,
-          "appleArtistName": "So Solid Crew",
-          "appleTrackName": "21 Seconds (DJ Swiss & Dan Da Man Remix Vocal)",
-          "appleCollectionName": "21 Seconds - Single"
-        }
-      ],
-      "failedPreviews": []
-    },
-    {
-      "id": 145,
-      "artist": "Zed Bias",
-      "title": "Neighbourhood",
-      "reason": "Nessuna corrispondenza esatta; trovati soltanto candidati ambigui",
-      "status": "doubtful",
-      "doubtfulCandidates": [
-        {
-          "appleTrackId": 252852984,
-          "appleArtistName": "Zed Bias",
-          "appleTrackName": "Neighbourhood (Radio Mix)",
-          "appleCollectionName": "Neighbourhood - EP"
-        },
-        {
-          "appleTrackId": 252853170,
-          "appleArtistName": "Zed Bias",
-          "appleTrackName": "Neighbourhood (Steve Gurley Vocal Mix)",
-          "appleCollectionName": "Neighbourhood - EP"
-        },
-        {
-          "appleTrackId": 1747614507,
-          "appleArtistName": "Zed Bias",
-          "appleTrackName": "Neighbourhood (Roska Remix) [Mixed]",
-          "appleCollectionName": "The Warehouse Project: UP YA ARCHIVES with Skream, Dec 8, 2023 (DJ Mix)"
-        },
-        {
-          "appleTrackId": 1510803728,
-          "appleArtistName": "Zed Bias",
-          "appleTrackName": "Neighbourhood (Instrumental)",
-          "appleCollectionName": "From the Vaults: Rare UKG 1998 - 2002"
-        },
-        {
-          "appleTrackId": 1544356904,
-          "appleArtistName": "Zed Bias",
-          "appleTrackName": "Neighbourhood (Radio Mix)",
-          "appleCollectionName": "Neighbourhood - Single"
-        },
-        {
-          "appleTrackId": 252853406,
-          "appleArtistName": "Zed Bias",
-          "appleTrackName": "Neighbourhood (Digital Souls Vocal Mix)",
-          "appleCollectionName": "Neighbourhood - EP"
-        },
-        {
-          "appleTrackId": 1640288302,
-          "appleArtistName": "Zed Bias",
-          "appleTrackName": "Neighbourhood (Steve Gurley Vocal Mix) [Mixed]",
-          "appleCollectionName": "The Agenda: August 2022 (DJ Mix)"
-        },
-        {
-          "appleTrackId": 1553337329,
-          "appleArtistName": "Zed Bias",
-          "appleTrackName": "Neighbourhood (El-B Remix) [Mixed]",
-          "appleCollectionName": "Boiler Room: Wookie in London, Mar 26, 2016 (DJ Mix)"
-        }
-      ],
-      "failedPreviews": []
-    },
-    {
-      "id": 163,
-      "artist": "Röyksopp",
-      "title": "Remind Me",
-      "reason": "Apple Search temporaneamente non disponibile dopo i retry",
-      "status": "excluded",
-      "doubtfulCandidates": [],
-      "failedPreviews": []
-    },
-    {
-      "id": 174,
-      "artist": "LTJ Bukem",
-      "title": "Horizons",
-      "reason": "Nessuna corrispondenza esatta; trovati soltanto candidati ambigui",
-      "status": "doubtful",
-      "doubtfulCandidates": [
-        {
-          "appleTrackId": 595853839,
-          "appleArtistName": "LTJ Bukem",
-          "appleTrackName": "Demons Theme",
-          "appleCollectionName": "Producer 01"
-        },
-        {
-          "appleTrackId": 606491126,
-          "appleArtistName": "LTJ Bukem",
-          "appleTrackName": "Atlantis (I Need You)",
-          "appleCollectionName": "Atlantis (Marky & S.P.Y. Rework)"
-        },
-        {
-          "appleTrackId": 1625800271,
-          "appleArtistName": "LTJ Bukem",
-          "appleTrackName": "Music",
-          "appleCollectionName": "Hardcore Energy - Volume One"
-        }
-      ],
-      "failedPreviews": []
-    },
-    {
-      "id": 175,
-      "artist": "Roni Size / Reprazent",
-      "title": "Brown Paper Bag",
-      "reason": "Nessuna corrispondenza esatta; trovati soltanto candidati ambigui",
-      "status": "doubtful",
-      "doubtfulCandidates": [
-        {
-          "appleTrackId": 1443805498,
-          "appleArtistName": "Roni Size & Reprazent",
-          "appleTrackName": "Brown Paper Bag",
-          "appleCollectionName": "Roni Size Reprazent - New Forms, Vol. 2 (Remastered)"
-        },
-        {
-          "appleTrackId": 1669463175,
-          "appleArtistName": "Roni Size & Reprazent",
-          "appleTrackName": "Brown Paper Bag",
-          "appleCollectionName": "New Forms (20th Anniversary Edition)"
-        },
-        {
-          "appleTrackId": 1821187795,
-          "appleArtistName": "Roni Size & Reprazent",
-          "appleTrackName": "Brown Paper Bag",
-          "appleCollectionName": "Brown Paper Bag (Remixes)"
-        },
-        {
-          "appleTrackId": 1407704505,
-          "appleArtistName": "Reprazent & Roni Size",
-          "appleTrackName": "Brown Paper Bag (feat. William Goodchild & The Emerald Ensemble)",
-          "appleCollectionName": "Live at Colston Hall (feat. William Goodchild & the Emerald Ensemble)"
-        },
-        {
-          "appleTrackId": 1481862075,
-          "appleArtistName": "Roni Size & Reprazent",
-          "appleTrackName": "Brown Paper Bag",
-          "appleCollectionName": "Goldie - Drum & Bass Life"
-        },
-        {
-          "appleTrackId": 1443413502,
-          "appleArtistName": "Roni Size & Reprazent",
-          "appleTrackName": "Brown Paper Bag",
-          "appleCollectionName": "Clubbed To Death"
-        },
-        {
-          "appleTrackId": 1481851198,
-          "appleArtistName": "Roni Size & Reprazent",
-          "appleTrackName": "Brown Paper Bag",
-          "appleCollectionName": "Goldie: Drum & Bass Life"
-        }
-      ],
-      "failedPreviews": []
-    },
-    {
-      "id": 177,
-      "artist": "Adam F",
-      "title": "Circles",
-      "reason": "Nessuna corrispondenza esatta; trovati soltanto candidati ambigui",
-      "status": "doubtful",
-      "doubtfulCandidates": [
-        {
-          "appleTrackId": 1614741091,
-          "appleArtistName": "Adam F",
-          "appleTrackName": "Circles (7'' Edit)",
-          "appleCollectionName": "Rave Classics"
-        },
-        {
-          "appleTrackId": 1695796722,
-          "appleArtistName": "Adam F",
-          "appleTrackName": "Circles (Mixed)",
-          "appleCollectionName": "Rewind: The Classic Jungle Experience (DJ Mix)"
-        },
-        {
-          "appleTrackId": 1850548485,
-          "appleArtistName": "Adam F",
-          "appleTrackName": "Circles (Pola & Bryson Remix) [Mixed]",
-          "appleCollectionName": "Live from Lyon, France, Oct 24, 2025 (DJ Mix)"
-        },
-        {
-          "appleTrackId": 1690231199,
-          "appleArtistName": "Adam F",
-          "appleTrackName": "Circles (Oppidan Edit) [Mixed]",
-          "appleCollectionName": "Pride 2023 (DJ Mix)"
-        },
-        {
-          "appleTrackId": 1586186112,
-          "appleArtistName": "Adam F",
-          "appleTrackName": "Circles (Mixed)",
-          "appleCollectionName": "FABRICLIVE 39: DJ Yoda (DJ Mix)"
-        },
-        {
-          "appleTrackId": 1682974466,
-          "appleArtistName": "Adam F",
-          "appleTrackName": "Circles (Mixed)",
-          "appleCollectionName": "Fitness: Ride, April 2023 (DJ Mix)"
-        },
-        {
-          "appleTrackId": 1703326272,
-          "appleArtistName": "Adam F",
-          "appleTrackName": "Circles (Edit) [Mixed]",
-          "appleCollectionName": "Live from Lost Village 2021: Four Tet (DJ Mix)"
-        },
-        {
-          "appleTrackId": 1715083068,
-          "appleArtistName": "Adam F",
-          "appleTrackName": "Circles (Oppidan Remix) [Mixed]",
-          "appleCollectionName": "Higgo: Live from The Ton Of Brix, London, Oct 6, 2023 (DJ Mix)"
-        }
-      ],
-      "failedPreviews": []
-    },
-    {
-      "id": 178,
-      "artist": "Shy FX",
-      "title": "Original Nuttah",
-      "reason": "Nessuna corrispondenza esatta; trovati soltanto candidati ambigui",
-      "status": "doubtful",
-      "doubtfulCandidates": [
-        {
-          "appleTrackId": 1853701733,
-          "appleArtistName": "Shy FX",
-          "appleTrackName": "Original Nuttah (feat. Uk Apache) [Mixed]",
-          "appleCollectionName": "Shogun Sessions: Flava D (DJ Mix)"
-        },
-        {
-          "appleTrackId": 219349890,
-          "appleArtistName": "UK Apachi",
-          "appleTrackName": "Original Nuttah",
-          "appleCollectionName": "Jungle - The Sound of the Underground"
-        }
-      ],
-      "failedPreviews": []
+      "requestedTitle": "Deep Burnt",
+      "genre": "French House",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
     },
     {
       "id": 204,
       "artist": "Arthur Russell",
-      "title": "Is It All Over My Face",
-      "reason": "Nessuna corrispondenza esatta; trovati soltanto candidati ambigui",
-      "status": "doubtful",
-      "doubtfulCandidates": [
-        {
-          "appleTrackId": 6767675097,
-          "appleArtistName": "Arthur Russell",
-          "appleTrackName": "I Couldn't Say It To Your Face",
-          "appleCollectionName": "Love Is Overtaking Me (Redux)"
-        },
-        {
-          "appleTrackId": 1481139685,
-          "appleArtistName": "Arthur Russell",
-          "appleTrackName": "I Kissed the Girl from Outer Space",
-          "appleCollectionName": "Iowa Dream"
-        },
-        {
-          "appleTrackId": 6767675405,
-          "appleArtistName": "Arthur Russell",
-          "appleTrackName": "Big Moon",
-          "appleCollectionName": "Love Is Overtaking Me (Redux)"
-        },
-        {
-          "appleTrackId": 6767674934,
-          "appleArtistName": "Arthur Russell",
-          "appleTrackName": "Oh Fernanda Why",
-          "appleCollectionName": "Love Is Overtaking Me (Redux)"
-        },
-        {
-          "appleTrackId": 1481139355,
-          "appleArtistName": "Arthur Russell",
-          "appleTrackName": "I Still Love You",
-          "appleCollectionName": "Iowa Dream"
-        },
-        {
-          "appleTrackId": 905117687,
-          "appleArtistName": "Arthur Russell",
-          "appleTrackName": "Arm Around You",
-          "appleCollectionName": "Calling Out of Context"
-        },
-        {
-          "appleTrackId": 1554111562,
-          "appleArtistName": "Arthur Russell",
-          "appleTrackName": "Another Thought",
-          "appleCollectionName": "Another Thought"
-        },
-        {
-          "appleTrackId": 905117686,
-          "appleArtistName": "Arthur Russell",
-          "appleTrackName": "Calling Out of Context",
-          "appleCollectionName": "Calling Out of Context"
-        }
-      ],
-      "failedPreviews": []
+      "requestedTitle": "Is It All Over My Face",
+      "genre": "Post-disco",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 6767675097,
+        "artist": "Arthur Russell",
+        "title": "I Couldn't Say It To Your Face",
+        "album": "Love Is Overtaking Me (Redux)"
+      }
     },
     {
       "id": 207,
       "artist": "Alexander Robotnick",
-      "title": "Problèmes d'amour",
-      "reason": "Nessuna corrispondenza esatta; trovati soltanto candidati ambigui",
-      "status": "doubtful",
-      "doubtfulCandidates": [
-        {
-          "appleTrackId": 252197574,
-          "appleArtistName": "Alexander Robotnick",
-          "appleTrackName": "Problèmes d'amour (Original Version)",
-          "appleCollectionName": "Problèmes d'amour"
-        },
-        {
-          "appleTrackId": 252197641,
-          "appleArtistName": "Alexander Robotnick",
-          "appleTrackName": "Problèmes d'amour (USA Version)",
-          "appleCollectionName": "Problèmes d'amour"
-        },
-        {
-          "appleTrackId": 1646122881,
-          "appleArtistName": "Alexander Robotnick",
-          "appleTrackName": "Problèmes d'Amour (KDJ Edit)",
-          "appleCollectionName": "Problèmes d'Amour - EP (KDJ & Carl Craig Mixes)"
-        },
-        {
-          "appleTrackId": 252197847,
-          "appleArtistName": "Alexander Robotnick",
-          "appleTrackName": "Problèmes d'amour (Ah Ou Ah Version Bootleg)",
-          "appleCollectionName": "Problèmes d'amour"
-        },
-        {
-          "appleTrackId": 1646122880,
-          "appleArtistName": "Alexander Robotnick",
-          "appleTrackName": "Problèmes d'Amour (Live Version)",
-          "appleCollectionName": "Problèmes d'Amour - EP (KDJ & Carl Craig Mixes)"
-        },
-        {
-          "appleTrackId": 252197681,
-          "appleArtistName": "Alexander Robotnick",
-          "appleTrackName": "Problèmes d'amour (Underground)",
-          "appleCollectionName": "Problèmes d'amour"
-        },
-        {
-          "appleTrackId": 252197719,
-          "appleArtistName": "Alexander Robotnick",
-          "appleTrackName": "Problèmes d'amour (USA Original Version)",
-          "appleCollectionName": "Problèmes d'amour"
-        },
-        {
-          "appleTrackId": 252197632,
-          "appleArtistName": "Alexander Robotnick",
-          "appleTrackName": "Problèmes d'amour (Instrumental)",
-          "appleCollectionName": "Problèmes d'amour"
-        }
-      ],
-      "failedPreviews": []
+      "requestedTitle": "Problèmes d'amour",
+      "genre": "Italo Disco",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 252197574,
+        "artist": "Alexander Robotnick",
+        "title": "Problèmes d'amour (Original Version)",
+        "album": "Problèmes d'amour"
+      }
     },
     {
-      "id": 223,
-      "artist": "Cybotron",
-      "title": "Techno City",
-      "reason": "Nessuna corrispondenza esatta; trovati soltanto candidati ambigui",
-      "status": "doubtful",
-      "doubtfulCandidates": [
-        {
-          "appleTrackId": 1715390287,
-          "appleArtistName": "Cybotron",
-          "appleTrackName": "Techno City (7\" Mix)",
-          "appleCollectionName": "Enter (Deluxe Edition)"
-        },
-        {
-          "appleTrackId": 1715390278,
-          "appleArtistName": "Cybotron",
-          "appleTrackName": "Techno City (12\" Vocal)",
-          "appleCollectionName": "Enter (Deluxe Edition)"
-        },
-        {
-          "appleTrackId": 1715390284,
-          "appleArtistName": "Cybotron",
-          "appleTrackName": "Techno City (12\" Instrumental)",
-          "appleCollectionName": "Enter (Deluxe Edition)"
-        },
-        {
-          "appleTrackId": 1858697274,
-          "appleArtistName": "Cybotron",
-          "appleTrackName": "Techno City (7\" Mix)",
-          "appleCollectionName": "Upbeat Techno for Kids Parties"
-        }
-      ],
-      "failedPreviews": []
+      "id": 61,
+      "artist": "The Brand New Heavies",
+      "requestedTitle": "Dream on Dreamer",
+      "genre": "Acid Jazz",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 44,
+      "artist": "Yazoo",
+      "requestedTitle": "Don't Go",
+      "genre": "Synth-pop",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 45,
+      "artist": "OMD",
+      "requestedTitle": "Enola Gay",
+      "genre": "Synth-pop",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 714776989,
+        "artist": "Orchestral Manoeuvres In the Dark",
+        "title": "Enola Gay",
+        "album": "Organisation"
+      }
     },
     {
       "id": 228,
       "artist": "Peaches",
-      "title": "Fuck the Pain Away",
-      "reason": "Nessuna corrispondenza esatta; trovati soltanto candidati ambigui",
-      "status": "doubtful",
-      "doubtfulCandidates": [
-        {
-          "appleTrackId": 1885342614,
-          "appleArtistName": "The Cavaliers",
-          "appleTrackName": "Fuck the Pain Away",
-          "appleCollectionName": "Kill the Light"
-        },
-        {
-          "appleTrackId": 978438314,
-          "appleArtistName": "Dolores Haze",
-          "appleTrackName": "Fuck the Pain Away",
-          "appleCollectionName": "Accidental - EP"
-        },
-        {
-          "appleTrackId": 553392828,
-          "appleArtistName": "We Are Ghosts",
-          "appleTrackName": "Fuck the Pain Away",
-          "appleCollectionName": "We Are Ghosts II"
-        },
-        {
-          "appleTrackId": 1619554059,
-          "appleArtistName": "SystemGunner",
-          "appleTrackName": "Fuck the Pain Away",
-          "appleCollectionName": "Headache Spirit"
-        }
-      ],
-      "failedPreviews": []
-    },
-    {
-      "id": 256,
-      "artist": "A Guy Called Gerald",
-      "title": "Pacific State",
-      "reason": "Nessuna corrispondenza esatta; trovati soltanto candidati ambigui",
-      "status": "doubtful",
-      "doubtfulCandidates": [
-        {
-          "appleTrackId": 371278119,
-          "appleArtistName": "A Guy Called Gerald",
-          "appleTrackName": "Pacific Samba",
-          "appleCollectionName": "Tronic Jazz The Berlin Sessions"
-        }
-      ],
-      "failedPreviews": []
-    },
-    {
-      "id": 262,
-      "artist": "Sugarhill Gang",
-      "title": "Rapper's Delight",
-      "reason": "Nessuna corrispondenza esatta; trovati soltanto candidati ambigui",
-      "status": "doubtful",
-      "doubtfulCandidates": [
-        {
-          "appleTrackId": 1439469091,
-          "appleArtistName": "The Sugarhill Gang",
-          "appleTrackName": "Rapper's Delight",
-          "appleCollectionName": "The Best of Grandmaster Flash & Sugar Hill"
-        },
-        {
-          "appleTrackId": 1713815720,
-          "appleArtistName": "The Sugarhill Gang",
-          "appleTrackName": "Rapper's Delight",
-          "appleCollectionName": "Ultimate Party"
-        },
-        {
-          "appleTrackId": 1821161994,
-          "appleArtistName": "The Sugarhill Gang",
-          "appleTrackName": "Rapper's Delight",
-          "appleCollectionName": "Rapper's Delight - Single"
-        },
-        {
-          "appleTrackId": 1436478543,
-          "appleArtistName": "The Sugarhill Gang",
-          "appleTrackName": "Rapper's Delight",
-          "appleCollectionName": "The Sugarhill Gang - 30th Anniversary Edition (Expanded Version)"
-        },
-        {
-          "appleTrackId": 1834119297,
-          "appleArtistName": "The Sugarhill Gang",
-          "appleTrackName": "Rapper's Delight",
-          "appleCollectionName": "Essential Cuts"
-        },
-        {
-          "appleTrackId": 1439590676,
-          "appleArtistName": "The Sugarhill Gang",
-          "appleTrackName": "Rapper's Delight",
-          "appleCollectionName": "The Sugar Hill Hip-Hop Box Set"
-        },
-        {
-          "appleTrackId": 1439462062,
-          "appleArtistName": "The Sugarhill Gang",
-          "appleTrackName": "Rapper's Delight",
-          "appleCollectionName": "Sugar Hill Rap Classics - The Pioneers of Hip-Hop"
-        },
-        {
-          "appleTrackId": 1439112504,
-          "appleArtistName": "The Sugarhill Gang",
-          "appleTrackName": "Rapper's Delight",
-          "appleCollectionName": "Extend the 80s - Pop"
-        }
-      ],
-      "failedPreviews": []
-    },
-    {
-      "id": 263,
-      "artist": "Run-D.M.C.",
-      "title": "It's Like That",
-      "reason": "Nessuna corrispondenza esatta; trovati soltanto candidati ambigui",
-      "status": "doubtful",
-      "doubtfulCandidates": [
-        {
-          "appleTrackId": 253155669,
-          "appleArtistName": "Run-DMC & Jason Nevins",
-          "appleTrackName": "It's Like That",
-          "appleCollectionName": "The Best of Run–DMC"
-        },
-        {
-          "appleTrackId": 1498287844,
-          "appleArtistName": "Run-DMC",
-          "appleTrackName": "It's Like That",
-          "appleCollectionName": "Greatest Hits"
-        },
-        {
-          "appleTrackId": 256097956,
-          "appleArtistName": "Run-DMC",
-          "appleTrackName": "It's Like That",
-          "appleCollectionName": "Run-D.M.C."
-        },
-        {
-          "appleTrackId": 1498287917,
-          "appleArtistName": "Run-DMC",
-          "appleTrackName": "It's Like That",
-          "appleCollectionName": "The Essential Run DMC"
-        },
-        {
-          "appleTrackId": 281812958,
-          "appleArtistName": "Run-DMC",
-          "appleTrackName": "It's Like That",
-          "appleCollectionName": "RUN-DMC (Expanded Edition)"
-        },
-        {
-          "appleTrackId": 943232444,
-          "appleArtistName": "Run-DMC & Jason Nevins",
-          "appleTrackName": "It's Like That",
-          "appleCollectionName": "90s 100 Hits"
-        },
-        {
-          "appleTrackId": 312637994,
-          "appleArtistName": "RUN-DMC vs. Jason Nevins",
-          "appleTrackName": "It's Like That",
-          "appleCollectionName": "The Masters Series: Hip Hop"
-        },
-        {
-          "appleTrackId": 578034324,
-          "appleArtistName": "Run-DMC & Jason Nevins",
-          "appleTrackName": "It's Like That",
-          "appleCollectionName": "Party Hits"
-        }
-      ],
-      "failedPreviews": []
-    },
-    {
-      "id": 276,
-      "artist": "Elis Regina & Tom Jobim",
-      "title": "Águas de Março",
-      "reason": "Nessuna corrispondenza esatta; trovati soltanto candidati ambigui",
-      "status": "doubtful",
-      "doubtfulCandidates": [
-        {
-          "appleTrackId": 1438430509,
-          "appleArtistName": "Elis Regina & Antônio Carlos Jobim",
-          "appleTrackName": "Águas de Março",
-          "appleCollectionName": "Elis & Tom"
-        },
-        {
-          "appleTrackId": 1442677139,
-          "appleArtistName": "Antônio Carlos Jobim & Elis Regina",
-          "appleTrackName": "Águas de Março",
-          "appleCollectionName": "Elis Regina Sem Limite"
-        },
-        {
-          "appleTrackId": 1575795754,
-          "appleArtistName": "Elis Regina & Antônio Carlos Jobim",
-          "appleTrackName": "Águas De Março",
-          "appleCollectionName": "Personalidade"
-        },
-        {
-          "appleTrackId": 1457911052,
-          "appleArtistName": "Elis Regina & Antônio Carlos Jobim",
-          "appleTrackName": "Águas De Março",
-          "appleCollectionName": "Personalidade"
-        },
-        {
-          "appleTrackId": 1444964431,
-          "appleArtistName": "Elis Regina & Antônio Carlos Jobim",
-          "appleTrackName": "Águas de Março",
-          "appleCollectionName": "Their Greatest Hits"
-        },
-        {
-          "appleTrackId": 1425109871,
-          "appleArtistName": "Elis Regina & Antônio Carlos Jobim",
-          "appleTrackName": "Águas De Março",
-          "appleCollectionName": "The Girl From Ipanema: The Antonio Carlos Jobim Songbook"
-        },
-        {
-          "appleTrackId": 1434876882,
-          "appleArtistName": "Elis Regina & Antônio Carlos Jobim",
-          "appleTrackName": "Águas de Março",
-          "appleCollectionName": "Antonio Carlos Jobim's Finest Hour"
-        },
-        {
-          "appleTrackId": 6790584780,
-          "appleArtistName": "Elis Regina & Antônio Carlos Jobim",
-          "appleTrackName": "Águas De Março",
-          "appleCollectionName": "Fiesta 70s"
-        }
-      ],
-      "failedPreviews": []
-    },
-    {
-      "id": 283,
-      "artist": "Lonnie Liston Smith",
-      "title": "Expansions",
-      "reason": "Nessuna corrispondenza esatta; trovati soltanto candidati ambigui",
-      "status": "doubtful",
-      "doubtfulCandidates": [
-        {
-          "appleTrackId": 1621356613,
-          "appleArtistName": "Lonnie Liston Smith & The Cosmic Echoes",
-          "appleTrackName": "Expansions",
-          "appleCollectionName": "Expansions"
-        },
-        {
-          "appleTrackId": 1621358530,
-          "appleArtistName": "Lonnie Liston Smith & The Cosmic Echoes",
-          "appleTrackName": "Expansions",
-          "appleCollectionName": "Cosmic Funk & Spiritual Sounds: The Flying Dutchman Masters"
-        },
-        {
-          "appleTrackId": 1621366267,
-          "appleArtistName": "Lonnie Liston Smith",
-          "appleTrackName": "Expansions (7\" Edit)",
-          "appleCollectionName": "Expansions / A Chance for Peace - Single"
-        },
-        {
-          "appleTrackId": 1440947235,
-          "appleArtistName": "Lonnie Liston Smith & The Cosmic Echoes",
-          "appleTrackName": "Expansions",
-          "appleCollectionName": "Astral Travelin'"
-        },
-        {
-          "appleTrackId": 325526153,
-          "appleArtistName": "Lonnie Liston Smith",
-          "appleTrackName": "Rainbows of Love",
-          "appleCollectionName": "Dreams of Tomorrow"
-        },
-        {
-          "appleTrackId": 690570103,
-          "appleArtistName": "Danny Sadownick, J D Allen, Jack DeJohnette, Lucky Peterson, Nigel Kennedy, Raul Midon & Ron Carter",
-          "appleTrackName": "Expansions",
-          "appleCollectionName": "Blue Note Sessions"
-        },
-        {
-          "appleTrackId": 1621405336,
-          "appleArtistName": "Lonnie Liston Smith",
-          "appleTrackName": "Expansions (Live)",
-          "appleCollectionName": "Live!"
-        },
-        {
-          "appleTrackId": 1621386702,
-          "appleArtistName": "Lonnie Liston Smith",
-          "appleTrackName": "Expansions (7\" Edit)",
-          "appleCollectionName": "The World Needs Changing"
-        }
-      ],
-      "failedPreviews": []
-    },
-    {
-      "id": 284,
-      "artist": "Return to Forever",
-      "title": "Spain",
-      "reason": "Nessuna corrispondenza esatta; trovati soltanto candidati ambigui",
-      "status": "doubtful",
-      "doubtfulCandidates": [
-        {
-          "appleTrackId": 1443203937,
-          "appleArtistName": "Chick Corea & Return to Forever",
-          "appleTrackName": "Spain",
-          "appleCollectionName": "Light As a Feather"
-        },
-        {
-          "appleTrackId": 1442889502,
-          "appleArtistName": "Chick Corea & Return to Forever",
-          "appleTrackName": "Spain",
-          "appleCollectionName": "Jazz Rock - Verve 50"
-        },
-        {
-          "appleTrackId": 1443072140,
-          "appleArtistName": "Chick Corea & Return to Forever",
-          "appleTrackName": "Spain",
-          "appleCollectionName": "Verve Jazz Masters 3"
-        },
-        {
-          "appleTrackId": 1442796791,
-          "appleArtistName": "Chick Corea & Return to Forever",
-          "appleTrackName": "Spain",
-          "appleCollectionName": "The Definitive Collection: Chick Corea & Return to Forever"
-        },
-        {
-          "appleTrackId": 1632092187,
-          "appleArtistName": "Return to Forever",
-          "appleTrackName": "Spain (Molde) [Live]",
-          "appleCollectionName": "Molde & Frankfurt, 1972 (Live)"
-        },
-        {
-          "appleTrackId": 1573834551,
-          "appleArtistName": "Chick Corea & Return to Forever",
-          "appleTrackName": "Spain",
-          "appleCollectionName": "Jazz - Best Hits -"
-        },
-        {
-          "appleTrackId": 1705034216,
-          "appleArtistName": "Chick Corea & Return to Forever",
-          "appleTrackName": "Spain",
-          "appleCollectionName": "Jazz music to concentrate"
-        },
-        {
-          "appleTrackId": 1452804079,
-          "appleArtistName": "Chick Corea",
-          "appleTrackName": "Spain",
-          "appleCollectionName": "Light As a Feather"
-        }
-      ],
-      "failedPreviews": []
-    },
-    {
-      "id": 288,
-      "artist": "Alessandro Alessandroni",
-      "title": "Open Air Parade",
-      "reason": "Nessuna corrispondenza esatta; trovati soltanto candidati ambigui",
-      "status": "doubtful",
-      "doubtfulCandidates": [
-        {
-          "appleTrackId": 1750709421,
-          "appleArtistName": "Alessandro Alessandroni",
-          "appleTrackName": "Preludietto",
-          "appleCollectionName": "Open Air Parade"
-        },
-        {
-          "appleTrackId": 1750709439,
-          "appleArtistName": "Alessandro Alessandroni",
-          "appleTrackName": "Vocalisation",
-          "appleCollectionName": "Open Air Parade"
-        },
-        {
-          "appleTrackId": 1750709731,
-          "appleArtistName": "Alessandro Alessandroni",
-          "appleTrackName": "Arioso spirituale",
-          "appleCollectionName": "Open Air Parade"
-        },
-        {
-          "appleTrackId": 1750708541,
-          "appleArtistName": "Alessandro Alessandroni",
-          "appleTrackName": "Spiagge azzurre",
-          "appleCollectionName": "Open Air Parade"
-        },
-        {
-          "appleTrackId": 1750709072,
-          "appleArtistName": "Alessandro Alessandroni",
-          "appleTrackName": "Cielo verde",
-          "appleCollectionName": "Open Air Parade"
-        },
-        {
-          "appleTrackId": 1750708940,
-          "appleArtistName": "Alessandro Alessandroni",
-          "appleTrackName": "Aliante giallo",
-          "appleCollectionName": "Open Air Parade"
-        },
-        {
-          "appleTrackId": 1750709067,
-          "appleArtistName": "Alessandro Alessandroni",
-          "appleTrackName": "Marmittone",
-          "appleCollectionName": "Open Air Parade"
-        },
-        {
-          "appleTrackId": 1750709423,
-          "appleArtistName": "Alessandro Alessandroni",
-          "appleTrackName": "Parata n°2",
-          "appleCollectionName": "Open Air Parade"
-        }
-      ],
-      "failedPreviews": []
-    },
-    {
-      "id": 291,
-      "artist": "Franco Micalizzi",
-      "title": "Italia a mano armata",
-      "reason": "Apple Search temporaneamente non disponibile dopo i retry",
-      "status": "excluded",
-      "doubtfulCandidates": [],
-      "failedPreviews": []
+      "requestedTitle": "Fuck the Pain Away",
+      "genre": "Electroclash",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1885342614,
+        "artist": "The Cavaliers",
+        "title": "Fuck the Pain Away",
+        "album": "Kill the Light"
+      }
     },
     {
       "id": 295,
       "artist": "FKA twigs",
-      "title": "Two Weeks",
-      "reason": "Nessuna corrispondenza esatta; trovati soltanto candidati ambigui",
-      "status": "doubtful",
-      "doubtfulCandidates": [
-        {
-          "appleTrackId": 1028920704,
-          "appleArtistName": "FKA twigs",
-          "appleTrackName": "Glass & Patron",
-          "appleCollectionName": "M3LL155X - EP"
-        },
-        {
-          "appleTrackId": 1603753700,
-          "appleArtistName": "FKA twigs",
-          "appleTrackName": "minds of men",
-          "appleCollectionName": "CAPRISONGS"
-        },
-        {
-          "appleTrackId": 1842161733,
-          "appleArtistName": "FKA twigs",
-          "appleTrackName": "HARD",
-          "appleCollectionName": "EUSEXUA Afterglow"
-        },
-        {
-          "appleTrackId": 1096470014,
-          "appleArtistName": "FKA twigs",
-          "appleTrackName": "Glass & Patron",
-          "appleCollectionName": "Balance Presents"
-        },
-        {
-          "appleTrackId": 1586045559,
-          "appleArtistName": "FKA twigs",
-          "appleTrackName": "Glass & Patron (Mixed)",
-          "appleCollectionName": "trip: kyoka (DJ Mix)"
-        },
-        {
-          "appleTrackId": 1842161743,
-          "appleArtistName": "FKA twigs",
-          "appleTrackName": "Sushi",
-          "appleCollectionName": "EUSEXUA Afterglow"
-        },
-        {
-          "appleTrackId": 1841937873,
-          "appleArtistName": "FKA twigs",
-          "appleTrackName": "Sushi",
-          "appleCollectionName": "EUSEXUA Afterglow"
-        }
-      ],
-      "failedPreviews": []
+      "requestedTitle": "Two Weeks",
+      "genre": "Pop elettronico",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1028920704,
+        "artist": "FKA twigs",
+        "title": "Glass & Patron",
+        "album": "M3LL155X - EP"
+      }
+    },
+    {
+      "id": 144,
+      "artist": "So Solid Crew",
+      "requestedTitle": "21 Seconds",
+      "genre": "UK Garage",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1458134056,
+        "artist": "So Solid Crew",
+        "title": "21 Seconds (12\" Version)",
+        "album": "21 Seconds - Single"
+      }
+    },
+    {
+      "id": 145,
+      "artist": "Zed Bias",
+      "requestedTitle": "Neighbourhood",
+      "genre": "UK Garage",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 252852984,
+        "artist": "Zed Bias",
+        "title": "Neighbourhood (Radio Mix)",
+        "album": "Neighbourhood - EP"
+      }
+    },
+    {
+      "id": 262,
+      "artist": "Sugarhill Gang",
+      "requestedTitle": "Rapper's Delight",
+      "genre": "Hip Hop",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1439469091,
+        "artist": "The Sugarhill Gang",
+        "title": "Rapper's Delight",
+        "album": "The Best of Grandmaster Flash & Sugar Hill"
+      }
+    },
+    {
+      "id": 263,
+      "artist": "Run-D.M.C.",
+      "requestedTitle": "It's Like That",
+      "genre": "Hip Hop",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 253155669,
+        "artist": "Run-DMC & Jason Nevins",
+        "title": "It's Like That",
+        "album": "The Best of Run–DMC"
+      }
+    },
+    {
+      "id": 32,
+      "artist": "DJ Shadow",
+      "requestedTitle": "Midnight in a Perfect World",
+      "genre": "Trip Hop",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 163,
+      "artist": "Röyksopp",
+      "requestedTitle": "Remind Me",
+      "genre": "Downtempo",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 174,
+      "artist": "LTJ Bukem",
+      "requestedTitle": "Horizons",
+      "genre": "Drum and Bass",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 595853839,
+        "artist": "LTJ Bukem",
+        "title": "Demons Theme",
+        "album": "Producer 01"
+      }
+    },
+    {
+      "id": 175,
+      "artist": "Roni Size / Reprazent",
+      "requestedTitle": "Brown Paper Bag",
+      "genre": "Drum and Bass",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1443805498,
+        "artist": "Roni Size & Reprazent",
+        "title": "Brown Paper Bag",
+        "album": "Roni Size Reprazent - New Forms, Vol. 2 (Remastered)"
+      }
+    },
+    {
+      "id": 177,
+      "artist": "Adam F",
+      "requestedTitle": "Circles",
+      "genre": "Drum and Bass",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1614741091,
+        "artist": "Adam F",
+        "title": "Circles (7'' Edit)",
+        "album": "Rave Classics"
+      }
+    },
+    {
+      "id": 178,
+      "artist": "Shy FX",
+      "requestedTitle": "Original Nuttah",
+      "genre": "Drum and Bass",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1853701733,
+        "artist": "Shy FX",
+        "title": "Original Nuttah (feat. Uk Apache) [Mixed]",
+        "album": "Shogun Sessions: Flava D (DJ Mix)"
+      }
+    },
+    {
+      "id": 223,
+      "artist": "Cybotron",
+      "requestedTitle": "Techno City",
+      "genre": "Electro",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1715390287,
+        "artist": "Cybotron",
+        "title": "Techno City (7\" Mix)",
+        "album": "Enter (Deluxe Edition)"
+      }
+    },
+    {
+      "id": 276,
+      "artist": "Elis Regina & Tom Jobim",
+      "requestedTitle": "Águas de Março",
+      "genre": "Bossa Nova",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1438430509,
+        "artist": "Elis Regina & Antônio Carlos Jobim",
+        "title": "Águas de Março",
+        "album": "Elis & Tom"
+      }
+    },
+    {
+      "id": 283,
+      "artist": "Lonnie Liston Smith",
+      "requestedTitle": "Expansions",
+      "genre": "Spiritual Jazz",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1621356613,
+        "artist": "Lonnie Liston Smith & The Cosmic Echoes",
+        "title": "Expansions",
+        "album": "Expansions"
+      }
+    },
+    {
+      "id": 284,
+      "artist": "Return to Forever",
+      "requestedTitle": "Spain",
+      "genre": "Jazz Fusion",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1443203937,
+        "artist": "Chick Corea & Return to Forever",
+        "title": "Spain",
+        "album": "Light As a Feather"
+      }
+    },
+    {
+      "id": 256,
+      "artist": "A Guy Called Gerald",
+      "requestedTitle": "Pacific State",
+      "genre": "Madchester",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 371278119,
+        "artist": "A Guy Called Gerald",
+        "title": "Pacific Samba",
+        "album": "Tronic Jazz The Berlin Sessions"
+      }
+    },
+    {
+      "id": 288,
+      "artist": "Alessandro Alessandroni",
+      "requestedTitle": "Open Air Parade",
+      "genre": "Library Music",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1750709421,
+        "artist": "Alessandro Alessandroni",
+        "title": "Preludietto",
+        "album": "Open Air Parade"
+      }
+    },
+    {
+      "id": 291,
+      "artist": "Franco Micalizzi",
+      "requestedTitle": "Italia a mano armata",
+      "genre": "Colonna sonora italiana",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 303,
+      "artist": "Ten City",
+      "requestedTitle": "Devotion",
+      "genre": "Chicago House",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 304963031,
+        "artist": "Ten City",
+        "title": "Devotion (Extended Version)",
+        "album": "Foundation"
+      }
+    },
+    {
+      "id": 304,
+      "artist": "Joe Smooth",
+      "requestedTitle": "They Want to Be Free",
+      "genre": "Chicago House",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1448497079,
+        "artist": "Joe Smooth",
+        "title": "Promised Land",
+        "album": "Promised Land - Single"
+      }
+    },
+    {
+      "id": 305,
+      "artist": "Ralphi Rosario feat. Xavier Gold",
+      "requestedTitle": "You Used to Hold Me",
+      "genre": "Chicago House",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1406642977,
+        "artist": "Scott & Leon",
+        "title": "You Used to Hold Me (feat. Sylvia Mason)",
+        "album": "You Used to Hold Me -EP"
+      }
+    },
+    {
+      "id": 306,
+      "artist": "Masters At Work feat. India",
+      "requestedTitle": "To Be in Love",
+      "genre": "House",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 307,
+      "artist": "Armand Van Helden feat. Duane Harden",
+      "requestedTitle": "You Don't Know Me",
+      "genre": "House",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1444240383,
+        "artist": "Armand Van Helden",
+        "title": "You Don't Know Me (feat. Duane Harden)",
+        "album": "You Don't Know Me (feat. Duane Harden) - Single"
+      }
+    },
+    {
+      "id": 311,
+      "artist": "Aly-Us",
+      "requestedTitle": "Follow Me",
+      "genre": "Deep House",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1437461047,
+        "artist": "Aly-Us",
+        "title": "Follow Me (Club Mix)",
+        "album": "Follow Me - Single"
+      }
+    },
+    {
+      "id": 312,
+      "artist": "Kings of Tomorrow feat. Julie McKnight",
+      "requestedTitle": "Finally",
+      "genre": "Deep House",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1811179329,
+        "artist": "Kings of Tomorrow",
+        "title": "Finally (feat. Julie McKnight) [Radio Edit]",
+        "album": "Finally (feat. Julie McKnight)"
+      }
+    },
+    {
+      "id": 317,
+      "artist": "DJ Sprinkles",
+      "requestedTitle": "Grand Central, Pt. I (Deep into the Bowel of House)",
+      "genre": "Deep House",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 318,
+      "artist": "Moodymann",
+      "requestedTitle": "I Can't Kick This Feeling When It Hits",
+      "genre": "Deep House",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 319,
+      "artist": "Pepe Bradock",
+      "requestedTitle": "Life",
+      "genre": "Deep House",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 323,
+      "artist": "DJ Pierre",
+      "requestedTitle": "Generate Power",
+      "genre": "Acid House",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1645624666,
+        "artist": "DJ Pierre",
+        "title": "Generate Power 2017 (BLOND:ISH Less Diva Rework)",
+        "album": "Generate Power - Single"
+      }
+    },
+    {
+      "id": 324,
+      "artist": "Adonis",
+      "requestedTitle": "We're Rockin Down the House",
+      "genre": "Chicago House",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1776225473,
+        "artist": "Adonis",
+        "title": "We're Rocking Down the House (Radio Edit)",
+        "album": "We're Rocking Down the House (Radio Edit) - Single"
+      }
+    },
+    {
+      "id": 325,
+      "artist": "Farley Jackmaster Funk feat. Darryl Pandy",
+      "requestedTitle": "Love Can't Turn Around",
+      "genre": "Chicago House",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1601915965,
+        "artist": "Farley \"Jackmaster\" Funk",
+        "title": "Love Can't Turn Around (feat. Darryl Pandy)",
+        "album": "Greatest"
+      }
+    },
+    {
+      "id": 326,
+      "artist": "Thomas Bangalter",
+      "requestedTitle": "Spinal Scratch",
+      "genre": "French House",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 331,
+      "artist": "Dimitri From Paris",
+      "requestedTitle": "Sacrebleu",
+      "genre": "French House",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 781639252,
+        "artist": "Dimitri from Paris",
+        "title": "Toujours L'amore",
+        "album": "Ichi"
+      }
+    },
+    {
+      "id": 339,
+      "artist": "ESG",
+      "requestedTitle": "Moody",
+      "genre": "Post Punk",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 340,
+      "artist": "Hamilton Bohannon",
+      "requestedTitle": "Let's Start the Dance",
+      "genre": "Disco",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1640594722,
+        "artist": "Bohannon",
+        "title": "Let's Start The Dance",
+        "album": "Summertime Groove"
+      }
+    },
+    {
+      "id": 388,
+      "artist": "Tosca",
+      "requestedTitle": "Honey",
+      "genre": "Downtempo",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 398,
+      "artist": "Baden Powell & Vinícius de Moraes",
+      "requestedTitle": "Berimbau",
+      "genre": "Bossa Nova",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1680982895,
+        "artist": "Astrud Gilberto",
+        "title": "Berimbau",
+        "album": "BRAZIL ALL STARS : SAMBA HITS"
+      }
+    },
+    {
+      "id": 408,
+      "artist": "River Ocean feat. India",
+      "requestedTitle": "Love & Happiness (Yemaya y Ochún)",
+      "genre": "Garage House",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1444738838,
+        "artist": "River Ocean",
+        "title": "Love & Happiness (Yemaya Y Ochùn) [feat. India] [Radio Edit]",
+        "album": "The Tribal EP (feat. India)"
+      }
+    },
+    {
+      "id": 409,
+      "artist": "Nuyorican Soul feat. India",
+      "requestedTitle": "Runaway",
+      "genre": "Garage House",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1443545790,
+        "artist": "Nuyorican Soul",
+        "title": "Runaway (feat. India)",
+        "album": "Nuyorican Soul"
+      }
+    },
+    {
+      "id": 411,
+      "artist": "Kim English",
+      "requestedTitle": "Nite Life",
+      "genre": "Garage House",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 14141447,
+        "artist": "Kim English",
+        "title": "Nite Life (Master's at Work Remix)",
+        "album": "Higher Things"
+      }
+    },
+    {
+      "id": 413,
+      "artist": "Urban Soul",
+      "requestedTitle": "Alright",
+      "genre": "Garage House",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 999345268,
+        "artist": "Urban Soul",
+        "title": "Alright (Club Mix - From 1991)",
+        "album": "Alright (Systematic Presents Lost Treasures, Vol. 6) - Single"
+      }
+    },
+    {
+      "id": 414,
+      "artist": "Logic",
+      "requestedTitle": "The Warning",
+      "genre": "Garage House",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 415,
+      "artist": "Sounds of Blackness",
+      "requestedTitle": "The Pressure, Pt. 1",
+      "genre": "Garage House",
+      "status": "missing-preview",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 417,
+      "artist": "Sasha",
+      "requestedTitle": "Arkham Asylum",
+      "genre": "Progressive House",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 420,
+      "artist": "Spooky",
+      "requestedTitle": "Little Bullet",
+      "genre": "Progressive House",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 205234940,
+        "artist": "Spooky",
+        "title": "Little Bullet (High Velocity Mix)",
+        "album": "Gargantuan (Special Edition)"
+      }
+    },
+    {
+      "id": 422,
+      "artist": "Gat Decor",
+      "requestedTitle": "Passion",
+      "genre": "Progressive House",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 935659787,
+        "artist": "Gat Decor",
+        "title": "Passion (Naked Mix)",
+        "album": "Passion"
+      }
+    },
+    {
+      "id": 423,
+      "artist": "Quivver",
+      "requestedTitle": "Twist & Shout",
+      "genre": "Progressive House",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1071737371,
+        "artist": "Quivver",
+        "title": "Twist & Shout (Marc Mitchell Remix - 2015 Remaster)",
+        "album": "Twist and Shout - Single"
+      }
+    },
+    {
+      "id": 424,
+      "artist": "BT",
+      "requestedTitle": "Loving You More",
+      "genre": "Progressive House",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 396509247,
+        "artist": "BT",
+        "title": "Loving You More (BT's Garden of Ima Dub) [with Vincent Covello]",
+        "album": "Ima"
+      }
+    },
+    {
+      "id": 425,
+      "artist": "Breeder",
+      "requestedTitle": "Twilo Thunder",
+      "genre": "Progressive House",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1261987316,
+        "artist": "Breeder",
+        "title": "Twilo Thunder (Greg Downey Remix)",
+        "album": "Twilo Thunder (Greg Downey Remix) - Single"
+      }
+    },
+    {
+      "id": 426,
+      "artist": "Humate",
+      "requestedTitle": "Love Stimulation (Paul van Dyk Love Mix)",
+      "genre": "Progressive House",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1024508357,
+        "artist": "Humate",
+        "title": "Love Stimulation (Paul van Dyk's Lovemix) [Hörfunk-Edit]",
+        "album": "The World of Trance (40 Biggest Trance Hits Ever)"
+      }
+    },
+    {
+      "id": 429,
+      "artist": "Orbital",
+      "requestedTitle": "Belfast",
+      "genre": "Progressive House",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 430,
+      "artist": "React 2 Rhythm",
+      "requestedTitle": "Intoxication",
+      "genre": "Progressive House",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 289177898,
+        "artist": "React 2 Rhythm",
+        "title": "Intoxication (John Digweed & Nick Muir’s Bed Rock Mix)",
+        "album": "This Is Trance 2.0"
+      }
+    },
+    {
+      "id": 431,
+      "artist": "Adeva",
+      "requestedTitle": "Respect",
+      "genre": "House",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 435,
+      "artist": "Louie Vega & Jay 'Sinister' Sealee feat. Julie McKnight",
+      "requestedTitle": "Diamond Life",
+      "genre": "House",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1451014114,
+        "artist": "Louie Vega & Jay Sinister Sealee",
+        "title": "Diamond Life (feat. Julie McKnight) [Dance Ritual Radio Edit]",
+        "album": "Diamond Life (feat. Julie McKnight) - Single"
+      }
+    },
+    {
+      "id": 437,
+      "artist": "Jon Cutler feat. E-Man",
+      "requestedTitle": "It's Yours",
+      "genre": "House",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 706695947,
+        "artist": "John Cutler feat. E-Man",
+        "title": "It's Yours",
+        "album": "Viva La Vita by Martini Vol 2"
+      }
+    },
+    {
+      "id": 438,
+      "artist": "Elements of Life feat. Anané",
+      "requestedTitle": "Nos Vida",
+      "genre": "House",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1513823218,
+        "artist": "Louie Vega & Elements of Life",
+        "title": "Nos Vida (feat. Anane)",
+        "album": "Elements of Life"
+      }
+    },
+    {
+      "id": 439,
+      "artist": "Monique Bingham & Quentin Harris",
+      "requestedTitle": "You Can't Have New York",
+      "genre": "House",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 453,
+      "artist": "Voyage",
+      "requestedTitle": "Souvenirs",
+      "genre": "Disco",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1708568725,
+        "artist": "Voyage (French Band)",
+        "title": "Souvenirs",
+        "album": "Fly Away"
+      }
+    },
+    {
+      "id": 456,
+      "artist": "Central Line",
+      "requestedTitle": "Walking into Sunshine",
+      "genre": "Boogie",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1707476508,
+        "artist": "Central Line",
+        "title": "Walking Into Sunshine (Edit)",
+        "album": "Breaking Point"
+      }
+    },
+    {
+      "id": 459,
+      "artist": "Evelyn King",
+      "requestedTitle": "I'm in Love",
+      "genre": "Boogie",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1268964118,
+        "artist": "Evelyn \"Champagne\" King",
+        "title": "I'm In Love",
+        "album": "I'm In Love (Expanded Edition)"
+      }
+    },
+    {
+      "id": 461,
+      "artist": "Fatback",
+      "requestedTitle": "I Found Lovin'",
+      "genre": "Boogie",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1621392986,
+        "artist": "Fatback Band",
+        "title": "I Found Lovin'",
+        "album": "With Love"
+      }
+    },
+    {
+      "id": 465,
+      "artist": "Delegation",
+      "requestedTitle": "You and I",
+      "genre": "Boogie",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 489,
+      "artist": "MFSB feat. The Three Degrees",
+      "requestedTitle": "TSOP (The Sound of Philadelphia)",
+      "genre": "Philadelphia Soul",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 931566432,
+        "artist": "MFSB",
+        "title": "TSOP (The Sound of Philadelphia) [feat. The Three Degrees]",
+        "album": "End of Phase I - A Collection of Greatest Hits"
+      }
+    },
+    {
+      "id": 501,
+      "artist": "Jesse Saunders",
+      "requestedTitle": "On and On",
+      "genre": "Chicago House",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1717680439,
+        "artist": "Tyla",
+        "title": "On and On",
+        "album": "TYLA"
+      }
+    },
+    {
+      "id": 502,
+      "artist": "J.M. Silk",
+      "requestedTitle": "Music Is the Key",
+      "genre": "Chicago House",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 354662023,
+        "artist": "J.M. Silk",
+        "title": "Music Is the Key",
+        "album": "Shadows of Your Love - EP"
+      }
+    },
+    {
+      "id": 503,
+      "artist": "House Master Boyz and the Rude Boy of House",
+      "requestedTitle": "House Nation",
+      "genre": "Chicago House",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 781392931,
+        "artist": "The House Master Boyz & The Rude Boy of House",
+        "title": "House Nation",
+        "album": "Hardcore Traxx: Dance Mania Records 1986-1995"
+      }
+    },
+    {
+      "id": 504,
+      "artist": "Farley Jackmaster Funk",
+      "requestedTitle": "Jack the Bass",
+      "genre": "Chicago House",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1421484847,
+        "artist": "Farley \"Jackmaster\" Funk",
+        "title": "Jack the Bass (Paul Anthony Remix)",
+        "album": "Jack The Bass (Remixes) - EP"
+      }
+    },
+    {
+      "id": 505,
+      "artist": "E.S.P.",
+      "requestedTitle": "It's You",
+      "genre": "Chicago House",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1837117883,
+        "artist": "E.S.P.",
+        "title": "It's You",
+        "album": "It's You / Let's Move - Single"
+      }
+    },
+    {
+      "id": 506,
+      "artist": "Liz Torres feat. Master C & J",
+      "requestedTitle": "Can't Get Enough",
+      "genre": "Chicago House",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 508,
+      "artist": "Nightwriters",
+      "requestedTitle": "Let the Music Use You",
+      "genre": "Chicago House",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1601915656,
+        "artist": "The Nightwriters",
+        "title": "Let the Music Use You",
+        "album": "Frankie Knuckles Presents: His Greatest Hits from Trax Records"
+      }
+    },
+    {
+      "id": 509,
+      "artist": "Pierre's Pfantasy Club",
+      "requestedTitle": "Fantasy Girl",
+      "genre": "Chicago House",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1601915225,
+        "artist": "Pierre's Pfantasy Club",
+        "title": "Fantasy Girl (feat. J.R.) [Acid Mix]",
+        "album": "Fantasy Girl (feat. J.R.) - EP"
+      }
+    },
+    {
+      "id": 510,
+      "artist": "Master C & J",
+      "requestedTitle": "Face It",
+      "genre": "Chicago House",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 894076787,
+        "artist": "Master C & J",
+        "title": "Face It (Club)",
+        "album": "Face It - Single"
+      }
+    },
+    {
+      "id": 511,
+      "artist": "On the House",
+      "requestedTitle": "Ride the Rhythm",
+      "genre": "Chicago House",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 512,
+      "artist": "Chip E.",
+      "requestedTitle": "Like This",
+      "genre": "Chicago House",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 513,
+      "artist": "Mr. Fingers",
+      "requestedTitle": "Washing Machine",
+      "genre": "Chicago House",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1272313499,
+        "artist": "Mr. Fingers",
+        "title": "Washing Machine",
+        "album": "Amnesia"
+      }
+    },
+    {
+      "id": 514,
+      "artist": "Mr. Fingers",
+      "requestedTitle": "Mystery of Love",
+      "genre": "Chicago House",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1272313508,
+        "artist": "Mr. Fingers",
+        "title": "Mystery of Love",
+        "album": "Amnesia"
+      }
+    },
+    {
+      "id": 515,
+      "artist": "Frankie Knuckles feat. Jamie Principle",
+      "requestedTitle": "Baby Wants to Ride",
+      "genre": "Chicago House",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1601915265,
+        "artist": "Frankie Knuckles",
+        "title": "Baby Wants to Ride",
+        "album": "Baby Wants to Ride / Your Love - Single"
+      }
+    },
+    {
+      "id": 516,
+      "artist": "Robert Owens",
+      "requestedTitle": "Bring Down the Walls",
+      "genre": "Chicago House",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1533898437,
+        "artist": "Robert Owens",
+        "title": "Bring Down the Walls (Mixed)",
+        "album": "Boiler Room: Derrick Carter in Chicago, May 21, 2015 (DJ Mix)"
+      }
+    },
+    {
+      "id": 518,
+      "artist": "Virgo Four",
+      "requestedTitle": "Let's Dance All Night",
+      "genre": "Chicago House",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 519,
+      "artist": "Phuture",
+      "requestedTitle": "Your Only Friend",
+      "genre": "Chicago House",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 520,
+      "artist": "Phuture",
+      "requestedTitle": "We Are Phuture",
+      "genre": "Chicago House",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 522,
+      "artist": "Gwen Guthrie",
+      "requestedTitle": "Padlock",
+      "genre": "Garage House",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1443873653,
+        "artist": "Gwen Guthrie",
+        "title": "Padlock (Larry Levan Mix)",
+        "album": "The Ultimate Collection: Gwen Guthrie"
+      }
+    },
+    {
+      "id": 523,
+      "artist": "Gwen Guthrie",
+      "requestedTitle": "Seventh Heaven",
+      "genre": "Garage House",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1443873666,
+        "artist": "Gwen Guthrie",
+        "title": "Seventh Heaven (Remix)",
+        "album": "The Ultimate Collection: Gwen Guthrie"
+      }
+    },
+    {
+      "id": 524,
+      "artist": "Visual",
+      "requestedTitle": "The Music Got Me",
+      "genre": "Garage House",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 296929504,
+        "artist": "Visual",
+        "title": "The Music Got Me",
+        "album": "Star-Funk, Vol. 6"
+      }
+    },
+    {
+      "id": 525,
+      "artist": "Man Friday",
+      "requestedTitle": "Love Honey, Love Heartache",
+      "genre": "Garage House",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1611083979,
+        "artist": "Man Friday",
+        "title": "Love Honey, Love Heartache (Mixed)",
+        "album": "Black History Month: Larry Levan Tribute (DJ Mix)"
+      }
+    },
+    {
+      "id": 526,
+      "artist": "Black Rascals",
+      "requestedTitle": "Keeping My Mind",
+      "genre": "Garage House",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1783949149,
+        "artist": "Black Rascals",
+        "title": "Keeping My Mind (feat. Roger Harris) [Vocal]",
+        "album": "Keeping My Mind (feat. Roger Harris) - Single"
+      }
+    },
+    {
+      "id": 527,
+      "artist": "Mass Order",
+      "requestedTitle": "Lift Every Voice (Take Me Away)",
+      "genre": "Garage House",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 528,
+      "artist": "Kerri Chandler",
+      "requestedTitle": "Inspiration",
+      "genre": "Garage House",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1822363433,
+        "artist": "Kerri Chandler",
+        "title": "Atmosphere (The Lost Dubs)",
+        "album": "Atmosphere (The Lost Dubs) - Single"
+      }
+    },
+    {
+      "id": 529,
+      "artist": "24 Hour Experience",
+      "requestedTitle": "Together",
+      "genre": "Garage House",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 513378694,
+        "artist": "24 Hour Experience",
+        "title": "Together",
+        "album": "More Dub Essentials, Pt. 2 - EP"
+      }
+    },
+    {
+      "id": 532,
+      "artist": "Dem 2",
+      "requestedTitle": "Destiny",
+      "genre": "Garage House",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 533,
+      "artist": "Industry Standard",
+      "requestedTitle": "What You Want",
+      "genre": "Garage House",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 514159084,
+        "artist": "Industry Standard",
+        "title": "What You Want (Original Mix)",
+        "album": "Industry Standard Catalogue 020-022"
+      }
+    },
+    {
+      "id": 534,
+      "artist": "Scott Garcia feat. MC Styles",
+      "requestedTitle": "A London Thing",
+      "genre": "Garage House",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1585140009,
+        "artist": "Scott Garcia",
+        "title": "A London Thing (feat. MC Styles)",
+        "album": "A London Thing (feat. MC Styles) - Single"
+      }
+    },
+    {
+      "id": 535,
+      "artist": "Tuff Jam",
+      "requestedTitle": "Experience",
+      "genre": "Garage House",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1729367751,
+        "artist": "Tuff Jam",
+        "title": "Experience (Classic Anthem Mix)",
+        "album": "Experience - EP"
+      }
+    },
+    {
+      "id": 536,
+      "artist": "Last Rhythm",
+      "requestedTitle": "Last Rhythm",
+      "genre": "Progressive House",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1533905125,
+        "artist": "Bui Hariwald",
+        "title": "Last Rhythm",
+        "album": "Green Screen"
+      }
+    },
+    {
+      "id": 537,
+      "artist": "Sunscreem",
+      "requestedTitle": "Perfect Motion",
+      "genre": "Progressive House",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 538,
+      "artist": "D.O.P.",
+      "requestedTitle": "Groovy Beat",
+      "genre": "Progressive House",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 387076759,
+        "artist": "D.O.P.",
+        "title": "Groovy Beat (Part 2)",
+        "album": "Musicians Of The Mind"
+      }
+    },
+    {
+      "id": 539,
+      "artist": "Ramirez",
+      "requestedTitle": "Hablando",
+      "genre": "Progressive House",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 540,
+      "artist": "Dance 2 Trance",
+      "requestedTitle": "We Came in Peace",
+      "genre": "Progressive House",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 430739421,
+        "artist": "Dance 2 Trance",
+        "title": "We Came In Peace (Desert Mix)",
+        "album": "Moon Spirits"
+      }
+    },
+    {
+      "id": 541,
+      "artist": "Cosmic Baby",
+      "requestedTitle": "Space Track",
+      "genre": "Progressive House",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1727750785,
+        "artist": "Cosmic Baby",
+        "title": "The Space Track",
+        "album": "Stellar Supreme"
+      }
+    },
+    {
+      "id": 542,
+      "artist": "Jam & Spoon",
+      "requestedTitle": "Stella",
+      "genre": "Progressive House",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 767060130,
+        "artist": "Jam & Spoon",
+        "title": "Stella",
+        "album": "Tripomatic Fairytales 2001 (Deluxe Edition)"
+      }
+    },
+    {
+      "id": 543,
+      "artist": "The Grid",
+      "requestedTitle": "Floatation",
+      "genre": "Progressive House",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1055323246,
+        "artist": "The Grid",
+        "title": "Floatation (Subsonic Grid Mix)",
+        "album": "Electric Head (Bonus Tracks)"
+      }
+    },
+    {
+      "id": 545,
+      "artist": "The Drum Club",
+      "requestedTitle": "Sound System",
+      "genre": "Progressive House",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 546,
+      "artist": "Lionrock",
+      "requestedTitle": "Packet of Peace",
+      "genre": "Progressive House",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 547,
+      "artist": "Fluke",
+      "requestedTitle": "Slid",
+      "genre": "Progressive House",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 724384256,
+        "artist": "Fluke",
+        "title": "Slid - Pdfmone",
+        "album": "Six Wheels On My Wagon"
+      }
+    },
+    {
+      "id": 548,
+      "artist": "Dreadzone",
+      "requestedTitle": "The Good, the Bad and the Dread",
+      "genre": "Progressive House",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 714705467,
+        "artist": "Dreadzone",
+        "title": "The Good the Bad & the Dread (Glastonbury Festival, NME Stage, 24 June 1995) [Live]",
+        "album": "Second Light"
+      }
+    },
+    {
+      "id": 549,
+      "artist": "The Sabres of Paradise",
+      "requestedTitle": "Smokebelch II",
+      "genre": "Progressive House",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1814185427,
+        "artist": "The Sabres of Paradise",
+        "title": "Smokebelch II (Beatless Mix) [Remastered]",
+        "album": "Sabresonic (Remastered)"
+      }
+    },
+    {
+      "id": 550,
+      "artist": "William Orbit",
+      "requestedTitle": "Water from a Vine Leaf",
+      "genre": "Progressive House",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1704732283,
+        "artist": "William Orbit",
+        "title": "Water from a Vine Leaf (Acid Bath Mix) [Mixed]",
+        "album": "Compiled & Mixed 24 (DJ Mix)"
+      }
+    },
+    {
+      "id": 555,
+      "artist": "Crown Heights Affair",
+      "requestedTitle": "You Gave Me Love",
+      "genre": "Boogie",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1710167146,
+        "artist": "Crown Heights Affair",
+        "title": "You Gave Me Love",
+        "album": "Sure Shot (Bonus Tracks Version)"
+      }
+    },
+    {
+      "id": 556,
+      "artist": "The B. B. & Q. Band",
+      "requestedTitle": "On the Beat",
+      "genre": "Boogie",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1413428042,
+        "artist": "The B. B. & Q. Band",
+        "title": "On the Beat",
+        "album": "On the Beat - EP"
+      }
+    },
+    {
+      "id": 561,
+      "artist": "Surface",
+      "requestedTitle": "Falling in Love",
+      "genre": "Boogie",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1790532855,
+        "artist": "Surface",
+        "title": "Falling in Love",
+        "album": "Defected Presents Glitterbox Ibiza 2016"
+      }
+    },
+    {
+      "id": 562,
+      "artist": "Raw Silk",
+      "requestedTitle": "Do It to the Music",
+      "genre": "Boogie",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1465235671,
+        "artist": "Raw Silk",
+        "title": "Do It to the Music (Club Mix) [2012 - Remaster]",
+        "album": "Do It to the Music - Single"
+      }
+    },
+    {
+      "id": 563,
+      "artist": "Rockers Revenge feat. Donny Calvin",
+      "requestedTitle": "Walking on Sunshine",
+      "genre": "Boogie",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 565,
+      "artist": "52nd Street",
+      "requestedTitle": "Tell Me (How It Feels)",
+      "genre": "Boogie",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1572986076,
+        "artist": "Mike Stevens",
+        "title": "Tell Me (How It Feels) [feat. Meli'sa Morgan]",
+        "album": "Dome 25 Years (Second Edition Edit)"
+      }
+    },
+    {
+      "id": 567,
+      "artist": "The Contours",
+      "requestedTitle": "Do You Love Me",
+      "genre": "Motown",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 719237316,
+        "artist": "The Contours",
+        "title": "Do You Love Me (Now That I Can Dance) (Remastered)",
+        "album": "Do You Love Me (Now That I Can Dance) (Remastered) - Single"
+      }
+    },
+    {
+      "id": 568,
+      "artist": "The Velvelettes",
+      "requestedTitle": "Needle in a Haystack",
+      "genre": "Motown",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1447235469,
+        "artist": "The Velvelettes",
+        "title": "Needle In A Haystack",
+        "album": "The Complete Motown Singles Vol. 4: 1964"
+      }
+    },
+    {
+      "id": 569,
+      "artist": "Jr. Walker & The All Stars",
+      "requestedTitle": "Shotgun",
+      "genre": "Motown",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1611669451,
+        "artist": "Junior Walker & The All Stars",
+        "title": "Shotgun",
+        "album": "Shotgun"
+      }
+    },
+    {
+      "id": 574,
+      "artist": "The Marvelettes",
+      "requestedTitle": "Don't Mess with Bill",
+      "genre": "Motown",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1443813168,
+        "artist": "The Marvelettes",
+        "title": "Don't Mess With Bill",
+        "album": "Deliver: The Singles 1961-1971"
+      }
+    },
+    {
+      "id": 585,
+      "artist": "High Inergy",
+      "requestedTitle": "You Can't Turn Me Off (In the Middle of Turning Me On)",
+      "genre": "Motown",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1425251145,
+        "artist": "High Inergy",
+        "title": "You Can't Turn Me Off (In the Middle of Turning Me On) [Single Version]",
+        "album": "The Millennium Collection: Best of Motown 1970s, Vol. 1"
+      }
+    },
+    {
+      "id": 587,
+      "artist": "Harold Melvin & The Blue Notes",
+      "requestedTitle": "The Love I Lost",
+      "genre": "Philadelphia Soul",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1223787636,
+        "artist": "Harold Melvin & The Blue Notes",
+        "title": "The Love I Lost (feat. Teddy Pendergrass)",
+        "album": "Black & Blue (Expanded Edition) [feat. Teddy Pendergrass]"
+      }
+    },
+    {
+      "id": 593,
+      "artist": "The Stylistics",
+      "requestedTitle": "People Make the World Go Round",
+      "genre": "Philadelphia Soul",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1607690025,
+        "artist": "The Stylistics",
+        "title": "People Make the World Go Round (Lp Version)",
+        "album": "The Stylistics"
+      }
+    },
+    {
+      "id": 601,
+      "artist": "The Stooges",
+      "requestedTitle": "Search and Destroy",
+      "genre": "Punk",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 220265385,
+        "artist": "The Stooges",
+        "title": "Raw Power (1973 Tour Rehearsal)",
+        "album": "My Girl Hates My Heroin (1973 Tour Rehearsals)"
+      }
+    },
+    {
+      "id": 609,
+      "artist": "X-Ray Spex",
+      "requestedTitle": "Oh Bondage Up Yours!",
+      "genre": "Punk",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1760319234,
+        "artist": "X-Ray Spex",
+        "title": "Germfree Adolescence",
+        "album": "Germ Free Adolescents"
+      }
+    },
+    {
+      "id": 610,
+      "artist": "Wire",
+      "requestedTitle": "12XU",
+      "genre": "Punk",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 612,
+      "artist": "Richard Hell & The Voidoids",
+      "requestedTitle": "Blank Generation",
+      "genre": "Punk",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1346358412,
+        "artist": "Richard Hell & The Voidoids",
+        "title": "Blank Generation (Remastered)",
+        "album": "Blank Generation (40th Anniversary Deluxe Edition)"
+      }
+    },
+    {
+      "id": 616,
+      "artist": "Bad Brains",
+      "requestedTitle": "Banned in D.C.",
+      "genre": "Punk",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 309379597,
+        "artist": "Bad Brains",
+        "title": "Banned In D.C. (Live at CBGB, Dec. 1982)",
+        "album": "Live at CBGB 1982 (The Audio Recordings)"
+      }
+    },
+    {
+      "id": 617,
+      "artist": "Minor Threat",
+      "requestedTitle": "Straight Edge",
+      "genre": "Punk",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 784725795,
+        "artist": "Minor Threat",
+        "title": "Straight Edge",
+        "album": "First Two Seven Inches"
+      }
+    },
+    {
+      "id": 619,
+      "artist": "Crass",
+      "requestedTitle": "Do They Owe Us a Living?",
+      "genre": "Punk",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 628,
+      "artist": "A Certain Ratio",
+      "requestedTitle": "Do the Du",
+      "genre": "Post Punk",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1158366155,
+        "artist": "A Certain Ratio",
+        "title": "Back to the Start",
+        "album": "To Each"
+      }
+    },
+    {
+      "id": 632,
+      "artist": "Young Marble Giants",
+      "requestedTitle": "Final Day",
+      "genre": "Post Punk",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1535230495,
+        "artist": "Young Marble Giants",
+        "title": "Final Day (Taken from the Final Day Single)",
+        "album": "Colossal Youth (40th Anniversary Edition)"
+      }
+    },
+    {
+      "id": 633,
+      "artist": "Au Pairs",
+      "requestedTitle": "It's Obvious",
+      "genre": "Post Punk",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1604143786,
+        "artist": "Au Pairs",
+        "title": "It's Obvious",
+        "album": "Stepping Out of Line - The Anthology"
+      }
+    },
+    {
+      "id": 634,
+      "artist": "ESG",
+      "requestedTitle": "UFO",
+      "genre": "Post Punk",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 640,
+      "artist": "Minutemen",
+      "requestedTitle": "History Lesson – Part II",
+      "genre": "Indie Rock",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 117009963,
+        "artist": "Minutemen",
+        "title": "Viet Nam",
+        "album": "Double Nickels on the Dime"
+      }
+    },
+    {
+      "id": 642,
+      "artist": "Dinosaur Jr.",
+      "requestedTitle": "Freak Scene",
+      "genre": "Indie Rock",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 658,
+      "artist": "Soundgarden",
+      "requestedTitle": "Black Hole Sun",
+      "genre": "Alternative Rock",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1440811686,
+        "artist": "Soundgarden",
+        "title": "Black Hole Sun",
+        "album": "Superunknown (20th Anniversary)"
+      }
+    },
+    {
+      "id": 670,
+      "artist": "Garbage",
+      "requestedTitle": "Only Happy When It Rains",
+      "genre": "Alternative Rock",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1443188892,
+        "artist": "Garbage",
+        "title": "Only Happy When It Rains",
+        "album": "Garbage (20th Anniversary Deluxe Edition) [2015 Remaster]"
+      }
+    },
+    {
+      "id": 673,
+      "artist": "Rage Against the Machine",
+      "requestedTitle": "Killing in the Name",
+      "genre": "Alternative Rock",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1773340317,
+        "artist": "Rage Against the Machine",
+        "title": "Killing in the Name (Live at 2000 Democratic National Convention)",
+        "album": "Democratic National Convention 2000 (Live) - EP"
+      }
+    },
+    {
+      "id": 674,
+      "artist": "Nine Inch Nails",
+      "requestedTitle": "Closer",
+      "genre": "Alternative Rock",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1440838114,
+        "artist": "Nine Inch Nails",
+        "title": "Hurt",
+        "album": "The Downward Spiral"
+      }
+    },
+    {
+      "id": 676,
+      "artist": "My Bloody Valentine",
+      "requestedTitle": "Only Shallow",
+      "genre": "Shoegaze",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1589230439,
+        "artist": "my bloody valentine",
+        "title": "Only Shallow",
+        "album": "Amateur"
+      }
+    },
+    {
+      "id": 678,
+      "artist": "Ride",
+      "requestedTitle": "Vapour Trail",
+      "genre": "Shoegaze",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 608007029,
+        "artist": "Ride",
+        "title": "Vapour Trail",
+        "album": "Nowhere (Expanded)"
+      }
+    },
+    {
+      "id": 679,
+      "artist": "Lush",
+      "requestedTitle": "De-Luxe",
+      "genre": "Shoegaze",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 680,
+      "artist": "Chapterhouse",
+      "requestedTitle": "Pearl",
+      "genre": "Shoegaze",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 400359134,
+        "artist": "Chapterhouse",
+        "title": "Pearl (Edit)",
+        "album": "Whirlpool"
+      }
+    },
+    {
+      "id": 683,
+      "artist": "Curve",
+      "requestedTitle": "Fait Accompli",
+      "genre": "Shoegaze",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 690,
+      "artist": "Moose",
+      "requestedTitle": "Suzanne",
+      "genre": "Shoegaze",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 696,
+      "artist": "Chromatics",
+      "requestedTitle": "Shadow",
+      "genre": "Dream Pop",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 698,
+      "artist": "The xx",
+      "requestedTitle": "Crystalised",
+      "genre": "Dream Pop",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 702,
+      "artist": "Afrika Bambaataa & The Soulsonic Force",
+      "requestedTitle": "Looking for the Perfect Beat",
+      "genre": "Hip Hop",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1604618709,
+        "artist": "Afrika Bambaataa & The Soulsonic Force",
+        "title": "Looking for the Perfect Beat (Original 12\" Version)",
+        "album": "Planet Rock: The Album"
+      }
+    },
+    {
+      "id": 703,
+      "artist": "Grandmaster Flash",
+      "requestedTitle": "The Adventures of Grandmaster Flash on the Wheels of Steel",
+      "genre": "Hip Hop",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 74861684,
+        "artist": "Grandmaster Flash",
+        "title": "Girls Love the Way He Spins",
+        "album": "The Adventures Of Grandmaster Flash, Melle Mel & The Furious Five: More Of The Best"
+      }
+    },
+    {
+      "id": 705,
+      "artist": "T La Rock & Jazzy Jay",
+      "requestedTitle": "It's Yours",
+      "genre": "Hip Hop",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 351875140,
+        "artist": "T La Rock",
+        "title": "It's Yours",
+        "album": "Sleeping Bag Records Greatest Rap Hits"
+      }
+    },
+    {
+      "id": 706,
+      "artist": "Run-D.M.C.",
+      "requestedTitle": "Sucker M.C.'s (Krush-Groove 1)",
+      "genre": "Hip Hop",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 281812957,
+        "artist": "Run-DMC",
+        "title": "Sucker M.C.'s (Krush-Groove 1)",
+        "album": "RUN-DMC (Expanded Edition)"
+      }
+    },
+    {
+      "id": 707,
+      "artist": "LL Cool J",
+      "requestedTitle": "Rock the Bells",
+      "genre": "Hip Hop",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1853908211,
+        "artist": "LL COOL J",
+        "title": "Rock the Bells (Mixed)",
+        "album": "1984-1994: Origins (DJ Mix)"
+      }
+    },
+    {
+      "id": 709,
+      "artist": "Boogie Down Productions",
+      "requestedTitle": "South Bronx",
+      "genre": "Hip Hop",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1094480025,
+        "artist": "Boogie Down Productions",
+        "title": "South Bronx (Instrumental)",
+        "album": "Criminal Minded (Hot-Club-Version)"
+      }
+    },
+    {
+      "id": 712,
+      "artist": "Slick Rick",
+      "requestedTitle": "Children's Story",
+      "genre": "Hip Hop",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1440834656,
+        "artist": "Slick Rick",
+        "title": "The Ruler's Back",
+        "album": "The Great Adventures Of Slick Rick"
+      }
+    },
+    {
+      "id": 714,
+      "artist": "Ultramagnetic MC's",
+      "requestedTitle": "Ego Trippin'",
+      "genre": "Hip Hop",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 216662147,
+        "artist": "Ultramagnetic MC's",
+        "title": "Ego Trippin' (Original 12 Version)",
+        "album": "Critical Beatdown"
+      }
+    },
+    {
+      "id": 718,
+      "artist": "A Tribe Called Quest",
+      "requestedTitle": "Scenario",
+      "genre": "Hip Hop",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 278911473,
+        "artist": "A Tribe Called Quest",
+        "title": "Check the Rhime",
+        "album": "The Low End Theory"
+      }
+    },
+    {
+      "id": 719,
+      "artist": "Main Source",
+      "requestedTitle": "Live at the Barbeque",
+      "genre": "Hip Hop",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 720,
+      "artist": "Dr. Dre feat. Snoop Doggy Dogg",
+      "requestedTitle": "Nuthin' but a 'G' Thang",
+      "genre": "Hip Hop",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1440836236,
+        "artist": "Dr. Dre",
+        "title": "Nuthin' but a \"G\" Thang (feat. Snoop Dogg)",
+        "album": "Straight Outta Compton (Music from the Motion Picture)"
+      }
+    },
+    {
+      "id": 724,
+      "artist": "Snoop Doggy Dogg",
+      "requestedTitle": "Gin and Juice",
+      "genre": "Hip Hop",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1683195628,
+        "artist": "Snoop Dogg",
+        "title": "Gin and Juice",
+        "album": "The Very Best of Death Row"
+      }
+    },
+    {
+      "id": 725,
+      "artist": "The Notorious B.I.G.",
+      "requestedTitle": "Juicy",
+      "genre": "Hip Hop",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 204669680,
+        "artist": "The Notorious B.I.G.",
+        "title": "Juicy",
+        "album": "Ready To Die the Remaster"
+      }
+    },
+    {
+      "id": 727,
+      "artist": "OutKast",
+      "requestedTitle": "Player's Ball",
+      "genre": "Hip Hop",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 266365547,
+        "artist": "Outkast",
+        "title": "Player's Ball (Reprise)",
+        "album": "Southernplayalisticadillacmuzik"
+      }
+    },
+    {
+      "id": 728,
+      "artist": "2Pac",
+      "requestedTitle": "Dear Mama",
+      "genre": "Hip Hop",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1440662208,
+        "artist": "2Pac",
+        "title": "Dear Mama",
+        "album": "Greatest Hits"
+      }
+    },
+    {
+      "id": 729,
+      "artist": "Mobb Deep",
+      "requestedTitle": "Shook Ones, Pt. II",
+      "genre": "Hip Hop",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1508623114,
+        "artist": "Mobb Deep",
+        "title": "Shook Ones, Pt. II (Instrumental)",
+        "album": "The Infamous (25th Anniversary Expanded Edition)"
+      }
+    },
+    {
+      "id": 730,
+      "artist": "The Roots",
+      "requestedTitle": "What They Do",
+      "genre": "Hip Hop",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1440647361,
+        "artist": "The Roots",
+        "title": "One Shine",
+        "album": "Illadelph Halflife"
+      }
+    },
+    {
+      "id": 733,
+      "artist": "Mos Def",
+      "requestedTitle": "Mathematics",
+      "genre": "Hip Hop",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1443203591,
+        "artist": "Mos Def",
+        "title": "Fake Bonanza",
+        "album": "True Magic"
+      }
+    },
+    {
+      "id": 734,
+      "artist": "MF DOOM",
+      "requestedTitle": "Doomsday",
+      "genre": "Hip Hop",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1654813188,
+        "artist": "MF DOOM",
+        "title": "Doomsday (Instrumental)",
+        "album": "Operation: Doomsday (Complete)"
+      }
+    },
+    {
+      "id": 740,
+      "artist": "Little Simz",
+      "requestedTitle": "Introvert",
+      "genre": "Hip Hop",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1561184461,
+        "artist": "Little Simz",
+        "title": "Point and Kill (feat. Obongjayar)",
+        "album": "Sometimes I Might Be Introvert"
+      }
+    },
+    {
+      "id": 741,
+      "artist": "Loose Ends",
+      "requestedTitle": "Hanging on a String (Contemplating)",
+      "genre": "R&B",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 753,
+      "artist": "Aaliyah",
+      "requestedTitle": "Are You That Somebody?",
+      "genre": "R&B",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1816084628,
+        "artist": "Aaliyah",
+        "title": "Are You That Somebody?",
+        "album": "I Care 4 U"
+      }
+    },
+    {
+      "id": 755,
+      "artist": "Beyoncé feat. Jay-Z",
+      "requestedTitle": "Crazy in Love",
+      "genre": "R&B",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 910118648,
+        "artist": "Sofia Karlberg",
+        "title": "Crazy in Love",
+        "album": "Crazy in Love - Single"
+      }
+    },
+    {
+      "id": 757,
+      "artist": "Rihanna",
+      "requestedTitle": "Umbrella",
+      "genre": "R&B",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1441154437,
+        "artist": "Rihanna",
+        "title": "Umbrella (feat. JAŸ-Z)",
+        "album": "Good Girl Gone Bad: Reloaded"
+      }
+    },
+    {
+      "id": 758,
+      "artist": "The-Dream",
+      "requestedTitle": "Shawty Is a 10",
+      "genre": "R&B",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1442284541,
+        "artist": "The-Dream",
+        "title": "My Love (feat. Mariah Carey)",
+        "album": "Def Jam 25, Vol. 18: Shawty's a Rider"
+      }
+    },
+    {
+      "id": 777,
+      "artist": "Amp Fiddler",
+      "requestedTitle": "I Believe in You",
+      "genre": "Neo Soul",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 781,
+      "artist": "James Brown",
+      "requestedTitle": "Cold Sweat",
+      "genre": "Funk",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1447536771,
+        "artist": "James Brown",
+        "title": "Cold Sweat (1967 Version)",
+        "album": "Gold"
+      }
+    },
+    {
+      "id": 782,
+      "artist": "Sly & The Family Stone",
+      "requestedTitle": "Dance to the Music",
+      "genre": "Funk",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 212571243,
+        "artist": "Sly & The Family Stone",
+        "title": "Dance to the Music",
+        "album": "Dance To The Music (Bonus Tracks Edition) [2007 Remaster]"
+      }
+    },
+    {
+      "id": 790,
+      "artist": "Zapp",
+      "requestedTitle": "More Bounce to the Ounce",
+      "genre": "Funk",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 287826061,
+        "artist": "Zapp",
+        "title": "More Bounce to the Ounce (Radio Version)",
+        "album": "Zapp"
+      }
+    },
+    {
+      "id": 796,
+      "artist": "Nina Simone",
+      "requestedTitle": "To Be Young, Gifted and Black",
+      "genre": "Soul",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 518084658,
+        "artist": "Nina Simone",
+        "title": "To Be Young, Gifted and Black (Single Version)",
+        "album": "Black Gold (Live) [Remastered]"
+      }
+    },
+    {
+      "id": 800,
+      "artist": "Gil Scott-Heron",
+      "requestedTitle": "The Bottle",
+      "genre": "Soul",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 308127738,
+        "artist": "Gil Scott-Heron",
+        "title": "Winter In America",
+        "album": "Ultimate Jazz Collections (Volume 16)"
+      }
+    },
+    {
+      "id": 802,
+      "artist": "Harold Budd / Brian Eno",
+      "requestedTitle": "First Light",
+      "genre": "Ambient",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 806,
+      "artist": "Harmonia",
+      "requestedTitle": "Deluxe (Immer Wieder)",
+      "genre": "Ambient",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1531812135,
+        "artist": "Harmonia",
+        "title": "Deluxe (Immer Wieder)",
+        "album": "Soul Jazz Records Presents DEUTSCHE ELEKTRONISCHE MUSIK 4: Experimental German Rock and Electronic Music 1971-83"
+      }
+    },
+    {
+      "id": 810,
+      "artist": "Midori Takada",
+      "requestedTitle": "Mr. Henri Rousseau's Dream",
+      "genre": "Ambient",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 811,
+      "artist": "Ryuichi Sakamoto",
+      "requestedTitle": "Bibo no Aozora",
+      "genre": "Ambient",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1488023160,
+        "artist": "Ryuichi Sakamoto",
+        "title": "Bibo No Aozora",
+        "album": "1996 (Re-Mastered)"
+      }
+    },
+    {
+      "id": 812,
+      "artist": "The KLF",
+      "requestedTitle": "Madrugada Eterna",
+      "genre": "Ambient",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1563756331,
+        "artist": "The KLF",
+        "title": "Madrugada Eterna (Club Mix)",
+        "album": "The White Room (Director's Cut)"
+      }
+    },
+    {
+      "id": 813,
+      "artist": "Global Communication",
+      "requestedTitle": "14:31",
+      "genre": "Ambient",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 817,
+      "artist": "GAS",
+      "requestedTitle": "Pop 4",
+      "genre": "Ambient",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 824,
+      "artist": "Laraaji",
+      "requestedTitle": "Being Here",
+      "genre": "Ambient",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 714416741,
+        "artist": "Laraaji",
+        "title": "Meditation No. 2",
+        "album": "Day of Radiance"
+      }
+    },
+    {
+      "id": 826,
+      "artist": "Aphex Twin",
+      "requestedTitle": "Alberto Balsalm",
+      "genre": "IDM",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 281830075,
+        "artist": "Aphex Twin",
+        "title": "Alberto Balsalm (1994)",
+        "album": "...I Care Because You Do"
+      }
+    },
+    {
+      "id": 831,
+      "artist": "Plaid",
+      "requestedTitle": "Eyen",
+      "genre": "IDM",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 832,
+      "artist": "The Black Dog",
+      "requestedTitle": "Virtual",
+      "genre": "IDM",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 834,
+      "artist": "Mouse on Mars",
+      "requestedTitle": "Bib",
+      "genre": "IDM",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 839,
+      "artist": "Prefuse 73",
+      "requestedTitle": "Point to B",
+      "genre": "IDM",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 843,
+      "artist": "Erasure",
+      "requestedTitle": "Chorus",
+      "genre": "Synth-pop",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1518618626,
+        "artist": "Erasure",
+        "title": "Chorus",
+        "album": "Class of 1991"
+      }
+    },
+    {
+      "id": 845,
+      "artist": "Ladytron",
+      "requestedTitle": "Destroy Everything You Touch",
+      "genre": "Synth-pop",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 409471977,
+        "artist": "Ladytron",
+        "title": "Destroy Everything You Touch",
+        "album": "Witching Hour (Bonus Version)"
+      }
+    },
+    {
+      "id": 850,
+      "artist": "CHVRCHES",
+      "requestedTitle": "The Mother We Share",
+      "genre": "Synth-pop",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1771695042,
+        "artist": "CHVRCHES",
+        "title": "The Mother We Share (We Were Promised Jetpacks Remix) [Bonus Track]",
+        "album": "The Bones of What You Believe (Special Edition)"
+      }
+    },
+    {
+      "id": 854,
+      "artist": "Robyn feat. Kleerup",
+      "requestedTitle": "With Every Heartbeat",
+      "genre": "Synth-pop",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1445284336,
+        "artist": "Robyn",
+        "title": "With Every Heartbeat (feat. Kleerup)",
+        "album": "With Every Heartbeat (feat. Kleerup) - Single"
+      }
+    },
+    {
+      "id": 861,
+      "artist": "Charli xcx",
+      "requestedTitle": "Vroom Vroom",
+      "genre": "Electropop",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1573473380,
+        "artist": "Charli xcx",
+        "title": "Vroom Vroom (DJ Fingerblast Remix) [Mixed]",
+        "album": "Songs To Have Gay Sex To (DJ Mix)"
+      }
+    },
+    {
+      "id": 864,
+      "artist": "Christine and the Queens",
+      "requestedTitle": "Saint Claude",
+      "genre": "Electropop",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1325689474,
+        "artist": "Christine and the Queens",
+        "title": "Saint Claude (Version Française)",
+        "album": "Chaleur Humaine"
+      }
+    },
+    {
+      "id": 865,
+      "artist": "Fever Ray",
+      "requestedTitle": "If I Had a Heart",
+      "genre": "Electropop",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1821565086,
+        "artist": "Fever Ray",
+        "title": "If I Had A Heart (Radical Romantics Session)",
+        "album": "The Year of The Radical Romantics"
+      }
+    },
+    {
+      "id": 868,
+      "artist": "Santigold",
+      "requestedTitle": "L.E.S. Artistes",
+      "genre": "Electropop",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 278671928,
+        "artist": "Santigold",
+        "title": "L.E.S. Artistes",
+        "album": "Santigold"
+      }
+    },
+    {
+      "id": 872,
+      "artist": "Madonna",
+      "requestedTitle": "Into the Groove",
+      "genre": "Dance Pop",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 80815215,
+        "artist": "Madonna",
+        "title": "Like a Virgin",
+        "album": "Like a Virgin"
+      }
+    },
+    {
+      "id": 873,
+      "artist": "Janet Jackson",
+      "requestedTitle": "Rhythm Nation",
+      "genre": "Dance Pop",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1440838749,
+        "artist": "Janet Jackson",
+        "title": "Rhythm Nation",
+        "album": "Rhythm Nation 1814"
+      }
+    },
+    {
+      "id": 874,
+      "artist": "Kylie Minogue",
+      "requestedTitle": "Confide in Me",
+      "genre": "Dance Pop",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1641289722,
+        "artist": "Kylie Minogue",
+        "title": "Confide in Me",
+        "album": "Confide in Me"
+      }
+    },
+    {
+      "id": 877,
+      "artist": "Rihanna feat. Calvin Harris",
+      "requestedTitle": "We Found Love",
+      "genre": "Dance Pop",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1443102668,
+        "artist": "Rihanna",
+        "title": "We Found Love (feat. Calvin Harris)",
+        "album": "Talk That Talk"
+      }
+    },
+    {
+      "id": 881,
+      "artist": "Carly Rae Jepsen",
+      "requestedTitle": "Run Away with Me",
+      "genre": "Dance Pop",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1833372116,
+        "artist": "Carly Rae Jepsen",
+        "title": "Run Away With Me (Rostam Remix)",
+        "album": "Emotion (10th Anniversary Edition)"
+      }
+    },
+    {
+      "id": 882,
+      "artist": "Kelis",
+      "requestedTitle": "Milkshake",
+      "genre": "Dance Pop",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 303084815,
+        "artist": "Kelis",
+        "title": "Milkshake (Radio Mix)",
+        "album": "Tasty"
+      }
+    },
+    {
+      "id": 886,
+      "artist": "Smith & Mighty",
+      "requestedTitle": "Same",
+      "genre": "Trip Hop",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1216124047,
+        "artist": "Smith & Mighty",
+        "title": "Bass Is Maternal",
+        "album": "Bass Is Maternal"
+      }
+    },
+    {
+      "id": 888,
+      "artist": "UNKLE feat. Ian Brown",
+      "requestedTitle": "Be There",
+      "genre": "Trip Hop",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1667640622,
+        "artist": "UNKLE",
+        "title": "Be There (feat. Ian Brown)",
+        "album": "Psyence Fiction"
+      }
+    },
+    {
+      "id": 891,
+      "artist": "Lamb",
+      "requestedTitle": "Cotton Wool",
+      "genre": "Trip Hop",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 892,
+      "artist": "Laika",
+      "requestedTitle": "Black Cat Bone",
+      "genre": "Trip Hop",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 7060516,
+        "artist": "Laika",
+        "title": "Blood and Bones (Moody Mix)",
+        "album": "Sounds of the Satellites"
+      }
+    },
+    {
+      "id": 894,
+      "artist": "Kid Loco",
+      "requestedTitle": "A Grand Love Theme",
+      "genre": "Downtempo",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1476421658,
+        "artist": "Kid Loco",
+        "title": "A Grand Love Theme",
+        "album": "Trip-Hop Vibes"
+      }
+    },
+    {
+      "id": 906,
+      "artist": "Toots & The Maytals",
+      "requestedTitle": "Pressure Drop",
+      "genre": "Reggae",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 602608188,
+        "artist": "Toots & The Maytals",
+        "title": "Monkey Man",
+        "album": "Toots & the Maytals - Pressure Drop"
+      }
+    },
+    {
+      "id": 911,
+      "artist": "Dennis Brown",
+      "requestedTitle": "Revolution",
+      "genre": "Reggae",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 916,
+      "artist": "Steel Pulse",
+      "requestedTitle": "Ku Klux Klan",
+      "genre": "Reggae",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1480067988,
+        "artist": "Steel Pulse",
+        "title": "Ku Klux Klan",
+        "album": "Handsworth Revolution (Deluxe Edition)"
+      }
+    },
+    {
+      "id": 917,
+      "artist": "Linton Kwesi Johnson",
+      "requestedTitle": "Sonny's Lettah",
+      "genre": "Reggae",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1444033269,
+        "artist": "Linton Kwesi Johnson",
+        "title": "Sonny's Lettah (Anti-Sus Poem)",
+        "album": "Forces of Victory"
+      }
+    },
+    {
+      "id": 918,
+      "artist": "Aswad",
+      "requestedTitle": "Warrior Charge",
+      "genre": "Reggae",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 921,
+      "artist": "King Tubby",
+      "requestedTitle": "King Tubby Meets Rockers Uptown",
+      "genre": "Dub",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1566297211,
+        "artist": "Augustus Pablo",
+        "title": "King Tubby Meets Rockers Uptown",
+        "album": "Classix: Essential Roots Reggae - EP"
+      }
+    },
+    {
+      "id": 922,
+      "artist": "Lee Scratch Perry & The Upsetters",
+      "requestedTitle": "Dub Revolution",
+      "genre": "Dub",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 336649409,
+        "artist": "Lee \"Scratch\" Perry & The Upsetters",
+        "title": "Curly Locks",
+        "album": "\"Lee Perry \"\"the Upsetter\" Presents Roast Fish Collie Weed & Corn Bread"
+      }
+    },
+    {
+      "id": 924,
+      "artist": "Scientist",
+      "requestedTitle": "Dance of the Vampires",
+      "genre": "Dub",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 925,
+      "artist": "Prince Jammy",
+      "requestedTitle": "Jammy's a Do Gooder",
+      "genre": "Dub",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 926,
+      "artist": "The Revolutionaries",
+      "requestedTitle": "Kunta Kinte Dub",
+      "genre": "Dub",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 258157419,
+        "artist": "The Revolutionaries",
+        "title": "Kunta Kinte Version One",
+        "album": "Drum Sound: More Gems from the Channel One Dub Room, 1974 - 1980"
+      }
+    },
+    {
+      "id": 927,
+      "artist": "Keith Hudson",
+      "requestedTitle": "Pick a Dub",
+      "genre": "Dub",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1172360114,
+        "artist": "Keith Hudson",
+        "title": "Pick a Dub",
+        "album": "Pick a Dub (Deluxe Edition)"
+      }
+    },
+    {
+      "id": 931,
+      "artist": "Dub Syndicate",
+      "requestedTitle": "Pounding System",
+      "genre": "Dub",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1005637160,
+        "artist": "Dub Syndicate",
+        "title": "Pounding System",
+        "album": "The Pounding System"
+      }
+    },
+    {
+      "id": 932,
+      "artist": "Mad Professor",
+      "requestedTitle": "Kunte Kinte - The African Warrior",
+      "genre": "Dub",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 44124218,
+        "artist": "Mad Professor",
+        "title": "Kunte Kinte -The African Warrior",
+        "album": "Beyond the Realms of Dub"
+      }
+    },
+    {
+      "id": 933,
+      "artist": "Jah Shaka",
+      "requestedTitle": "Commandments of Dub",
+      "genre": "Dub",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 601656408,
+        "artist": "Jah Shaka",
+        "title": "Verse 1",
+        "album": "The Commandments of Dub - Chapter One"
+      }
+    },
+    {
+      "id": 934,
+      "artist": "Rhythm & Sound",
+      "requestedTitle": "King in My Empire",
+      "genre": "Dub",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 215524566,
+        "artist": "Rhythm & Sound",
+        "title": "King In My Empire (with Cornel Campbell)",
+        "album": "Rhythm & Sound w/the Artists"
+      }
+    },
+    {
+      "id": 935,
+      "artist": "Kaly Live Dub",
+      "requestedTitle": "Allaxis",
+      "genre": "Dub",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 936,
+      "artist": "Machito",
+      "requestedTitle": "Tanga",
+      "genre": "Latin",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 943,
+      "artist": "Ismael Rivera",
+      "requestedTitle": "Las Caras Lindas",
+      "genre": "Latin",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1816105264,
+        "artist": "Ismael Rivera y Sus Cachimbos",
+        "title": "Las Caras Lindas (Remastered 2025)",
+        "album": "Esto Sí Es Lo Mío (Remastered 2025)"
+      }
+    },
+    {
+      "id": 944,
+      "artist": "Joe Cuba Sextet",
+      "requestedTitle": "Bang! Bang!",
+      "genre": "Latin",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1706199442,
+        "artist": "Joe Cuba Sextet",
+        "title": "Bang! Bang!",
+        "album": "Hit The Bongo! The Latin Soul Of Tico Records"
+      }
+    },
+    {
+      "id": 945,
+      "artist": "Mongo Santamaría",
+      "requestedTitle": "Afro Blue",
+      "genre": "Latin",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1443146879,
+        "artist": "Mongo Santamaria",
+        "title": "Afro Blue",
+        "album": "Mongo's Greatest Hits"
+      }
+    },
+    {
+      "id": 947,
+      "artist": "Los Van Van",
+      "requestedTitle": "Sandunguera",
+      "genre": "Latin",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 87064794,
+        "artist": "Los Van Van",
+        "title": "La Habana No Aguanta Más",
+        "album": "Sandunguera"
+      }
+    },
+    {
+      "id": 951,
+      "artist": "João Gilberto",
+      "requestedTitle": "O Pato",
+      "genre": "MPB",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1631386836,
+        "artist": "João Gilberto",
+        "title": "O Pato (Ultimate Mix)",
+        "album": "O Amor, O Sorriso e a Flor (Ultimate Mix)"
+      }
+    },
+    {
+      "id": 952,
+      "artist": "Caetano Veloso",
+      "requestedTitle": "Alegria, Alegria",
+      "genre": "MPB",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1443217552,
+        "artist": "Caetano Veloso",
+        "title": "Alegria, Alegria",
+        "album": "Caetano Veloso (Remixed Original Album)"
+      }
+    },
+    {
+      "id": 953,
+      "artist": "Gilberto Gil",
+      "requestedTitle": "Domingo no Parque",
+      "genre": "MPB",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1576811360,
+        "artist": "Gilberto Gil",
+        "title": "Domingo no Parque",
+        "album": "Gilberto Gil (1968)"
+      }
+    },
+    {
+      "id": 954,
+      "artist": "Gal Costa",
+      "requestedTitle": "Baby",
+      "genre": "MPB",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1444029678,
+        "artist": "Gal Costa & Roupa Nova",
+        "title": "Baby",
+        "album": "Baby Gal"
+      }
+    },
+    {
+      "id": 956,
+      "artist": "Milton Nascimento & Lô Borges",
+      "requestedTitle": "Tudo Que Você Podia Ser",
+      "genre": "MPB",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 725786837,
+        "artist": "Milton Nascimento & Lô Borges",
+        "title": "Cravo e Canela (feat. Lô Borges)",
+        "album": "Clube da Esquina"
+      }
+    },
+    {
+      "id": 958,
+      "artist": "Jorge Ben Jor",
+      "requestedTitle": "Taj Mahal",
+      "genre": "MPB",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1444051201,
+        "artist": "Jorge Ben Jor",
+        "title": "Taj Mahal",
+        "album": "Africa Brasil"
+      }
+    },
+    {
+      "id": 959,
+      "artist": "Tim Maia",
+      "requestedTitle": "Azul da Cor do Mar",
+      "genre": "MPB",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1424738574,
+        "artist": "Tim Maia",
+        "title": "Azul Da Cor Do Mar",
+        "album": "Tim Maia 1970"
+      }
+    },
+    {
+      "id": 960,
+      "artist": "Marcos Valle",
+      "requestedTitle": "Não Tem Nada Não",
+      "genre": "MPB",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1597218209,
+        "artist": "Marcos Valle",
+        "title": "Ao Amigo Tom",
+        "album": "Garra"
+      }
+    },
+    {
+      "id": 962,
+      "artist": "Nana Caymmi",
+      "requestedTitle": "Resposta ao Tempo",
+      "genre": "MPB",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 713705011,
+        "artist": "Nana Caymmi",
+        "title": "Resposta ao Tempo",
+        "album": "Retratos: Nana Caymmi"
+      }
+    },
+    {
+      "id": 965,
+      "artist": "Cássia Eller",
+      "requestedTitle": "Malandragem",
+      "genre": "MPB",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 491193970,
+        "artist": "Cássia Eller",
+        "title": "Malandragem (Ao Vivo)",
+        "album": "Rock in Rio (Ao Vivo)"
+      }
+    },
+    {
+      "id": 966,
+      "artist": "Cartola",
+      "requestedTitle": "O Mundo É um Moinho",
+      "genre": "Musica brasiliana",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1444042773,
+        "artist": "Cartola",
+        "title": "O Mundo É um Moinho",
+        "album": "Cartola (1976)"
+      }
+    },
+    {
+      "id": 967,
+      "artist": "Clara Nunes",
+      "requestedTitle": "O Mar Serenou",
+      "genre": "Musica brasiliana",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 660667661,
+        "artist": "Carla Visi",
+        "title": "O Mar Serenou",
+        "album": "Pura Claridade"
+      }
+    },
+    {
+      "id": 968,
+      "artist": "Paulinho da Viola",
+      "requestedTitle": "Foi um Rio Que Passou em Minha Vida",
+      "genre": "Musica brasiliana",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 723886589,
+        "artist": "Paulinho da Viola",
+        "title": "Foi Um Rio Que Passou Em Minha Vida",
+        "album": "Eu Sou O Samba"
+      }
+    },
+    {
+      "id": 970,
+      "artist": "Luiz Gonzaga",
+      "requestedTitle": "Asa Branca",
+      "genre": "Musica brasiliana",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 321631504,
+        "artist": "Luiz Gonzaga",
+        "title": "Asa Branca",
+        "album": "O Nordeste Na Voz de Luiz Gonzaga"
+      }
+    },
+    {
+      "id": 974,
+      "artist": "Secos & Molhados",
+      "requestedTitle": "Sangue Latino",
+      "genre": "Musica brasiliana",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 281165319,
+        "artist": "Secos & Molhados",
+        "title": "Sangue Latino",
+        "album": "A Volta de Secos & Molhados"
+      }
+    },
+    {
+      "id": 979,
+      "artist": "Ali Farka Touré",
+      "requestedTitle": "Ai Du",
+      "genre": "World Music",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1528519981,
+        "artist": "Ali Farka Touré",
+        "title": "Ai Du (with Ry Cooder) [with Ry Cooder]",
+        "album": "Talking Timbuktu (with Ry Cooder)"
+      }
+    },
+    {
+      "id": 981,
+      "artist": "Miriam Makeba",
+      "requestedTitle": "Pata Pata",
+      "genre": "World Music",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1472550501,
+        "artist": "Miriam Makeba",
+        "title": "Pata Pata (Stereo Version)",
+        "album": "Pata Pata (Mono & Stereo Versions)"
+      }
+    },
+    {
+      "id": 984,
+      "artist": "Nusrat Fateh Ali Khan",
+      "requestedTitle": "Mustt Mustt",
+      "genre": "World Music",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1653379095,
+        "artist": "Nusrat Fateh Ali Khan",
+        "title": "Mustt Mustt",
+        "album": "Mustt Mustt (Real World Gold)"
+      }
+    },
+    {
+      "id": 986,
+      "artist": "Domenico Modugno",
+      "requestedTitle": "Nel blu dipinto di blu",
+      "genre": "Musica italiana",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 669078452,
+        "artist": "Domenico Modugno",
+        "title": "Nel blu dipinto di blu (From \"Nel blu dipinto di blu\")",
+        "album": "Nel blu dipinto di blu (From \"Nel blu dipinto di blu\") - Single"
+      }
+    },
+    {
+      "id": 989,
+      "artist": "Fabrizio De André",
+      "requestedTitle": "Bocca di Rosa",
+      "genre": "Musica italiana",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 254147297,
+        "artist": "Fabrizio De André",
+        "title": "Bocca Di Rosa",
+        "album": "Fabrizio de André, Vol. 1"
+      }
+    },
+    {
+      "id": 992,
+      "artist": "Lucio Dalla",
+      "requestedTitle": "Com'è profondo il mare",
+      "genre": "Musica italiana",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 200936180,
+        "artist": "Lucio Dalla",
+        "title": "Com'è Profondo Il Mare",
+        "album": "12000 Lune"
+      }
+    },
+    {
+      "id": 994,
+      "artist": "Giuni Russo",
+      "requestedTitle": "Un'estate al mare",
+      "genre": "Musica italiana",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1667837021,
+        "artist": "Giuni Russo",
+        "title": "Abbronzate dai miraggi (2023 Remaster)",
+        "album": "Vox (2023 Remaster)"
+      }
+    },
+    {
+      "id": 999,
+      "artist": "CCCP Fedeli alla linea",
+      "requestedTitle": "Emilia Paranoica",
+      "genre": "Musica italiana",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1005,
+      "artist": "Speedy J",
+      "requestedTitle": "Pullover",
+      "genre": "Techno",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1707085768,
+        "artist": "Speedy J",
+        "title": "Pull Over (Maddix Remix) [Mixed]",
+        "album": "Tomorrowland 2023: Dimitri Vegas & Like Mike at Mainstage, Weekend 1 (DJ Mix)"
+      }
+    },
+    {
+      "id": 1006,
+      "artist": "The Aztec Mystic",
+      "requestedTitle": "Knights of the Jaguar",
+      "genre": "Techno",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1340601677,
+        "artist": "The Aztec Mystic",
+        "title": "Knights of Jaguar",
+        "album": "DJ Vibe Presents Global Grooves Vol.2"
+      }
+    },
+    {
+      "id": 1007,
+      "artist": "Surgeon",
+      "requestedTitle": "Badger Bite",
+      "genre": "Techno",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1285551694,
+        "artist": "Surgeon",
+        "title": "Badger Bite (2014 Remaster)",
+        "album": "Pet 2000 (2014 Remaster) - Single"
+      }
+    },
+    {
+      "id": 1008,
+      "artist": "Regis",
+      "requestedTitle": "Speak to Me",
+      "genre": "Techno",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1009,
+      "artist": "Basic Channel",
+      "requestedTitle": "Phylyps Trak II",
+      "genre": "Techno",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 286665089,
+        "artist": "Basic Channel",
+        "title": "Phylyps Trak II/II",
+        "album": "BCD-2"
+      }
+    },
+    {
+      "id": 1010,
+      "artist": "Maurizio",
+      "requestedTitle": "M4",
+      "genre": "Techno",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 49292555,
+        "artist": "Maurizio",
+        "title": "Mø6b",
+        "album": "M-Series"
+      }
+    },
+    {
+      "id": 1011,
+      "artist": "The Advent",
+      "requestedTitle": "Bad Boy",
+      "genre": "Techno",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1013,
+      "artist": "Fumiya Tanaka",
+      "requestedTitle": "Phase",
+      "genre": "Techno",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1585186726,
+        "artist": "Fumiya Tanaka",
+        "title": "Phase",
+        "album": "Unknown Possibility, vol. 2"
+      }
+    },
+    {
+      "id": 1014,
+      "artist": "Jeff Mills",
+      "requestedTitle": "Gamma Player",
+      "genre": "Techno",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 598481481,
+        "artist": "Jeff Mills",
+        "title": "Gamma Player",
+        "album": "Sequence - a Retrospective of Axis Records"
+      }
+    },
+    {
+      "id": 1015,
+      "artist": "Robert Hood",
+      "requestedTitle": "The Pace",
+      "genre": "Techno",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1017,
+      "artist": "Galaxy 2 Galaxy",
+      "requestedTitle": "Jupiter Jazz",
+      "genre": "Techno",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 283983661,
+        "artist": "Galaxy 2 Galaxy",
+        "title": "Jupiter Jazz",
+        "album": "Submerge, Vol.1 - Detroit Techno"
+      }
+    },
+    {
+      "id": 1018,
+      "artist": "Slam",
+      "requestedTitle": "Positive Education",
+      "genre": "Techno",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1026,
+      "artist": "XTC",
+      "requestedTitle": "Making Plans for Nigel",
+      "genre": "New Wave",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 724621514,
+        "artist": "XTC",
+        "title": "Making Plans for Nigel",
+        "album": "Drums and Wires (Bonus Track Version)"
+      }
+    },
+    {
+      "id": 1031,
+      "artist": "Ultravox",
+      "requestedTitle": "Hiroshima Mon Amour",
+      "genre": "New Wave",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1444077309,
+        "artist": "Ultravox",
+        "title": "Hiroshima Mon Amour",
+        "album": "Ha! Ha! Ha! (Deluxe Edition)"
+      }
+    },
+    {
+      "id": 1033,
+      "artist": "A Certain Ratio",
+      "requestedTitle": "Shack Up",
+      "genre": "New Wave",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1822836193,
+        "artist": "A Certain Ratio",
+        "title": "Shack Up (Live in America)",
+        "album": "Live in America"
+      }
+    },
+    {
+      "id": 1034,
+      "artist": "Kid Creole and the Coconuts",
+      "requestedTitle": "Stool Pigeon",
+      "genre": "New Wave",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1036,
+      "artist": "Louis Armstrong and His Hot Five",
+      "requestedTitle": "West End Blues",
+      "genre": "Jazz",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 293785633,
+        "artist": "Louis Armstrong and His Hot Five",
+        "title": "West End Blues",
+        "album": "The Complete Hot Five and Hot Seven Recordings, Vol. 3"
+      }
+    },
+    {
+      "id": 1037,
+      "artist": "Duke Ellington",
+      "requestedTitle": "Take the 'A' Train",
+      "genre": "Jazz",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1038,
+      "artist": "Billie Holiday",
+      "requestedTitle": "Strange Fruit",
+      "genre": "Jazz",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1469579573,
+        "artist": "Billie Holiday",
+        "title": "Strange Fruit",
+        "album": "Billie Holiday"
+      }
+    },
+    {
+      "id": 1039,
+      "artist": "Charlie Parker",
+      "requestedTitle": "Ko-Ko",
+      "genre": "Jazz",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1491387110,
+        "artist": "Charlie Parker",
+        "title": "Ko-Ko",
+        "album": "The Savoy 10-inch LP Collection"
+      }
+    },
+    {
+      "id": 1046,
+      "artist": "Bill Evans Trio",
+      "requestedTitle": "Waltz for Debby",
+      "genre": "Jazz",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1440747839,
+        "artist": "Bill Evans Trio",
+        "title": "Waltz for Debby (Take 2)",
+        "album": "Waltz for Debby (Remastered) [Live]"
+      }
+    },
+    {
+      "id": 1051,
+      "artist": "Keith Jarrett",
+      "requestedTitle": "Köln, January 24, 1975, Part I",
+      "genre": "Jazz",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1796173921,
+        "artist": "Keith Jarrett",
+        "title": "Köln, January 24, 1975, Part I (Live)",
+        "album": "The Köln Concert 50"
+      }
+    },
+    {
+      "id": 1053,
+      "artist": "Nina Simone",
+      "requestedTitle": "Sinnerman",
+      "genre": "Jazz",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1445668995,
+        "artist": "Nina Simone",
+        "title": "Sinnerman (Live In New York/1965)",
+        "album": "Pastel Blues"
+      }
+    },
+    {
+      "id": 1056,
+      "artist": "Mahavishnu Orchestra",
+      "requestedTitle": "Meeting of the Spirits",
+      "genre": "Jazz Fusion",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 511076133,
+        "artist": "Mahavishnu Orchestra",
+        "title": "Meeting of the Spirits (with John McLaughlin)",
+        "album": "The Inner Mounting Flame (with John McLaughlin)"
+      }
+    },
+    {
+      "id": 1057,
+      "artist": "Tony Williams Lifetime",
+      "requestedTitle": "Vashkar",
+      "genre": "Jazz Fusion",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1071,
+      "artist": "Lectric Workers",
+      "requestedTitle": "Robot Is Systematic",
+      "genre": "Italo Disco",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1553432355,
+        "artist": "'Lectric Workers",
+        "title": "Robot is Systematic (Vocal Version)",
+        "album": "ZYX Italo Disco History: 1982"
+      }
+    },
+    {
+      "id": 1072,
+      "artist": "Charlie",
+      "requestedTitle": "Spacer Woman",
+      "genre": "Italo Disco",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 683784633,
+        "artist": "Charlie",
+        "title": "Spacer Woman (Vocal)",
+        "album": "Spacer Woman - Single"
+      }
+    },
+    {
+      "id": 1074,
+      "artist": "Clio",
+      "requestedTitle": "Faces",
+      "genre": "Italo Disco",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1075,
+      "artist": "Valerie Dore",
+      "requestedTitle": "The Night",
+      "genre": "Italo Disco",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1778730726,
+        "artist": "Valerie Dore",
+        "title": "King Arthur",
+        "album": "The Night"
+      }
+    },
+    {
+      "id": 1076,
+      "artist": "Koto",
+      "requestedTitle": "Visitors",
+      "genre": "Italo Disco",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1078,
+      "artist": "Scotch",
+      "requestedTitle": "Disco Band",
+      "genre": "Italo Disco",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1105347983,
+        "artist": "Scotch",
+        "title": "Disco Band",
+        "album": "Evolution (Deluxe Edition)"
+      }
+    },
+    {
+      "id": 1079,
+      "artist": "Fun Fun",
+      "requestedTitle": "Happy Station",
+      "genre": "Italo Disco",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1362157769,
+        "artist": "Fun Fun",
+        "title": "Happy Station (Scratch Version)",
+        "album": "Have Fun!"
+      }
+    },
+    {
+      "id": 1081,
+      "artist": "My Mine",
+      "requestedTitle": "Hypnotic Tango",
+      "genre": "Italo Disco",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 425674301,
+        "artist": "My Mine",
+        "title": "Hypnotic Tango (Original 12\" Version)",
+        "album": "Hypnotic Tango - Single"
+      }
+    },
+    {
+      "id": 1083,
+      "artist": "Moses",
+      "requestedTitle": "We Just",
+      "genre": "Italo Disco",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1559584387,
+        "artist": "Moses",
+        "title": "We Just (Remix) [Mixed]",
+        "album": "DGTL: The Blessed Madonna at DGTL Madrid, 2018 (DJ Mix)"
+      }
+    },
+    {
+      "id": 1084,
+      "artist": "Gary Low",
+      "requestedTitle": "I Want You",
+      "genre": "Italo Disco",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 284539491,
+        "artist": "Gary Low",
+        "title": "I Want You",
+        "album": "I Want You - the Best of Gary Low"
+      }
+    },
+    {
+      "id": 1086,
+      "artist": "Alessandro Alessandroni",
+      "requestedTitle": "Prisma Sonoro",
+      "genre": "Library Music",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1088,
+      "artist": "Egisto Macchi",
+      "requestedTitle": "Fauna",
+      "genre": "Library Music",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1263009104,
+        "artist": "Egisto Macchi",
+        "title": "Rettili di mare",
+        "album": "Fauna marina"
+      }
+    },
+    {
+      "id": 1089,
+      "artist": "Amedeo Tommasi",
+      "requestedTitle": "Madame Lulu",
+      "genre": "Library Music",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1265348997,
+        "artist": "Amedeo Tommasi",
+        "title": "Madame Lulu",
+        "album": "Spaghetti Western Story"
+      }
+    },
+    {
+      "id": 1091,
+      "artist": "Daniel Janin",
+      "requestedTitle": "Black Night",
+      "genre": "Library Music",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1093,
+      "artist": "Alan Hawkshaw",
+      "requestedTitle": "Beat Me 'Til I'm Blue",
+      "genre": "Library Music",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1094,
+      "artist": "Keith Mansfield",
+      "requestedTitle": "Funky Fanfare",
+      "genre": "Library Music",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1154115618,
+        "artist": "Keith Mansfield",
+        "title": "Funky Fanfare",
+        "album": "The Kpm 1000 Series, Vol. 1"
+      }
+    },
+    {
+      "id": 1096,
+      "artist": "Man Parrish",
+      "requestedTitle": "Hip Hop, Be Bop (Don't Stop)",
+      "genre": "Electro",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 287566565,
+        "artist": "Man Parrish",
+        "title": "Hip Hop, Be Bop (Don't Stop)",
+        "album": "Hip Hop, Be Bop"
+      }
+    },
+    {
+      "id": 1099,
+      "artist": "Davy DMX",
+      "requestedTitle": "One for the Treble",
+      "genre": "Electro",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1673223345,
+        "artist": "Davy DMX",
+        "title": "One for the Treble (Fresh)",
+        "album": "One For the Treble (Fresh) - Single"
+      }
+    },
+    {
+      "id": 1100,
+      "artist": "Dynamix II",
+      "requestedTitle": "Just Give the DJ a Break",
+      "genre": "Electro",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 291451841,
+        "artist": "Dynamix II",
+        "title": "Just Give the DJ a Break (feat. Breezy Beat MC)",
+        "album": "Dynamix II - The Album"
+      }
     }
   ]
 }

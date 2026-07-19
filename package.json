@@ -7,7 +7,12 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "validate:apple": "node scripts/validate-apple-previews.mjs",
+    "validate:library": "node scripts/validate-library.mjs",
+    "enrich:artwork": "node scripts/fetch-missing-artwork.mjs",
+    "test:quiz": "node scripts/simulate-quiz.mjs"
+    ,"test:progression": "node scripts/test-progression.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.24.0",

@@ -1,6 +1,8 @@
 const EDITORIAL_TERMS =
   /\b(remaster(?:ed)?(?:\s+\d{4})?|radio edit|single version|feat(?:uring)?\.?\s+[^()[\]-]+)\b/gi;
-const FORBIDDEN_TERMS = /\b(karaoke|tribute|cover|as made famous by)\b/i;
+const FORBIDDEN_TERMS =
+  /\b(karaoke|tribute|cover|as made famous by|sped[ -]?up|slowed(?:\s*(?:and|&)\s*reverb)?|instrumental)\b/i;
+const VERSION_TERMS = ["remix", "live", "karaoke", "cover", "tribute", "sped up", "slowed", "instrumental"];
 
 function normalizeBase(value) {
   return String(value ?? "")
@@ -16,6 +18,33 @@ export function normalizeAppleArtist(value) {
   return normalizeBase(value);
 }
 
+function artistParts(value) {
+  return String(value ?? "")
+    .split(/\s*(?:,|&|\band\b|\bfeat(?:uring)?\.?\b|\bft\.?\b|\bx\b)\s*/i)
+    .map(normalizeBase)
+    .filter(Boolean);
+}
+
+function artistAcronym(value) {
+  return normalizeBase(value)
+    .split(" ")
+    .filter((word) => !["the", "and", "of", "in"].includes(word))
+    .map((word) => word[0])
+    .join("");
+}
+
+export function appleArtistsMatch(expected, actual) {
+  const left = normalizeAppleArtist(expected).replace(/^the /, "");
+  const right = normalizeAppleArtist(actual).replace(/^the /, "");
+  if (left === right) return true;
+  if (artistAcronym(left).length >= 3 && artistAcronym(left) === right.replace(/ /g, "")) return true;
+  if (artistAcronym(right).length >= 3 && artistAcronym(right) === left.replace(/ /g, "")) return true;
+
+  const expectedParts = artistParts(expected);
+  const actualParts = artistParts(actual);
+  return expectedParts.every((part) => actualParts.includes(part));
+}
+
 export function normalizeAppleTitle(value) {
   return normalizeBase(
     String(value ?? "")
@@ -24,24 +53,32 @@ export function normalizeAppleTitle(value) {
   );
 }
 
-function requiresVersion(title, version) {
-  return new RegExp(`\\b${version}\\b`, "i").test(title);
+export function normalizeAppleAlbum(value) {
+  return normalizeBase(String(value ?? "")
+    .replace(/[([][^)\]]*\b(remaster(?:ed)?|expanded edition)\b[^)\]]*[)\]]/gi, " ")
+    .replace(/\b(remaster(?:ed)?)(?:\s+\d{4})?\b/gi, " ")
+    .replace(/\s+-\s+(single|ep)$/gi, ""));
+}
+
+function includesVersion(title, version) {
+  return new RegExp(`\\b${version.replace(" ", "[ -]?")}\\b`, "i").test(title);
+}
+
+export function hasWrongAppleVersion(expectedTitle, candidateTitle, candidate = {}) {
+  const searchable = `${candidateTitle} ${candidate.artistName ?? ""} ${candidate.collectionName ?? ""}`;
+  if (FORBIDDEN_TERMS.test(searchable) && !FORBIDDEN_TERMS.test(expectedTitle)) return true;
+  return VERSION_TERMS.some(
+    (version) => !includesVersion(expectedTitle, version) && includesVersion(candidateTitle, version),
+  );
 }
 
 export function isExactAppleMusicMatch(track, candidate) {
   const expectedTitle = String(track.title);
   const candidateTitle = String(candidate.trackName);
-  if (FORBIDDEN_TERMS.test(`${candidateTitle} ${candidate.artistName} ${candidate.collectionName}`)) {
-    return false;
-  }
-  if (!requiresVersion(expectedTitle, "live") && requiresVersion(candidateTitle, "live")) {
-    return false;
-  }
-  if (!requiresVersion(expectedTitle, "remix") && requiresVersion(candidateTitle, "remix")) {
-    return false;
-  }
+  if (hasWrongAppleVersion(expectedTitle, candidateTitle, candidate)) return false;
+  if (track.requireOriginalAlbum && normalizeAppleAlbum(track.album) !== normalizeAppleAlbum(candidate.collectionName)) return false;
   return (
-    normalizeAppleArtist(track.artist) === normalizeAppleArtist(candidate.artistName) &&
+    appleArtistsMatch(track.artist, candidate.artistName) &&
     normalizeAppleTitle(track.title) === normalizeAppleTitle(candidate.trackName)
   );
 }
@@ -79,7 +116,10 @@ export async function validateAppleMusicTrack(
       }));
     return {
       valid: false,
-      status: doubtfulCandidates.length ? "doubtful" : "excluded",
+      status: candidates.some((candidate) =>
+        appleArtistsMatch(track.artist, candidate.artistName) &&
+        hasWrongAppleVersion(track.title, candidate.trackName, candidate)
+      ) ? "wrong-version" : doubtfulCandidates.length ? "needs-review" : "no-match",
       reason: doubtfulCandidates.length
         ? "Nessuna corrispondenza esatta; trovati soltanto candidati ambigui"
         : "Nessuna corrispondenza Apple Music/iTunes",
@@ -93,7 +133,7 @@ export async function validateAppleMusicTrack(
     if (previewValidation.valid) {
       return {
         valid: true,
-        status: "validated",
+        status: "verified",
         candidate,
         previewValidation,
         doubtfulCandidates: [],
@@ -109,7 +149,7 @@ export async function validateAppleMusicTrack(
 
   return {
     valid: false,
-    status: "unplayable",
+    status: "missing-preview",
     reason: "Le corrispondenze esatte non hanno una preview audio riproducibile",
     failedPreviews,
     doubtfulCandidates: [],
