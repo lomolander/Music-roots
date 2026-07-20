@@ -28,6 +28,7 @@ import expansion701800 from "./expansion-701-800.js";
 import expansion801900 from "./expansion-801-900.js";
 import expansion9011000 from "./expansion-901-1000.js";
 import expansion10011100 from "./expansion-1001-1100.js";
+import expansion11011314 from "./expansion-1101-1314.js";
 
 export const trackModules = {
   "house-techno": houseTechno,
@@ -46,6 +47,7 @@ export const trackModules = {
   "expansion-801-900": expansion801900,
   "expansion-901-1000": expansion9011000,
   "expansion-1001-1100": expansion10011100,
+  "expansion-1101-1314": expansion11011314,
 };
 
 const editorialDefaults = {

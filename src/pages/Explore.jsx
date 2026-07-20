@@ -3,6 +3,7 @@ import { ChevronRight, Disc3, ListMusic, Music, Pause, Play, Search, SkipBack, S
 
 import tracks from "../data/questions.js";
 import { albums, artists, genres } from "../data/entities/index.js";
+import { findPlayableIndex, previewFor, validPreview } from "../lib/essentialsPlayer.js";
 
 const tabs = [
   ["genres", "Generi", Tags],
@@ -25,10 +26,14 @@ function Explore({ onBack }) {
     const artistById = new Map(artists.map((artist) => [artist.id, artist]));
     const albumById = new Map(albums.map((album) => [album.id, album]));
     const genreById = new Map(genres.map((genre) => [genre.id, genre]));
+    const artworkByGenre = new Map(genres.map((genre) => [
+      genre.name,
+      genre.trackIds.map((id) => trackById.get(id)?.artwork).find(Boolean) ?? "",
+    ]));
     const subgenres = [...new Set(tracks.map((track) => track.subgenre).filter(Boolean))]
       .sort((left, right) => left.localeCompare(right, "it"))
       .map((name) => ({ name, tracks: tracks.filter((track) => track.subgenre === name) }));
-    return { trackById, artistById, albumById, genreById, subgenres };
+    return { trackById, artistById, albumById, genreById, artworkByGenre, subgenres };
   }, []);
 
   const navigate = (type, id) => {
@@ -76,10 +81,10 @@ function Explore({ onBack }) {
 
           <section className="archive-list">
             {tab === "genres" && genres.filter((genre) => visible(genre.name)).map((genre) => (
-              <ArchiveButton key={genre.id} image={data.trackById.get(genre.trackIds[0])?.artwork} title={genre.name} meta={`${genre.trackIds.length} brani · ${genre.essentialArtists.length} artisti rappresentativi`} onClick={() => navigate("genre", genre.id)} />
+              <ArchiveButton key={genre.id} image={genre.trackIds.map((id) => data.trackById.get(id)?.artwork).find(Boolean)} title={genre.name} meta={`${genre.trackIds.length} brani · ${genre.essentialArtists.length} artisti rappresentativi`} onClick={() => navigate("genre", genre.id)} />
             ))}
             {tab === "subgenres" && data.subgenres.filter((item) => visible(item.name)).map((item) => (
-              <ArchiveButton key={item.name} image={item.tracks[0]?.artwork} title={item.name} meta={`${item.tracks.length} brani · ${new Set(item.tracks.map((track) => track.artist)).size} artisti`} onClick={() => navigate("subgenre", item.name)} />
+              <ArchiveButton key={item.name} image={item.tracks.map((track) => track.artwork).find(Boolean) || data.artworkByGenre.get(item.tracks[0]?.genre)} title={item.name} meta={`${item.tracks.length} brani · ${new Set(item.tracks.map((track) => track.artist)).size} artisti`} onClick={() => navigate("subgenre", item.name)} />
             ))}
             {tab === "artists" && artists.filter((artist) => visible(artist.name)).map((artist) => (
               <ArchiveButton key={artist.id} image={artist.image} title={artist.name} meta={`${artist.trackIds.length} brani · ${artist.genres.join(", ")}`} onClick={() => navigate("artist", artist.id)} />
@@ -98,9 +103,10 @@ function Explore({ onBack }) {
 }
 
 function ArchiveButton({ image, title, meta, onClick }) {
+  const [failedImage, setFailedImage] = useState("");
   return (
     <button className="archive-row glass-card" type="button" onClick={onClick}>
-      {image ? <img src={image} alt="" loading="lazy" /> : <span className="archive-placeholder"><Music /></span>}
+      {image && failedImage !== image ? <img src={image} alt="" loading="lazy" onError={() => setFailedImage(image)} /> : <span className="archive-placeholder"><Music /></span>}
       <span><strong>{title}</strong><small>{meta}</small></span>
       <ChevronRight aria-hidden="true" />
     </button>
@@ -156,8 +162,8 @@ function Detail({ view, data, navigate, openTrack }) {
     <article className="archive-detail page-enter">
       <p className="eyebrow">{view.type === "playlist" ? "PLAYLIST ESSENTIALS" : view.type.toUpperCase()}</p>
       <h1>{title}</h1>
-      <p className="detail-description">{description}</p>
-      {links}
+      {view.type !== "playlist" && <p className="detail-description">{description}</p>}
+      {view.type !== "playlist" && links}
       {view.type === "playlist" && <EssentialsPlayer tracks={itemTracks} openTrack={openTrack} />}
       {view.type === "playlist" && validExternalUrl(essentialPlaylist?.fullPlaylistUrl) && (
         <a className="essentials-external-link" href={essentialPlaylist.fullPlaylistUrl} target="_blank" rel="noreferrer">
@@ -170,17 +176,9 @@ function Detail({ view, data, navigate, openTrack }) {
   );
 }
 
-const validPreview = (value) => typeof value === "string" && value.trim().startsWith("https://");
 const validExternalUrl = (value) => {
   if (typeof value !== "string" || !value.trim()) return false;
   try { return new URL(value).protocol === "https:"; } catch { return false; }
-};
-const previewFor = (track, forceDeezer = false) => {
-  const apple = track.preview || (track.appleMatchStatus === "verified" ? track.applePreviewUrl : "");
-  const deezer = track.deezer?.previewUrl;
-  if (!forceDeezer && validPreview(apple)) return { url: apple, source: "Apple Music" };
-  if (validPreview(deezer)) return { url: deezer, source: "Deezer" };
-  return null;
 };
 const formatTime = (seconds) => {
   if (!Number.isFinite(seconds) || seconds < 0) return "0:00";
@@ -199,12 +197,10 @@ function EssentialsPlayer({ tracks: playlist, openTrack }) {
   const [forceDeezer, setForceDeezer] = useState(false);
   const current = playlist[index];
   const preview = current ? previewFor(current, forceDeezer) : null;
+  const previewUrl = preview?.url ?? "";
 
   const findPlayable = useCallback((from, direction) => {
-    for (let position = from; position >= 0 && position < playlist.length; position += direction) {
-      if (previewFor(playlist[position])) return position;
-    }
-    return -1;
+    return findPlayableIndex(playlist, from, direction);
   }, [playlist]);
 
   const move = useCallback((direction, autoplay = playing) => {
@@ -222,14 +218,40 @@ function EssentialsPlayer({ tracks: playlist, openTrack }) {
 
   useEffect(() => {
     const audio = audioRef.current;
-    if (!audio || !preview) return;
+    if (!audio || !previewUrl) return;
     if (playing) audio.play().catch(() => setPlaying(false));
     else audio.pause();
-  }, [playing, preview]);
+  }, [playing, previewUrl]);
 
-  const toggle = () => {
-    if (!preview) return;
-    setPlaying((value) => !value);
+  const toggle = async () => {
+    const audio = audioRef.current;
+    if (!audio || !preview) return;
+    if (!audio.paused) {
+      audio.pause();
+      setPlaying(false);
+      return;
+    }
+    try {
+      await audio.play();
+      setPlaying(true);
+    } catch (error) {
+      if (!forceDeezer && validPreview(current?.deezer?.previewUrl)) {
+        setForceDeezer(true);
+        audio.src = current.deezer.previewUrl;
+        audio.load();
+        try {
+          await audio.play();
+          setPlaying(true);
+          return;
+        } catch (fallbackError) {
+          console.warn("[Essentials] Preview Deezer non riproducibile", fallbackError);
+        }
+      } else {
+        console.warn("[Essentials] Preview non riproducibile", error);
+      }
+      setPlaying(false);
+      move(1, true);
+    }
   };
 
   const handleError = () => {

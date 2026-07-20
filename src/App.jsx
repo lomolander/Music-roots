@@ -1,12 +1,11 @@
 import lomolanderLogo from "./assets/lomolander-logo.png";
 import { useRef, useState } from "react";
 import { flushSync } from "react-dom";
-import { Music2, Share2, MapPin, Route, UserRound } from "lucide-react";
+import { Music2, Share2, MapPin, UserRound } from "lucide-react";
 
 import Quiz from "./pages/Quiz";
 import Explore from "./pages/Explore";
 import MusicAtlas from "./pages/MusicAtlas";
-import Connections from "./pages/Connections";
 import Profile from "./pages/Profile";
 
 const sections = [
@@ -27,12 +26,6 @@ const sections = [
     description: "Città, luoghi e percorsi che hanno fatto viaggiare la musica.",
     icon: MapPin,
     action: "atlas",
-  },
-  {
-    title: "Collegamenti",
-    description: "Naviga tra influenze, artisti, album e brani correlati.",
-    icon: Route,
-    action: "connections",
   },
   {
     title: "Profilo",
@@ -61,10 +54,6 @@ export default function App() {
 
   if (screen === "atlas") {
     return <MusicAtlas onBack={() => setScreen("home")} onExplore={() => setScreen("explore")} />;
-  }
-
-  if (screen === "connections") {
-    return <Connections onBack={() => setScreen("home")} />;
   }
 
   if (screen === "profile") {
@@ -131,8 +120,6 @@ export default function App() {
                   setScreen("explore");
                 } else if (section.action === "atlas") {
                   setScreen("atlas");
-                } else if (section.action === "connections") {
-                  setScreen("connections");
                 } else if (section.action === "profile") {
                   setScreen("profile");
                 }

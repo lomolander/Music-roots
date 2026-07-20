@@ -1,20 +1,20 @@
 {
-  "generatedAt": "2026-07-19T02:20:25.308Z",
-  "totalTracks": 1100,
-  "verified": 784,
-  "verifiedPercentage": 71.27,
-  "needs-review": 138,
-  "wrong-version": 100,
-  "no-match": 77,
-  "missing-preview": 1,
-  "checkedThisRun": 0,
-  "recoveredFromCache": 0,
-  "selectedThisRun": 0,
+  "generatedAt": "2026-07-19T23:51:29.198Z",
+  "totalTracks": 1314,
+  "verified": 916,
+  "verifiedPercentage": 69.71,
+  "needs-review": 154,
+  "wrong-version": 128,
+  "no-match": 112,
+  "missing-preview": 4,
+  "checkedThisRun": 106,
+  "recoveredFromCache": 75,
+  "selectedThisRun": 214,
   "filters": {
-    "onlyNew": true,
+    "onlyNew": false,
     "status": null,
     "genre": null,
-    "file": null,
+    "file": "expansion-1101-1314",
     "force": false
   },
   "byGenre": {
@@ -88,6 +88,14 @@
       "needs-review": 2,
       "wrong-version": 0,
       "no-match": 0,
+      "missing-preview": 0
+    },
+    "Britpop": {
+      "total": 64,
+      "verified": 51,
+      "needs-review": 3,
+      "wrong-version": 5,
+      "no-match": 5,
       "missing-preview": 0
     },
     "Chicago House": {
@@ -347,10 +355,18 @@
       "missing-preview": 0
     },
     "Madchester": {
-      "total": 6,
-      "verified": 5,
+      "total": 30,
+      "verified": 12,
       "needs-review": 1,
-      "wrong-version": 0,
+      "wrong-version": 3,
+      "no-match": 13,
+      "missing-preview": 1
+    },
+    "Merseybeat": {
+      "total": 28,
+      "verified": 11,
+      "needs-review": 6,
+      "wrong-version": 11,
       "no-match": 0,
       "missing-preview": 0
     },
@@ -371,11 +387,11 @@
       "missing-preview": 0
     },
     "Musica italiana": {
-      "total": 15,
-      "verified": 10,
-      "needs-review": 2,
-      "wrong-version": 2,
-      "no-match": 1,
+      "total": 75,
+      "verified": 50,
+      "needs-review": 6,
+      "wrong-version": 8,
+      "no-match": 11,
       "missing-preview": 0
     },
     "Neo Soul": {
@@ -385,6 +401,14 @@
       "wrong-version": 0,
       "no-match": 1,
       "missing-preview": 0
+    },
+    "New Romantic": {
+      "total": 38,
+      "verified": 23,
+      "needs-review": 3,
+      "wrong-version": 3,
+      "no-match": 7,
+      "missing-preview": 2
     },
     "New Wave": {
       "total": 20,
@@ -4646,6 +4670,1072 @@
         "artist": "Dynamix II",
         "title": "Just Give the DJ a Break (feat. Breezy Beat MC)",
         "album": "Dynamix II - The Album"
+      }
+    },
+    {
+      "id": 1113,
+      "artist": "Blur",
+      "requestedTitle": "Beetlebum",
+      "genre": "Britpop",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1117,
+      "artist": "Pulp",
+      "requestedTitle": "Common People",
+      "genre": "Britpop",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1444021190,
+        "artist": "Pulp",
+        "title": "Common People (Full Length Version)",
+        "album": "Different Class (Deluxe Edition)"
+      }
+    },
+    {
+      "id": 1119,
+      "artist": "Pulp",
+      "requestedTitle": "Sorted for E's & Wizz",
+      "genre": "Britpop",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1699808283,
+        "artist": "Pulp",
+        "title": "Sorted For E's & Wizz (Single Version)",
+        "album": "Sorted For E's & Wizz / Mis-Shapes EP"
+      }
+    },
+    {
+      "id": 1121,
+      "artist": "Suede",
+      "requestedTitle": "The Drowners",
+      "genre": "Britpop",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1528561850,
+        "artist": "Suede",
+        "title": "The Drowners",
+        "album": "Beautiful Ones: The Best of Suede 1992-2018 (Deluxe)"
+      }
+    },
+    {
+      "id": 1124,
+      "artist": "Suede",
+      "requestedTitle": "Stay Together",
+      "genre": "Britpop",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 437206561,
+        "artist": "Suede",
+        "title": "Stay Together (Long Version)",
+        "album": "Dog Man Star (Remastered) [Deluxe Edition]"
+      }
+    },
+    {
+      "id": 1127,
+      "artist": "The Verve",
+      "requestedTitle": "She's a Superstar",
+      "genre": "Britpop",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 714778885,
+        "artist": "The Verve",
+        "title": "She's a Superstar (Edit)",
+        "album": "The Verve - EP"
+      }
+    },
+    {
+      "id": 1139,
+      "artist": "Elastica",
+      "requestedTitle": "Connection",
+      "genre": "Britpop",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1141,
+      "artist": "Cast",
+      "requestedTitle": "Finetime",
+      "genre": "Britpop",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1643529622,
+        "artist": "Cast",
+        "title": "Finetime (Live)",
+        "album": "All Change Live"
+      }
+    },
+    {
+      "id": 1152,
+      "artist": "Kula Shaker",
+      "requestedTitle": "Hush",
+      "genre": "Britpop",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1694081472,
+        "artist": "Kula Shaker",
+        "title": "Hush - 2011 Remastered",
+        "album": "K (Plus Bonus Tracks) - 2011 Remastered"
+      }
+    },
+    {
+      "id": 1153,
+      "artist": "Gene",
+      "requestedTitle": "For the Dead",
+      "genre": "Britpop",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1155,
+      "artist": "Gene",
+      "requestedTitle": "Olympian",
+      "genre": "Britpop",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1156,
+      "artist": "Gene",
+      "requestedTitle": "Fighting Fit",
+      "genre": "Britpop",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1163,
+      "artist": "Menswear",
+      "requestedTitle": "Stardust",
+      "genre": "Britpop",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1320068836,
+        "artist": "Menswear",
+        "title": "Stardust (Reprise)",
+        "album": "Nuisance"
+      }
+    },
+    {
+      "id": 1166,
+      "artist": "The Beatles",
+      "requestedTitle": "She Loves You",
+      "genre": "Merseybeat",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1441133611,
+        "artist": "The Beatles",
+        "title": "She Loves You",
+        "album": "Past Masters, Vols. 1 & 2"
+      }
+    },
+    {
+      "id": 1173,
+      "artist": "Gerry & The Pacemakers",
+      "requestedTitle": "How Do You Do It?",
+      "genre": "Merseybeat",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 697072276,
+        "artist": "Gerry & The Pacemakers",
+        "title": "How Do You Do It?",
+        "album": "A's B's & EP's"
+      }
+    },
+    {
+      "id": 1174,
+      "artist": "Gerry & The Pacemakers",
+      "requestedTitle": "I Like It",
+      "genre": "Merseybeat",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 697072282,
+        "artist": "Gerry & The Pacemakers",
+        "title": "I Like It",
+        "album": "A's B's & EP's"
+      }
+    },
+    {
+      "id": 1175,
+      "artist": "Gerry & The Pacemakers",
+      "requestedTitle": "You'll Never Walk Alone",
+      "genre": "Merseybeat",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 695449593,
+        "artist": "Gerry & The Pacemakers",
+        "title": "You'll Never Walk Alone",
+        "album": "How Do You Like It? (Mono & Stereo Versions)"
+      }
+    },
+    {
+      "id": 1176,
+      "artist": "Gerry & The Pacemakers",
+      "requestedTitle": "Ferry Cross the Mersey",
+      "genre": "Merseybeat",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 696621466,
+        "artist": "Gerry & The Pacemakers",
+        "title": "Ferry Cross the Mersey (Mono)",
+        "album": "Ferry Cross the Mersey (Mono & Stereo Versions)"
+      }
+    },
+    {
+      "id": 1180,
+      "artist": "The Searchers",
+      "requestedTitle": "When You Walk in the Room",
+      "genre": "Merseybeat",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1436264578,
+        "artist": "The Searchers",
+        "title": "When You Walk in the Room",
+        "album": "Needles & Pins"
+      }
+    },
+    {
+      "id": 1181,
+      "artist": "The Merseybeats",
+      "requestedTitle": "It's Love That Really Counts",
+      "genre": "Merseybeat",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 808898385,
+        "artist": "The Merseybeats",
+        "title": "It's Love That Really Counts",
+        "album": "Wishin' and Hopin'"
+      }
+    },
+    {
+      "id": 1182,
+      "artist": "The Merseybeats",
+      "requestedTitle": "I Think of You",
+      "genre": "Merseybeat",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 808898336,
+        "artist": "The Merseybeats",
+        "title": "I Think of You",
+        "album": "Wishin' and Hopin'"
+      }
+    },
+    {
+      "id": 1183,
+      "artist": "The Merseybeats",
+      "requestedTitle": "Don't Turn Around",
+      "genre": "Merseybeat",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 348031272,
+        "artist": "The Merseybeats",
+        "title": "Don't Turn Around (Re-Recorded Version)",
+        "album": "The Merseybeats"
+      }
+    },
+    {
+      "id": 1184,
+      "artist": "The Merseybeats",
+      "requestedTitle": "Wishin' and Hopin'",
+      "genre": "Merseybeat",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 219167872,
+        "artist": "The Merseybeats",
+        "title": "Wishin' and Hopin'",
+        "album": "Wishin' and Hopin'"
+      }
+    },
+    {
+      "id": 1185,
+      "artist": "Billy J. Kramer & The Dakotas",
+      "requestedTitle": "Do You Want to Know a Secret",
+      "genre": "Merseybeat",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 845865742,
+        "artist": "Billy J. Kramer & The Dakotas",
+        "title": "Do You Want to Know a Secret",
+        "album": "Little Children"
+      }
+    },
+    {
+      "id": 1186,
+      "artist": "Billy J. Kramer & The Dakotas",
+      "requestedTitle": "Bad to Me",
+      "genre": "Merseybeat",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 845865744,
+        "artist": "Billy J. Kramer & The Dakotas",
+        "title": "Bad to Me",
+        "album": "Little Children"
+      }
+    },
+    {
+      "id": 1187,
+      "artist": "Billy J. Kramer & The Dakotas",
+      "requestedTitle": "I'll Keep You Satisfied",
+      "genre": "Merseybeat",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 797327892,
+        "artist": "Billy J. Kramer & The Dakotas",
+        "title": "I'll Keep You Satisfied",
+        "album": "I'll Keep You Satisfied"
+      }
+    },
+    {
+      "id": 1189,
+      "artist": "The Swinging Blue Jeans",
+      "requestedTitle": "Hippy Hippy Shake",
+      "genre": "Merseybeat",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1487394905,
+        "artist": "The Swinging Blue Jeans",
+        "title": "Hippy Hippy Shake",
+        "album": "All the Hits Plus More"
+      }
+    },
+    {
+      "id": 1190,
+      "artist": "The Swinging Blue Jeans",
+      "requestedTitle": "Good Golly Miss Molly",
+      "genre": "Merseybeat",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1629115700,
+        "artist": "The Swinging Blue Jeans",
+        "title": "Good Golly Miss Molly",
+        "album": "At Abbey Road: 1963 to 1967"
+      }
+    },
+    {
+      "id": 1191,
+      "artist": "The Swinging Blue Jeans",
+      "requestedTitle": "You're No Good",
+      "genre": "Merseybeat",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1629191625,
+        "artist": "The Swinging Blue Jeans",
+        "title": "You're No Good",
+        "album": "The Emi Years: Best of the Swinging Blue Jeans"
+      }
+    },
+    {
+      "id": 1192,
+      "artist": "The Swinging Blue Jeans",
+      "requestedTitle": "Don't Make Me Over",
+      "genre": "Merseybeat",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1632047778,
+        "artist": "The Swinging Blue Jeans",
+        "title": "Don't Make Me Over",
+        "album": "Good Golly, Miss Molly: The Emi Years 1963 - 1969"
+      }
+    },
+    {
+      "id": 1194,
+      "artist": "Culture Club",
+      "requestedTitle": "Time (Clock of the Heart)",
+      "genre": "New Romantic",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1199,
+      "artist": "Boy George",
+      "requestedTitle": "The Crying Game",
+      "genre": "New Romantic",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 724457632,
+        "artist": "Boy George",
+        "title": "The Crying Game",
+        "album": "At Worst...The Best of Boy George and Culture Club"
+      }
+    },
+    {
+      "id": 1200,
+      "artist": "Boy George",
+      "requestedTitle": "Bow Down Mister",
+      "genre": "New Romantic",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1209,
+      "artist": "Ultravox",
+      "requestedTitle": "Slow Motion",
+      "genre": "New Romantic",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1215,
+      "artist": "Adam and the Ants",
+      "requestedTitle": "Dog Eat Dog",
+      "genre": "New Romantic",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1216,
+      "artist": "Adam and the Ants",
+      "requestedTitle": "Antmusic",
+      "genre": "New Romantic",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1217,
+      "artist": "Adam and the Ants",
+      "requestedTitle": "Kings of the Wild Frontier",
+      "genre": "New Romantic",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1221,
+      "artist": "Classix Nouveaux",
+      "requestedTitle": "Is It a Dream",
+      "genre": "New Romantic",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1406989008,
+        "artist": "Classix Nouveaux",
+        "title": "Is It a Dream",
+        "album": "La Verité (Expanded)"
+      }
+    },
+    {
+      "id": 1222,
+      "artist": "Duran Duran",
+      "requestedTitle": "Planet Earth",
+      "genre": "New Romantic",
+      "status": "missing-preview",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1223,
+      "artist": "Duran Duran",
+      "requestedTitle": "Girls on Film",
+      "genre": "New Romantic",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1224,
+      "artist": "Duran Duran",
+      "requestedTitle": "Hungry Like the Wolf",
+      "genre": "New Romantic",
+      "status": "missing-preview",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1227,
+      "artist": "Duran Duran",
+      "requestedTitle": "The Wild Boys",
+      "genre": "New Romantic",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 696762978,
+        "artist": "Duran Duran",
+        "title": "The Wild Boys",
+        "album": "Arena (Recorded Around the World 1984) [Bonus Track Version]"
+      }
+    },
+    {
+      "id": 1228,
+      "artist": "Steve Strange",
+      "requestedTitle": "In the Dark",
+      "genre": "New Romantic",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1517968679,
+        "artist": "Punx Soundcheck",
+        "title": "In the Dark (feat. Steve Strange)",
+        "album": "When Machines Ruled the World"
+      }
+    },
+    {
+      "id": 1229,
+      "artist": "Steve Strange",
+      "requestedTitle": "Bolan Esq T. Rex Medley",
+      "genre": "New Romantic",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 707579690,
+        "artist": "Steve Strange",
+        "title": "The Best Is Yet to Come (Deja Vu)",
+        "album": "Bolan Esq T.Rex Medley - Single"
+      }
+    },
+    {
+      "id": 1230,
+      "artist": "Steve Strange",
+      "requestedTitle": "Poison Within",
+      "genre": "New Romantic",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 898413319,
+        "artist": "Bottin",
+        "title": "Poison Within (feat. Steve Strange) [Radio Edit]",
+        "album": "Poison Within (feat. Steve Strange) - EP"
+      }
+    },
+    {
+      "id": 1231,
+      "artist": "The Stone Roses",
+      "requestedTitle": "Sally Cinnamon",
+      "genre": "Madchester",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 304460369,
+        "artist": "The Stone Roses",
+        "title": "Sally Cinnamon (Single Mix)",
+        "album": "Sally Cinnamon - EP"
+      }
+    },
+    {
+      "id": 1236,
+      "artist": "Happy Mondays",
+      "requestedTitle": "Wrote for Luck",
+      "genre": "Madchester",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1313882605,
+        "artist": "Happy Mondays",
+        "title": "Wrote for Luck (Remastered Version)",
+        "album": "Bummed (Collector's Edition)"
+      }
+    },
+    {
+      "id": 1237,
+      "artist": "Happy Mondays",
+      "requestedTitle": "Hallelujah",
+      "genre": "Madchester",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1313882880,
+        "artist": "Happy Mondays",
+        "title": "Hallelujah (Club Mix)",
+        "album": "Bummed (Collector's Edition)"
+      }
+    },
+    {
+      "id": 1241,
+      "artist": "Inspiral Carpets",
+      "requestedTitle": "She Comes in the Fall",
+      "genre": "Madchester",
+      "status": "missing-preview",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1242,
+      "artist": "Inspiral Carpets",
+      "requestedTitle": "Saturn 5",
+      "genre": "Madchester",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1243,
+      "artist": "James",
+      "requestedTitle": "Hymn from a Village",
+      "genre": "Madchester",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1244,
+      "artist": "James",
+      "requestedTitle": "Sit Down",
+      "genre": "Madchester",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1245,
+      "artist": "James",
+      "requestedTitle": "Born of Frustration",
+      "genre": "Madchester",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1246,
+      "artist": "James",
+      "requestedTitle": "Laid",
+      "genre": "Madchester",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1247,
+      "artist": "The Charlatans",
+      "requestedTitle": "Then",
+      "genre": "Madchester",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1248,
+      "artist": "The Charlatans",
+      "requestedTitle": "Weirdo",
+      "genre": "Madchester",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1249,
+      "artist": "The Charlatans",
+      "requestedTitle": "Can't Get Out of Bed",
+      "genre": "Madchester",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1250,
+      "artist": "The Charlatans",
+      "requestedTitle": "One to Another",
+      "genre": "Madchester",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1251,
+      "artist": "808 State",
+      "requestedTitle": "Pacific State",
+      "genre": "Madchester",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1252,
+      "artist": "808 State",
+      "requestedTitle": "Cubik",
+      "genre": "Madchester",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1253,
+      "artist": "808 State",
+      "requestedTitle": "In Yer Face",
+      "genre": "Madchester",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1254,
+      "artist": "808 State",
+      "requestedTitle": "Ooops",
+      "genre": "Madchester",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1255,
+      "artist": "Lucio Battisti",
+      "requestedTitle": "Acqua azzurra, acqua chiara",
+      "genre": "Musica italiana",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1256,
+      "artist": "Lucio Battisti",
+      "requestedTitle": "Fiori rosa, fiori di pesco",
+      "genre": "Musica italiana",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1257,
+      "artist": "Lucio Battisti",
+      "requestedTitle": "Pensieri e parole",
+      "genre": "Musica italiana",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1258,
+      "artist": "Lucio Battisti",
+      "requestedTitle": "Il mio canto libero",
+      "genre": "Musica italiana",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1259,
+      "artist": "Lucio Dalla",
+      "requestedTitle": "4/3/1943",
+      "genre": "Musica italiana",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1260,
+      "artist": "Lucio Dalla",
+      "requestedTitle": "L'anno che verrà",
+      "genre": "Musica italiana",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1261,
+      "artist": "Lucio Dalla",
+      "requestedTitle": "Futura",
+      "genre": "Musica italiana",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1262,
+      "artist": "Lucio Dalla",
+      "requestedTitle": "Caruso",
+      "genre": "Musica italiana",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1263,
+      "artist": "Fabrizio De André",
+      "requestedTitle": "La canzone di Marinella",
+      "genre": "Musica italiana",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1264,
+      "artist": "Fabrizio De André",
+      "requestedTitle": "Il pescatore",
+      "genre": "Musica italiana",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 270320736,
+        "artist": "Fabrizio De André",
+        "title": "Il pescatore",
+        "album": "In Direzione Ostinata e Contraria"
+      }
+    },
+    {
+      "id": 1267,
+      "artist": "Franco Battiato",
+      "requestedTitle": "La voce del padrone",
+      "genre": "Musica italiana",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1568083642,
+        "artist": "Franco Battiato",
+        "title": "Cuccurucucù (Remastered 2021)",
+        "album": "La Voce Del Padrone (Remastered 2021)"
+      }
+    },
+    {
+      "id": 1275,
+      "artist": "Paolo Conte",
+      "requestedTitle": "Onda su onda",
+      "genre": "Musica italiana",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1614628997,
+        "artist": "Paolo Conte",
+        "title": "Onda su onda",
+        "album": "Paolo Conte (1974)"
+      }
+    },
+    {
+      "id": 1278,
+      "artist": "Paolo Conte",
+      "requestedTitle": "Sparring Partner",
+      "genre": "Musica italiana",
+      "status": "no-match",
+      "foundResult": {
+        "appleTrackId": null,
+        "artist": "",
+        "title": "",
+        "album": ""
+      }
+    },
+    {
+      "id": 1287,
+      "artist": "Rino Gaetano",
+      "requestedTitle": "Ma il cielo è sempre più blu",
+      "genre": "Musica italiana",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 268539853,
+        "artist": "Rino Gaetano",
+        "title": "Ma Il Cielo E' Sempre Più Blu (Prima Parte)",
+        "album": "La Storia"
+      }
+    },
+    {
+      "id": 1297,
+      "artist": "Mina",
+      "requestedTitle": "Grande grande grande",
+      "genre": "Musica italiana",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 693838474,
+        "artist": "Mina",
+        "title": "E penso a te (Live 1972 At La Bussola / Remastered)",
+        "album": "Dalla bussola (Live 1972 At La Bussola) [40th Anniversary Edition] [Remastered]"
+      }
+    },
+    {
+      "id": 1298,
+      "artist": "Mina",
+      "requestedTitle": "Ancora ancora ancora",
+      "genre": "Musica italiana",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 693783528,
+        "artist": "Mina",
+        "title": "Tradirò (2001 Remastered Version)",
+        "album": "Mina con bignè"
+      }
+    },
+    {
+      "id": 1300,
+      "artist": "Adriano Celentano",
+      "requestedTitle": "Azzurro",
+      "genre": "Musica italiana",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 1775198608,
+        "artist": "Adriano Celentano",
+        "title": "Una Carezza in Un Pugno (Remastered)",
+        "album": "Azzurro (2011 Remaster)"
+      }
+    },
+    {
+      "id": 1303,
+      "artist": "Vasco Rossi",
+      "requestedTitle": "Albachiara",
+      "genre": "Musica italiana",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 201278269,
+        "artist": "Vasco Rossi",
+        "title": "Albachiara",
+        "album": "Albachiara (Non siamo mica gli americani)"
+      }
+    },
+    {
+      "id": 1304,
+      "artist": "Vasco Rossi",
+      "requestedTitle": "Vita spericolata",
+      "genre": "Musica italiana",
+      "status": "needs-review",
+      "foundResult": {
+        "appleTrackId": 1713323876,
+        "artist": "Vasco Rossi",
+        "title": "Vita spericolata (Remastered 2023)",
+        "album": "Bollicine (40° RPLAY Special Edition) [Remastered 2023]"
+      }
+    },
+    {
+      "id": 1314,
+      "artist": "Gianna Nannini",
+      "requestedTitle": "I maschi",
+      "genre": "Musica italiana",
+      "status": "wrong-version",
+      "foundResult": {
+        "appleTrackId": 6768669894,
+        "artist": "Gianna Nannini",
+        "title": "I Maschi",
+        "album": "Perle"
       }
     }
   ]

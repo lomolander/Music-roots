@@ -13,7 +13,7 @@ export const allowedGenres = [
   "Punk", "Indie Rock", "Alternative Rock", "Shoegaze", "Dream Pop",
   "Ambient", "Electropop", "Dance Pop",
   "Reggae", "Dub", "Latin", "MPB", "Musica brasiliana", "World Music",
-  "Musica italiana",
+  "Musica italiana", "Britpop", "Merseybeat", "New Romantic",
 ];
 
 const essentialPlaylistLinks = {

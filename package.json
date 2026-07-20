@@ -10,6 +10,8 @@
     "preview": "vite preview",
     "validate:apple": "node scripts/validate-apple-previews.mjs",
     "validate:library": "node scripts/validate-library.mjs",
+    "validate:editorial": "node scripts/validate-editorial.mjs",
+    "test:essentials": "node scripts/test-essentials-player.mjs",
     "enrich:artwork": "node scripts/fetch-missing-artwork.mjs",
     "test:quiz": "node scripts/simulate-quiz.mjs"
     ,"test:progression": "node scripts/test-progression.mjs"

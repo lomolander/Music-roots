@@ -6,12 +6,10 @@ export const QUIZ_MODES = {
   title: { label: "Indovina il titolo", prompt: "Qual è il titolo del brano?" },
   artist: { label: "Indovina l'artista", prompt: "Chi interpreta questo brano?" },
   year: { label: "Indovina l'anno", prompt: "In quale anno è stato pubblicato?" },
-  genre: { label: "Indovina il genere", prompt: "A quale genere appartiene il brano?" },
-  subgenre: { label: "Indovina il sottogenere", prompt: "Qual è il sottogenere del brano?" },
 };
 
 export const DIFFICULTIES = {
-  easy: { label: "Facile", answers: 3, points: 5 },
+  easy: { label: "Facile", answers: 4, points: 5 },
   normal: { label: "Normale", answers: 4, points: 10 },
   hard: { label: "Difficile", answers: 4, points: 15 },
 };
@@ -37,8 +35,6 @@ export function getPlayableQuestions(source = questions) {
 export function answerFor(question, mode) {
   if (mode === "artist") return question.artist;
   if (mode === "year") return String(question.year);
-  if (mode === "genre") return question.genre;
-  if (mode === "subgenre") return question.subgenre;
   return question.title;
 }
 
@@ -50,6 +46,13 @@ function candidateScore(question, candidate, difficulty) {
 function createAnswers(question, mode, playableQuestions, difficulty) {
   const correctAnswer = answerFor(question, mode);
   const answerCount = DIFFICULTIES[difficulty]?.answers ?? 4;
+  if (mode === "year") {
+    const years = [...new Set(playableQuestions
+      .map((candidate) => Number(candidate.year))
+      .filter((year) => Number.isInteger(year) && year !== Number(question.year)))]
+      .sort((left, right) => Math.abs(left - Number(question.year)) - Math.abs(right - Number(question.year)));
+    return shuffle([correctAnswer, ...shuffle(years.slice(0, 12)).slice(0, answerCount - 1).map(String)]);
+  }
   const candidates = shuffle(playableQuestions.filter((candidate) => candidate.id !== question.id))
     .sort((left, right) => candidateScore(question, right, difficulty) - candidateScore(question, left, difficulty));
   const distractors = [];

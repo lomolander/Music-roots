@@ -1,4 +1,4 @@
-import { readFile, rename, writeFile } from "node:fs/promises";
+import { readFile, rename, unlink, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
 
@@ -116,8 +116,15 @@ async function readCache() {
 
 async function writeCache(cache) {
   const temporaryFile = `${CACHE_FILE}.tmp`;
-  await writeFile(temporaryFile, `${JSON.stringify(cache, null, 2)}\n`, "utf8");
-  await rename(temporaryFile, CACHE_FILE);
+  const serialized = `${JSON.stringify(cache, null, 2)}\n`;
+  await writeFile(temporaryFile, serialized, "utf8");
+  try {
+    await rename(temporaryFile, CACHE_FILE);
+  } catch (error) {
+    if (error?.code !== "EPERM" && error?.code !== "EEXIST") throw error;
+    await writeFile(CACHE_FILE, serialized, "utf8");
+    await unlink(temporaryFile).catch(() => {});
+  }
 }
 
 function isRetryableCacheEntry(cached) {

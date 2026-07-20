@@ -1,5 +1,6 @@
 import tracks from "../questions.js";
 import { entityId } from "../entityIds.js";
+import artistEditorial from "../artistEditorial.js";
 
 const artists = [...new Set(tracks.map((track) => track.artist))].sort().map((name) => {
   const artistTracks = tracks.filter((track) => track.artist === name);
@@ -8,7 +9,7 @@ const artists = [...new Set(tracks.map((track) => track.artist))].sort().map((na
     name,
     nationality: artistTracks.find((track) => track.paese)?.paese ?? "",
     activeYears: "",
-    biography: "",
+    biography: artistEditorial[name] ?? "",
     similarArtists: [...new Set(artistTracks.flatMap((track) => track.similarArtists ?? []))],
     genres: [...new Set(artistTracks.map((track) => track.genre))],
     image: artistTracks.find((track) => track.artwork)?.artwork ?? "",
