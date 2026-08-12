@@ -22,6 +22,25 @@ export const allowedGenres = [
   "Cantautorato Italiano", "Elettronica Italiana",
 ];
 
+// Baseline editoriale approvata per le card Generi di Esplora (commit 2e3e68a).
+// Le altre classificazioni restano disponibili nel catalogo senza generare card autonome.
+export const exploreGenreNames = [
+  "Acid House", "Acid Jazz", "Ambient House", "Ambient Techno", "Big Beat",
+  "Bossa Nova", "Chicago House", "Colonna sonora italiana", "Dance",
+  "Deep House", "Detroit Techno", "Disco", "Downtempo", "Drum and Bass",
+  "Electro", "Electro House", "Electroclash", "Electronic", "French House",
+  "Funk", "Hip Hop", "House", "IDM", "Indie Dance", "Italo Disco",
+  "Jazz Fusion", "Jazz Rap", "Library Music", "Madchester", "Neo Soul",
+  "New Wave", "Nu Disco", "Nu Jazz", "Pop elettronico", "Post-disco",
+  "Progressive House", "Spiritual Jazz", "Synth-pop", "Techno", "Trip Hop",
+  "UK Garage", "Soul", "R&B", "Post Punk", "Indie", "Jazz",
+  "Garage House", "Boogie", "Motown", "Philadelphia Soul", "Punk",
+  "Indie Rock", "Alternative Rock", "Shoegaze", "Dream Pop", "Ambient",
+  "Electropop", "Dance Pop", "Reggae", "Dub", "Latin", "MPB",
+  "Musica brasiliana", "World Music", "Musica italiana", "Britpop",
+  "Merseybeat", "New Romantic",
+];
+
 export const subgenreDescriptions = {
   "Shibuya-kei": "Lo Shibuya-kei nasce a Tokyo fra la fine degli anni Ottanta e i Novanta attorno ai negozi di dischi, ai club, alla moda e alla cultura visiva di Shibuya. Pop anni Sessanta, bossa nova, lounge, soul, hip hop ed elettronica vengono ricombinati con gusto da collezionista. La scena ha proiettato una nuova immagine cosmopolita del pop giapponese nei circuiti internazionali.",
   "Classic Rock": "Il classic rock raccoglie il repertorio che fra Regno Unito e Stati Uniti, dalla fine degli anni Sessanta, consolidò blues, folk e rock and roll nella cultura dell’album. Chitarre riconoscibili, sezioni ritmiche solide e scrittura immediata ne sostengono il linguaggio. Radio FM, grandi tour e cataloghi duraturi lo hanno trasformato in una memoria condivisa del rock.",

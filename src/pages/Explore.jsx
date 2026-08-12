@@ -4,7 +4,7 @@ import { ChevronRight, Disc3, ListMusic, Music, Pause, Play, Search, SkipBack, S
 import tracks from "../data/questions.js";
 import { albums, artists, genres } from "../data/entities/index.js";
 import ArtworkFallback from "../components/ArtworkFallback.jsx";
-import { essentialPlaylistDescriptions, essentialPlaylists, subgenreDescriptions } from "../data/libraryConfig.js";
+import { essentialPlaylistDescriptions, essentialPlaylists, exploreGenreNames, subgenreDescriptions } from "../data/libraryConfig.js";
 import { musicAtlasCities } from "../data/musicAtlas.js";
 import { prepareEssentialPlaylist, previewSearchQueries, resolvePreviewSource } from "../lib/essentialsPlayer.js";
 
@@ -17,6 +17,7 @@ const tabs = [
 ];
 
 const normalize = (value) => String(value ?? "").toLocaleLowerCase("it");
+const exploreGenreSet = new Set(exploreGenreNames);
 
 function Explore({ initialView = null, onBack, exitOnInitialBack = false, onOpenAtlasCity }) {
   const [tab, setTab] = useState("genres");
@@ -83,7 +84,7 @@ function Explore({ initialView = null, onBack, exitOnInitialBack = false, onOpen
           </label>
 
           <section className="archive-list">
-            {tab === "genres" && genres.filter((genre) => visible(genre.name)).map((genre) => (
+            {tab === "genres" && genres.filter((genre) => exploreGenreSet.has(genre.name) && visible(genre.name)).map((genre) => (
               <ArchiveButton key={genre.id} image={genre.trackIds.map((id) => data.trackById.get(id)?.artwork).find(Boolean)} title={genre.name} meta={`${genre.trackIds.length} brani · ${genre.essentialArtists.length} artisti rappresentativi`} onClick={() => navigate("genre", genre.id)} />
             ))}
             {tab === "subgenres" && data.subgenres.filter((item) => visible(item.name)).map((item) => (
