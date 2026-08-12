@@ -3,6 +3,7 @@ import { ArrowRight, Building2, ChevronLeft, MapPin, Music2, Search, Users } fro
 
 import { artists } from "../data/entities/index.js";
 import { musicAtlasCities, musicAtlasVenues } from "../data/musicAtlas.js";
+import ArtworkFallback from "../components/ArtworkFallback.jsx";
 
 const countries = {
   chicago: "Stati Uniti", detroit: "Stati Uniti", "new-york": "Stati Uniti",
@@ -229,7 +230,7 @@ function ArtistCard({ artist, onClick }) {
   const [imageFailed, setImageFailed] = useState(false);
   return (
     <button className="atlas-artist-card glass-card" type="button" onClick={onClick}>
-      {artist.image && !imageFailed ? <img src={artist.image} alt="" loading="lazy" onError={() => setImageFailed(true)} /> : <span><Music2 /></span>}
+      {artist.image && !imageFailed ? <img src={artist.image} alt="" loading="lazy" onError={() => setImageFailed(true)} /> : <ArtworkFallback title={artist.name} compact />}
       <strong>{artist.name}</strong><ArrowRight aria-hidden="true" />
     </button>
   );

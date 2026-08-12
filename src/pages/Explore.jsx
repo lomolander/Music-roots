@@ -3,6 +3,7 @@ import { ChevronRight, Disc3, ListMusic, Music, Pause, Play, Search, SkipBack, S
 
 import tracks from "../data/questions.js";
 import { albums, artists, genres } from "../data/entities/index.js";
+import ArtworkFallback from "../components/ArtworkFallback.jsx";
 import { essentialPlaylistDescriptions, essentialPlaylists, subgenreDescriptions } from "../data/libraryConfig.js";
 import { musicAtlasCities } from "../data/musicAtlas.js";
 import { prepareEssentialPlaylist, previewSearchQueries, resolvePreviewSource } from "../lib/essentialsPlayer.js";
@@ -111,7 +112,7 @@ function ArchiveButton({ image, title, meta, onClick }) {
   const [failedImage, setFailedImage] = useState("");
   return (
     <button className="archive-row glass-card" type="button" onClick={onClick}>
-      {image && failedImage !== image ? <img src={image} alt="" loading="lazy" onError={() => setFailedImage(image)} /> : <span className="archive-placeholder"><Music /></span>}
+      {image && failedImage !== image ? <img src={image} alt="" loading="lazy" onError={() => setFailedImage(image)} /> : <ArtworkFallback title={title} compact />}
       <span><strong>{title}</strong><small>{meta}</small></span>
       <ChevronRight aria-hidden="true" />
     </button>
@@ -294,6 +295,7 @@ function EssentialsPlayer({ tracks: playlist, openTrack, onInvalidate }) {
   const [, setPlayerError] = useState("");
   const [elapsed, setElapsed] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [failedArtwork, setFailedArtwork] = useState("");
   const current = playlist[index];
 
   const setPlaybackIntent = useCallback((value) => {
@@ -499,7 +501,7 @@ function EssentialsPlayer({ tracks: playlist, openTrack, onInvalidate }) {
         onAbort={() => { debugTrack(current, { fonteEffettiva: preview?.source, evento: "abort", cambioSorgente: switchingSourceRef.current }); if (!switchingSourceRef.current) { setLoading(false); setPlaying(false); setPlayerError("abort"); } }}
       />
       <button className="essentials-now-playing" type="button" onClick={() => openTrack(current.id)} aria-label={`Apri la scheda di ${current.title}`}>
-        {current.artwork ? <img src={current.artwork} alt="" /> : <span className="archive-placeholder"><Music /></span>}
+        {current.artwork && failedArtwork !== current.artwork ? <img src={current.artwork} alt="" onError={() => setFailedArtwork(current.artwork)} /> : <ArtworkFallback title={current.title} compact />}
         <span><small>{message ? message.toUpperCase() : `IN RIPRODUZIONE · ${preview?.source ?? (loading ? "CARICAMENTO" : "ANTEPRIMA")}`}</small><strong>{current.title}</strong><em>{current.artist}</em></span>
         <ChevronRight aria-hidden="true" />
       </button>
@@ -527,6 +529,7 @@ function TrackList({ tracks: list, openTrack }) {
 }
 
 function TrackDetail({ track, data, navigate }) {
+  const [failedArtwork, setFailedArtwork] = useState(false);
   if (!track) return null;
   const artist = data.artistById.get(track.artistId);
   const album = data.albumById.get(track.albumId);
@@ -536,7 +539,7 @@ function TrackDetail({ track, data, navigate }) {
     : track.artwork;
   return (
     <article className="archive-detail track-detail page-enter">
-      {detailArtwork ? <img className="track-cover" src={detailArtwork} alt={track.album ? `Copertina di ${track.album}` : `Copertina di ${track.title}`} /> : null}
+      {detailArtwork && !failedArtwork ? <img className="track-cover" src={detailArtwork} alt={track.album ? `Copertina di ${track.album}` : `Copertina di ${track.title}`} onError={() => setFailedArtwork(true)} /> : <ArtworkFallback className="track-cover" title={track.title} artist={track.artist} />}
       <p className="eyebrow">SCHEDA DEL BRANO</p><h1>{track.title}</h1>
       <button className="inline-link" type="button" onClick={() => navigate("artist", artist.id)}>{track.artist} →</button>
       <p className="detail-meta">{track.year}{album ? <> · <button type="button" onClick={() => navigate("album", album.id)}>{track.album}</button></> : null}</p>
