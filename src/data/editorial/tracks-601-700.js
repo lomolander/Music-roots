@@ -1,4 +1,4 @@
-const e = (musicalCharacteristics, meaning, importance) => ({ musicalCharacteristics, meaning, importance });
+const e = (musicalCharacteristics, meaning) => ({ musicalCharacteristics, meaning });
 export default {
 601:e("Chitarre feroci, batteria martellante e voce sguaiata producono un assalto compatto.","Iggy Pop assume il ruolo di un emarginato autodistruttivo che cerca senso nel caos.","Raw Power anticipò l'aggressività, il nichilismo e il suono del punk successivo."),
 602:e("Chitarre distorte, batteria esplosiva e urla dal vivo trasformano il concerto in sommossa.","È un'esortazione a liberarsi dalle costrizioni e far partire la musica senza compromessi.","La registrazione dal vivo degli MC5 divenne un manifesto proto-punk e controculturale."),

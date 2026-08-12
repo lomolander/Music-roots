@@ -37,7 +37,23 @@ const sections = [
 
 export default function App() {
   const [screen, setScreen] = useState("home");
+  const [exploreInitialView, setExploreInitialView] = useState(null);
+  const [atlasCityId, setAtlasCityId] = useState(null);
+  const [exploreFromAtlas, setExploreFromAtlas] = useState(false);
+  const [exploreReturnScreen, setExploreReturnScreen] = useState("home");
   const quizRef = useRef(null);
+
+  const openExplore = (initialView = null, fromAtlas = false, returnScreen = fromAtlas ? "atlas" : "home") => {
+    setExploreInitialView(initialView);
+    setExploreFromAtlas(fromAtlas);
+    setExploreReturnScreen(returnScreen);
+    setScreen("explore");
+  };
+
+  const openAtlasCity = (cityId = null) => {
+    setAtlasCityId(cityId);
+    setScreen("atlas");
+  };
 
   const startQuiz = () => {
     flushSync(() => setScreen("quiz"));
@@ -49,11 +65,11 @@ export default function App() {
   }
 
   if (screen === "explore") {
-    return <Explore onBack={() => setScreen("home")} />;
+    return <Explore initialView={exploreInitialView} exitOnInitialBack={exploreFromAtlas} onBack={() => setScreen(exploreReturnScreen)} onOpenAtlasCity={openAtlasCity} />;
   }
 
   if (screen === "atlas") {
-    return <MusicAtlas onBack={() => setScreen("home")} onExplore={() => setScreen("explore")} />;
+    return <MusicAtlas initialCityId={atlasCityId} onBack={() => { setAtlasCityId(null); setScreen("home"); }} onOpenArtist={(id, cityId) => { setAtlasCityId(cityId); openExplore({ type: "artist", id }, true); }} />;
   }
 
   if (screen === "profile") {
@@ -117,9 +133,9 @@ export default function App() {
                 if (section.action === "quiz") {
                   startQuiz();
                 } else if (section.action === "explore") {
-                  setScreen("explore");
+                  openExplore();
                 } else if (section.action === "atlas") {
-                  setScreen("atlas");
+                  openAtlasCity();
                 } else if (section.action === "profile") {
                   setScreen("profile");
                 }

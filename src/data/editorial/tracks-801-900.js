@@ -1,4 +1,4 @@
-const e = (musicalCharacteristics, meaning, importance) => ({ musicalCharacteristics, meaning, importance });
+const e = (musicalCharacteristics, meaning) => ({ musicalCharacteristics, meaning });
 export default {
 801:e("Pianoforte rarefatto, nastri e lunghi silenzi fanno evolvere lentamente poche frasi.","È strumentale e crea uno spazio calmo che può accogliere attenzione, attesa e passaggio.","Aprì Music for Airports, manifesto dell'ambient intesa come ambiente sonoro."),
 802:e("Pianoforte morbido e trattamenti elettronici lasciano le note sospese come riflessi.","Senza testo, evoca il graduale apparire della luce e una quiete contemplativa.","Definì l'incontro fra pianismo impressionista di Budd e studio ambient di Eno."),

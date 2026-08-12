@@ -1,4 +1,4 @@
-const e = (musicalCharacteristics, meaning, importance) => ({ musicalCharacteristics, meaning, importance });
+const e = (musicalCharacteristics, meaning) => ({ musicalCharacteristics, meaning });
 export default {
 1001:e("Basso subsonico, stab inquietanti e voce rallentata costruiscono una pressione industriale.","Le poche parole presentano l'energia come esperienza fisica estrema e quasi minacciosa.","È uno dei dischi che definirono la techno rave europea dei primi Novanta."),
 1002:e("Arpeggio luminoso, archi sintetici e cassa regolare sviluppano un viaggio euforico.","È strumentale e associa la Camargue a libertà, orizzonte aperto e movimento.","Divenne un inno della techno belga capace di unire melodia e pista."),

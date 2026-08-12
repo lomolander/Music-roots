@@ -1,4 +1,4 @@
-const e = (musicalCharacteristics, meaning, importance) => ({ musicalCharacteristics, meaning, importance });
+const e = (musicalCharacteristics, meaning) => ({ musicalCharacteristics, meaning });
 export default {
 301:e("Pianoforte gospel, basso house e voce potente costruiscono un crescendo collettivo.","Immagina un futuro in cui pace, unità e giustizia saranno finalmente possibili.","È uno degli inni umanisti fondativi della house di Chicago."),
 302:e("Accordi caldi, drum machine e voce gospel rendono la house rassicurante e corale.","Afferma che, nonostante paura e difficoltà, tutto può ancora andare bene.","Divenne un messaggio universale della house e della cultura club inclusiva."),

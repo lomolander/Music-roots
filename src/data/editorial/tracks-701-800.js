@@ -1,4 +1,4 @@
-const e = (musicalCharacteristics, meaning, importance) => ({ musicalCharacteristics, meaning, importance });
+const e = (musicalCharacteristics, meaning) => ({ musicalCharacteristics, meaning });
 export default {
 701:e("Percussioni, chitarra surf campionata e rap festoso costruiscono una lunga routine da party.","Celebra abilità, ballo e divertimento attraverso rime giocose e richiami collettivi.","Portò nel rap un break fondamentale della cultura hip hop del Bronx."),
 702:e("Drum machine elettronica, sintetizzatori e rap alternati inseguono un ritmo futurista.","La ricerca del beat perfetto diventa metafora di innovazione, unità e progresso culturale.","Consolidò l'electro hip hop nato da Planet Rock e influenzò dance e techno."),

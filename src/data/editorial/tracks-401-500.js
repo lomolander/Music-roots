@@ -1,4 +1,4 @@
-const e = (musicalCharacteristics, meaning, importance) => ({ musicalCharacteristics, meaning, importance });
+const e = (musicalCharacteristics, meaning) => ({ musicalCharacteristics, meaning });
 export default {
 401:e("Basso elastico, percussioni mutanti e voci scomposte creano un funk alieno e febbrile.","Le frasi frammentarie funzionano come incitamenti al ballo più che come un racconto lineare.","Arthur Russell trasformò disco sperimentale e downtown newyorkese in un modello per la house garage."),
 402:e("Basso dub, batteria elettronica e voce soul avanzano in uno spazio ampio e ipnotico.","È una supplica a non prolungare l'attesa e a rendere finalmente concreto un rapporto.","Larry Levan ne fece un ponte decisivo tra post-disco, dub e nascente garage house."),

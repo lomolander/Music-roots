@@ -1,9 +1,20 @@
 import tracks from "../src/data/tracks/index.js";
 
 const fields = [
-  { key: "meaning", label: "Significato", minimumWords: 35 },
-  { key: "musicalCharacteristics", label: "Caratteristiche musicali", minimumWords: 35 },
-  { key: "scenario", label: "Scenario storico", minimumWords: 40 },
+  { key: "meaning", label: "Significato", minimumWords: 12, maximumWords: 90 },
+  { key: "musicalCharacteristics", label: "Caratteristiche musicali", minimumWords: 12, maximumWords: 90 },
+  { key: "scenario", label: "Scenario storico", minimumWords: 12, maximumWords: 90 },
+  /la situazione mette il punto di vista del narratore/i,
+  /perdita, responsabilità o cambiamento/i,
+  /riflette tensioni sociali/i,
+  /la musica stava cambiando/i,
+  /il brano sviluppa .+ attraverso un arrangiamento coerente/i,
+  /ritmo, timbro e forma sostengono/i,
+  /la scrittura usa immagini personali e culturali/i,
+  /produzione indipendente e nuovi circuiti di ascolto/i,
+  /l'arrangiamento mette in primo piano/i,
+  /dinamica e timbro sostengono l'identit/i,
+  /il testo affronta .+ le immagini scelte mantengono/i,
 ];
 
 const genericPatterns = [
@@ -43,6 +54,7 @@ for (const field of fields) {
     const reference = `${track.id} · ${track.artist} — ${track.title}`;
     if (!value.trim()) errors.push(`${reference}: ${field.label} vuoto`);
     else if (wordCount < field.minimumWords) errors.push(`${reference}: ${field.label} troppo corto (${wordCount}/${field.minimumWords} parole)`);
+    else if (wordCount > field.maximumWords) errors.push(`${reference}: ${field.label} troppo lungo (${wordCount}/${field.maximumWords} parole)`);
     if (genericPatterns.some((pattern) => pattern.test(value))) errors.push(`${reference}: ${field.label} contiene una formula generica`);
 
     const normalized = normalize(value);

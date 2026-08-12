@@ -1,4 +1,4 @@
-const e = (musicalCharacteristics, meaning, importance) => ({ musicalCharacteristics, meaning, importance });
+const e = (musicalCharacteristics, meaning) => ({ musicalCharacteristics, meaning });
 
 export default {
   201: e("Basso post-disco, archi luminosi e falsetto di Luther Vandross creano eleganza e calore.", "Descrive l'amore come una luce interiore capace di cambiare la percezione del mondo.", "Presentò Vandross al grande pubblico e segnò il passaggio dalla disco al boogie."),
@@ -56,7 +56,6 @@ export default {
   253: e("Basso funk, batteria shuffle e chitarre psichedeliche trasformano il rock in groove da club.", "Critica avidità e inganno, rivolgendosi a chi sacrifica autenticità per il denaro.", "È il ponte decisivo fra indie rock, rave e nascita della scena Madchester."),
   254: e("Pianoforte house, basso elastico e voce sfrontata ricompongono un brano soul in chiave rave.", "Il testo parla di dipendenza affettiva e del potere che una persona esercita sull'altra.", "Divenne uno degli inni di Madchester e della cultura baggy."),
   255: e("Pianoforte, cori gospel, campioni e groove lento creano una celebrazione rock-dance.", "Invita a liberarsi dai sensi di colpa e a vivere il piacere come esperienza positiva.", "Il remix di Weatherall trasformò Primal Scream e aprì la strada a Screamadelica."),
-  256: e("Accordi ambient, sassofono e ritmo house costruiscono un paesaggio strumentale sereno.", "Senza testo, immagina uno spazio oceanico aperto, sospeso e pacifico.", "È un classico della house britannica e un simbolo della scena di Manchester pre-rave."),
   257: e("Organo Hammond, basso e batteria baggy sostengono una voce nasale e un ritornello ipnotico.", "Racconta un'attrazione assoluta verso una persona percepita come unica e inevitabile.", "Fu il singolo che portò i Charlatans al centro della scena Madchester."),
   258: e("Basso acid, drum machine e chitarra creano un pop elettronico duro e da club.", "Descrive l'euforia e l'instabilità di un incontro vissuto al limite del tempo.", "Technique integrò definitivamente acid house e scrittura dei New Order."),
   259: e("Batteria baggy, basso, chitarre e tromba costruiscono un crescendo collettivo.", "Chiede a una persona di tornare, riconoscendo errori e bisogno di riconciliazione.", "Segnò il passaggio dei James dall'indie di culto al grande pubblico britannico."),

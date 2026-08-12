@@ -1,4 +1,4 @@
-const e = (musicalCharacteristics, meaning, importance) => ({ musicalCharacteristics, meaning, importance });
+const e = (musicalCharacteristics, meaning) => ({ musicalCharacteristics, meaning });
 export default {
 501:e("Basso sequenziato, drum machine e montaggio ripetitivo creano un groove essenziale e grezzo.","Le brevi voci invitano a proseguire nel ballo, senza sviluppare una vera narrazione.","È comunemente indicato fra i primi dischi house pubblicati a Chicago."),
 502:e("Pianoforte percussivo, basso sintetico e voce soul trasformano il ritmo in dichiarazione.","Afferma che la musica è la chiave capace di aprire emozioni, libertà e unione.","Fu uno dei primi successi della Chicago house vocale oltre la scena locale."),

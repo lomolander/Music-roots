@@ -1,4 +1,4 @@
-const e = (musicalCharacteristics, meaning, importance) => ({ musicalCharacteristics, meaning, importance });
+const e = (musicalCharacteristics, meaning) => ({ musicalCharacteristics, meaning });
 
 export default {
   101: e("Basso house, drum machine e gemiti rallentano fino a fermarsi, poi ripartono.", "È quasi strumentale e rappresenta il desiderio fisico attraverso respiro e tensione.", "Portò erotismo e sperimentazione temporale nella house delle classifiche internazionali."),

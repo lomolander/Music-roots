@@ -1,4 +1,4 @@
-const e = (musicalCharacteristics, meaning, importance) => ({ musicalCharacteristics, meaning, importance });
+const e = (musicalCharacteristics, meaning) => ({ musicalCharacteristics, meaning });
 export default {
 901:e("Chitarra in levare, basso profondo e doppia voce trasformano la protesta in canto collettivo.","Invita gli oppressi a difendere attivamente i propri diritti senza attendere salvezza dall'alto.","Divenne uno degli inni universali per giustizia, dignità e autodeterminazione."),
 902:e("Basso caldo, organo e ritmo one-drop sostengono un ricordo cantato con intimità.","Consola una donna ricordando solidarietà e difficoltà vissute insieme nel quartiere di Trenchtown.","La versione dal vivo rese il reggae di Marley patrimonio popolare mondiale."),

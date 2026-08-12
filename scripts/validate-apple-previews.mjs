@@ -121,8 +121,17 @@ async function writeCache(cache) {
   try {
     await rename(temporaryFile, CACHE_FILE);
   } catch (error) {
-    if (error?.code !== "EPERM" && error?.code !== "EEXIST") throw error;
-    await writeFile(CACHE_FILE, serialized, "utf8");
+    if (!["EPERM", "EEXIST", "UNKNOWN"].includes(error?.code)) throw error;
+    let written = false;
+    for (let attempt = 0; attempt < 5 && !written; attempt += 1) {
+      try {
+        await writeFile(CACHE_FILE, serialized, "utf8");
+        written = true;
+      } catch (writeError) {
+        if (attempt === 4 || !["EPERM", "UNKNOWN"].includes(writeError?.code)) throw writeError;
+        await sleep(250 * (attempt + 1));
+      }
+    }
     await unlink(temporaryFile).catch(() => {});
   }
 }

@@ -63,32 +63,25 @@ const tracks = [
   {
     "id": 256,
     "artist": "A Guy Called Gerald",
-    "title": "Pacific State",
+    "title": "FX",
     "year": 1989,
     "genre": "Madchester",
-    "album": "Quadrastate",
-    "sottogenere": "acid house ambient",
+    "album": null,
+    "albumYear": null,
+    "originalReleaseYear": 1989,
+    "releaseType": "single",
+    "version": "original 1989 single version",
+    "sottogenere": "",
     "paese": "Regno Unito",
-    "scenarioCulturale": "Realizzata con 808 State, la traccia mostrò il lato contemplativo della scena rave di Manchester Pubblicato nel 1989, il brano documenta la scena rave di Manchester in cui operava A Guy Called Gerald.",
-    "significato": "Il titolo evoca uno stato mentale oceanico e pacifico opposto all'intensità del club L'arrangiamento mette in primo piano sassofono campionato, bird calls e beat house, elementi decisivi per la sua identità.",
-    "influenzeMusicali": [
-      "acid house",
-      "ambient",
-      "jazz"
-    ],
-    "artistiInfluenzati": [
-      "The Orb",
-      "Bicep",
-      "Lone"
-    ],
+    "scenarioCulturale": "",
+    "significato": "",
+    "influenzeMusicali": [],
+    "artistiInfluenzati": [],
     "question": "Qual è il titolo del brano?",
     "answers": [
-      "Pacific State",
-      "Voodoo Ray",
-      "Emotions Electric",
       "FX"
     ],
-    "correctAnswer": "Pacific State"
+    "correctAnswer": "FX"
   },
   {
     "id": 257,

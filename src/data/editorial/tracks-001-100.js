@@ -1,4 +1,4 @@
-const e = (musicalCharacteristics, meaning, importance) => ({ musicalCharacteristics, meaning, importance });
+const e = (musicalCharacteristics, meaning) => ({ musicalCharacteristics, meaning });
 
 export default {
   1: e("Basso elastico, chitarra filtrata e voce robotica ripetono pochi elementi che cambiano combinazione.", "Il testo riduce tutto a un'unica frase: la musica e il desiderio possono circolare ovunque.", "Ha mostrato come ripetizione, filtro e vocoder potessero trasformare la house in pop globale."),

@@ -1,157 +1,238 @@
-import { useState } from "react";
-import { ChevronLeft, Compass, MapPin, Music2, Users, X } from "lucide-react";
+import { useMemo, useState } from "react";
+import { ArrowRight, Building2, ChevronLeft, MapPin, Music2, Search, Users } from "lucide-react";
 
-import tracks from "../data/questions.js";
 import { artists } from "../data/entities/index.js";
-import { musicAtlasCities, musicAtlasConnections, musicAtlasVenues } from "../data/musicAtlas.js";
+import { musicAtlasCities, musicAtlasVenues } from "../data/musicAtlas.js";
 
-const cityById = new Map(musicAtlasCities.map((city) => [city.id, city]));
+const countries = {
+  chicago: "Stati Uniti", detroit: "Stati Uniti", "new-york": "Stati Uniti",
+  london: "Regno Unito", manchester: "Regno Unito", liverpool: "Regno Unito", bristol: "Regno Unito",
+  berlin: "Germania", paris: "Francia", kingston: "Giamaica", rio: "Brasile",
+  napoli: "Italia", roma: "Italia", milano: "Italia", genova: "Italia", venezia: "Italia", bologna: "Italia", torino: "Italia",
+  glasgow: "Regno Unito", "los-angeles": "Stati Uniti", "san-francisco": "Stati Uniti",
+  birmingham: "Regno Unito", canterbury: "Regno Unito", newcastle: "Regno Unito",
+  boston: "Stati Uniti", seattle: "Stati Uniti", jacksonville: "Stati Uniti", austin: "Stati Uniti",
+  sydney: "Australia", melbourne: "Australia", toronto: "Canada", hannover: "Germania",
+  belfast: "Regno Unito", topeka: "Stati Uniti", tokyo: "Giappone", osaka: "Giappone",
+  kyoto: "Giappone", yokohama: "Giappone", hiroshima: "Giappone", kanazawa: "Giappone",
+  brescia: "Italia", palermo: "Italia", como: "Italia", siracusa: "Italia",
+};
 
-function MusicAtlas({ onBack, onExplore }) {
-  const [selectedId, setSelectedId] = useState(null);
-  const [panel, setPanel] = useState(null);
-  const [venueScope, setVenueScope] = useState(null);
-  const selected = cityById.get(selectedId);
+const normalize = (value) => String(value ?? "")
+  .normalize("NFD")
+  .replace(/[\u0300-\u036f]/g, "")
+  .toLocaleLowerCase("it")
+  .trim();
 
-  const selectCity = (id) => {
-    setSelectedId(id);
-    setPanel(null);
-    setVenueScope(null);
+const artistById = new Map(artists.map((artist) => [artist.id, artist]));
+const artistByName = new Map(artists.map((artist) => [normalize(artist.name), artist]));
+const cityMapModules = import.meta.glob("../assets/city-maps/*.svg", { eager: true, query: "?url", import: "default" });
+const cityMapById = Object.fromEntries(Object.entries(cityMapModules).map(([filePath, source]) => [filePath.split("/").at(-1).replace(".svg", ""), source]));
+const coastalCities = new Set(["belfast", "boston", "bristol", "genova", "hiroshima", "jacksonville", "kingston", "liverpool", "los-angeles", "melbourne", "napoli", "new-york", "rio", "san-francisco", "seattle", "sydney", "tokyo", "venezia", "yokohama"]);
+const riverCities = new Set(["austin", "berlin", "birmingham", "london", "manchester", "newcastle", "paris", "roma", "torino"]);
+
+function CityMapTexture({ cityId }) {
+  const cityMap = cityMapById[cityId];
+  if (cityMap) return <img className="atlas-city-map" src={cityMap} alt="" loading="lazy" aria-hidden="true" />;
+
+  const seed = [...cityId].reduce((total, character) => total + character.charCodeAt(0), 0);
+  const shiftX = seed % 19;
+  const shiftY = seed % 13;
+  const diagonal = seed % 2 === 0;
+  const hasCoast = coastalCities.has(cityId);
+  const hasRiver = riverCities.has(cityId);
+
+  return <svg className="atlas-city-map" viewBox="0 0 320 210" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+    <g className="atlas-city-map-blocks">
+      <path d={`M${18 + shiftX} 8V202M${78 + shiftX} 0V210M${151 + shiftX} 0V210M${232 + shiftX} 0V210M${290 + shiftX} 0V210`} />
+      <path d={`M0 ${35 + shiftY}H320M0 ${88 + shiftY}H320M0 ${145 + shiftY}H320M0 ${187 + shiftY}H320`} />
+      <path d={diagonal ? "M-20 176L150 6M88 230L330 -12" : "M-12 28L178 218M118 -20L332 194"} />
+      <path d={`M${42 + shiftX} 0L${42 + shiftX} 68L${116 + shiftX} 68L${116 + shiftX} 132L${196 + shiftX} 132L${196 + shiftX} 210`} />
+    </g>
+    <g className="atlas-city-map-minor">
+      <path d={`M${8 + shiftX} 57H${128 + shiftX}V112H${267 + shiftX}`} />
+      <path d={`M${55 + shiftX} 18V165H${306 - shiftX}`} />
+      <path d={`M0 ${118 - shiftY}H96V${178 - shiftY}H320`} />
+      <circle cx={118 + shiftX} cy={91 + shiftY} r="24" />
+      <circle cx={248 - shiftX} cy={151 - shiftY} r="17" />
+    </g>
+    {hasRiver && <path className="atlas-city-map-water" d={`M-12 ${128 + shiftY}C65 ${85 - shiftY},112 ${172 + shiftY},185 ${121 - shiftY}S282 ${91 + shiftY},334 ${132 - shiftY}`} />}
+    {hasCoast && <path className="atlas-city-map-coast" d={`M${236 - shiftX} -10C${218 + shiftX} 42,280 72,246 119S278 177,${232 + shiftX} 224L340 224V-10Z`} />}
+  </svg>;
+}
+
+function MusicAtlas({ onBack, onOpenArtist, initialCityId = null }) {
+  const [query, setQuery] = useState("");
+  const [selectedCityId, setSelectedCityId] = useState(initialCityId);
+  const [selectedVenueId, setSelectedVenueId] = useState(null);
+
+  const atlas = useMemo(() => musicAtlasCities.map((city) => {
+    const venues = musicAtlasVenues.filter((venue) => venue.cityId === city.id);
+    const linkedArtists = new Map();
+    city.artistIds.forEach((id) => {
+      const artist = artistById.get(id);
+      if (artist) linkedArtists.set(artist.id, artist);
+    });
+    venues.flatMap((venue) => venue.artistNames).forEach((name) => {
+      const artist = artistByName.get(normalize(name));
+      if (artist) linkedArtists.set(artist.id, artist);
+    });
+    const cityArtists = [...linkedArtists.values()].sort((a, b) => a.name.localeCompare(b.name, "it"));
+    return {
+      ...city,
+      country: countries[city.id] ?? "",
+      venues,
+      artists: cityArtists,
+      searchText: normalize([city.name, countries[city.id], ...venues.flatMap((venue) => [venue.name, ...venue.artistNames]), ...cityArtists.map((artist) => artist.name)].join(" ")),
+    };
+  }), []);
+
+  const selectedCity = atlas.find((city) => city.id === selectedCityId);
+  const selectedVenue = selectedCity?.venues.find((venue) => venue.id === selectedVenueId);
+  const visibleCities = atlas.filter((city) => city.searchText.includes(normalize(query)));
+
+  const openCity = (cityId) => {
+    setSelectedCityId(cityId);
+    setSelectedVenueId(null);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const closeCity = () => {
-    setSelectedId(null);
-    setPanel(null);
-    setVenueScope(null);
+  const openArtist = (artistId) => onOpenArtist(artistId, selectedCity?.id);
+
+  const goBack = () => {
+    if (selectedVenue) {
+      setSelectedVenueId(null);
+    } else if (selectedCity) {
+      setSelectedCityId(null);
+    } else {
+      onBack();
+    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
     <main className="app-shell atlas-screen page-enter">
-      <header className="explore-header">
-        <button className="back-button" type="button" onClick={onBack}>← Indietro</button>
-        <span className="explore-count">{musicAtlasCities.length} città</span>
+      <header className="atlas-header">
+        <button className="back-button" type="button" onClick={goBack}>← Indietro</button>
+        <span className="atlas-header-mark"><MapPin aria-hidden="true" /> Music Roots</span>
       </header>
 
-      <section className="atlas-intro">
-        <p className="eyebrow">GEOGRAFIE DEL SUONO</p>
-        <h1>Atlante musicale</h1>
-        <p>Luoghi, scene e percorsi che hanno fatto viaggiare la musica nel mondo.</p>
-      </section>
+      {selectedVenue ? (
+        <VenueDetail city={selectedCity} venue={selectedVenue} onCity={() => setSelectedVenueId(null)} onArtist={openArtist} />
+      ) : selectedCity ? (
+        <CityDetail city={selectedCity} onVenue={setSelectedVenueId} onArtist={openArtist} />
+      ) : (
+        <>
+          <section className="atlas-hero glass-panel">
+            <span className="atlas-orbit" aria-hidden="true"><span /></span>
+            <p className="eyebrow">LUOGHI · STORIE · ARTISTI</p>
+            <h1>Atlante musicale</h1>
+            <p>Esplora i luoghi che hanno dato vita ai grandi artisti.</p>
+          </section>
 
-      <section className={`atlas-map-shell${selected ? " has-selection" : ""}`} aria-label="Rete delle città musicali">
-        <div
-          className="atlas-map-stage"
-          style={{ "--atlas-pan-x": `${selected?.panX ?? 0}px`, "--atlas-pan-y": `${selected?.panY ?? 0}px` }}
-        >
-          <svg className="atlas-world" viewBox="0 0 100 52" role="img" aria-labelledby="atlas-map-title atlas-map-description">
-            <title id="atlas-map-title">Rete astratta delle città musicali</title>
-            <desc id="atlas-map-description">Una costellazione di connessioni collega undici città importanti per la storia della musica.</desc>
-            <g className="atlas-routes" aria-hidden="true">
-              {musicAtlasConnections.map(([fromId, toId]) => {
-                const from = cityById.get(fromId);
-                const to = cityById.get(toId);
-                return <path key={`${fromId}-${toId}`} d={routePath(from, to)} />;
-              })}
-            </g>
-            <g className="atlas-pulses" aria-hidden="true">
-              <circle r=".28"><animateMotion dur="14s" repeatCount="indefinite" path={routePath(cityById.get("new-york"), cityById.get("london"))} /><animate attributeName="opacity" values="0;.65;.65;0" dur="14s" repeatCount="indefinite" /></circle>
-              <circle r=".24"><animateMotion dur="17s" begin="4s" repeatCount="indefinite" path={routePath(cityById.get("kingston"), cityById.get("london"))} /><animate attributeName="opacity" values="0;.55;.55;0" dur="17s" begin="4s" repeatCount="indefinite" /></circle>
-            </g>
-          </svg>
+          <label className="atlas-search">
+            <Search aria-hidden="true" />
+            <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Cerca città, luogo o artista" />
+            {query && <span>{visibleCities.length}</span>}
+          </label>
 
-          <div className="atlas-nodes">
-            {musicAtlasCities.map((city) => (
-              <button
-                className={`atlas-node relevance-${city.relevance}${selectedId === city.id ? " active" : ""}`}
-                style={{ left: `${city.x}%`, top: `${city.y}%` }}
-                type="button"
-                key={city.id}
-                onClick={() => selectCity(city.id)}
-                aria-pressed={selectedId === city.id}
-                aria-label={`Seleziona ${city.name}`}
-              >
-                <span aria-hidden="true" />
-                <strong>{city.name}</strong>
+          <section className="atlas-city-grid" aria-label="Città dell'Atlante">
+            {visibleCities.map((city, index) => (
+              <button className="atlas-city-tile glass-card" style={{ "--card-delay": `${Math.min(index, 10) * 45}ms` }} type="button" key={city.id} onClick={() => openCity(city.id)}>
+                <CityMapTexture cityId={city.id} />
+                <span className="atlas-city-index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                <span className="atlas-city-heading"><small>{city.country}</small><strong>{city.name}</strong></span>
+                <span className="atlas-city-stats">
+                  <span><Building2 aria-hidden="true" /><b>{city.venues.length}</b><small>luoghi</small></span>
+                  <span><Users aria-hidden="true" /><b>{city.artists.length}</b><small>artisti</small></span>
+                </span>
+                <ArrowRight className="atlas-city-arrow" aria-hidden="true" />
               </button>
             ))}
-          </div>
-        </div>
-
-        {selected && !panel && <CityCard city={selected} closeCity={closeCity} setPanel={setPanel} onExplore={onExplore} />}
-        {selected && panel && (
-          <AtlasPanel
-            city={selected}
-            panel={panel}
-            venueScope={venueScope}
-            setPanel={setPanel}
-            setVenueScope={setVenueScope}
-          />
-        )}
-      </section>
+          </section>
+          <small className="atlas-map-attribution">Mappe derivate da <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">© OpenStreetMap contributors</a>, dati ODbL.</small>
+          {!visibleCities.length && <p className="atlas-empty">Nessuna città, luogo o artista corrisponde alla ricerca.</p>}
+        </>
+      )}
     </main>
   );
 }
 
-function routePath(from, to) {
-  const bend = Math.max(1.5, Math.abs(to.x - from.x) * .12);
-  const cx = (from.x + to.x) / 2;
-  const cy = Math.min(from.y, to.y) - bend;
-  return `M ${from.x} ${from.y} Q ${cx} ${cy} ${to.x} ${to.y}`;
-}
-
-function CityCard({ city, closeCity, setPanel, onExplore }) {
+function CityDetail({ city, onVenue, onArtist }) {
   return (
-    <article className="atlas-city-card glass-panel page-enter">
-      <button className="atlas-close" type="button" onClick={closeCity} aria-label="Chiudi la scheda della città"><X /></button>
-      <p className="eyebrow">{city.period}</p>
-      <h2>{city.name}</h2>
-      <p>{city.description}</p>
-      <div className="atlas-actions">
-        <button type="button" onClick={() => setPanel("venues")}><MapPin />Luoghi</button>
-        <button type="button" onClick={() => setPanel("artists")}><Users />Artisti</button>
-        <button type="button" onClick={() => setPanel("tracks")}><Music2 />Brani</button>
-        <button type="button" onClick={onExplore}><Compass />Esplora</button>
-      </div>
+    <article className="atlas-detail page-enter">
+      <header className="atlas-detail-hero glass-panel">
+        <p className="eyebrow">CITTÀ · {city.country.toUpperCase()}</p>
+        <h1>{city.name}</h1>
+        <p>{city.description}</p>
+        <div className="atlas-detail-counts"><span><Building2 /> {city.venues.length} luoghi</span><span><Users /> {city.artists.length} artisti</span></div>
+      </header>
+
+      <section className="atlas-detail-section">
+        <div className="atlas-section-title"><span>01</span><div><p className="eyebrow">LUOGHI</p><h2>Spazi che hanno lasciato il segno</h2></div></div>
+        <div className="atlas-venue-grid">
+          {city.venues.map((venue) => (
+            <article className="atlas-venue-card glass-card" key={venue.id}>
+              <button className="atlas-venue-open" type="button" onClick={() => onVenue(venue.id)} aria-label={`Apri ${venue.name}`}>
+                <span><small>{venue.period}</small><strong>{venue.name}</strong></span><ArrowRight aria-hidden="true" />
+              </button>
+              <p>{venue.description}</p>
+              <ArtistChips names={venue.artistNames} onArtist={onArtist} />
+            </article>
+          ))}
+        </div>
+        {!city.venues.length && <p className="atlas-empty">I luoghi di questa città saranno aggiunti presto.</p>}
+      </section>
+
+      <section className="atlas-detail-section">
+        <div className="atlas-section-title"><span>02</span><div><p className="eyebrow">ARTISTI</p><h2>Voci legate alla città</h2></div></div>
+        <div className="atlas-artist-grid">
+          {city.artists.map((artist) => <ArtistCard artist={artist} key={artist.id} onClick={() => onArtist(artist.id)} />)}
+        </div>
+        {!city.artists.length && <p className="atlas-empty">Gli artisti collegati saranno aggiunti presto.</p>}
+      </section>
     </article>
   );
 }
 
-function AtlasPanel({ city, panel, venueScope, setPanel, setVenueScope }) {
-  const venues = musicAtlasVenues.filter((venue) => venue.cityId === city.id);
-  const scopedVenue = venueScope ? venues.find((venue) => venue.id === venueScope) : null;
-  const artistNames = scopedVenue?.artistNames ?? city.artistNames;
-  const trackIds = scopedVenue?.trackIds ?? city.trackIds;
-  const cityArtists = artistNames.map((name) => artists.find((artist) => artist.name === name)).filter(Boolean);
-  const cityTracks = trackIds.map((id) => tracks.find((track) => track.id === id)).filter(Boolean);
-
-  const goBack = () => {
-    if (venueScope) setVenueScope(null);
-    setPanel(null);
-  };
-
+function VenueDetail({ city, venue, onCity, onArtist }) {
   return (
-    <section className="atlas-panel glass-panel page-enter">
-      <header><button type="button" onClick={goBack}><ChevronLeft />{city.name}</button><span>{panelLabel(panel)}</span></header>
-      {scopedVenue && <p className="atlas-scope">Collegamenti da {scopedVenue.name}</p>}
-      {panel === "venues" && (
-        venues.length ? <div className="atlas-venue-list">{venues.map((venue) => (
-          <article key={venue.id}>
-            <p className="eyebrow">{venue.cityId === city.id ? city.name : venue.cityId} · {venue.period}</p>
-            <h3>{venue.name}</h3><p>{venue.description}</p>
-            <div><button type="button" onClick={() => { setVenueScope(venue.id); setPanel("artists"); }}>Artisti</button><button type="button" onClick={() => { setVenueScope(venue.id); setPanel("tracks"); }}>Brani</button></div>
-          </article>
-        ))}</div> : <p className="atlas-empty">Nessun luogo storico è ancora documentato per questa città.</p>
-      )}
-      {panel === "artists" && (
-        <div className="atlas-entity-grid">{cityArtists.map((artist) => <article key={artist.id}>{artist.image ? <img src={artist.image} alt="" /> : <span><Users /></span>}<strong>{artist.name}</strong><small>{artist.genres.join(" · ")}</small></article>)}</div>
-      )}
-      {panel === "tracks" && (
-        <div className="atlas-track-list">{cityTracks.map((track) => <article key={track.id}>{track.artwork ? <img src={track.artwork} alt="" /> : <span><Music2 /></span>}<div><strong>{track.title}</strong><small>{track.artist} · {track.year}</small></div></article>)}</div>
-      )}
-    </section>
+    <article className="atlas-detail atlas-place-detail page-enter">
+      <button className="atlas-breadcrumb" type="button" onClick={onCity}><ChevronLeft /> {city.name}</button>
+      <section className="atlas-detail-hero glass-panel">
+        <p className="eyebrow">LUOGO · {city.name.toUpperCase()}</p>
+        <h1>{venue.name}</h1>
+        <p>{venue.description}</p>
+        <span className="atlas-period"><MapPin /> {city.name}, {city.country} · {venue.period}</span>
+      </section>
+      <section className="atlas-detail-section">
+        <div className="atlas-section-title"><span>01</span><div><p className="eyebrow">ARTISTI</p><h2>Protagonisti collegati</h2></div></div>
+        <ArtistChips names={venue.artistNames} onArtist={onArtist} large />
+        {!venue.artistNames.length && <p className="atlas-empty">I collegamenti con gli artisti saranno aggiunti presto.</p>}
+      </section>
+      <button className="atlas-city-return glass-card" type="button" onClick={onCity}><MapPin /><span><small>TORNA ALLA CITTÀ</small><strong>{city.name}</strong></span><ArrowRight /></button>
+    </article>
   );
 }
 
-const panelLabel = (panel) => ({ venues: "Luoghi", artists: "Artisti", tracks: "Brani" }[panel]);
+function ArtistChips({ names, onArtist, large = false }) {
+  if (!names.length) return null;
+  return <div className={`atlas-chips${large ? " is-large" : ""}`}>{names.map((name) => {
+    const artist = artistByName.get(normalize(name));
+    return artist
+      ? <button type="button" key={name} onClick={() => onArtist(artist.id)}><Music2 />{name}</button>
+      : <span key={name}><Music2 />{name}</span>;
+  })}</div>;
+}
+
+function ArtistCard({ artist, onClick }) {
+  const [imageFailed, setImageFailed] = useState(false);
+  return (
+    <button className="atlas-artist-card glass-card" type="button" onClick={onClick}>
+      {artist.image && !imageFailed ? <img src={artist.image} alt="" loading="lazy" onError={() => setImageFailed(true)} /> : <span><Music2 /></span>}
+      <strong>{artist.name}</strong><ArrowRight aria-hidden="true" />
+    </button>
+  );
+}
 
 export default MusicAtlas;

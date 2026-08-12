@@ -167,7 +167,6 @@ export default rows.map(([artist, title, album, year, genre], index) => {
     scenario: `Pubblicato nel ${year}, il brano documenta ${context}.`,
     meaning: `Testo, interpretazione e arrangiamento rendono «${title}» un passaggio centrale nel percorso di ${artist}.`,
     musicalCharacteristics: `Scrittura melodica, identità timbrica e produzione riflettono il linguaggio ${subgenre} dell'artista.`,
-    importance: `È una delle opere indispensabili per comprendere il ruolo di ${artist} nella scena ${genre}.`,
     influences, similarArtists: peers, essentialPlaylist: genre, requireOriginalAlbum: true,
     links: { spotify: searchLink("spotify", artist, title), appleMusic: searchLink("appleMusic", artist, title), youtube: searchLink("youtube", artist, title) },
     deezer: { trackId: null, previewUrl: "", status: "not-checked" },

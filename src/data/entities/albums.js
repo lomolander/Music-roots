@@ -3,15 +3,16 @@ import { entityId } from "../entityIds.js";
 
 const albumMap = new Map();
 for (const track of tracks) {
+  if (!track.album) continue;
   const id = entityId(track.artist, track.album);
   const album = albumMap.get(id) ?? {
     id, title: track.album, artist: track.artist, artistId: entityId(track.artist),
-    year: track.year, cover: track.artwork || track.cover || "",
+    year: track.albumYear ?? track.year, cover: track.artwork || track.cover || "",
     description: `Album di ${track.artist} rappresentato nell'archivio Music Roots da «${track.title}».`,
     historicalImportance: track.curiosity || "",
     trackIds: [],
   };
-  album.year = Math.min(album.year, track.year);
+  album.year = Math.min(album.year, track.albumYear ?? track.year);
   if (!album.cover) album.cover = track.artwork || track.cover || "";
   album.trackIds.push(track.id);
   albumMap.set(id, album);
