@@ -1,4 +1,5 @@
 import applePreviewMetadata from "../apple-preview-metadata.js";
+import editorialArtwork from "../editorial-artwork.js";
 import { essentialPlaylists } from "../libraryConfig.js";
 import { entityId } from "../entityIds.js";
 import editorial001100 from "../editorial/tracks-001-100.js";
@@ -130,6 +131,7 @@ const tracks = Object.entries(trackModules).flatMap(([sourceModule, moduleTracks
   const revisedEditorial = editorial001100[track.id] ?? editorial101200[track.id] ?? editorial201300[track.id] ?? editorial301400[track.id] ?? editorial401500[track.id] ?? editorial501600[track.id] ?? editorial601700[track.id] ?? editorial701800[track.id] ?? editorial801900[track.id] ?? editorial9011000[track.id] ?? editorial10011100[track.id] ?? {};
   const correctedEditorial = correctedTrackEditorial[track.id] ?? {};
   const discographicCorrection = discographicCorrections[track.id] ?? {};
+  const editorialArtworkUrl = editorialArtwork[track.id] ?? "";
   const correctedArtist = discographicCorrection.artist ?? track.artist;
   const correctedAlbum = Object.hasOwn(discographicCorrection, "album") ? discographicCorrection.album : track.album;
 
@@ -151,7 +153,8 @@ const tracks = Object.entries(trackModules).flatMap(([sourceModule, moduleTracks
     ...revisedEditorial,
     meaning: revisedEditorial.meaning || meaning || editorialMeaning(track, ""),
     ...correctedEditorial,
-    artwork: apple.appleArtworkUrl || track.artwork || track.cover || "",
+    artwork: apple.appleArtworkUrl || track.artwork || track.cover || editorialArtworkUrl,
+    artworkType: apple.appleArtworkUrl || track.artwork || track.cover ? "official" : editorialArtworkUrl ? "editorial" : "fallback",
     cover: track.cover || apple.appleArtworkUrl || "",
     preview: apple.appleMatchStatus === "verified" && apple.applePreviewUrl ? apple.applePreviewUrl : "",
     ...discographicCorrection,

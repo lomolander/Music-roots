@@ -546,7 +546,7 @@ function TrackDetail({ track, data, navigate }) {
     : track.artwork;
   return (
     <article className="archive-detail track-detail page-enter">
-      {detailArtwork && !failedArtwork ? <img className="track-cover" src={detailArtwork} alt={track.album ? `Copertina di ${track.album}` : `Copertina di ${track.title}`} onError={() => setFailedArtwork(true)} /> : <ArtworkFallback className="track-cover" title={track.title} artist={track.artist} />}
+      {detailArtwork && !failedArtwork ? <img className="track-cover" src={detailArtwork} alt={track.artworkType === "editorial" ? `Artwork editoriale Music Roots per ${track.title}` : track.album ? `Copertina di ${track.album}` : `Copertina di ${track.title}`} onError={() => setFailedArtwork(true)} /> : <ArtworkFallback className="track-cover" title={track.title} artist={track.artist} />}
       <p className="eyebrow">SCHEDA DEL BRANO</p><h1>{track.title}</h1>
       <button className="inline-link" type="button" onClick={() => navigate("artist", artist.id)}>{track.artist} →</button>
       <p className="detail-meta">{track.year}{album ? <> · <button type="button" onClick={() => navigate("album", album.id)}>{track.album}</button></> : null}</p>
