@@ -14,7 +14,7 @@ import editorial801900 from "../editorial/tracks-801-900.js";
 import editorial9011000 from "../editorial/tracks-901-1000.js";
 import editorial10011100 from "../editorial/tracks-1001-1100.js";
 import correctedTrackEditorial from "../editorial/corrected-track-editorial.js";
-import { historicalScenario } from "../scenarioEditorial.js";
+import { historicalScenario, reviewedHistoricalScenario } from "../scenarioEditorial.js";
 import { editorialMeaning } from "../meaningEditorial.js";
 import houseTechno from "./house-techno.js";
 import discoFunk from "./disco-funk.js";
@@ -200,7 +200,6 @@ const tracks = Object.entries(trackModules).flatMap(([sourceModule, moduleTracks
     sourceModule,
     subgenre,
     sottogenere: subgenre,
-    scenario: revisedEditorial.scenario || track.scenario || historicalScenario({ ...track, subgenre }),
     influences,
     similarArtists,
     influencedArtists,
@@ -213,6 +212,10 @@ const tracks = Object.entries(trackModules).flatMap(([sourceModule, moduleTracks
     ...revisedEditorial,
     meaning: revisedEditorial.meaning || meaning || editorialMeaning(track, ""),
     ...correctedEditorial,
+    scenario: reviewedHistoricalScenario(
+      { ...track, ...discographicCorrection, subgenre },
+      correctedEditorial.scenario || revisedEditorial.scenario || track.scenario || historicalScenario({ ...track, subgenre }),
+    ),
     artwork: apple.appleArtworkUrl || track.artwork || track.cover || editorialArtworkUrl,
     artworkType: apple.appleArtworkUrl || track.artwork || track.cover ? "official" : editorialArtworkUrl ? "editorial" : "fallback",
     cover: track.cover || apple.appleArtworkUrl || "",

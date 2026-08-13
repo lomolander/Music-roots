@@ -124,34 +124,34 @@ const countryContexts = {
   "Giamaica": "In Giamaica, sound system, studi indipendenti e competizione fra produttori rendevano la musica un laboratorio popolare con influenza internazionale.",
 };
 
-const hash = (value = "") => [...value].reduce((total, character) => ((total * 31) + character.codePointAt(0)) >>> 0, 7);
-const choose = (items, seed) => items[seed % items.length];
-const wordCount = (value) => value.trim().split(/\s+/).length;
+// Conservati come repertorio editoriale per future revisioni puntuali; il fallback
+// non li applica più automaticamente in base al solo anno o genere.
+void eraContexts;
+void sceneContexts;
+void countryContexts;
 
-const eraFor = (year) => eraContexts.find(([end]) => Number(year) <= end)?.[1] ?? eraContexts.at(-1)[1];
-const sceneFor = (track) => {
-  const classification = `${track.genre ?? ""} ${track.subgenre ?? track.sottogenere ?? ""}`;
-  return sceneContexts.find(([pattern]) => pattern.test(classification))?.[1] ?? sceneContexts.at(-1)[1];
-};
+const wordCount = (value) => value.trim().split(/\s+/).length;
 
 export const historicalScenario = (track) => {
   if (specialScenarios[track.title]) return specialScenarios[track.title];
+  const classification = track.subgenre || track.sottogenere || track.genre;
+  const release = track.album ? `“${track.album}”` : "singolo autonomo";
+  // Quando non esiste un contesto documentabile, una nota discografica
+  // essenziale è più corretta di una falsa cornice storico-culturale.
+  return `“${track.title}” — ${track.artist}; ${release}; ${track.year}; ${classification}.`;
+};
 
-  const seed = hash(`${track.id}|${track.artist}|${track.title}`);
-  const era = choose(eraFor(track.year), seed);
-  const scene = choose(sceneFor(track), seed >>> 3);
-  const country = countryContexts[track.paese] ?? countryContexts[track.country];
-  const place = country ?? "In quel contesto, reti locali di locali, radio e negozi di dischi facevano viaggiare nuove identità culturali prima della piena attenzione dei grandi media.";
-  const openings = [
-    `Quando ${track.artist} pubblicò “${track.title}” nel ${track.year}, il paesaggio culturale stava cambiando rapidamente.`,
-    `L’uscita di “${track.title}” nel ${track.year} si colloca in una fase di trasformazione dei consumi e dell’immaginario giovanile.`,
-    `Nel ${track.year}, anno di uscita di “${track.title}”, musica e costume riflettevano tensioni sociali e nuove possibilità tecnologiche.`,
-    `Per comprendere il mondo attorno a “${track.title}”, uscito nel ${track.year}, bisogna guardare oltre le classifiche e osservare media, città e comunità.`,
-    `“${track.title}” arrivò nel ${track.year}, mentre modi di ascoltare, incontrarsi e riconoscersi nella cultura popolare stavano assumendo forme nuove.`,
-  ];
-  const core = `${choose(openings, seed >>> 6)} ${era} ${scene}`;
-  const complete = `${core} ${place}`;
-  if (wordCount(complete) <= 84) return complete;
-  if (wordCount(core) <= 84) return core;
-  return `Nel ${track.year}, ${track.artist} operava in un paesaggio culturale in trasformazione, all’epoca dell’album “${track.album}”. ${era} ${scene}`;
+const genericScenario = /paesaggio culturale|trasformazione dei consumi|riflettevano tensioni sociali|guardare oltre le classifiche|modi di ascoltare|pubblicazione originale indicata|documenta la scena|documenta la stagione|documenta l'evoluzione|permette di seguirne l'evoluzione|la sua circolazione documenta|si colloca nel contesto di|si colloca nel quadro storico descritto|ne documenta una fase significativa attraverso|il brano documenta l'incontro fra|il brano documenta il dialogo della|il brano documenta la trasformazione del|^pubblicat[oa] nel \d{4},? (?:il brano|la registrazione)|^uscito nel \d{4},? (?:il brano|la registrazione)|^nel \d{4},? (?:il brano|la registrazione) (?:documenta|appartiene|si colloca)/i;
+const normalizeSentence = (value) => value.trim().replace(/\s+/g, " ").replace(/([.!?])?$/, ".");
+
+export const reviewedHistoricalScenario = (track, value) => {
+  const scenario = String(value ?? "").trim();
+  if (!scenario || genericScenario.test(scenario)) {
+    const specificLead = scenario.split(/\s+Pubblicato nel\s+\d{4}/i)[0]?.trim();
+    if (specificLead && !genericScenario.test(specificLead) && wordCount(specificLead) >= 8) return normalizeSentence(specificLead);
+    return historicalScenario(track);
+  }
+  if (wordCount(scenario) <= 80) return scenario;
+  const sentences = scenario.match(/[^.!?]+[.!?]+/g) ?? [scenario];
+  return sentences.slice(0, 2).join(" ").trim();
 };
