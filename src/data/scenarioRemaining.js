@@ -968,7 +968,7 @@ export const scenarioRemaining = {
   1297: "“Grande grande grande”: “Mina”, 1972.",
   1298: "“Ancora ancora ancora”: “Mina con bignè”, 1978.",
   1299: "“Il tuo bacio è come un rock”: “Adriano Celentano con Giulio Libano e la sua orchestra”, 1959.",
-  1300: "“Azzurro”: “Azzurro / Una carezza in un pugno”, 1968.",
+  1300: "Nel 1968 l’Italia del boom economico viaggiava sempre più in automobile e l’esodo estivo svuotava le città, mentre la televisione unificava abitudini e linguaggio popolare. “Azzurro”, con il suo uomo solo in città mentre tutti sono partiti per le vacanze, fissò con immediatezza quella trasformazione sociale e divenne una presenza familiare nei programmi televisivi e nella cultura nazionale.",
   1301: "“Prisencolinensinainciusol”: “Nostalrock”, 1972.",
   1302: "“Svalutation”: “Svalutation”, 1976.",
   1303: "“Albachiara”: “Non siamo mica gli americani!”, 1979.",

@@ -10,6 +10,11 @@ const specialScenarios = {
   "Imagine": "Nel 1971 la guerra del Vietnam continuava e il movimento pacifista riempiva piazze, campus e mezzi di comunicazione. Le rivelazioni dei Pentagon Papers alimentarono la sfiducia verso il governo statunitense, mentre la controcultura cercava forme di convivenza alternative alla logica dei blocchi della Guerra Fredda. Imagine arrivò in questo passaggio: l’utopia dei tardi anni Sessanta stava lasciando il posto a un pacifismo più disilluso, ma ancora globale.",
 };
 
+const externalScenarioOverrides = {
+  1639: "Nel 1975 il country statunitense non coincideva più soltanto con Nashville: la scena californiana, l’outlaw country e il nuovo cantautorato avevano allargato linguaggi e pubblico. “Boulder to Birmingham”, scritto dopo la morte di Gram Parsons, entrò in questo passaggio mentre gli Stati Uniti assistevano alla conclusione della guerra del Vietnam e riconsideravano un decennio di conflitti e disillusione.",
+  1720: "Nel Belgio del 1989 la new beat usciva dai club per incontrare il mercato pop internazionale, sostenuta da videoclip e televisioni musicali. “Pump Up the Jam” rese visibile quella trasformazione, ma la promozione mostrò la modella Felly mentre la voce e il rap della registrazione erano di Ya Kid K: un caso emblematico del modo in cui l’industria dance costruiva l’immagine dei propri interpreti.",
+};
+
 const eraContexts = [
   [1959, [
     "La radio, i jukebox e i primi programmi televisivi stavano creando un pubblico giovanile autonomo, mentre il disco a 45 giri accelerava la circolazione della musica popolare.",
@@ -136,10 +141,14 @@ void countryContexts;
 
 const wordCount = (value) => value.trim().split(/\s+/).length;
 
+const scenarioOverrideFor = (track) =>
+  scenarioBlock01[track.id] || scenarioBlock02[track.id] || scenarioRemaining[track.id] || externalScenarioOverrides[track.id] || "";
+
+const isEditorialScenario = (value) => wordCount(String(value ?? "")) > 18;
+
 export const historicalScenario = (track) => {
-  if (scenarioBlock01[track.id]) return scenarioBlock01[track.id];
-  if (scenarioBlock02[track.id]) return scenarioBlock02[track.id];
-  if (scenarioRemaining[track.id]) return scenarioRemaining[track.id];
+  const editorialOverride = scenarioOverrideFor(track);
+  if (isEditorialScenario(editorialOverride)) return editorialOverride;
   if (specialScenarios[track.title]) return specialScenarios[track.title];
   const classification = track.subgenre || track.sottogenere || track.genre;
   const release = track.album ? `“${track.album}”` : "singolo autonomo";
@@ -147,6 +156,9 @@ export const historicalScenario = (track) => {
   // essenziale è più corretta di una falsa cornice storico-culturale.
   return `“${track.title}” — ${track.artist}; ${release}; ${track.year}; ${classification}.`;
 };
+
+export const historicalScenarioOverride = (track) =>
+  isEditorialScenario(scenarioOverrideFor(track)) ? scenarioOverrideFor(track) : "";
 
 const genericScenario = /paesaggio culturale|trasformazione dei consumi|riflettevano tensioni sociali|guardare oltre le classifiche|modi di ascoltare|pubblicazione originale indicata|documenta la scena|documenta la stagione|documenta l'evoluzione|permette di seguirne l'evoluzione|la sua circolazione documenta|si colloca nel contesto di|si colloca nel quadro storico descritto|ne documenta una fase significativa attraverso|il brano documenta l'incontro fra|il brano documenta il dialogo della|il brano documenta la trasformazione del|^pubblicat[oa] nel \d{4},? (?:il brano|la registrazione)|^uscito nel \d{4},? (?:il brano|la registrazione)|^nel \d{4},? (?:il brano|la registrazione) (?:documenta|appartiene|si colloca)/i;
 const normalizeSentence = (value) => value.trim().replace(/\s+/g, " ").replace(/([.!?])?$/, ".");
