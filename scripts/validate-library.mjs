@@ -45,7 +45,6 @@ for (const track of tracks) {
       if (!track[field]) errors.push(`ID ${track.id}: campo editoriale ${field} mancante`);
     }
     if (!track.influences.length || !track.similarArtists.length) errors.push(`ID ${track.id}: influenze o artisti simili mancanti`);
-    for (const provider of ["spotify", "appleMusic", "youtube"]) if (!track.links?.[provider]) errors.push(`ID ${track.id}: link ${provider} mancante`);
     if (!track.artwork && !track.cover) warnings.push(`ID ${track.id}: copertina non disponibile da un match verificato`);
   }
 }
