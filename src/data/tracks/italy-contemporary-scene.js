@@ -45,6 +45,40 @@ const profiles = {
 const flattened = catalog.flatMap(([artist, country, ...tracks]) => tracks.map(([title, album, year, genre, subgenre]) => ({ artist, country, title, album, year, genre, subgenre })));
 const encode = (value) => encodeURIComponent(value);
 
+const meanings = [
+  "Paragona una relazione finita ai crateri lasciati da un impatto: anche dopo la separazione, i segni dell'incontro restano visibili.",
+  "Osserva un sistema dello spettacolo che trasforma polemica e ribellione in prodotti televisivi, confondendo libertà d'espressione e ricerca di consenso.",
+  "Due persone condividono un'intimità provvisoria, sapendo che la loro stanza non possiede ancora la stabilità di una casa comune.",
+  "Fra alcol, insonnia e oggetti di una camera anonima, una relazione conclusa continua a occupare la mente di chi è rimasto solo.",
+  "Invita a vivere la notte come ultima occasione per incontrarsi e ballare; dietro l'euforia affiora la paura che restino soltanto distanza e rimpianto.",
+  "Le parole funzionano come comandi e lampi d'immagine: traducono l'accelerazione fisica e mentale della pista senza costruire una storia lineare.",
+  "Nega provocatoriamente l'amore a Napoli mentre continua a cercarlo nei ricordi e nelle strade di una città inseparabile dalla relazione.",
+  "Chi è stato lasciato chiede perché il rapporto sia finito se il legame continua a farsi sentire, fra rimprovero, nostalgia e desiderio di ricominciare.",
+  "Usa Mandela come emblema paradossale della pazienza richiesta da una relazione logorante, fino a rivendicare il diritto di non sopportare tutto.",
+  "Un giubbottino diventa il dettaglio concreto con cui ricordare un incontro; desiderio, posa e insicurezza vengono osservati con ironia.",
+  "Riconosce l'arrivo di un desiderio che invade ogni pensiero: non un amore sereno, ma una presenza capace di sedurre e destabilizzare.",
+  "Composizione strumentale: il titolo suggerisce una figura elegante e cinematografica, delineata dal tema e dal groove senza azioni o personaggi definiti.",
+  "Composizione strumentale: evoca il passaggio dalla luce alla sera come momento di sospensione, con una funzione paesaggistica e cinematografica.",
+  "Brano strumentale: immagina la Bovisa notturna come scenario noir di movimento, attesa e tensione, senza raccontare eventi determinati.",
+  "Brano strumentale concepito come omaggio ai polizieschi europei: mette in scena inseguimento, pericolo e ironia attraverso codici cinematografici.",
+  "Descrive persone che cercano uno spazio comune malgrado pressioni e differenze; la vicinanza è affettiva ma anche bisogno di comunità.",
+  "La richiesta di suonare ancora è rivolta alla musica come forza di memoria e coesione, capace di mantenere vivo il contatto con una comunità.",
+  "La persona desiderata è un satellite: vicina nell'orbita dei pensieri, ma irraggiungibile. Le immagini astronomiche traducono attrazione e separazione.",
+  "Cerca un abbandono completo che interrompa il controllo razionale; le immagini frammentarie registrano il desiderio di essere assorbiti dall'esperienza.",
+  "La primavera irrompe come una guerra, accompagnando una relazione segnata da assenza e conflitto: il ritorno della vita è desiderabile e doloroso.",
+  "Il mare custodisce il ricordo di un legame e ne racconta distanza, ritorni e trasformazioni, come una storia che cambia a ogni passaggio.",
+  "La voce esprime in napoletano desideri rivolti alla persona amata, insistendo sulla volontà di condividere tempo, corpo e quotidianità.",
+  "Celebra un incontro estivo fra mare, calore e ballo; napoletano e francese evocano una libertà mediterranea senza chiuderla in una trama.",
+  "Il titolo richiama i fuochi d'artificio e una bellezza intensa ma fugace; voce e frammenti affidano ad atmosfera e durata il senso del brano.",
+  "Il testo procede per immagini intime e allusive; il nome del titolo è il riferimento privato attorno a cui si raccolgono ricordo e identità.",
+  "Tre voci raccontano un rapporto consumato che riemerge attraverso una canzone comune, alternando nostalgia, orgoglio e bisogno di essere ricordati.",
+  "La mancanza di respiro descrive l'effetto fisico di un legame fra attrazione e inquietudine, registrato attraverso immagini brevi e sensoriali.",
+  "Presenta l'amore come esperienza quotidiana e imperfetta: la voce cerca autenticità mentre riconosce esitazioni e fragilità del rapporto.",
+  "Desidera liberarsi dal peso mentale e lasciare volare i pensieri; amore, immaginazione e alterazione percettiva finiscono per sovrapporsi.",
+  "Rivendica il corpo come territorio vissuto, vulnerabile e politico, sottraendolo allo sguardo di chi pretende di definirlo o controllarlo.",
+  "Davanti a un mondo prossimo al collasso, reagisce con un saluto danzante: festa e allegria rendono ancora più evidente l'assurdità della catastrofe.",
+];
+
 export default flattened.map((item, index) => {
   const peers = catalog.filter(([artist]) => artist !== item.artist).slice(index % 12, index % 12 + 3).map(([artist]) => artist);
   const alternatives = flattened.filter((track) => track.title !== item.title).slice((index * 3) % 24, ((index * 3) % 24) + 3).map((track) => track.title);
@@ -53,7 +87,7 @@ export default flattened.map((item, index) => {
   return {
     id: 1534 + index, artist: item.artist, title: item.title, album: item.album, year: item.year, genre: item.genre, subgenre: item.subgenre, sottogenere: item.subgenre, paese: item.country,
     musicalCharacteristics: `Il brano sviluppa ${influences.join(", ")} attraverso un arrangiamento coerente con la scena italiana del periodo. Ritmo, timbro e forma sostengono l’identità specifica dell’artista.`,
-    meaning: `La scrittura usa immagini personali e culturali per osservare relazioni, identità e trasformazioni della vita contemporanea senza separare esperienza individuale e contesto collettivo.`,
+    meaning: meanings[index] ?? "",
     scenario: `Pubblicato nel ${item.year}, il brano documenta il dialogo della musica italiana con ${item.subgenre.toLocaleLowerCase("it")}, produzione indipendente e nuovi circuiti di ascolto.`,
     influences, similarArtists: peers, influencedArtists: peers, curiosity: `È una registrazione rappresentativa del percorso di ${item.artist} e del ponte fra tradizione italiana e linguaggi contemporanei.`,
     essentialPlaylist: item.genre,

@@ -48,7 +48,7 @@ export default flat.map((item, index) => {
   const query = `${item.artist} ${item.title}`;
   return { id, artist: item.artist, title: item.title, album: item.album, year: item.year, genre: "J-Pop", subgenre: item.area, sottogenere: item.area, paese: item.country,
     musicalCharacteristics: `La produzione combina ${profiles[item.area].features}. Struttura, timbro e ritmo definiscono il brano senza dipendere dal contenuto verbale.`,
-    meaning: `Il testo affronta ${item.theme}. Nei brani strumentali, il significato resta affidato al titolo e alla funzione narrativa della composizione.`,
+    meaning: `${item.theme.charAt(0).toLocaleUpperCase("it")}${item.theme.slice(1)}.`,
     scenario: `Pubblicato nel ${item.year}, il brano si colloca nel contesto di ${profiles[item.area].context}.`, influences: profiles[item.area].influences, similarArtists: peers, influencedArtists: peers,
     curiosity: `Il brano documenta una fase riconoscibile del percorso discografico di ${item.artist}.`, essentialPlaylist: item.area,
     links: { spotify: `https://open.spotify.com/search/${encode(query)}`, appleMusic: `https://music.apple.com/jp/search?term=${encode(query)}`, youtube: `https://www.youtube.com/results?search_query=${encode(query)}` },

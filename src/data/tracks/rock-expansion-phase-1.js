@@ -116,7 +116,7 @@ const tracks = flattened.map((item, index) => {
     sottogenere: item.area,
     paese: item.country,
     musicalCharacteristics: `L'arrangiamento mette in primo piano ${profiles[item.area].characteristics}. Dinamica e timbro sostengono l'identità del brano senza alterarne la struttura melodica.`,
-    meaning: `Il testo affronta ${item.theme}. Le immagini scelte mantengono il racconto concentrato su questo nucleo, senza trasformarlo in una spiegazione della produzione musicale.`,
+    meaning: `${item.theme.charAt(0).toLocaleUpperCase("it")}${item.theme.slice(1)}.`,
     scenario: `Pubblicato nel ${item.year}, il brano si colloca nel contesto di ${sceneContext[item.area]}. La sua circolazione documenta il ruolo assunto da ${item.artist} nella definizione del ${item.area}.`,
     influences: profiles[item.area].influences,
     similarArtists: peers.length === 3 ? peers : catalog.filter((entry) => entry[2] === item.area && entry[0] !== item.artist).slice(0, 3).map((entry) => entry[0]),
