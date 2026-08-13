@@ -18,6 +18,12 @@ const tabs = [
 
 const normalize = (value) => String(value ?? "").toLocaleLowerCase("it");
 const exploreGenreSet = new Set(exploreGenreNames);
+const contemporaryItalyTracks = tracks.filter((track) => track.sourceModule === "italy-contemporary-scene");
+const contemporaryItalySubgenres = new Set(contemporaryItalyTracks.map((track) => track.subgenre).filter(Boolean));
+
+const editorialGenreTrackIds = (genre) => genre.name === "Musica italiana"
+  ? [...new Set([...genre.trackIds, ...contemporaryItalyTracks.map((track) => track.id)])]
+  : genre.trackIds;
 
 function Explore({ initialView = null, onBack, exitOnInitialBack = false, onOpenAtlasCity }) {
   const [tab, setTab] = useState("genres");
@@ -87,7 +93,7 @@ function Explore({ initialView = null, onBack, exitOnInitialBack = false, onOpen
             {tab === "genres" && genres.filter((genre) => exploreGenreSet.has(genre.name) && visible(genre.name)).map((genre) => (
               <ArchiveButton key={genre.id} image={genre.trackIds.map((id) => data.trackById.get(id)?.artwork).find(Boolean)} title={genre.name} meta={`${genre.trackIds.length} brani · ${genre.essentialArtists.length} artisti rappresentativi`} onClick={() => navigate("genre", genre.id)} />
             ))}
-            {tab === "subgenres" && data.subgenres.filter((item) => visible(item.name)).map((item) => (
+            {tab === "subgenres" && data.subgenres.filter((item) => !contemporaryItalySubgenres.has(item.name) && visible(item.name)).map((item) => (
               <ArchiveButton key={item.name} image={item.tracks.map((track) => track.artwork).find(Boolean) || data.artworkByGenre.get(item.tracks[0]?.genre)} title={item.name} meta={`${item.tracks.length} brani · ${new Set(item.tracks.map((track) => track.artist)).size} artisti`} onClick={() => navigate("subgenre", item.name)} />
             ))}
             {tab === "artists" && artists.filter((artist) => visible(artist.name)).map((artist) => (
@@ -137,7 +143,7 @@ function Detail({ view, data, navigate, openTrack, onOpenAtlasCity }) {
     description = genre.description || `${genre.name}: ${genre.trackIds.length} brani presenti nell'archivio Music Roots.`;
     essentialPlaylist = genre.essentialPlaylist;
     const playlistTrackIds = essentialPlaylist?.trackIds?.length ? essentialPlaylist.trackIds : genre.trackIds;
-    itemTracks = (view.type === "playlist" ? playlistTrackIds : genre.trackIds).map((id) => data.trackById.get(id)).filter(Boolean);
+    itemTracks = (view.type === "playlist" ? playlistTrackIds : editorialGenreTrackIds(genre)).map((id) => data.trackById.get(id)).filter(Boolean);
     links = view.type === "genre" && (
       <>
         <LinkSection title="Artisti" items={[...new Set(itemTracks.map((track) => track.artistId))].map((id) => data.artistById.get(id)).filter(Boolean)} label={(item) => item.name} onClick={(item) => navigate("artist", item.id)} />
