@@ -1,3 +1,7 @@
+import { scenarioBlock01 } from "./scenarioBlock01.js";
+import { scenarioBlock02 } from "./scenarioBlock02.js";
+import { scenarioRemaining } from "./scenarioRemaining.js";
+
 const specialScenarios = {
   "Blue Monday": "Nel 1983 Manchester portava ancora le ferite della deindustrializzazione: fabbriche chiuse e disoccupazione convivevano con la vitalità di Factory Records e dell’Haçienda. Il club, inaugurato l’anno precedente, stava trasformando il post-punk in una nuova cultura del ballo. Blue Monday nacque dentro questo passaggio, mentre drum machine e sequencer rendevano possibile un’elettronica indipendente capace di viaggiare ben oltre il Nord dell’Inghilterra.",
   "Karma Chameleon": "La Gran Bretagna del 1983 era segnata dal secondo governo Thatcher, dalla disoccupazione e da forti conflitti sociali, ma la televisione offriva un’immagine molto più colorata. MTV, arrivata da poco, premiava artisti dall’identità visiva immediata. Boy George divenne così una figura centrale del pop: il suo stile androgino portò nelle case discussioni su genere, moda e libertà personale, oltre i confini del New Romantic.",
@@ -133,6 +137,9 @@ void countryContexts;
 const wordCount = (value) => value.trim().split(/\s+/).length;
 
 export const historicalScenario = (track) => {
+  if (scenarioBlock01[track.id]) return scenarioBlock01[track.id];
+  if (scenarioBlock02[track.id]) return scenarioBlock02[track.id];
+  if (scenarioRemaining[track.id]) return scenarioRemaining[track.id];
   if (specialScenarios[track.title]) return specialScenarios[track.title];
   const classification = track.subgenre || track.sottogenere || track.genre;
   const release = track.album ? `“${track.album}”` : "singolo autonomo";
