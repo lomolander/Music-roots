@@ -38,6 +38,7 @@ import jpopShibuyaPhase2 from "./jpop-shibuya-phase-2.js";
 import italyContemporaryScene from "./italy-contemporary-scene.js";
 import macroGenresExpansion from "./macro-genres-expansion.js";
 import essentialsDepthExpansion from "./essentials-depth-expansion.js";
+import alternativePopExpansion from "./alternative-pop-expansion.js";
 
 export const trackModules = {
   "house-techno": houseTechno,
@@ -62,6 +63,7 @@ export const trackModules = {
   "italy-contemporary-scene": italyContemporaryScene,
   "macro-genres-expansion": macroGenresExpansion,
   "essentials-depth-expansion": essentialsDepthExpansion,
+  "alternative-pop-expansion": alternativePopExpansion,
 };
 
 const editorialDefaults = {
