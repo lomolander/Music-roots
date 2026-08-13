@@ -285,13 +285,48 @@ const macroGenreEssentialTrackIds = {
   Grunge: [656, 657, 658, 659, 669, ...Array.from({ length: 15 }, (_, index) => 1682 + index)],
 };
 
+// Selezioni curate per categorie che nel catalogo diretto arrivano appena
+// sotto la soglia editoriale. Gli ID aggiuntivi sono affinità storiche
+// esplicite, non riempimenti automatici basati sul solo genere.
+const minimumEssentialTrackIds = {
+  "Ambient House": [77, 78, 92, 69, 70, 71, 75, 812, 813, 815],
+  "Ambient Techno": [78, 90, 91, 92, 803, 804, 813, 814, 815, 817],
+  Balearic: [1561, 245, 246, 248, 249, 250, 252, 69, 70, 300],
+  "Cinematic Music": [1551, 1552, 285, 286, 287, 288, 289, 290, 291, 292],
+  Dance: [10, 51, 52, 53, 54, 55, 56, 57, 58, 60],
+  "Disco Italiana": [1560, 1561, 205, 206, 207, 208, 209, 210, 211, 212],
+  "Funk Italiano": [1550, 1552, 1553, 1554, 1560, 1272, 1274, 285, 290, 1000],
+  "Jazz Funk": [1550, 1552, 1553, 1560, 280, 282, 283, 290, 4, 181],
+  "Nu Soul": [1562, 1563, 229, 230, 231, 232, 233, 234, 235, 236],
+  "Psychedelic Pop": [1557, 1564, 1567, 1339, 1341, 1343, 1345, 1347, 1349, 1353],
+  "Contemporary R&B": [1534, 1535, 1563, 1566, 229, 230, 231, 232, 233, 234],
+  "Electro House": [29, 30, 1, 22, 23, 25, 26, 85, 87, 1543],
+  "Elettronica Italiana": [1542, 1543, 1548, 1549, 1555, 1565, 1267, 1268, 1269, 1270],
+  "Indie Dance": [255, 258, 253, 254, 259, 260, 245, 248, 300, 203],
+  "Jazz Rap": [65, 66, 64, 266, 267, 232, 32, 240, 4, 67],
+  "Rap Italiano": [1538, 1539, 1555, 1536, 1537, 1554, 1564, 1565, 1000, 1540],
+  "Cantautorato Italiano": [1540, 1541, 1544, 1546, 1556, 1558, 1559, 1569, 1258, 1260],
+  "Alternative Pop": [1534, 1544, 1545, 1547, 1549, 1557, 1559, 1565, 1568, 293],
+  Electroclash: [225, 226, 227, 228, 213, 371, 629, 203, 221, 1549],
+  "Hip Hop Italiano": [1536, 1537, 1538, 1539, 1554, 1564, 1000, 1565, 1540, 1541],
+  Indie: [380, 381, 382, 383, 636, 637, 641, 643, 647, 651],
+  "Indie Pop": [1536, 1537, 1540, 1541, 1545, 1546, 1547, 651, 650, 647],
+  "Spiritual Jazz": [277, 278, 279, 283, 1049, 1050, 392, 1053, 1045, 281],
+  "Colonna sonora italiana": [286, 289, 290, 291, 292, 285, 287, 288, 1551, 1552],
+  "Drum and Bass": [169, 170, 171, 172, 173, 174, 175, 176, 177, 178],
+  "Nu Disco": [245, 246, 247, 248, 249, 250, 251, 252, 201, 205],
+  "Nu Jazz": [237, 238, 239, 240, 241, 242, 243, 244, 159, 271],
+  "Pop elettronico": [293, 294, 295, 296, 297, 298, 299, 300, 214, 220],
+  "UK Garage": [137, 138, 139, 140, 141, 142, 143, 144, 145, 531],
+};
+
 export const essentialPlaylists = Object.fromEntries(
   [...new Set([...allowedGenres, ...Object.keys(rockEssentialTrackIds), ...Object.keys(phaseTwoEssentialTrackIds), ...Object.keys(macroGenreEssentialTrackIds)])].map((genre) => [genre, {
     id: genre,
     label: `Essenziali: ${genre}`,
     externalUrl: "",
     service: "",
-    trackIds: rockEssentialTrackIds[genre] ?? phaseTwoEssentialTrackIds[genre] ?? macroGenreEssentialTrackIds[genre] ?? [],
+    trackIds: rockEssentialTrackIds[genre] ?? phaseTwoEssentialTrackIds[genre] ?? macroGenreEssentialTrackIds[genre] ?? minimumEssentialTrackIds[genre] ?? [],
     ...(essentialPlaylistLinks[genre] ?? {}),
   }]),
 );
