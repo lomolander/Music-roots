@@ -36,6 +36,7 @@ import expansion11011314 from "./expansion-1101-1314.js";
 import rockExpansionPhase1 from "./rock-expansion-phase-1.js";
 import jpopShibuyaPhase2 from "./jpop-shibuya-phase-2.js";
 import italyContemporaryScene from "./italy-contemporary-scene.js";
+import macroGenresExpansion from "./macro-genres-expansion.js";
 
 export const trackModules = {
   "house-techno": houseTechno,
@@ -58,6 +59,7 @@ export const trackModules = {
   "rock-expansion-phase-1": rockExpansionPhase1,
   "jpop-shibuya-phase-2": jpopShibuyaPhase2,
   "italy-contemporary-scene": italyContemporaryScene,
+  "macro-genres-expansion": macroGenresExpansion,
 };
 
 const editorialDefaults = {

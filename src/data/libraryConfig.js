@@ -20,6 +20,8 @@ export const allowedGenres = [
   "Nu Soul", "Contemporary R&B", "Jazz Funk", "Funk Italiano",
   "Cinematic Music", "Disco Italiana", "Balearic", "Psychedelic Pop",
   "Cantautorato Italiano", "Elettronica Italiana",
+  "American Standards / Crooners", "Blues", "Gospel",
+  "Country & Americana", "Folk", "Metal", "Grunge",
 ];
 
 // Baseline editoriale approvata per le card Generi di Esplora (commit 2e3e68a).
@@ -39,7 +41,18 @@ export const exploreGenreNames = [
   "Electropop", "Dance Pop", "Reggae", "Dub", "Latin", "MPB",
   "Musica brasiliana", "World Music", "Musica italiana", "Britpop",
   "Merseybeat", "New Romantic",
+  "American Standards / Crooners", "Blues", "Gospel",
+  "Country & Americana", "Folk", "Metal", "Grunge",
 ];
+
+// Relazioni editoriali: permettono a una macro-categoria di riutilizzare brani
+// già catalogati senza alterarne il genere discografico principale.
+export const editorialGenreTrackIds = {
+  "American Standards / Crooners": [1052, 1054],
+  Blues: [795, 1408, 1412, 1414, 1416],
+  Gospel: [799],
+  Grunge: [656, 657, 658, 659, 669],
+};
 
 export const subgenreDescriptions = {
   "Shibuya-kei": "Lo Shibuya-kei nasce a Tokyo fra la fine degli anni Ottanta e i Novanta attorno ai negozi di dischi, ai club, alla moda e alla cultura visiva di Shibuya. Pop anni Sessanta, bossa nova, lounge, soul, hip hop ed elettronica vengono ricombinati con gusto da collezionista. La scena ha proiettato una nuova immagine cosmopolita del pop giapponese nei circuiti internazionali.",
@@ -53,6 +66,13 @@ export const subgenreDescriptions = {
 };
 
 const essentialPlaylistDescriptionsBase = {
+  "American Standards / Crooners": "Standard, swing e grandi interpreti della canzone americana",
+  Blues: "Dal Delta a Chicago: voce, chitarra e memoria afroamericana",
+  Gospel: "Cori, fede e potenza collettiva dalla chiesa al soul",
+  "Country & Americana": "Ballate, honky-tonk e scrittura delle strade americane",
+  Folk: "Tradizione, racconto e coscienza nella canzone popolare",
+  Metal: "Riff, potenza e scene che hanno ampliato il linguaggio heavy",
+  Grunge: "Seattle, indipendenza e chitarre fra punk e heavy rock",
   "Acid House": "I brani fondamentali del suono acid",
   "Acid Jazz": "Groove, jazz, funk e cultura club",
   "Alternative Rock": "Chitarre indipendenti oltre le regole mainstream",
@@ -255,13 +275,23 @@ const phaseTwoEssentialTrackIds = {
   "Shibuya-kei": [1497, 1498, 1499, 1500, 1501, 1514, 1516, 1518, 1520, 1522, 1524, 1526, 1528, 1530, 1532],
 };
 
+const macroGenreEssentialTrackIds = {
+  "American Standards / Crooners": [1052, 1054, ...Array.from({ length: 18 }, (_, index) => 1570 + index)],
+  Blues: [795, 1408, 1412, 1414, 1416, ...Array.from({ length: 15 }, (_, index) => 1588 + index)],
+  Gospel: [799, ...Array.from({ length: 19 }, (_, index) => 1603 + index)],
+  "Country & Americana": Array.from({ length: 20 }, (_, index) => 1622 + index),
+  Folk: Array.from({ length: 20 }, (_, index) => 1642 + index),
+  Metal: Array.from({ length: 20 }, (_, index) => 1662 + index),
+  Grunge: [656, 657, 658, 659, 669, ...Array.from({ length: 15 }, (_, index) => 1682 + index)],
+};
+
 export const essentialPlaylists = Object.fromEntries(
-  [...new Set([...allowedGenres, ...Object.keys(rockEssentialTrackIds), ...Object.keys(phaseTwoEssentialTrackIds)])].map((genre) => [genre, {
+  [...new Set([...allowedGenres, ...Object.keys(rockEssentialTrackIds), ...Object.keys(phaseTwoEssentialTrackIds), ...Object.keys(macroGenreEssentialTrackIds)])].map((genre) => [genre, {
     id: genre,
     label: `Essenziali: ${genre}`,
     externalUrl: "",
     service: "",
-    trackIds: rockEssentialTrackIds[genre] ?? phaseTwoEssentialTrackIds[genre] ?? [],
+    trackIds: rockEssentialTrackIds[genre] ?? phaseTwoEssentialTrackIds[genre] ?? macroGenreEssentialTrackIds[genre] ?? [],
     ...(essentialPlaylistLinks[genre] ?? {}),
   }]),
 );

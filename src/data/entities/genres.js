@@ -1,5 +1,5 @@
 import tracks from "../questions.js";
-import { essentialPlaylists } from "../libraryConfig.js";
+import { editorialGenreTrackIds, essentialPlaylists } from "../libraryConfig.js";
 import { entityId } from "../entityIds.js";
 
 const editorial = {
@@ -11,6 +11,13 @@ const editorial = {
 };
 
 const descriptions = {
+  "American Standards / Crooners": "Nata fra Broadway, Tin Pan Alley, radio e cinema, questa tradizione porta il Great American Songbook nella voce di crooner e interpreti jazz. Arrangiamenti orchestrali, swing e attenzione al fraseggio trasformano ogni standard in una prova d'identità. Ha definito il modello moderno dell'interprete pop e continua a collegare jazz e canzone.",
+  Blues: "Il blues nasce nelle comunità afroamericane del Sud degli Stati Uniti fra Ottocento e Novecento, intrecciando spiritual, work song e tradizione orale. Forma ciclica, blue notes, call and response e una voce fortemente individuale ne definiscono il linguaggio. Dal Delta a Chicago ha fornito una radice decisiva a jazz, rhythm and blues e rock.",
+  Gospel: "Il gospel moderno si sviluppa nelle chiese afroamericane del primo Novecento dall'incontro fra spiritual, inni, blues e predicazione. Cori, call and response, pianoforte e organo trasformano l'esecuzione in esperienza collettiva. Le sue tecniche vocali e la sua intensità hanno alimentato soul, rhythm and blues e gran parte della musica popolare statunitense.",
+  "Country & Americana": "Il country nasce nel Sud degli Stati Uniti dalle ballate anglo-celtiche, dal blues e dalle tradizioni rurali, diventando industria discografica negli anni Venti. Chitarra, fiddle, steel guitar e racconto quotidiano sostengono linguaggi diversi, da honky-tonk ad Americana. Nashville, Bakersfield e Austin ne hanno costruito identità spesso complementari.",
+  Folk: "Il folk raccoglie repertori trasmessi oralmente e le loro reinterpretazioni moderne, dal revival statunitense alla rinascita britannica. Voce, strumenti acustici e racconto collegano memoria collettiva, protesta e scrittura personale. Nei coffeehouse e nei club del dopoguerra ha formato il modello contemporaneo del cantautore e alimentato il folk rock.",
+  Metal: "L'heavy metal prende forma fra Birmingham e Londra alla fine degli anni Sessanta, rendendo più scuri e potenti hard rock e blues elettrico. Riff distorti, batteria intensa e immaginari estremi diventano un linguaggio autonomo. NWOBHM, thrash e successive scene internazionali ne ampliano tecnica, velocità e ambizione senza richiedere nuove macro-card.",
+  Grunge: "Il grunge emerge nel Nord-Ovest degli Stati Uniti negli anni Ottanta dall'incontro fra punk, indie e heavy rock. Chitarre sature, dinamiche abrasive e una cultura indipendente legata a Seattle ne definiscono il carattere. All'inizio dei Novanta porta una scena locale al centro del rock mondiale, modificando estetica e industria alternative.",
   "Alternative Pop": "L’alternative pop si sviluppa dagli anni Ottanta nei circuiti indipendenti, dove la forma melodica incontra post-punk, elettronica e ricerca d’autore. Strutture accessibili convivono con timbri inconsueti, produzioni non convenzionali e identità molto personali. Ha offerto a generazioni di musicisti uno spazio intermedio fra sperimentazione e pubblico generalista.",
   "Balearic": "Il suono balearic nasce a Ibiza negli anni Ottanta dalla libertà con cui i DJ accostano disco, pop, rock, ambient, funk e ritmi latini. Più che un genere rigido, è un metodo fondato su atmosfera, apertura stilistica e andamento rilassato. Ha influenzato acid house, chill-out e la cultura europea del club.",
   "Cantautorato Italiano": "Il cantautorato italiano prende forma fra gli anni Cinquanta e Sessanta quando autori e interpreti pongono parola, identità e osservazione sociale al centro della canzone. Tradizione melodica, poesia, folk, jazz e rock alimentano linguaggi regionali e personali. La sua eredità continua nel pop e nell’indie contemporanei attraverso nuove produzioni e nuovi lessici.",
@@ -98,7 +105,9 @@ const descriptions = {
 };
 
 const genres = [...new Set(tracks.map((track) => track.genre))].sort().map((name) => {
-  const genreTracks = tracks.filter((track) => track.genre === name);
+  const directTracks = tracks.filter((track) => track.genre === name);
+  const relatedTracks = (editorialGenreTrackIds[name] ?? []).map((id) => tracks.find((track) => track.id === id)).filter(Boolean);
+  const genreTracks = [...new Map([...directTracks, ...relatedTracks].map((track) => [track.id, track])).values()];
   const artists = [...new Set(genreTracks.map((track) => track.artist))];
   const albums = [...new Set(genreTracks.filter((track) => track.album).map((track) => `${track.artist} — ${track.album}`))];
   return {

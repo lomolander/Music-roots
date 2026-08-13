@@ -43,6 +43,11 @@ const baseMusicAtlasCities = [
   { id: "palermo", name: "Palermo", period: "Anni 1990–oggi", x: 60, y: 60, relevance: 2, panX: -3, panY: 1, description: "Teatro, rock indipendente e cantautorato hanno alimentato una scena siciliana aperta al pop e alla performance contemporanea.", artistIds: [], trackIds: [] },
   { id: "como", name: "Como", period: "Anni 2000–oggi", x: 57, y: 28, relevance: 1, panX: -2, panY: 7, description: "La rete lombarda di studi, club e festival ha inserito Como nel più ampio ecosistema musicale dell’Italia settentrionale.", artistIds: [], trackIds: [] },
   { id: "siracusa", name: "Siracusa", period: "Anni 2000–oggi", x: 66, y: 63, relevance: 1, panX: -4, panY: 0, description: "Dalla provincia siracusana è emersa una nuova scrittura siciliana capace di unire indie, letteratura, elettronica e memoria mediterranea.", artistIds: [], trackIds: [] },
+  { id: "nashville", name: "Nashville", period: "Anni 1920–oggi", x: 31, y: 42, relevance: 3, panX: 17, panY: 5, description: "Radio, studi, editoria e Grand Ole Opry hanno trasformato Nashville nel principale centro industriale del country, dal honky-tonk al Nashville Sound fino all'Americana.", artistIds: [], trackIds: [] },
+  { id: "memphis", name: "Memphis", period: "Anni 1940–1970", x: 29, y: 43, relevance: 3, panX: 17, panY: 5, description: "Beale Street, chiese, Sun e Stax hanno messo in comunicazione blues, gospel, country, soul e rock and roll in uno dei crocevia fondamentali della musica americana.", artistIds: [], trackIds: [] },
+  { id: "las-vegas", name: "Las Vegas", period: "Anni 1950–1970", x: 20, y: 39, relevance: 2, panX: 21, panY: 6, description: "Showroom e casinò trasformarono crooner, orchestre e spettacolo da nightclub in una forma di intrattenimento internazionale legata alla cultura di Las Vegas.", artistIds: [], trackIds: [] },
+  { id: "clarksdale", name: "Clarksdale", period: "Anni 1920–1950", x: 29, y: 41, relevance: 2, panX: 17, panY: 5, description: "Nel cuore del Mississippi Delta, Clarksdale rappresenta la rete di juke joint, musicisti itineranti e tradizione orale dalla quale emersero figure decisive del blues.", artistIds: [], trackIds: [] },
+  { id: "bakersfield", name: "Bakersfield", period: "Anni 1950–1970", x: 21, y: 36, relevance: 2, panX: 21, panY: 7, description: "Chitarre elettriche brillanti, piccoli club e musicisti migrati dall'Oklahoma definirono il Bakersfield Sound come alternativa diretta alle orchestrazioni di Nashville.", artistIds: [], trackIds: [] },
 ];
 
 const rockArtistIdsByCity = {
@@ -79,9 +84,27 @@ const rockArtistIdsByCity = {
   palermo: ["dimartino", "la-rappresentante-di-lista"],
 };
 
+const macroArtistIdsByCity = {
+  "new-york": ["frank-sinatra", "tony-bennett", "ella-fitzgerald", "mel-torme", "sammy-davis-jr", "julie-london", "woody-guthrie", "pete-seeger", "joan-baez", "bob-dylan", "ani-difranco"],
+  "los-angeles": ["dean-martin", "nat-king-cole", "peggy-lee", "bing-crosby", "slayer", "megadeth", "dio", "tool", "system-of-a-down", "l7"],
+  "las-vegas": ["frank-sinatra", "dean-martin", "sammy-davis-jr"],
+  clarksdale: ["robert-johnson", "muddy-waters", "john-lee-hooker"],
+  memphis: ["b-b-king", "albert-king", "johnny-cash", "the-staple-singers", "sam-cooke", "the-soul-stirrers"],
+  nashville: ["hank-williams", "patsy-cline", "dolly-parton", "loretta-lynn", "george-jones", "emmylou-harris", "johnny-cash"],
+  bakersfield: ["merle-haggard"],
+  chicago: ["muddy-waters", "howlin-wolf", "buddy-guy", "mahalia-jackson", "clara-ward-singers"],
+  detroit: ["the-clark-sisters"],
+  austin: ["willie-nelson", "townes-van-zandt", "lucinda-williams"],
+  london: ["nick-drake", "fairport-convention", "pentangle", "bert-jansch", "richard-thompson", "iron-maiden", "motorhead"],
+  birmingham: ["black-sabbath", "judas-priest"],
+  "san-francisco": ["metallica"],
+  seattle: ["nirvana", "pearl-jam", "soundgarden", "alice-in-chains", "mudhoney", "screaming-trees", "temple-of-the-dog", "melvins", "mother-love-bone"],
+  milano: ["joan-thiele"],
+};
+
 export const musicAtlasCities = baseMusicAtlasCities.map((city) => ({
   ...city,
-  artistIds: [...new Set([...city.artistIds, ...(rockArtistIdsByCity[city.id] ?? [])])],
+  artistIds: [...new Set([...city.artistIds, ...(rockArtistIdsByCity[city.id] ?? []), ...(macroArtistIdsByCity[city.id] ?? [])])],
 }));
 
 export const musicAtlasVenues = [

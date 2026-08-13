@@ -21,7 +21,7 @@ const exploreGenreSet = new Set(exploreGenreNames);
 const contemporaryItalyTracks = tracks.filter((track) => track.sourceModule === "italy-contemporary-scene");
 const contemporaryItalySubgenres = new Set(contemporaryItalyTracks.map((track) => track.subgenre).filter(Boolean));
 
-const editorialGenreTrackIds = (genre) => genre.name === "Musica italiana"
+const visibleGenreTrackIds = (genre) => genre.name === "Musica italiana"
   ? [...new Set([...genre.trackIds, ...contemporaryItalyTracks.map((track) => track.id)])]
   : genre.trackIds;
 
@@ -143,7 +143,7 @@ function Detail({ view, data, navigate, openTrack, onOpenAtlasCity }) {
     description = genre.description || `${genre.name}: ${genre.trackIds.length} brani presenti nell'archivio Music Roots.`;
     essentialPlaylist = genre.essentialPlaylist;
     const playlistTrackIds = essentialPlaylist?.trackIds?.length ? essentialPlaylist.trackIds : genre.trackIds;
-    itemTracks = (view.type === "playlist" ? playlistTrackIds : editorialGenreTrackIds(genre)).map((id) => data.trackById.get(id)).filter(Boolean);
+    itemTracks = (view.type === "playlist" ? playlistTrackIds : visibleGenreTrackIds(genre)).map((id) => data.trackById.get(id)).filter(Boolean);
     links = view.type === "genre" && (
       <>
         <LinkSection title="Artisti" items={[...new Set(itemTracks.map((track) => track.artistId))].map((id) => data.artistById.get(id)).filter(Boolean)} label={(item) => item.name} onClick={(item) => navigate("artist", item.id)} />
