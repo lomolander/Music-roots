@@ -85,6 +85,62 @@ const editorialDefaults = {
   deezer: { trackId: null, previewUrl: "", status: "not-checked" },
 };
 
+const canonicalSubgenres = {
+  "alternative rock": "Alternative Rock", "cantautorato italiano": "Cantautorato Italiano",
+  electro: "Electro", electroclash: "Electroclash", electropop: "Electropop",
+  "indie dance": "Indie Dance", "indie rock": "Indie Rock", "jazz rap": "Jazz Rap",
+  "library music": "Library Music", madchester: "Madchester", "neo soul": "Neo Soul",
+  "nu soul": "Neo Soul", "nu disco": "Nu Disco", "nu jazz": "Nu Jazz",
+  "spiritual jazz": "Spiritual Jazz", "uk garage": "UK Garage", "electronic pop": "Electropop",
+  "rap italiano": "Hip Hop Italiano", "dance pop": "Dance Pop", "post punk": "Post-Punk",
+  "post-punk": "Post-Punk", "chicago house": "Chicago House", "detroit techno": "Detroit Techno",
+  "italo disco": "Italo Disco", "philadelphia soul": "Philadelphia Soul", "indie electronic": "Indietronica",
+  "acid house": "Acid House", "acid jazz": "Acid Jazz", ambient: "Ambient",
+  "art pop elettronico": "Art Pop Elettronico", "big beat": "Big Beat", boogie: "Boogie",
+  "bossa nova": "Bossa Nova", breakbeat: "Breakbeat", "deep house": "Deep House",
+  disco: "Disco", downtempo: "Downtempo", "progressive house": "Progressive House",
+  "post-disco": "Post-disco",
+  "synth-pop": "Synth-pop", techno: "Techno", "trip hop": "Trip Hop",
+  "house vocale": "Vocal House", "vocal house": "Vocal House",
+};
+
+const compoundSubgenreByTrackId = {
+  4: "Acid Jazz", 61: "Acid Jazz", 62: "Acid Jazz", 63: "Acid Jazz", 64: "Acid Jazz",
+  65: "Jazz Rap", 66: "Jazz Rap", 67: "Acid Jazz", 68: "Acid Jazz",
+  77: "Ambient House", 78: "Ambient Techno", 258: "Acid House", 276: "Bossa Nova",
+  144: "UK Garage", 200: "Boogie", 242: "Bossa Nova", 285: "Library Music",
+  336: "Boogie", 337: "Post-disco", 338: "Post-disco",
+};
+
+const compoundSubgenreByValueAndGenre = {
+  "big beat e breakbeat|Big Beat": "Big Beat", "disco e dance-pop|Disco": "Disco",
+  "disco e dance-pop|Dance": "Dance Pop", "synth-pop e new wave|Synth-pop": "Synth-pop",
+  "trip hop e blues elettronico|Trip Hop": "Trip Hop", "trip hop e downtempo|Trip Hop": "Trip Hop",
+  "trip hop e downtempo|Downtempo": "Downtempo", "nu jazz e bossa|Nu Jazz": "Bossa Nova",
+  "easy listening e soundtrack|Library Music": "Library Music",
+  "IDM ed elettronica sperimentale|IDM": "IDM",
+};
+
+const specificSubgenreByTrackId = {
+  1: "French House", 6: "Vocal House", 9: "Chicago House", 11: "Chicago House", 12: "Deep House",
+  13: "Chicago House", 14: "Acid House", 15: "Acid House", 18: "Vocal House", 19: "Deep House",
+  20: "House", 21: "French House", 22: "French House", 23: "French House", 24: "French House",
+  25: "French House", 26: "French House", 27: "French House", 28: "French House", 29: "Electro House",
+  30: "Electro House", 85: "House", 86: "House", 99: "Progressive House", 100: "Deep House",
+  16: "Detroit Techno", 17: "Detroit Techno", 98: "Techno", 38: "Art Pop Elettronico",
+  32: "alternative hip hop", 64: "Jazz Rap", 74: "IDM",
+  87: "Techno", 88: "Progressive House", 89: "Progressive House", 90: "IDM", 91: "IDM",
+  92: "Ambient Techno", 93: "Synth-pop", 94: "Synth-pop", 95: "Electronic", 96: "Cinematic Music",
+  97: "Ambient", 8: "Big Beat", 79: "Big Beat", 80: "Big Beat", 81: "Big Beat", 82: "Big Beat",
+  83: "Big Beat", 84: "Breakbeat", 242: "Nu Jazz",
+};
+
+const canonicalSubgenre = (track, raw) => specificSubgenreByTrackId[track.id]
+  ?? compoundSubgenreByTrackId[track.id]
+  ?? compoundSubgenreByValueAndGenre[`${raw}|${track.genre}`]
+  ?? canonicalSubgenres[raw.toLocaleLowerCase("it")]
+  ?? raw;
+
 // Correzioni discografiche validate: `year` indica la prima pubblicazione del
 // brano, mentre `album` indica esclusivamente l'album/EP ufficiale di
 // appartenenza. `albumYear` viene conservato quando serve a distinguere le due
@@ -125,7 +181,8 @@ const discographicCorrections = {
 const tracks = Object.entries(trackModules).flatMap(([sourceModule, moduleTracks]) =>
   moduleTracks.map((track) => {
   const apple = applePreviewMetadata[track.id] ?? {};
-  const subgenre = track.subgenre || track.sottogenere || "";
+  const rawSubgenre = track.subgenre || track.sottogenere || "";
+  const subgenre = canonicalSubgenre(track, rawSubgenre);
   const meaning = track.meaning || track.significato || "";
   const influences = track.influences || track.influenzeMusicali || [];
   const similarArtists = track.similarArtists || track.artistiInfluenzati || [];
@@ -142,6 +199,7 @@ const tracks = Object.entries(trackModules).flatMap(([sourceModule, moduleTracks
     ...track,
     sourceModule,
     subgenre,
+    sottogenere: subgenre,
     scenario: revisedEditorial.scenario || track.scenario || historicalScenario({ ...track, subgenre }),
     influences,
     similarArtists,
