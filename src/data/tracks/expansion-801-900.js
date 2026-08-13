@@ -70,7 +70,7 @@ const rows = [
   ["Frou Frou", "Let Go", "Details", 2002, "Electropop", "Imogen Heap e Guy Sigsworth intrecciano voce processata e dettagli digitali in una canzone sulla resa emotiva."],
   ["La Roux", "In for the Kill", "La Roux", 2009, "Electropop", "Elly Jackson aggiorna il synthpop britannico con una voce tagliente e ritmi secchi."],
   ["Little Boots", "New in Town", "Hands", 2009, "Electropop", "La canzone osserva spaesamento urbano e desiderio di appartenenza attraverso un pop elettronico immediato."],
-  ["M.I.A.", "Paper Planes", "Kala", 2007, "Electropop", "Campionamento dei Clash e suoni di cassa registratrice ironizzano su migrazione e stereotipi."],
+  ["M.I.A.", "Paper Planes", "Kala", 2007, "Electropop", "Campionamento dei Clash e suoni di registratore di cassa ironizzano su migrazione e stereotipi."],
   ["Grimes", "Oblivion", "Visions", 2012, "Electropop", "Una melodia luminosa nasconde una riflessione sulla vulnerabilità nello spazio pubblico."],
   ["Charli xcx", "Vroom Vroom", "Vroom Vroom", 2016, "Electropop", "La produzione di SOPHIE sposta il pop verso superfici sintetiche e dinamiche estreme."],
   ["SOPHIE", "Immaterial", "Oil of Every Pearl's Un-Insides", 2018, "Electropop", "Il brano celebra identità e possibilità del corpo attraverso una produzione volutamente artificiale."],

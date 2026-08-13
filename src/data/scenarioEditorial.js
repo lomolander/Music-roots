@@ -1,5 +1,6 @@
 import { scenarioBlock01 } from "./scenarioBlock01.js";
 import { scenarioBlock02 } from "./scenarioBlock02.js";
+import { scenarioBlock03 } from "./scenarioBlock03.js";
 import { scenarioRemaining } from "./scenarioRemaining.js";
 
 const specialScenarios = {
@@ -142,7 +143,7 @@ void countryContexts;
 const wordCount = (value) => value.trim().split(/\s+/).length;
 
 const scenarioOverrideFor = (track) =>
-  scenarioBlock01[track.id] || scenarioBlock02[track.id] || scenarioRemaining[track.id] || externalScenarioOverrides[track.id] || "";
+  scenarioBlock01[track.id] || scenarioBlock02[track.id] || scenarioBlock03[track.id] || scenarioRemaining[track.id] || externalScenarioOverrides[track.id] || "";
 
 const isEditorialScenario = (value) => wordCount(String(value ?? "")) > 18;
 
