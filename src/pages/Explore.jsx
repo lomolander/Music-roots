@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { ChevronRight, Disc3, ListMusic, Music, Pause, Play, Search, SkipBack, SkipForward, Tags, Users } from "lucide-react";
 
 import tracks from "../data/questions.js";
@@ -29,7 +29,38 @@ function Explore({ initialView = null, onBack, exitOnInitialBack = false, onOpen
   const [tab, setTab] = useState("genres");
   const [query, setQuery] = useState("");
   const [history, setHistory] = useState(() => initialView ? [initialView] : []);
+  const historyRef = useRef(history);
+  const scrollPositionsRef = useRef([0]);
+  const restoreScrollRef = useRef(true);
   const current = history.at(-1);
+
+  useEffect(() => {
+    historyRef.current = history;
+  }, [history]);
+
+  useEffect(() => {
+    const baseDepth = historyRef.current.length;
+    window.history.replaceState({ ...window.history.state, musicRootsExploreDepth: baseDepth }, "");
+
+    const handlePopState = (event) => {
+      const items = historyRef.current;
+      const targetDepth = event.state?.musicRootsExploreDepth;
+      if (!Number.isInteger(targetDepth) || targetDepth >= items.length) return;
+      restoreScrollRef.current = true;
+      setHistory(items.slice(0, targetDepth));
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
+
+  useLayoutEffect(() => {
+    const depth = history.length;
+    if (restoreScrollRef.current) {
+      window.scrollTo({ top: scrollPositionsRef.current[depth] ?? 0, behavior: "auto" });
+      restoreScrollRef.current = false;
+    }
+  }, [history]);
 
   const data = useMemo(() => {
     const trackById = new Map(tracks.map((track) => [track.id, track]));
@@ -47,12 +78,16 @@ function Explore({ initialView = null, onBack, exitOnInitialBack = false, onOpen
   }, []);
 
   const navigate = (type, id) => {
+    const depth = historyRef.current.length;
+    scrollPositionsRef.current[depth] = window.scrollY;
+    scrollPositionsRef.current[depth + 1] = 0;
+    window.history.pushState({ ...window.history.state, musicRootsExploreDepth: depth + 1 }, "");
+    restoreScrollRef.current = true;
     setHistory((items) => [...items, { type, id }]);
-    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const goBack = () => {
-    if (history.length > 1 || (history.length === 1 && !exitOnInitialBack)) setHistory((items) => items.slice(0, -1));
+    if (history.length > 1 || (history.length === 1 && !exitOnInitialBack)) window.history.back();
     else onBack();
   };
 
