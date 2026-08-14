@@ -1,5 +1,5 @@
 import lomolanderLogo from "./assets/lomolander-logo.png";
-import { useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import { Music2, Share2, MapPin, UserRound } from "lucide-react";
 
@@ -7,6 +7,7 @@ import Quiz from "./pages/Quiz";
 import Explore from "./pages/Explore";
 import MusicAtlas from "./pages/MusicAtlas";
 import Profile from "./pages/Profile";
+import GlobalSwipeBack from "./components/GlobalSwipeBack";
 
 const sections = [
   {
@@ -43,6 +44,18 @@ export default function App() {
   const [exploreReturnScreen, setExploreReturnScreen] = useState("home");
   const quizRef = useRef(null);
 
+  const handleSwipeBack = useCallback(() => {
+    if (screen === "home") return;
+    document.querySelector(".back-button")?.click();
+  }, [screen]);
+
+  const withGlobalSwipeBack = (content) => (
+    <>
+      <GlobalSwipeBack enabled={screen !== "home"} onBack={handleSwipeBack} />
+      {content}
+    </>
+  );
+
   const openExplore = (initialView = null, fromAtlas = false, returnScreen = fromAtlas ? "atlas" : "home") => {
     setExploreInitialView(initialView);
     setExploreFromAtlas(fromAtlas);
@@ -61,19 +74,19 @@ export default function App() {
   };
 
   if (screen === "quiz") {
-    return <Quiz ref={quizRef} onBack={() => setScreen("home")} />;
+    return withGlobalSwipeBack(<Quiz ref={quizRef} onBack={() => setScreen("home")} />);
   }
 
   if (screen === "explore") {
-    return <Explore initialView={exploreInitialView} exitOnInitialBack={exploreFromAtlas} onBack={() => setScreen(exploreReturnScreen)} onOpenAtlasCity={openAtlasCity} />;
+    return withGlobalSwipeBack(<Explore initialView={exploreInitialView} exitOnInitialBack={exploreFromAtlas} onBack={() => setScreen(exploreReturnScreen)} onOpenAtlasCity={openAtlasCity} />);
   }
 
   if (screen === "atlas") {
-    return <MusicAtlas initialCityId={atlasCityId} onBack={() => { setAtlasCityId(null); setScreen("home"); }} onOpenArtist={(id, cityId) => { setAtlasCityId(cityId); openExplore({ type: "artist", id }, true); }} />;
+    return withGlobalSwipeBack(<MusicAtlas initialCityId={atlasCityId} onBack={() => { setAtlasCityId(null); setScreen("home"); }} onOpenArtist={(id, cityId) => { setAtlasCityId(cityId); openExplore({ type: "artist", id }, true); }} />);
   }
 
   if (screen === "profile") {
-    return <Profile onBack={() => setScreen("home")} />;
+    return withGlobalSwipeBack(<Profile onBack={() => setScreen("home")} />);
   }
 
   return (
