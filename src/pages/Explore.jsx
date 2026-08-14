@@ -282,8 +282,9 @@ function VerifiedEssentialsPlaylist({ tracks: candidates, openTrack, essentialPl
     };
   }, [candidates]);
 
+  let playerContent;
   if (!verifiedTracks) {
-    return (
+    playerContent = (
       <div className="essentials-preparing" role="status" aria-live="polite">
         <div className="essentials-equalizer" aria-hidden="true">
           <span />
@@ -295,19 +296,22 @@ function VerifiedEssentialsPlaylist({ tracks: candidates, openTrack, essentialPl
         <p>{preparationStage === "selecting" ? "Selezione dei brani…" : "Preparazione degli ascolti…"}</p>
       </div>
     );
+  } else if (!verifiedTracks.length) {
+    playerContent = <p className="atlas-empty">Nessuna anteprima riproducibile disponibile.</p>;
+  } else {
+    const removeInvalidTrack = (trackId) => setVerifiedTracks((items) => items.filter((track) => track.id !== trackId));
+    playerContent = <EssentialsPlayer tracks={verifiedTracks} openTrack={openTrack} onInvalidate={removeInvalidTrack} />;
   }
-  if (!verifiedTracks.length) return <p className="atlas-empty">Nessuna anteprima riproducibile disponibile.</p>;
-  const removeInvalidTrack = (trackId) => setVerifiedTracks((items) => items.filter((track) => track.id !== trackId));
   return (
     <>
-      <EssentialsPlayer tracks={verifiedTracks} openTrack={openTrack} onInvalidate={removeInvalidTrack} />
+      {playerContent}
       {validExternalUrl(essentialPlaylist?.fullPlaylistUrl) && (
         <a className="essentials-external-link" href={essentialPlaylist.fullPlaylistUrl} target="_blank" rel="noreferrer">
           ASCOLTA PLAYLIST COMPLETA
           {essentialPlaylist.service && <span>su {essentialPlaylist.service}</span>}
         </a>
       )}
-      <TrackList tracks={verifiedTracks} openTrack={openTrack} />
+      <TrackList tracks={candidates} openTrack={openTrack} />
     </>
   );
 }
