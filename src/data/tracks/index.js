@@ -1,5 +1,6 @@
 import applePreviewMetadata from "../apple-preview-metadata.js";
 import editorialArtwork from "../editorial-artwork.js";
+import youtubeLinkMetadata from "../youtube-link-metadata.js";
 import { essentialPlaylists } from "../libraryConfig.js";
 import { entityId } from "../entityIds.js";
 import editorial001100 from "../editorial/tracks-001-100.js";
@@ -225,6 +226,11 @@ const tracks = Object.entries(trackModules).flatMap(([sourceModule, moduleTracks
     cover: track.cover || apple.appleArtworkUrl || "",
     preview: apple.appleMatchStatus === "verified" && apple.applePreviewUrl ? apple.applePreviewUrl : "",
     ...discographicCorrection,
+    links: {
+      ...editorialDefaults.links,
+      ...track.links,
+      youtube: youtubeLinkMetadata[track.id] ?? track.links?.youtube ?? "",
+    },
     artistId: entityId(correctedArtist),
     albumId: correctedAlbum ? entityId(correctedArtist, correctedAlbum) : null,
   };
