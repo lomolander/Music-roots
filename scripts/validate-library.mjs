@@ -65,6 +65,83 @@ for (const artist of artists) {
     if (!cityIds.has(cityId) || !city?.artistIds.includes(artist.id)) errors.push(`Artista ${artist.name}: collegamento città non bidirezionale ${cityId}`);
   }
 }
+
+const biographyBoilerplate = [
+  /compare nella storia della musica registrata/i,
+  /con un percorso legato all(?:'|’)area/i,
+  /riconoscibile per scrittura, interpretazione e produzione/i,
+  /documenta la documentazione/i,
+  /appartiene alla storia di musica popolare registrata/i,
+  /la scheda (?:privilegia|documenta|presenta)/i,
+  /senza attribuire intenzioni non dichiarate/i,
+];
+const editorialStopwords = new Set("a ad al all alla alle allo anche ancora attorno che chi come con da dal dall dalla dell delle degli dello di e ed era fra gli ha hanno il in inizio la le lo ma nel nell nella nello non o per piu quale quando questa questo si sia sono su sul tra un una uno fine musica musicale musicista musicisti gruppo artista band progetto album brano canzone voce chitarra suono scena anni esperienze provenienti".split(" "));
+const biographyTokens = (value) => normalize(value).split(/\s+/).filter(Boolean);
+const meaningfulSequence = (tokens) => tokens.filter((token) => token.length > 3 && !editorialStopwords.has(token)).length >= 6;
+const normalizedBiography = (artist) => {
+  let value = normalize(artist.biography).replace(/\b(?:18|19|20)\d{2}\b/g, " anno ");
+  const replaceable = [artist.name, artist.nationality, artist.country, ...(artist.genres ?? []), ...(artist.subgenres ?? [])]
+    .map(normalize).filter((item) => item.length >= 4).sort((a, b) => b.length - a.length);
+  for (const item of replaceable) value = value.replace(new RegExp(`\\b${item.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "g"), " entita ");
+  return value.replace(/\s+/g, " ").trim();
+};
+const biographyIssue = (left, right, type, excerpt) => `${left.name} | ${right.name} | ${type} | ${excerpt}`;
+const biographyByExactText = new Map();
+const biographyByNormalizedText = new Map();
+const sequenceOwners = new Map();
+const biographyProfiles = [];
+
+for (const artist of artists) {
+  for (const pattern of biographyBoilerplate) {
+    const match = artist.biography.match(pattern);
+    if (match) errors.push(`${artist.name} | ${artist.name} | BOILERPLATE VIETATO | ${match[0]}`);
+  }
+  const exact = normalize(artist.biography);
+  const previousExact = biographyByExactText.get(exact);
+  if (previousExact) errors.push(biographyIssue(previousExact, artist, "BIOGRAFIA DUPLICATA", artist.biography.slice(0, 140)));
+  else biographyByExactText.set(exact, artist);
+
+  const templateText = normalizedBiography(artist);
+  const previousTemplate = biographyByNormalizedText.get(templateText);
+  if (previousTemplate) errors.push(biographyIssue(previousTemplate, artist, "TEMPLATE NORMALIZZATO", templateText.slice(0, 140)));
+  else biographyByNormalizedText.set(templateText, artist);
+
+  const grams = new Set();
+  for (const sentence of String(artist.biography).match(/[^.!?]+[.!?]+|[^.!?]+$/g) ?? []) {
+    const sentenceTokens = biographyTokens(sentence);
+    for (let index = 0; index <= sentenceTokens.length - 8; index += 1) {
+      const gramTokens = sentenceTokens.slice(index, index + 8);
+      if (meaningfulSequence(gramTokens)) grams.add(gramTokens.join(" "));
+    }
+  }
+  for (const gram of grams) {
+    const owners = sequenceOwners.get(gram) ?? [];
+    owners.push(artist);
+    sequenceOwners.set(gram, owners);
+  }
+  const tokens = biographyTokens(artist.biography);
+  const trigrams = new Set();
+  for (let index = 0; index <= tokens.length - 3; index += 1) trigrams.add(tokens.slice(index, index + 3).join(" "));
+  biographyProfiles.push({ artist, trigrams });
+}
+
+for (const [sequence, owners] of sequenceOwners) {
+  if (owners.length < 2 || owners.length > 5) continue;
+  for (let index = 1; index < owners.length; index += 1) errors.push(biographyIssue(owners[0], owners[index], "SEQUENZA CONDIVISA >=8 PAROLE", sequence));
+}
+
+for (let leftIndex = 0; leftIndex < biographyProfiles.length; leftIndex += 1) {
+  const left = biographyProfiles[leftIndex];
+  for (let rightIndex = leftIndex + 1; rightIndex < biographyProfiles.length; rightIndex += 1) {
+    const right = biographyProfiles[rightIndex];
+    const smaller = left.trigrams.size <= right.trigrams.size ? left.trigrams : right.trigrams;
+    const larger = smaller === left.trigrams ? right.trigrams : left.trigrams;
+    let intersection = 0;
+    for (const gram of smaller) if (larger.has(gram)) intersection += 1;
+    const union = left.trigrams.size + right.trigrams.size - intersection;
+    if (union && intersection / union >= 0.82) errors.push(biographyIssue(left.artist, right.artist, "SIMILARITÀ TESTUALE ELEVATA", `Jaccard trigrammi ${(intersection / union).toFixed(3)}`));
+  }
+}
 for (const [name, metadata] of Object.entries(artistContemporaryItaly)) {
   const artist = artists.find((item) => item.name === name);
   if (!artist) {
