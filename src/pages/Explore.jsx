@@ -20,6 +20,17 @@ const normalize = (value) => String(value ?? "").toLocaleLowerCase("it");
 const exploreGenreSet = new Set(exploreGenreNames);
 const contemporaryItalyTracks = tracks.filter((track) => track.sourceModule === "italy-contemporary-scene");
 const contemporaryItalySubgenres = new Set(contemporaryItalyTracks.map((track) => track.subgenre).filter(Boolean));
+const categoryMicroDescriptionOverrides = {
+  "Acid House": "TB-303 e groove ipnotici",
+  "Acid Jazz": "Jazz, funk e groove club",
+  "Alternative R&B": "Soul obliquo e digitale",
+  "Art Pop": "Ricerca pop tra arte e avanguardia",
+  Balearic: "Eclettismo mediterraneo da club",
+};
+
+const categoryMicroDescription = (name) => categoryMicroDescriptionOverrides[name]
+  ?? essentialPlaylistDescriptions[name]
+  ?? subgenreDescriptions[name].replace(/[.!?].*$/s, "").split(/\s+/).slice(0, 5).join(" ");
 
 const visibleGenreTrackIds = (genre) => genre.name === "Musica italiana"
   ? [...new Set([...genre.trackIds, ...contemporaryItalyTracks.map((track) => track.id)])]
@@ -126,10 +137,10 @@ function Explore({ initialView = null, onBack, exitOnInitialBack = false, onOpen
 
           <section className="archive-list">
             {tab === "genres" && genres.filter((genre) => exploreGenreSet.has(genre.name) && visible(genre.name)).map((genre) => (
-              <ArchiveButton key={genre.id} image={genre.trackIds.map((id) => data.trackById.get(id)?.artwork).find(Boolean)} title={genre.name} meta={`${genre.trackIds.length} brani · ${genre.essentialArtists.length} artisti rappresentativi`} onClick={() => navigate("genre", genre.id)} />
+              <ArchiveButton key={genre.id} image={genre.trackIds.map((id) => data.trackById.get(id)?.artwork).find(Boolean)} title={genre.name} meta={categoryMicroDescription(genre.name)} onClick={() => navigate("genre", genre.id)} />
             ))}
             {tab === "subgenres" && data.subgenres.filter((item) => !contemporaryItalySubgenres.has(item.name) && visible(item.name)).map((item) => (
-              <ArchiveButton key={item.name} image={item.tracks.map((track) => track.artwork).find(Boolean) || data.artworkByGenre.get(item.tracks[0]?.genre)} title={item.name} meta={`${item.tracks.length} brani · ${new Set(item.tracks.map((track) => track.artist)).size} artisti`} onClick={() => navigate("subgenre", item.name)} />
+              <ArchiveButton key={item.name} image={item.tracks.map((track) => track.artwork).find(Boolean) || data.artworkByGenre.get(item.tracks[0]?.genre)} title={item.name} meta={categoryMicroDescription(item.name)} onClick={() => navigate("subgenre", item.name)} />
             ))}
             {tab === "artists" && artists.filter((artist) => visible(artist.name)).map((artist) => (
               <ArchiveButton key={artist.id} image={artist.image} title={artist.name} meta={`${artist.trackIds.length} brani · ${artist.genres.join(", ")}`} onClick={() => navigate("artist", artist.id)} />
