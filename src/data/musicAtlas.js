@@ -122,9 +122,22 @@ const artistExpansionIdsByCity = {
   veracruz: ["yo-soy-matt"],
 };
 
+const beatArtistIdsByCity = {
+  london: ["the-dave-clark-five", "manfred-mann", "small-faces"],
+  manchester: ["the-hollies", "herman-s-hermits"],
+  newcastle: ["the-animals"],
+  roma: ["the-rokes", "patty-pravo"],
+  milano: ["dik-dik", "i-giganti", "new-dada", "i-camaleonti", "i-ribelli"],
+  bologna: ["pooh"],
+};
+
+const finalExpansionArtistIdsByCity = {
+  "new-york": ["cyndi-lauper"],
+};
+
 export const musicAtlasCities = baseMusicAtlasCities.map((city) => ({
   ...city,
-  artistIds: [...new Set([...city.artistIds, ...(rockArtistIdsByCity[city.id] ?? []), ...(macroArtistIdsByCity[city.id] ?? []), ...(artistExpansionIdsByCity[city.id] ?? [])])],
+  artistIds: [...new Set([...city.artistIds, ...(rockArtistIdsByCity[city.id] ?? []), ...(macroArtistIdsByCity[city.id] ?? []), ...(artistExpansionIdsByCity[city.id] ?? []), ...(beatArtistIdsByCity[city.id] ?? []), ...(finalExpansionArtistIdsByCity[city.id] ?? [])])],
 }));
 
 export const musicAtlasVenues = [

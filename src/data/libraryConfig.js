@@ -55,6 +55,8 @@ export const editorialGenreTrackIds = {
 };
 
 const coreSubgenreDescriptions = {
+  "British Beat": "Il British beat nasce nei club britannici dei primi anni Sessanta dall'incontro fra rock and roll, rhythm and blues, skiffle e pop vocale. Chitarre elettriche, organi, battiti netti e cori rendono il suono immediato, mentre scene come Londra, Manchester e Newcastle affiancano Liverpool nella British Invasion.",
+  "Beat Italiano": "Il beat italiano si afferma a metà anni Sessanta quando complessi, locali giovanili e nuovi programmi musicali traducono rock, rhythm and blues e folk-rock nella canzone nazionale. Cover adattate, chitarre elettriche e temi generazionali preparano una scrittura più autonoma, destinata a confluire nel pop e nel rock italiani.",
   "Alternative R&B": "L’alternative R&B emerge fra la fine degli anni Duemila e il decennio successivo, quando soul e R&B contemporaneo si aprono a indie, elettronica e hip hop sperimentale. Produzioni rarefatte, ritmi irregolari e voci intime sostituiscono spesso la brillantezza del pop tradizionale, favorendo scritture personali e atmosfere più ambigue.",
   "Art Pop": "L’art pop tratta la canzone pop come uno spazio di ricerca, intrecciando melodie accessibili con sperimentazione, performance e riferimenti alle arti visive. Sviluppato in forme diverse dagli anni Sessanta, usa arrangiamenti inconsueti, produzione elaborata e identità sceniche marcate, mantenendo un dialogo continuo con rock d’autore, elettronica e avanguardia.",
   "Electro House": "L’electro house emerge nei club dei primi anni Duemila dall’incontro fra house, electro e produzione digitale ad alta intensità. Bassi distorti, compressione marcata, crescendo e ritornelli strumentali privilegiano un impatto immediato. Il genere accompagna l’espansione dei grandi festival EDM e porta tecniche nate nella scena elettronica europea verso un pubblico di massa.",
@@ -298,7 +300,39 @@ const normalizedSubgenreDescriptions = {
   "Vocal Jazz": "Jazz in cui la voce interpreta standard attraverso swing, fraseggio e improvvisazione.",
 };
 
-export const subgenreDescriptions = { ...normalizedSubgenreDescriptions, ...coreSubgenreDescriptions };
+const expandedSubgenreDescriptions = {
+  "Afro-funk": "L’afro-funk si sviluppa fra gli anni Sessanta e Settanta soprattutto nell’Africa occidentale, intrecciando groove funk, poliritmi locali, fiati e chitarre cicliche. Scene come Lagos e Accra trasformano il linguaggio afroamericano in una musica urbana, politica e fortemente legata alla danza.",
+  "afro-samba": "L’afro-samba nasce in Brasile dall’incontro fra samba, ritualità afro-bahiana e armonia moderna, con un ruolo decisivo del dialogo fra Baden Powell e Vinícius de Moraes negli anni Sessanta. Percussioni, canto responsoriale e forme modali collegano spiritualità, memoria africana e canzone d’autore.",
+  "bossa nova jazz": "La bossa nova jazz porta il repertorio brasiliano dentro piccoli ensemble e pratiche improvvisative jazz. Dalla diffusione internazionale degli anni Sessanta, ritmo di samba attenuato, armonie sofisticate e fraseggio strumentale permettono a standard e composizioni originali di muoversi fra Rio de Janeiro e i club nordamericani.",
+  Breakbeat: "Il breakbeat raccoglie musiche elettroniche costruite su ritmi spezzati invece che sulla cassa regolare della house. Nato dalla cultura hip hop e sviluppato nei rave britannici, usa campionamento, sincopi e montaggio per generare famiglie diverse, dal big beat alla jungle.",
+  "cosmic jazz-funk": "Il cosmic jazz-funk amplia la fusion degli anni Settanta attraverso sintetizzatori, strumenti elettrici e immaginari spaziali o afrofuturisti. Groove profondi e improvvisazione convivono con texture elettroniche, collegando la ricerca di Herbie Hancock, Lonnie Liston Smith e Sun Ra alle successive culture del campionamento.",
+  "downtempo jazz": "Il downtempo jazz emerge soprattutto negli anni Novanta quando beat rallentati e tecniche da studio incontrano armonie, campioni e strumenti jazz. Etichette, DJ e piccoli ensemble costruiscono una musica sospesa fra lounge, trip hop e nu jazz, adatta tanto all’ascolto quanto al club.",
+  "downtempo pop": "Il downtempo pop conserva melodia e forma-canzone, ma le immerge in beat lenti, elettronica atmosferica e arrangiamenti rarefatti. Sviluppato dagli anni Novanta accanto a trip hop e chillout, privilegia intimità vocale, spazio e sfumature rispetto all’impatto ritmico del pop da classifica.",
+  "downtempo synth-pop": "Il downtempo synth-pop rallenta pulsazioni e sequenze del synth-pop, spostandole dalla pista verso un ascolto più intimo. Drum machine discrete, bassi sintetici e pad avvolgenti sostengono voci raccolte, creando un ponte fra ballata elettronica, dream pop e sensibilità notturna.",
+  "Electric Blues": "L’electric blues nasce quando il blues rurale viene amplificato nei contesti urbani del secondo dopoguerra, soprattutto a Chicago. Chitarra elettrica, armonica amplificata, basso e batteria aumentano volume e tensione, preparando il terreno al rhythm and blues e al rock.",
+  "electro-techno": "L’electro-techno occupa la zona di contatto fra sincopi robotiche dell’electro e ripetizione ipnotica della techno. Drum machine, bassi sintetici e sequenze futuriste riflettono l’eredità di Detroit, ma trovano sviluppi diversi nelle scene europee e nella cultura dei club.",
+  "electroclash synth-pop": "L’electroclash synth-pop rende più melodico il suono electroclash dei primi Duemila, organizzando sintetizzatori analogici, drum machine rigide e attitudine ironica dentro una forma-canzone riconoscibile. Conserva glamour underground e distacco vocale, ma privilegia hook e strutture vicine al pop elettronico.",
+  "garage house cut-up": "Il garage house cut-up ricompone voci soul, pianoforti e groove house attraverso tagli rapidi, ripetizioni e montaggio campionato. Nato dall’incontro fra tradizione garage e cultura dell’editing digitale, trasforma frammenti vocali in elementi ritmici senza perdere calore e spinta da club.",
+  Indietronica: "L’indietronica si afferma fra la fine degli anni Novanta e i Duemila quando scrittura indie, strumenti domestici e sensibilità lo-fi incontrano laptop, campionatori e programmazione. Chitarre, voci intime e micro-ritmi elettronici sfumano il confine fra band, cantautore e produttore.",
+  "jazz-funk fusion": "La jazz-funk fusion nasce fra la fine degli anni Sessanta e i Settanta, quando improvvisazione e armonie jazz si appoggiano a basso elettrico, clavinet, sintetizzatori e groove funk. Più ritmica della fusion rock, alimenta dancefloor, library music e futuri campionamenti hip hop.",
+  "Latin jazz fusion": "La Latin jazz fusion combina improvvisazione e strumenti elettrici con clave, poliritmi afro-cubani e tradizioni caraibiche o latinoamericane. Dagli anni Settanta amplia il latin jazz attraverso rock e funk, creando ensemble in cui percussioni, fiati e tastiere condividono la guida ritmica.",
+  "minimal techno": "La minimal techno emerge nei primi anni Novanta, soprattutto fra Detroit e Berlino, riducendo la techno a pochi elementi sottoposti a variazioni microscopiche. Pattern, silenzi e trasformazioni timbriche graduali concentrano l’ascolto sul dettaglio e sull’effetto fisico della ripetizione.",
+  "Philadelphia Soul": "Il Philadelphia soul prende forma fra la fine degli anni Sessanta e i Settanta attorno a produttori, autori e musicisti della città. Archi sontuosi, armonie vocali, basso fluido e groove sofisticati preparano la disco mantenendo al centro eleganza melodica e tradizione soul.",
+  "political hip hop": "Il political hip hop usa rime, campionamento e racconto per affrontare potere, razzismo, disuguaglianze e organizzazione sociale. Dalla coscienza afrocentrica degli anni Ottanta alle scene globali successive, trasforma il rap in cronaca, critica istituzionale e strumento di mobilitazione.",
+  "Progressive House": "La progressive house nasce nel Regno Unito dei primi anni Novanta come sviluppo più fluido e stratificato della house da club. Tracce lunghe, ingressi graduali, linee melodiche e transizioni continue costruiscono un viaggio ritmico che influenzerà sia l’underground sia la dance da grandi spazi.",
+  "psychedelic funk": "Il psychedelic funk si sviluppa fra la fine degli anni Sessanta e i Settanta quando il groove funk assorbe distorsione, effetti da studio e libertà psichedelica. Chitarre acide, bassi pesanti e arrangiamenti visionari legano danza, controcultura e immaginario cosmico.",
+  "Singer-Songwriter": "La tradizione singer-songwriter pone al centro un autore che interpreta direttamente testi e musiche, spesso con arrangiamenti essenziali. Affermata tra folk e pop negli anni Sessanta e Settanta, privilegia voce personale, racconto autobiografico e osservazione sociale rispetto alla separazione industriale fra compositore e cantante.",
+  "space disco": "La space disco emerge in Europa nella seconda metà degli anni Settanta, combinando pulsazione disco, sintetizzatori e immaginario fantascientifico. Sequencer, effetti cosmici e melodie cinematiche trasformano la pista in viaggio futurista, anticipando Italo disco, synth-pop e successive forme di dance elettronica.",
+  "synth-pop art": "Il synth-pop art usa sintetizzatori e forma pop come materiali di ricerca concettuale, visiva e timbrica. Nato dal dialogo fra art rock, post-punk ed elettronica, combina hook accessibili con strutture insolite, performance studiate e produzione da studio deliberatamente artificiale.",
+  "synth-pop dark": "Il synth-pop dark sviluppa il lato più cupo della canzone elettronica attraverso timbri freddi, bassi profondi e vocalità distaccate. Tra post-punk, darkwave e pop, mantiene ritornelli riconoscibili ma li colloca in atmosfere tese, notturne o introspettive.",
+  "techstep atmosferico": "Il techstep atmosferico conserva break severi, bassi metallici e tensione tecnologica della drum and bass anni Novanta, ma li immerge in pad, riverberi e profondità ambientale. Il contrasto fra pressione ritmica e spazio sonoro rende il paesaggio futurista meno puramente aggressivo.",
+  "Traditional Folk": "Il traditional folk comprende repertori trasmessi oralmente e radicati nella memoria di comunità specifiche. Ballate, canti di lavoro e danze cambiano attraverso l’esecuzione più che tramite un autore unico; raccolte e revival moderni ne hanno portato forme locali nei circuiti discografici.",
+  "trip hop cinematografico": "Il trip hop cinematografico amplia beat rallentati, bassi dub e campioni con una costruzione fortemente visiva. Archi, tensioni armoniche e dinamiche narrative evocano noir e colonne sonore, collegando la Bristol degli anni Novanta a produzioni pensate anche per cinema e televisione.",
+  "trip hop orchestrale": "Il trip hop orchestrale integra archi, fiati e arrangiamenti acustici nella grammatica di beat lenti, dub e campionamento. Nato durante l’espansione del genere negli anni Novanta, accosta intimità vocale e ampiezza cinematografica senza perdere il peso ritmico delle origini.",
+  "Detroit Techno": "La Detroit techno nasce negli anni Ottanta dall’incontro fra funk, electro, sintetizzatori europei e immaginario postindustriale. Juan Atkins, Derrick May e Kevin Saunderson trasformano drum machine e sequencer in un linguaggio futurista afroamericano, poi sviluppato da nuove generazioni e diffuso nei club di tutto il mondo.",
+};
+
+export const subgenreDescriptions = { ...normalizedSubgenreDescriptions, ...coreSubgenreDescriptions, ...expandedSubgenreDescriptions };
 
 const essentialPlaylistDescriptionsBase = {
   "American Standards / Crooners": "Standard, swing e grandi interpreti della canzone americana",
@@ -414,6 +448,8 @@ export const essentialPlaylistDescriptions = {
   "Boogie": "Funk elettronico, bassi elastici e notti urbane",
   "Bossa Nova": "Eleganza brasiliana, samba e jazz",
   "Britpop": "Chitarre britanniche, melodie e orgoglio generazionale",
+  "British Beat": "Club britannici, ritmo e armonie",
+  "Beat Italiano": "Chitarre giovani e nuovi costumi",
   "Chicago House": "Le origini della house music",
   "Colonna sonora italiana": "Melodie cinematografiche tra tensione e meraviglia",
   "Dance": "Ritmi universali costruiti per muovere il corpo",
@@ -524,6 +560,11 @@ const phaseTwoEssentialTrackIds = {
   "Shibuya-kei": [1497, 1498, 1499, 1500, 1501, 1514, 1516, 1518, 1520, 1522, 1524, 1526, 1528, 1530, 1532],
 };
 
+const beatEssentialTrackIds = {
+  "British Beat": Array.from({ length: 14 }, (_, index) => 1821 + index),
+  "Beat Italiano": Array.from({ length: 24 }, (_, index) => 1835 + index),
+};
+
 const macroGenreEssentialTrackIds = {
   "American Standards / Crooners": [1052, 1054, ...Array.from({ length: 18 }, (_, index) => 1570 + index)],
   Blues: [795, 1408, 1412, 1414, 1416, ...Array.from({ length: 15 }, (_, index) => 1588 + index)],
@@ -570,12 +611,12 @@ const minimumEssentialTrackIds = {
 };
 
 export const essentialPlaylists = Object.fromEntries(
-  [...new Set([...allowedGenres, ...Object.keys(rockEssentialTrackIds), ...Object.keys(phaseTwoEssentialTrackIds), ...Object.keys(macroGenreEssentialTrackIds)])].map((genre) => [genre, {
+  [...new Set([...allowedGenres, ...Object.keys(rockEssentialTrackIds), ...Object.keys(phaseTwoEssentialTrackIds), ...Object.keys(macroGenreEssentialTrackIds), ...Object.keys(beatEssentialTrackIds)])].map((genre) => [genre, {
     id: genre,
     label: `Essenziali: ${genre}`,
     externalUrl: "",
     service: "",
-    trackIds: rockEssentialTrackIds[genre] ?? phaseTwoEssentialTrackIds[genre] ?? macroGenreEssentialTrackIds[genre] ?? minimumEssentialTrackIds[genre] ?? [],
+    trackIds: rockEssentialTrackIds[genre] ?? phaseTwoEssentialTrackIds[genre] ?? macroGenreEssentialTrackIds[genre] ?? beatEssentialTrackIds[genre] ?? minimumEssentialTrackIds[genre] ?? [],
     ...(essentialPlaylistLinks[genre] ?? {}),
   }]),
 );

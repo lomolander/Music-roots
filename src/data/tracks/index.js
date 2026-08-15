@@ -41,6 +41,8 @@ import macroGenresExpansion from "./macro-genres-expansion.js";
 import essentialsDepthExpansion from "./essentials-depth-expansion.js";
 import alternativePopExpansion from "./alternative-pop-expansion.js";
 import artistExpansionBatch from "./artist-expansion-batch.js";
+import beatSceneExpansion from "./beat-scene-expansion.js";
+import finalArtistExpansion from "./final-artist-expansion.js";
 
 export const trackModules = {
   "house-techno": houseTechno,
@@ -67,6 +69,8 @@ export const trackModules = {
   "essentials-depth-expansion": essentialsDepthExpansion,
   "alternative-pop-expansion": alternativePopExpansion,
   "artist-expansion-batch": artistExpansionBatch,
+  "beat-scene-expansion": beatSceneExpansion,
+  "final-artist-expansion": finalArtistExpansion,
 };
 
 const editorialDefaults = {

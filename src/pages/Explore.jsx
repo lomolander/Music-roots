@@ -17,6 +17,7 @@ const tabs = [
 ];
 
 const normalize = (value) => String(value ?? "").toLocaleLowerCase("it");
+const alphabeticalCollator = new Intl.Collator("it", { sensitivity: "base", ignorePunctuation: true });
 const exploreGenreSet = new Set(exploreGenreNames);
 const contemporaryItalyTracks = tracks.filter((track) => track.sourceModule === "italy-contemporary-scene");
 const contemporaryItalySubgenres = new Set(contemporaryItalyTracks.map((track) => track.subgenre).filter(Boolean));
@@ -85,7 +86,23 @@ function Explore({ initialView = null, onBack, exitOnInitialBack = false, onOpen
     const subgenres = [...new Set(tracks.map((track) => track.subgenre).filter(Boolean))]
       .sort((left, right) => left.localeCompare(right, "it"))
       .map((name) => ({ name, tracks: tracks.filter((track) => track.subgenre === name) }));
-    return { trackById, artistById, albumById, genreById, artworkByGenre, subgenres };
+    const essentials = [
+      ...genres.filter((genre) => genre.essentialPlaylist).map((genre) => ({
+        key: `genre-${genre.id}`,
+        name: genre.name,
+        image: trackById.get(genre.trackIds.find((id) => trackById.get(id)?.artwork))?.artwork,
+        viewType: "playlist",
+        viewId: genre.id,
+      })),
+      ...subgenres.filter((item) => essentialPlaylists[item.name]?.trackIds?.length).map((item) => ({
+        key: `subgenre-${item.name}`,
+        name: item.name,
+        image: item.tracks.map((track) => track.artwork).find(Boolean),
+        viewType: "subgenre-playlist",
+        viewId: item.name,
+      })),
+    ].sort((left, right) => alphabeticalCollator.compare(left.name, right.name));
+    return { trackById, artistById, albumById, genreById, artworkByGenre, subgenres, essentials };
   }, []);
 
   const navigate = (type, id) => {
@@ -148,11 +165,8 @@ function Explore({ initialView = null, onBack, exitOnInitialBack = false, onOpen
             {tab === "albums" && albums.filter((album) => visible(`${album.title} ${album.artist}`)).map((album) => (
               <ArchiveButton key={album.id} image={album.cover} title={album.title} meta={`${album.artist} · ${album.year}`} onClick={() => navigate("album", album.id)} />
             ))}
-            {tab === "playlists" && genres.filter((genre) => genre.essentialPlaylist && visible(genre.name)).map((genre) => (
-              <ArchiveButton key={genre.id} image={data.trackById.get(genre.trackIds.find((id) => data.trackById.get(id)?.artwork))?.artwork} title={`Essenziali: ${genre.name}`} meta={essentialPlaylistDescriptions[genre.name]} onClick={() => navigate("playlist", genre.id)} />
-            ))}
-            {tab === "playlists" && data.subgenres.filter((item) => essentialPlaylists[item.name]?.trackIds?.length && visible(item.name)).map((item) => (
-              <ArchiveButton key={`playlist-${item.name}`} image={item.tracks.map((track) => track.artwork).find(Boolean)} title={`Essenziali: ${item.name}`} meta={essentialPlaylistDescriptions[item.name]} onClick={() => navigate("subgenre-playlist", item.name)} />
+            {tab === "playlists" && data.essentials.filter((item) => visible(item.name)).map((item) => (
+              <ArchiveButton key={item.key} image={item.image} title={`Essenziali: ${item.name}`} meta={essentialPlaylistDescriptions[item.name]} onClick={() => navigate(item.viewType, item.viewId)} />
             ))}
           </section>
         </>
