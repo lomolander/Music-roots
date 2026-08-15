@@ -15,6 +15,12 @@ const seenIdentities = new Map();
 const seenPreviews = new Map();
 const required = ["id", "artist", "title", "year", "genre"];
 const normalize = (value) => String(value ?? "").normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/gi, " ").trim().toLowerCase();
+const normalizeTaxonomyLabel = (value) => normalize(value).replace(/[\s'’-]+/g, "");
+// Contenitori che nel catalogo distribuiscono le proprie tracce fra più sottogeneri.
+// Le categorie musicali specifiche possono invece coincidere legittimamente nei due campi.
+const GENERIC_GENRES_REQUIRING_SPECIFIC_SUBGENRE = new Set([
+  "Electronic", "House", "Indie", "Hip Hop", "Rock", "Dance", "Funk",
+].map(normalizeTaxonomyLabel));
 const validUrl = (value) => {
   if (!value) return true;
   try { return ["https:", "http:"].includes(new URL(value).protocol); } catch { return false; }
@@ -28,6 +34,10 @@ for (const track of tracks) {
   if (seenIdentities.has(identity)) errors.push(`Artista-titolo duplicato: ${track.artist} — ${track.title}`); else seenIdentities.set(identity, track);
   if (!Number.isInteger(track.year) || track.year < 1900 || track.year > new Date().getFullYear() + 1) errors.push(`ID ${track.id}: anno non plausibile ${track.year}`);
   if (!allowedGenres.includes(track.genre)) errors.push(`ID ${track.id}: genere non riconosciuto ${track.genre}`);
+  const normalizedGenre = normalizeTaxonomyLabel(track.genre);
+  if (track.subgenre && GENERIC_GENRES_REQUIRING_SPECIFIC_SUBGENRE.has(normalizedGenre) && normalizedGenre === normalizeTaxonomyLabel(track.subgenre)) {
+    errors.push(`ID ${track.id}: macrogenere generico richiede un sottogenere specifico (${track.genre} — ${track.artist} — ${track.title})`);
+  }
   if (!essentialPlaylists[track.essentialPlaylist]) errors.push(`ID ${track.id}: playlist essenziale inesistente ${track.essentialPlaylist}`);
   for (const [provider, url] of Object.entries(track.links ?? {})) if (!validUrl(url)) errors.push(`ID ${track.id}: link ${provider} malformato`);
   if (track.appleMatchStatus === "verified" && (!track.applePreviewUrl?.startsWith("https://") || !track.previewValidated)) errors.push(`ID ${track.id}: verified senza preview Apple HTTPS validata`);
@@ -54,9 +64,12 @@ const trackIds = new Set(tracks.map((track) => track.id));
 const cityIds = new Set(musicAtlasCities.map((city) => city.id));
 const venueIds = new Set(musicAtlasVenues.map((venue) => venue.id));
 for (const city of musicAtlasCities) {
+  const cityVenues = musicAtlasVenues.filter((venue) => venue.cityId === city.id);
+  if (!(city.artistIds?.length || city.trackIds?.length || cityVenues.length)) warnings.push(`Atlante: città definita senza collegamenti ${city.name}`);
   for (const artistId of city.artistIds) if (!artistIds.has(artistId)) errors.push(`Città ${city.id}: artista inesistente ${artistId}`);
   for (const trackId of city.trackIds) if (!trackIds.has(trackId)) errors.push(`Città ${city.id}: brano inesistente ${trackId}`);
 }
+
 for (const artist of artists) {
   const words = artist.biography.trim().split(/\s+/).length;
   if (words < 50 || words > 600) errors.push(`Artista ${artist.name}: biografia di ${words} parole`);

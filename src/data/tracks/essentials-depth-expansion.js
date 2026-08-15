@@ -58,7 +58,7 @@ const groups = [
     ["Felix da Housecat", "Silver Screen Shower Scene", "Kittenz and Thee Glitz", 2001],
     ["Vive la Fête", "Noir Désir", "Nuit Blanche", 2003],
   ]],
-  ["Indie", "Indie", [
+  ["Indie", "Indie Pop", [
     ["Belle and Sebastian", "The State I Am In", "Tigermilk", 1996],
   ]],
   ["Indie Dance", "Indie Dance", [

@@ -86,7 +86,7 @@ function MusicAtlas({ onBack, onOpenArtist, initialCityId = null }) {
       artists: cityArtists,
       searchText: normalize([city.name, countries[city.id], ...venues.flatMap((venue) => [venue.name, ...venue.artistNames]), ...cityArtists.map((artist) => artist.name)].join(" ")),
     };
-  }), []);
+  }).filter((city) => city.artists.length > 0 || city.trackIds.length > 0 || city.venues.length > 0), []);
 
   const selectedCity = atlas.find((city) => city.id === selectedCityId);
   const selectedVenue = selectedCity?.venues.find((venue) => venue.id === selectedVenueId);

@@ -3,7 +3,7 @@ const catalog = [
   ["Frah Quintale", "Italia", ["Craterì", "Regardez Moi", 2017, "Indie Pop", "Hip Hop Italiano"], ["8 miliardi di persone", "Banzai (Lato blu)", 2020, "Hip Hop Italiano", "Indie Pop"]],
   ["Willie Peyote", "Italia", ["Ottima scusa", "Educazione sabauda", 2015, "Rap Italiano", "Hip Hop Italiano"], ["Mai dire mai (La locura)", "Pornostalgia", 2021, "Hip Hop Italiano", "Rap Italiano"]],
   ["Franco126", "Italia", ["Stanza singola", "Stanza singola", 2019, "Cantautorato Italiano", "Indie Pop"], ["Frigobar", "Stanza singola", 2019, "Indie Pop", "Cantautorato Italiano"]],
-  ["Cosmo", "Italia", ["L’ultima festa", "L’ultima festa", 2016, "Elettronica Italiana", "House"], ["Turbo", "Cosmotronic", 2018, "House", "Electro"]],
+  ["Cosmo", "Italia", ["L’ultima festa", "L’ultima festa", 2016, "Elettronica Italiana", "Indietronica"], ["Turbo", "Cosmotronic", 2018, "House", "Electro"]],
   ["Tropico", "Italia", ["Non esiste amore a Napoli", "Non esiste amore a Napoli", 2021, "Alternative Pop", "Cantautorato Italiano"], ["Che mme lassat’ a fa", "Non esiste amore a Napoli", 2021, "Indie Pop", "Alternative Pop"]],
   ["Margherita Vicario", "Italia", ["Mandela", "Bingo", 2021, "Indie Pop", "Cantautorato Italiano"], ["Giubbottino", "Bingo", 2021, "Alternative Pop", "Indie Pop"]],
   ["Subsonica", "Italia", ["Tutti i miei sbagli", "Microchip emozionale", 1999, "Indie Rock", "Elettronica Italiana"], ["Nuova ossessione", "Amorematico", 2002, "Electro", "Alternative Pop"]],
