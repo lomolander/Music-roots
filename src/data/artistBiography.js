@@ -1,6 +1,7 @@
 import historicalFacts from "./artistHistoricalFacts.js";
 import artistBiographiesEditorial from "./artistBiographiesEditorial.js";
 import artistExpansionBiographies from "./artistExpansionBiographies.js";
+import artistBiographyCorrections from "./artistBiographyCorrections.js";
 
 const sentenceParts = (value) => String(value ?? "").match(/[^.!?]+[.!?]+|[^.!?]+$/g) ?? [];
 const sentenceKey = (value) => value.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/gi, " ").trim().toLowerCase();
@@ -37,7 +38,7 @@ const evidenceBiography = ({ name, tracks }) => {
 };
 
 export const buildArtistBiography = ({ name, tracks }) => {
-  const editorialBiography = artistExpansionBiographies[name] ?? artistBiographiesEditorial[name];
+  const editorialBiography = artistBiographyCorrections[name] ?? artistExpansionBiographies[name] ?? artistBiographiesEditorial[name];
   if (editorialBiography) return editorialBiography;
   return evidenceBiography({ name, tracks });
 };
