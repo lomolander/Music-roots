@@ -17,6 +17,7 @@ const countries = {
   belfast: "Regno Unito", topeka: "Stati Uniti", tokyo: "Giappone", osaka: "Giappone",
   kyoto: "Giappone", yokohama: "Giappone", hiroshima: "Giappone", kanazawa: "Giappone",
   brescia: "Italia", palermo: "Italia", como: "Italia", siracusa: "Italia",
+  geneva: "Svizzera", oxford: "Regno Unito", "vega-baja": "Puerto Rico", portland: "Stati Uniti", veracruz: "Messico",
 };
 
 const normalize = (value) => String(value ?? "")
@@ -29,7 +30,7 @@ const artistById = new Map(artists.map((artist) => [artist.id, artist]));
 const artistByName = new Map(artists.map((artist) => [normalize(artist.name), artist]));
 const cityMapModules = import.meta.glob("../assets/city-maps/*.svg", { eager: true, query: "?url", import: "default" });
 const cityMapById = Object.fromEntries(Object.entries(cityMapModules).map(([filePath, source]) => [filePath.split("/").at(-1).replace(".svg", ""), source]));
-const coastalCities = new Set(["belfast", "boston", "bristol", "genova", "hiroshima", "jacksonville", "kingston", "liverpool", "los-angeles", "melbourne", "napoli", "new-york", "rio", "san-francisco", "seattle", "sydney", "tokyo", "venezia", "yokohama"]);
+const coastalCities = new Set(["belfast", "boston", "bristol", "genova", "hiroshima", "jacksonville", "kingston", "liverpool", "los-angeles", "melbourne", "napoli", "new-york", "portland", "rio", "san-francisco", "seattle", "sydney", "tokyo", "vega-baja", "venezia", "veracruz", "yokohama"]);
 const riverCities = new Set(["austin", "berlin", "birmingham", "london", "manchester", "newcastle", "paris", "roma", "torino"]);
 
 function CityMapTexture({ cityId }) {

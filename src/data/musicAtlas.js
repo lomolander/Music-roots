@@ -48,6 +48,11 @@ const baseMusicAtlasCities = [
   { id: "las-vegas", name: "Las Vegas", period: "Anni 1950–1970", x: 20, y: 39, relevance: 2, panX: 21, panY: 6, description: "Showroom e casinò trasformarono crooner, orchestre e spettacolo da nightclub in una forma di intrattenimento internazionale legata alla cultura di Las Vegas.", artistIds: [], trackIds: [] },
   { id: "clarksdale", name: "Clarksdale", period: "Anni 1920–1950", x: 29, y: 41, relevance: 2, panX: 17, panY: 5, description: "Nel cuore del Mississippi Delta, Clarksdale rappresenta la rete di juke joint, musicisti itineranti e tradizione orale dalla quale emersero figure decisive del blues.", artistIds: [], trackIds: [] },
   { id: "bakersfield", name: "Bakersfield", period: "Anni 1950–1970", x: 21, y: 36, relevance: 2, panX: 21, panY: 7, description: "Chitarre elettriche brillanti, piccoli club e musicisti migrati dall'Oklahoma definirono il Bakersfield Sound come alternativa diretta alle orchestrazioni di Nashville.", artistIds: [], trackIds: [] },
+  { id: "geneva", name: "Ginevra", period: "Anni 2010–oggi", x: 56, y: 40, relevance: 1, panX: -1, panY: 6, description: "La scena francofona svizzera ha collegato pop elettronico, arti visive e circuiti indipendenti fra Ginevra e il mercato musicale francese.", artistIds: [], trackIds: [] },
+  { id: "oxford", name: "Oxford", period: "Anni 1990–oggi", x: 50, y: 30, relevance: 2, panX: 1, panY: 9, description: "Università, piccoli locali e una solida rete indipendente hanno sostenuto una scena capace di unire rock alternativo, elettronica e pop sperimentale.", artistIds: [], trackIds: [] },
+  { id: "vega-baja", name: "Vega Baja", period: "Anni 2010–oggi", x: 34, y: 48, relevance: 2, panX: 14, panY: 3, description: "La città costiera portoricana è il luogo formativo di Bad Bunny e una presenza ricorrente nella sua rappresentazione musicale e culturale dell'isola.", artistIds: [], trackIds: [] },
+  { id: "portland", name: "Portland", period: "Anni 1990–oggi", x: 17, y: 16, relevance: 2, panX: 23, panY: 10, description: "Orchestre, circuiti indipendenti e attivismo culturale hanno favorito progetti capaci di collegare repertori locali e prospettive internazionali.", artistIds: [], trackIds: [] },
+  { id: "veracruz", name: "Veracruz", period: "Anni 2010–oggi", x: 25, y: 56, relevance: 2, panX: 18, panY: 1, description: "Son jarocho, tradizioni caraibiche e produzione elettronica convivono in una scena affacciata sul Golfo, aperta a nuove forme di contaminazione messicana.", artistIds: [], trackIds: [] },
 ];
 
 const rockArtistIdsByCity = {
@@ -102,9 +107,24 @@ const macroArtistIdsByCity = {
   milano: ["joan-thiele"],
 };
 
+const artistExpansionIdsByCity = {
+  paris: ["lewis-ofman", "l-imperatrice", "the-blaze", "charles-aznavour"],
+  london: ["jungle", "bananarama"],
+  glasgow: ["jimmy-somerville"],
+  napoli: ["renato-carosone", "bassolino"],
+  roma: ["gabriella-ferri"],
+  "new-york": ["eartha-kitt"],
+  geneva: ["vendredi-sur-mer"],
+  oxford: ["glass-animals"],
+  "los-angeles": ["kali-uchis"],
+  "vega-baja": ["bad-bunny"],
+  portland: ["pink-martini"],
+  veracruz: ["yo-soy-matt"],
+};
+
 export const musicAtlasCities = baseMusicAtlasCities.map((city) => ({
   ...city,
-  artistIds: [...new Set([...city.artistIds, ...(rockArtistIdsByCity[city.id] ?? []), ...(macroArtistIdsByCity[city.id] ?? [])])],
+  artistIds: [...new Set([...city.artistIds, ...(rockArtistIdsByCity[city.id] ?? []), ...(macroArtistIdsByCity[city.id] ?? []), ...(artistExpansionIdsByCity[city.id] ?? [])])],
 }));
 
 export const musicAtlasVenues = [

@@ -40,6 +40,7 @@ import italyContemporaryScene from "./italy-contemporary-scene.js";
 import macroGenresExpansion from "./macro-genres-expansion.js";
 import essentialsDepthExpansion from "./essentials-depth-expansion.js";
 import alternativePopExpansion from "./alternative-pop-expansion.js";
+import artistExpansionBatch from "./artist-expansion-batch.js";
 
 export const trackModules = {
   "house-techno": houseTechno,
@@ -65,6 +66,7 @@ export const trackModules = {
   "macro-genres-expansion": macroGenresExpansion,
   "essentials-depth-expansion": essentialsDepthExpansion,
   "alternative-pop-expansion": alternativePopExpansion,
+  "artist-expansion-batch": artistExpansionBatch,
 };
 
 const editorialDefaults = {
