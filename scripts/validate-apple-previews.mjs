@@ -159,9 +159,11 @@ async function main() {
   const requestedStatus = cliValue("status");
   const requestedGenre = cliValue("genre");
   const requestedFile = cliValue("file")?.replace(/\.js$/i, "");
-  const explicitAll = cliArguments.includes("--all") || forceValidation || CACHE_ONLY;
+  const requestedIds = new Set((cliValue("ids") ?? "").split(",").map(Number).filter(Number.isInteger));
+  const explicitAll = cliArguments.includes("--all") || forceValidation || CACHE_ONLY || requestedIds.size > 0;
   const onlyNew = cliArguments.includes("--new") || (!explicitAll && !requestedStatus && !requestedGenre && !requestedFile);
   const selectedQuestions = questions.filter((track) => {
+    if (requestedIds.size && !requestedIds.has(track.id)) return false;
     if (onlyNew && existingAppleMetadata[track.id]?.appleMatchStatus) return false;
     if (requestedStatus && existingAppleMetadata[track.id]?.appleMatchStatus !== requestedStatus) return false;
     if (requestedGenre && track.genre.toLowerCase() !== requestedGenre.toLowerCase()) return false;
@@ -317,7 +319,7 @@ async function main() {
     verifiedPercentage: Number(((statusCounts.verified / questions.length) * 100).toFixed(2)),
     ...statusCounts, checkedThisRun, recoveredFromCache,
     selectedThisRun: selectedQuestions.length,
-    filters: { onlyNew, status: requestedStatus ?? null, genre: requestedGenre ?? null, file: requestedFile ?? null, force: forceValidation },
+    filters: { onlyNew, status: requestedStatus ?? null, genre: requestedGenre ?? null, file: requestedFile ?? null, ids: [...requestedIds], force: forceValidation },
     byGenre, unverified,
   };
   await writeFile(REPORT_FILE, `${JSON.stringify(report, null, 2)}\n`, "utf8");
