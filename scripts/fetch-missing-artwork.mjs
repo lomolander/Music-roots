@@ -3,6 +3,7 @@ import path from "node:path";
 
 import tracks from "../src/data/questions.js";
 import metadata from "../src/data/apple-preview-metadata.js";
+import { essentialPlaylists } from "../src/data/libraryConfig.js";
 import { appleArtistsMatch } from "../src/lib/appleMusicValidation.js";
 
 const output = path.resolve("src/data/apple-preview-metadata.js");
@@ -17,6 +18,10 @@ const requestedIds = new Set((process.argv.find((argument) => argument.startsWit
   .map(Number)
   .filter(Number.isFinite));
 const approvedArtworkAuditMode = process.argv.includes("--approved-artwork-audit");
+const includeEditorialArtwork = process.argv.includes("--include-editorial");
+const retryManualArtwork = process.argv.includes("--retry-manual");
+const pass2Mode = process.argv.includes("--pass2");
+const appleAlbumOnly = process.argv.includes("--apple-album-only");
 const manualArtworkIds = new Set([921, 1176, 1183, 1189, 1199, 1217, 1228, 1229, 1230, 1458, 1468, 1703, 1730, 1757]);
 const musicBrainzUserAgent = "MusicRoots/1.0 (artwork audit; contact: local-development)";
 
@@ -148,7 +153,14 @@ async function findMusicBrainzArtwork(track, attempts) {
       if (!reason) releases.push({ recording, release });
     }
   }
-  const unique = [...new Map(releases.map((item) => [item.release.id, item])).values()];
+  // Una registrazione può elencare decine di ristampe della stessa pubblicazione.
+  // Per l'artwork basta verificare una release rappresentativa per release-group.
+  const unique = [...new Map(releases.map((item) => [item.release["release-group"]?.id ?? item.release.id, item])).values()]
+    .sort((left, right) =>
+      Number(Boolean(right.release.date)) - Number(Boolean(left.release.date)) ||
+      Math.abs((releaseYear(left.release) ?? track.year) - track.year) - Math.abs((releaseYear(right.release) ?? track.year) - track.year)
+    )
+    .slice(0, 12);
   const covered = [];
   for (const item of unique) {
     const archive = await getJson(`https://coverartarchive.org/release/${item.release.id}`);
@@ -232,6 +244,102 @@ async function findDiscogsArtwork(track, attempts) {
   };
 }
 
+const releaseCandidates = (track) => [...new Set([
+  discogsReleaseTitle(track.title),
+  discogsReleaseTitle(track.album),
+].filter(Boolean))];
+
+async function findDiscogsMasterArtwork(track, attempts) {
+  for (const releaseTitle of releaseCandidates(track)) {
+    const params = new URLSearchParams({ q: `${mainArtist(track.artist)} ${releaseTitle}`, type: "master", per_page: "50" });
+    const results = (await getJson(`https://api.discogs.com/database/search?${params}`, {
+      "User-Agent": musicBrainzUserAgent,
+      Accept: "application/json",
+    }))?.results ?? [];
+    const candidates = results.filter((candidate) => {
+      const candidateArtist = String(candidate.title ?? "").split(/\s+-\s+/)[0];
+      const candidateRelease = discogsResultTitle(candidate.title);
+      const valid = artistsMatch(track.artist, candidateArtist) &&
+        (albumsMatch(releaseTitle, candidateRelease) || titlesMatch(releaseTitle, candidateRelease)) &&
+        !isIncompatibleRelease(candidate.title);
+      attempts.push({ provider: "Discogs master", query: candidate.id, release: candidate.title, result: valid ? "candidate" : "release-mismatch" });
+      return valid;
+    });
+    if (!candidates.length) continue;
+    const workKeys = new Set(candidates.map((candidate) => candidate.master_id || candidate.id));
+    if (workKeys.size > 1) {
+      attempts.push({ provider: "Discogs master", query: `${track.artist} — ${releaseTitle}`, result: "ambiguous-release" });
+      continue;
+    }
+    const selected = candidates[0];
+    const masterId = selected.master_id || selected.id;
+    const master = await getJson(`https://api.discogs.com/masters/${masterId}`, { "User-Agent": musicBrainzUserAgent, Accept: "application/json" });
+    const image = master?.images?.find((candidate) => candidate.type === "primary") ?? master?.images?.[0];
+    if (image?.uri) return { provider: "Discogs master", artworkUrl: image.uri, release: discogsResultTitle(selected.title), discogsReleaseId: masterId, confidence: "artist-master-release", attempts };
+  }
+  return null;
+}
+
+async function findMusicBrainzReleaseGroupArtwork(track, attempts) {
+  for (const releaseTitle of releaseCandidates(track)) {
+    const query = [`release:\"${mbEscape(releaseTitle)}\"`, `artist:\"${mbEscape(mainArtist(track.artist))}\"`].join(" AND ");
+    const params = new URLSearchParams({ query, fmt: "json", limit: "50" });
+    const groups = (await getJson(`https://musicbrainz.org/ws/2/release-group/?${params}`, { "User-Agent": musicBrainzUserAgent, Accept: "application/json" }))?.["release-groups"] ?? [];
+    const candidates = groups.filter((group) => {
+      const credit = group["artist-credit"]?.map((entry) => entry.name).join(" ") ?? "";
+      const valid = artistsMatch(track.artist, credit) && (albumsMatch(releaseTitle, group.title) || titlesMatch(releaseTitle, group.title)) && !isIncompatibleRelease(group.title);
+      attempts.push({ provider: "MusicBrainz release-group", query: group.id, release: group.title, result: valid ? "candidate" : "release-mismatch" });
+      return valid;
+    });
+    if (!candidates.length) continue;
+    const uniqueIds = new Set(candidates.map((candidate) => candidate.id));
+    if (uniqueIds.size > 1) continue;
+    const selected = candidates[0];
+    const archive = await getJson(`https://coverartarchive.org/release-group/${selected.id}`);
+    const image = archive?.images?.find((candidate) => candidate.front) ?? archive?.images?.[0];
+    if (image?.image) return { provider: "MusicBrainz / Cover Art Archive", artworkUrl: image.image, release: selected.title, mbid: selected.id, confidence: "artist-release-group", attempts };
+  }
+  return null;
+}
+
+async function findAppleAlbumArtwork(track, attempts) {
+  for (const releaseTitle of releaseCandidates(track)) {
+    for (const country of countries) {
+      const query = `${mainArtist(track.artist)} ${releaseTitle}`;
+      const candidates = await searchApple(query, country, "album");
+      const accepted = candidates.filter((candidate) => {
+        const valid = artistsMatch(track.artist, candidate.artistName) && albumsMatch(releaseTitle, candidate.collectionName) && Boolean(candidate.artworkUrl100);
+        attempts.push({ provider: `Apple album ${country}`, query, release: candidate.collectionName, result: valid ? "candidate" : "release-mismatch" });
+        return valid;
+      });
+      const works = new Set(accepted.map((candidate) => stripEdition(candidate.collectionName)));
+      if (accepted.length && works.size === 1) {
+        const selected = accepted.sort((left, right) =>
+          Math.abs((Number(String(left.releaseDate ?? "").slice(0, 4)) || track.year) - track.year) -
+          Math.abs((Number(String(right.releaseDate ?? "").slice(0, 4)) || track.year) - track.year)
+        )[0];
+        return { provider: "Apple album", candidate: selected, country, confidence: "artist-album-release", attempts };
+      }
+    }
+  }
+  return null;
+}
+
+async function findArtworkPass2(track) {
+  const attempts = [];
+  if (appleAlbumOnly) {
+    const apple = await findAppleAlbumArtwork(track, attempts);
+    return apple ?? { rejected: true, attempts };
+  }
+  const discogs = await findDiscogsMasterArtwork(track, attempts);
+  if (discogs) return discogs;
+  const musicBrainz = await findMusicBrainzReleaseGroupArtwork(track, attempts);
+  if (musicBrainz) return musicBrainz;
+  const apple = await findAppleAlbumArtwork(track, attempts);
+  if (apple) return apple;
+  return { rejected: true, attempts };
+}
+
 async function findArtwork(track) {
   const attempts = [];
   const apple = await findAppleArtwork(track, attempts);
@@ -245,17 +353,26 @@ async function findArtwork(track) {
   return { rejected: true, attempts };
 }
 
-const selectedTracks = approvedArtworkAuditMode
-  ? tracks.filter((track) => !track.artwork && !manualArtworkIds.has(Number(track.id)) && (!requestedIds.size || requestedIds.has(Number(track.id))))
+const essentialTrackIds = new Set(Object.values(essentialPlaylists).flatMap((playlist) => playlist.trackIds ?? []));
+const artworkPriority = (track) => essentialTrackIds.has(track.id)
+  ? 0
+  : track.id >= 1781
+    ? 1
+    : ["Beat Italiano", "British Beat"].includes(track.subgenre)
+      ? 2
+      : 3;
+const selectedTracks = (approvedArtworkAuditMode
+  ? tracks.filter((track) => (!track.artwork || (includeEditorialArtwork && track.artworkType !== "official")) && (retryManualArtwork || !manualArtworkIds.has(Number(track.id))) && (!requestedIds.size || requestedIds.has(Number(track.id))))
   : requestedIds.size
   ? tracks.filter((track) => requestedIds.has(Number(track.id)) && !track.artwork)
   : diagnosticMode
     ? tracks.filter((track) => diagnosticIds.has(Number(track.id)))
-    : tracks.filter((track) => !track.artwork);
+    : tracks.filter((track) => !track.artwork))
+  .sort((left, right) => artworkPriority(left) - artworkPriority(right) || left.id - right.id);
 const report = { before: selectedTracks.length, recovered: [], fallbackRequired: [] };
 
 for (const [index, track] of selectedTracks.entries()) {
-  const match = await findArtwork(track);
+  const match = pass2Mode ? await findArtworkPass2(track) : await findArtwork(track);
   const strong = match && !match.ambiguous && !match.rejected;
   const status = strong ? "FORTE" : match?.ambiguous ? "AMBIGUO" : "RIFIUTATO";
   const artworkUrl = match?.candidate?.artworkUrl100 ?? match?.artworkUrl ?? "";
