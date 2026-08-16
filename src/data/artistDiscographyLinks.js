@@ -94,4 +94,112 @@ const artistDiscographyLinks = {
   "Bentley Rhythm Ace": "https://www.discogs.com/artist/3171-Bentley-Rhythm-Ace",
 };
 
+const batch2ArtistLinks = `
+Bert Jansch|d|363204-Bert-Jansch
+Betty Davis|m|bb17dc42-ecaf-42ca-aa35-b23207573060
+Beyoncé|m|859d0860-d480-4efd-970c-c05d5f1776b8
+Beyoncé feat. Jay-Z|d|8651022-Beyoncé-Feat-Jay-Z
+Bicep|d|1540289-Bicep
+Big Brother and the Holding Company|d|90232-Big-Brother-The-Holding-Company
+Big Daddy Kane|m|8e75d270-4d53-4a4a-bc14-e3ace37ebd4e
+Bilal|m|260097c7-d628-4a3f-966f-956ea430c0d8
+Bill Evans Trio|m|d0630a08-3b40-4cb4-9f48-7d525262c1f6
+Billie Holiday|d|33589-Billie-Holiday
+Billy Cobham|d|35199-Billy-Cobham
+Billy J. Kramer & The Dakotas|d|347377-Billy-J-Kramer-The-Dakotas
+Billy Paul|m|7e8a2d88-ebed-433c-9971-643a66834835
+Bing Crosby|d|164571-Bing-Crosby
+Biosphere|m|a5ee1ebe-a645-45d2-8319-d101fe62e581
+Björk|d|1373-Björk
+Black Box|d|7289-Black-Box
+Black Flag|m|9941a936-196a-4a62-ae53-a69cbc33f20e
+Black Rascals|d|2946-Black-Rascals
+Black Sabbath|d|144998-Black-Sabbath
+Black Uhuru|d|3924-Black-Uhuru
+Blaze|d|13-Blaze
+Blondie|m|4d2956d1-a3f7-44bb-9a41-67563e1a0c94
+Blood Orange|m|3d254f1e-7d18-431b-baeb-68e57695dfdb
+Blue Magic|d|31767-Blue-Magic
+Blue Öyster Cult|d|251884-Blue-Öyster-Cult
+Blur|m|ba853904-ae25-4ebb-89d6-c44cfbd71bd2
+Boards of Canada|d|307-Boards-Of-Canada
+Bob Dylan|m|72c536dc-7137-4477-a521-567eeb840fa8
+Bob Marley & The Wailers|d|21764-Bob-Marley-The-Wailers
+Bob Sinclar|d|224-Bob-Sinclar
+Bobby Brown|m|d11f9c07-0eac-4a1f-a443-19cd0f63d5f0
+Bobby Womack|m|48e78462-2f0b-4a1a-9fa4-0585e2991e80
+Bonobo|d|8708-Bonobo
+Boogie Down Productions|d|17101-Boogie-Down-Productions
+Boston|m|0d8b0d50-e4cf-4da4-965d-f24c58ec3268
+Bowery Electric|d|3800-Bowery-Electric
+Boy George|d|21032-Boy-George
+Boys Noize|d|243374-Boys-Noize
+Brandy|d|31751-Brandy-2
+Breeder|m|601d4855-f659-4d15-b378-086cb8716bd1
+Brian Bennett|d|108870-Brian-Bennett
+Brian Eno|m|ff95eb47-41c4-4f7f-a104-cdc30f02e872
+Britney Spears|d|15687-Britney-Spears
+Bronski Beat|d|11419-Bronski-Beat
+Bryan Adams|m|4dbf5678-7a31-406a-abbe-232f8ac2cd63
+Bud Powell|d|29992-Bud-Powell
+Buddy Guy|d|259799-Buddy-Guy
+Buena Vista Social Club|d|227677-Buena-Vista-Social-Club
+Buffalo Daughter|d|3881-Buffalo-Daughter
+Bugge Wesseltoft|d|8289-Bugge-Wesseltoft
+Built to Spill|m|3ac482b8-1494-4071-a0e9-f192f9d2c2b0
+Bunny Wailer|d|149561-Bunny-Wailer
+Burning Spear|m|16dad944-c492-43dd-88ed-e0b7ac520c40
+Buzzcocks|m|31e9c35b-2675-4632-8596-f9bd9286f6c8
+Byron Stingily|d|11004-Byron-Stingily
+C+C Music Factory|d|16622-C-C-Music-Factory
+CCCP Fedeli alla linea|d|256245-CCCP-Fedeli-Alla-Linea
+CHVRCHES|m|6a93afbb-257f-4166-b389-9f2a1e5c5df8
+CJ Bolland|m|8ab9a62f-b8e6-4719-8e0a-0f9ea94b1955
+Cabaret Voltaire|d|11202-Cabaret-Voltaire
+Caetano Veloso|d|83763-Caetano-Veloso
+Calibro 35|d|1332277-Calibro-35
+Camel|m|94b7a39b-f3cc-4796-90dd-b1786a62877e
+Cameo|d|1835-Cameo
+Canned Heat|d|269094-Canned-Heat
+Capsule|d|488189-Capsule-4
+Caravan|d|66999-Caravan
+Carl Craig|m|6732e9f3-5f24-4ba4-aef1-a2a49442b96b
+Carly Rae Jepsen|d|2710776-Carly-Rae-Jepsen
+Caroline Polachek|d|1269616-Caroline-Polachek
+Cartola|d|177048-Cartola
+Casino Royale|m|6f8257f8-a7f9-40d1-a313-2dd668faac1d
+Casiopea|m|b2853652-db74-44b7-b4b3-ffb72af6b910
+Cassius|m|256160e8-37fd-4f8c-a3ef-530ebbaa4b3d
+Cast|m|a6f84719-b3da-42f0-be81-8fe03545efed
+Caterina Caselli|d|924805-Caterina-Caselli
+Catherine Wheel|m|37e3dd97-73f9-4c69-b50d-0c0e3c47c40c
+CeCe Peniston|m|16b3f3fc-6c76-4fec-8f0b-9fa9a4ec8e91
+CeCe Rogers|m|b9c5ad5d-8fb6-4f69-a7af-5b5380d4c6d6
+Central Line|m|22c68616-1c32-4888-a6c4-df818cc58b2b
+Cerrone|d|16127-Cerrone
+Cesária Évora|m|ceafdf2f-bc18-4b99-8c71-d1834b0065c3
+Chairlift|d|1250675-Chairlift
+Chaka Khan|d|17035-Chaka-Khan
+Change|m|9974d324-3d58-4f93-812b-41eb3ca75eed
+Chapterhouse|d|5084-Chapterhouse
+Charles Aznavour|d|339220-Charles-Aznavour
+Charles Mingus|m|f3b8e107-abe8-4743-b6a3-4a4ee995e71f
+Charli xcx|m|260b6184-8828-48eb-945c-bc4cb6fc34ca
+Charlie|d|553019-Charlie-13
+Charlie Parker|m|c7356af9-9ea6-4a78-a55b-c73775716312
+Cheap Trick|m|9f870653-72b0-4c6d-8c59-439a95963e09
+Cheryl Lynn|d|33200-Cheryl-Lynn
+Chet Baker|d|31617-Chet-Baker
+Chez Damier|d|1552-Chez-Damier
+Chic|m|a4ed036b-5f18-439c-b1e1-96d205bab255
+Chicks on Speed|m|4da58f86-c7fb-4837-9ef5-423f122d2d15
+Chico Buarque|d|312060-Chico-Buarque
+`.trim().split("\n").map((row) => row.split("|"));
+
+for (const [name, source, id] of batch2ArtistLinks) {
+  artistDiscographyLinks[name] = source === "d"
+    ? `https://www.discogs.com/artist/${id}`
+    : `https://musicbrainz.org/artist/${id}`;
+}
+
 export default artistDiscographyLinks;
