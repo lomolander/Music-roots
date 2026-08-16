@@ -2,6 +2,7 @@ import { scenarioBlock01 } from "./scenarioBlock01.js";
 import { scenarioBlock02 } from "./scenarioBlock02.js";
 import { scenarioBlock03 } from "./scenarioBlock03.js";
 import { scenarioRemaining } from "./scenarioRemaining.js";
+import { scenarioGlobalCorrections } from "./scenarioGlobalCorrections.js";
 
 const specialScenarios = {
   "Blue Monday": "Nel 1983 Manchester portava ancora le ferite della deindustrializzazione: fabbriche chiuse e disoccupazione convivevano con la vitalità di Factory Records e dell’Haçienda. Il club, inaugurato l’anno precedente, stava trasformando il post-punk in una nuova cultura del ballo. Blue Monday nacque dentro questo passaggio, mentre drum machine e sequencer rendevano possibile un’elettronica indipendente capace di viaggiare ben oltre il Nord dell’Inghilterra.",
@@ -167,7 +168,7 @@ void countryContexts;
 const wordCount = (value) => value.trim().split(/\s+/).length;
 
 const scenarioOverrideFor = (track) =>
-  scenarioBlock01[track.id] || scenarioBlock02[track.id] || scenarioBlock03[track.id] || scenarioRemaining[track.id] || externalScenarioOverrides[track.id] || "";
+  scenarioGlobalCorrections[track.id] || scenarioBlock01[track.id] || scenarioBlock02[track.id] || scenarioBlock03[track.id] || scenarioRemaining[track.id] || externalScenarioOverrides[track.id] || "";
 
 const isEditorialScenario = (value) => wordCount(String(value ?? "")) > 18;
 

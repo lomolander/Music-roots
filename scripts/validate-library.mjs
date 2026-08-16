@@ -26,6 +26,43 @@ const validUrl = (value) => {
   try { return ["https:", "http:"].includes(new URL(value).protocol); } catch { return false; }
 };
 
+const scenarioBoilerplate = /la scheda|senza attribuire intenzioni|si colloca nel contesto|documenta la scena|documenta la stagione|paesaggio culturale|pubblicazione originale indicata|guardare oltre le classifiche/i;
+const scenarioContextSignals = [
+  /guerra|politic|governo|geopolit|dittatur|democraz/i,
+  /protest|contest|diritt|censur|segregaz|scioper|conflitt|colonial/i,
+  /scena|circuito|rete culturale|ecosistema/i,
+  /club|locale|rave|discotec|piper|haçienda|sound system|block party|pista/i,
+  /festival|concerto|tour|chiesa|teatro|palcoscenic/i,
+  /radio|emittent|programmazion/i,
+  /television|\btv\b|mtv|bbc|videoclip/i,
+  /stampa|rivist|giornal|fanzine|media/i,
+  /moda|costume|abbigliament|styling|capelli|minigonna/i,
+  /giovan|adolescent|generazion|controcultura|sottocultur/i,
+  /identità|femmin|queer|comunit|rappresentazion|emancipazion/i,
+  /tecnolog|digitale|internet|mp3|streaming|piattaform|social network|software/i,
+  /industria|discografic|etichett|major|mercato|promozion/i,
+  /vinil|45 giri|jukebox|sintetizz|campionator|casset|studio|formato|download|home studio/i,
+  /urban|città|quartier|migraz|deindustrial|spazi condivisi/i,
+  /disoccup|econom|crisi|global|turismo|consum|precariet|trasformazion social/i,
+];
+const scenarioStopwords = new Set("a ad al alla alle allo anche che con da dal dalla delle dello di e era fra gli i il in la le lo ma nel nella nelle non o per più si tra un una uno mentre quando come questa questo quella quello".split(" "));
+const scenarioTokens = (value) => normalize(value).split(" ").filter(Boolean);
+const scenarioDistinctive = (tokens) => tokens.filter((token) => token.length > 3 && !scenarioStopwords.has(token));
+const scenarioNgrams = (tokens, size = 8) => {
+  const grams = [];
+  for (let index = 0; index <= tokens.length - size; index += 1) {
+    const slice = tokens.slice(index, index + size);
+    const historicalFact = slice.some((token) => /^\d{4}$/.test(token) || /^(guerra|falkland|vietnam|chernobyl|kennedy|luther|king|watergate|bicentenario|referendum|cambogia|kent|autunno|criminal|justice|disoccupazione|cessate|ira)$/.test(token));
+    if (!historicalFact && scenarioDistinctive(slice).length >= Math.min(4, size)) grams.push(slice.join(" "));
+  }
+  return grams;
+};
+const scenarioTrigrams = (value) => new Set(scenarioNgrams(scenarioTokens(value), 3));
+const jaccard = (left, right) => {
+  const intersection = [...left].filter((item) => right.has(item)).length;
+  return intersection / Math.max(1, left.size + right.size - intersection);
+};
+
 for (const track of tracks) {
   for (const field of required) if (track[field] === undefined || track[field] === null || track[field] === "") errors.push(`ID ${track.id ?? "?"}: campo obbligatorio ${field} mancante`);
   if (!Number.isInteger(track.id) || track.id < 1) errors.push(`ID non valido: ${track.id}`);
@@ -56,6 +93,40 @@ for (const track of tracks) {
     }
     if (!track.influences.length || !track.similarArtists.length) errors.push(`ID ${track.id}: influenze o artisti simili mancanti`);
     if (!track.artwork && !track.cover) warnings.push(`ID ${track.id}: copertina non disponibile da un match verificato`);
+  }
+}
+
+const scenarioExact = new Map();
+const scenarioEightWords = new Map();
+const scenarioFingerprints = [];
+for (const track of tracks) {
+  const scenario = String(track.scenario ?? "").trim();
+  const tokens = scenarioTokens(scenario);
+  const contextSignals = scenarioContextSignals.filter((pattern) => pattern.test(scenario)).length;
+  if (tokens.length < 25) errors.push(`Scenario ID ${track.id}: troppo breve o brano-centrico (${tokens.length} parole)`);
+  // I segnali lessicali coprono contesti diversi; un testo ampio può esprimerli
+  // con lessico non previsto, quindi viene bloccato solo se è anche molto conciso.
+  if (contextSignals === 0 && tokens.length < 35) errors.push(`Scenario ID ${track.id}: manca contesto storico-culturale esterno sufficiente`);
+  if (scenarioBoilerplate.test(scenario)) errors.push(`Scenario ID ${track.id}: boilerplate editoriale vietato`);
+
+  const exactKey = normalize(scenario);
+  const exactPrevious = scenarioExact.get(exactKey);
+  if (exactPrevious) errors.push(`Scenario duplicato esatto: ID ${exactPrevious.id} | ID ${track.id}`);
+  else scenarioExact.set(exactKey, track);
+
+  for (const gram of scenarioNgrams(tokens)) {
+    const previous = scenarioEightWords.get(gram);
+    if (previous && previous.id !== track.id) errors.push(`Scenari ID ${previous.id} | ID ${track.id}: sequenza narrativa ripetuta >=8 parole: “${gram}”`);
+    else scenarioEightWords.set(gram, track);
+  }
+  scenarioFingerprints.push({ track, grams: scenarioTrigrams(scenario) });
+}
+
+for (let leftIndex = 0; leftIndex < scenarioFingerprints.length; leftIndex += 1) {
+  const left = scenarioFingerprints[leftIndex];
+  for (let rightIndex = leftIndex + 1; rightIndex < scenarioFingerprints.length; rightIndex += 1) {
+    const right = scenarioFingerprints[rightIndex];
+    if (jaccard(left.grams, right.grams) >= 0.82) errors.push(`Scenari quasi identici: ID ${left.track.id} | ID ${right.track.id}`);
   }
 }
 
