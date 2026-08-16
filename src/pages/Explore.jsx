@@ -222,7 +222,7 @@ function Detail({ view, data, navigate, openTrack, onOpenAtlasCity }) {
     cityLinks = artistCities.length && onOpenAtlasCity
       ? <LinkSection title="Città" items={artistCities} label={(item) => item.name} onClick={(item) => onOpenAtlasCity(item.id)} />
       : null;
-    links = <><LinkSection title="Generi" items={artist.genres.map((name) => [...data.genreById.values()].find((genre) => genre.name === name)).filter(Boolean)} label={(item) => item.name} onClick={(item) => navigate("genre", item.id)} />{artist.subgenres?.length ? <LinkSection title="Sottogeneri" items={artist.subgenres} label={(item) => item} onClick={(item) => navigate("subgenre", item)} /> : null}</>;
+    links = <>{artist.discographyUrl ? <a className="inline-link" href={artist.discographyUrl} target="_blank" rel="noopener noreferrer">Discografia completa ↗</a> : null}<LinkSection title="Generi" items={artist.genres.map((name) => [...data.genreById.values()].find((genre) => genre.name === name)).filter(Boolean)} label={(item) => item.name} onClick={(item) => navigate("genre", item.id)} />{artist.subgenres?.length ? <LinkSection title="Sottogeneri" items={artist.subgenres} label={(item) => item} onClick={(item) => navigate("subgenre", item)} /> : null}</>;
   }
 
   return (

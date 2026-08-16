@@ -4,6 +4,7 @@ import { buildArtistBiography } from "../artistBiography.js";
 import { musicAtlasCities } from "../musicAtlas.js";
 import { rockArtistSubgenres } from "../libraryConfig.js";
 import artistContemporaryItaly from "../artistContemporaryItaly.js";
+import artistDiscographyLinks from "../artistDiscographyLinks.js";
 
 const artists = [...new Set(tracks.map((track) => track.artist))].sort().map((name) => {
   const artistTracks = tracks.filter((track) => track.artist === name);
@@ -21,6 +22,7 @@ const artists = [...new Set(tracks.map((track) => track.artist))].sort().map((na
     activeYears: metadata?.activeYears ?? "",
     description: metadata?.description ?? "",
     biography: buildArtistBiography({ name, genres, tracks: artistTracks, biography: metadata?.biography, nationality: artistTracks.find((track) => track.paese)?.paese ?? "" }),
+    discographyUrl: artistDiscographyLinks[name] ?? "",
     similarArtists: [...new Set([...(metadata?.relatedArtists ?? []), ...artistTracks.flatMap((track) => track.similarArtists ?? [])])],
     relatedArtists: metadata?.relatedArtists ?? [],
     relatedArtistIds: (metadata?.relatedArtists ?? []).map(entityId),
