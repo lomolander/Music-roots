@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
-import { ChevronRight, Disc3, ListMusic, Music, Pause, Play, Search, SkipBack, SkipForward, Tags, Users } from "lucide-react";
+import { ChevronRight, ListMusic, Music, Pause, Play, Search, SkipBack, SkipForward, Tags, Users } from "lucide-react";
 
 import tracks from "../data/questions.js";
-import { albums, artists, genres } from "../data/entities/index.js";
+import { artists, genres } from "../data/entities/index.js";
 import ArtworkFallback from "../components/ArtworkFallback.jsx";
 import { essentialPlaylistDescriptions, essentialPlaylists, exploreGenreNames, subgenreDescriptions } from "../data/libraryConfig.js";
 import { musicAtlasCities } from "../data/musicAtlas.js";
@@ -12,7 +12,6 @@ const tabs = [
   ["genres", "Generi", Tags],
   ["subgenres", "Sottogeneri", Music],
   ["artists", "Artisti", Users],
-  ["albums", "Album", Disc3],
   ["playlists", "Essentials", ListMusic],
 ];
 
@@ -77,7 +76,6 @@ function Explore({ initialView = null, onBack, exitOnInitialBack = false, onOpen
   const data = useMemo(() => {
     const trackById = new Map(tracks.map((track) => [track.id, track]));
     const artistById = new Map(artists.map((artist) => [artist.id, artist]));
-    const albumById = new Map(albums.map((album) => [album.id, album]));
     const genreById = new Map(genres.map((genre) => [genre.id, genre]));
     const artworkByGenre = new Map(genres.map((genre) => [
       genre.name,
@@ -98,7 +96,7 @@ function Explore({ initialView = null, onBack, exitOnInitialBack = false, onOpen
         viewId: genre?.id ?? playlist.id,
       };
     }).sort((left, right) => alphabeticalCollator.compare(left.name, right.name));
-    return { trackById, artistById, albumById, genreById, artworkByGenre, subgenres, essentials };
+    return { trackById, artistById, genreById, artworkByGenre, subgenres, essentials };
   }, []);
 
   const navigate = (type, id) => {
@@ -132,7 +130,7 @@ function Explore({ initialView = null, onBack, exitOnInitialBack = false, onOpen
           <section className="explore-intro">
             <p className="eyebrow">ARCHIVIO MUSICALE</p>
             <h1>Esplora</h1>
-            <p>Naviga tra generi, protagonisti, album e playlist senza uscire dalla libreria Music Roots.</p>
+            <p>Naviga tra generi, protagonisti e playlist senza uscire dalla libreria Music Roots.</p>
           </section>
 
           <nav className="explore-tabs" aria-label="Categorie dell'archivio">
@@ -157,9 +155,6 @@ function Explore({ initialView = null, onBack, exitOnInitialBack = false, onOpen
             ))}
             {tab === "artists" && artists.filter((artist) => visible(artist.name)).map((artist) => (
               <ArchiveButton key={artist.id} image={artist.image} title={artist.name} meta={`${artist.trackIds.length} brani · ${artist.genres.join(", ")}`} onClick={() => navigate("artist", artist.id)} />
-            ))}
-            {tab === "albums" && albums.filter((album) => visible(`${album.title} ${album.artist}`)).map((album) => (
-              <ArchiveButton key={album.id} image={album.cover} title={album.title} meta={`${album.artist} · ${album.year}`} onClick={() => navigate("album", album.id)} />
             ))}
             {tab === "playlists" && data.essentials.filter((item) => visible(item.name)).map((item) => (
               <ArchiveButton key={item.key} image={item.image} title={`Essenziali: ${item.name}`} meta={essentialPlaylistDescriptions[item.name]} onClick={() => navigate(item.viewType, item.viewId)} />
@@ -203,7 +198,6 @@ function Detail({ view, data, navigate, openTrack, onOpenAtlasCity }) {
     links = view.type === "genre" && (
       <>
         <LinkSection title="Artisti" items={[...new Set(itemTracks.map((track) => track.artistId))].map((id) => data.artistById.get(id)).filter(Boolean)} label={(item) => item.name} onClick={(item) => navigate("artist", item.id)} />
-        <LinkSection title="Album" items={[...new Set(itemTracks.map((track) => track.albumId))].map((id) => data.albumById.get(id)).filter(Boolean)} label={(item) => `${item.title} · ${item.artist}`} onClick={(item) => navigate("album", item.id)} />
         <LinkSection title="Sottogeneri" items={[...new Set(itemTracks.map((track) => track.subgenre).filter(Boolean))]} label={(item) => item} onClick={(item) => navigate("subgenre", item)} />
         <button className="inline-link essentials-cta" type="button" onClick={() => navigate("playlist", genre.id)}>Ascolta Essentials →</button>
       </>
@@ -228,14 +222,7 @@ function Detail({ view, data, navigate, openTrack, onOpenAtlasCity }) {
     cityLinks = artistCities.length && onOpenAtlasCity
       ? <LinkSection title="Città" items={artistCities} label={(item) => item.name} onClick={(item) => onOpenAtlasCity(item.id)} />
       : null;
-    links = <><LinkSection title="Generi" items={artist.genres.map((name) => [...data.genreById.values()].find((genre) => genre.name === name)).filter(Boolean)} label={(item) => item.name} onClick={(item) => navigate("genre", item.id)} />{artist.subgenres?.length ? <LinkSection title="Sottogeneri" items={artist.subgenres} label={(item) => item} onClick={(item) => navigate("subgenre", item)} /> : null}<LinkSection title="Album" items={[...new Set(itemTracks.map((track) => track.albumId))].map((id) => data.albumById.get(id)).filter(Boolean)} label={(item) => `${item.title} · ${item.year}`} onClick={(item) => navigate("album", item.id)} /></>;
-  } else if (view.type === "album") {
-    const album = data.albumById.get(view.id);
-    if (!album) return null;
-    title = album.title;
-    itemTracks = album.trackIds.map((id) => data.trackById.get(id)).filter(Boolean);
-    description = album.description;
-    links = <><button className="inline-link" type="button" onClick={() => navigate("artist", album.artistId)}>{album.artist} →</button><p className="detail-meta">{album.year} · {itemTracks.map((track) => track.genre).filter((value, index, list) => list.indexOf(value) === index).join(", ")}</p></>;
+    links = <><LinkSection title="Generi" items={artist.genres.map((name) => [...data.genreById.values()].find((genre) => genre.name === name)).filter(Boolean)} label={(item) => item.name} onClick={(item) => navigate("genre", item.id)} />{artist.subgenres?.length ? <LinkSection title="Sottogeneri" items={artist.subgenres} label={(item) => item} onClick={(item) => navigate("subgenre", item)} /> : null}</>;
   }
 
   return (
@@ -599,7 +586,6 @@ function TrackDetail({ track, data, navigate }) {
   const [failedArtwork, setFailedArtwork] = useState(false);
   if (!track) return null;
   const artist = data.artistById.get(track.artistId);
-  const album = data.albumById.get(track.albumId);
   const genre = data.genreById.get(track.genreId);
   const detailArtwork = /mzstatic\.com/.test(track.artwork)
     ? track.artwork.replace(/\/\d+x\d+bb\.(jpg|png)$/i, "/600x600bb.$1")
@@ -609,7 +595,7 @@ function TrackDetail({ track, data, navigate }) {
       {detailArtwork && !failedArtwork ? <img className="track-cover" src={detailArtwork} alt={track.artworkType === "editorial" ? `Artwork editoriale Music Roots per ${track.title}` : track.album ? `Copertina di ${track.album}` : `Copertina di ${track.title}`} onError={() => setFailedArtwork(true)} /> : <ArtworkFallback className="track-cover" title={track.title} artist={track.artist} />}
       <p className="eyebrow">SCHEDA DEL BRANO</p><h1>{track.title}</h1>
       <button className="inline-link" type="button" onClick={() => navigate("artist", artist.id)}>{track.artist} →</button>
-      <p className="detail-meta">{track.year}{album ? <> · <button type="button" onClick={() => navigate("album", album.id)}>{track.album}</button></> : null}</p>
+      <p className="detail-meta">{[track.year, track.album].filter(Boolean).join(" · ")}</p>
       <LinkSection title="Classificazione" items={[genre, track.subgenre].filter(Boolean)} label={(item) => typeof item === "string" ? item : item.name} onClick={(item) => typeof item === "string" ? navigate("subgenre", item) : navigate("genre", item.id)} />
       <section className="track-editorial">
         {track.musicalCharacteristics ? <><h2>Caratteristiche musicali</h2><p>{track.musicalCharacteristics}</p><h2>Significato</h2><p>{track.meaning}</p></> : <><h2>Curiosità</h2><p>{track.curiosity}</p><h2>Significato</h2><p>{track.meaning}</p></>}
