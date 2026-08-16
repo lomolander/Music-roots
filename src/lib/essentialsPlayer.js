@@ -109,23 +109,35 @@ export async function resolvePreviewSource(track, key, fetchImpl = fetch) {
   const queries = previewSearchQueries(track);
   let results = [];
   let searchError = null;
+  const stored = storedSource(track, key);
+  if (key === "apple") {
+    return {
+      key,
+      source: "Apple Music",
+      query: queries.apple,
+      result: stored,
+      url: stored?.previewUrl ?? "",
+      rejected: [],
+      searchError: null,
+      usedStoredResult: Boolean(stored),
+    };
+  }
   try {
     if (key === "deezer") {
-      const url = `https://api.deezer.com/search?q=${encodeURIComponent(queries.deezer)}&limit=25`;
+      if (track?.deezer?.status !== "verified" || !track?.deezer?.trackId) {
+        return { key, source: "Deezer", query: queries.deezer, result: null, url: "", rejected: [], searchError: null, usedStoredResult: false };
+      }
+      const params = new URLSearchParams({ trackId: String(track.id) });
+      const url = `/.netlify/functions/deezer-preview?${params}`;
       const payload = await fetchJson(url, fetchImpl);
-      results = (payload.data ?? []).map((item) => ({ id: item.id, title: item.title, artist: item.artist?.name, album: item.album?.title, previewUrl: item.preview }));
-    } else {
-      const params = new URLSearchParams({ term: queries.apple, country: "IT", media: "music", entity: "song", limit: "25" });
-      const payload = await fetchJson(`https://itunes.apple.com/search?${params}`, fetchImpl);
-      results = (payload.results ?? []).map((item) => ({ id: item.trackId, title: item.trackName, artist: item.artistName, album: item.collectionName, previewUrl: item.previewUrl }));
+      results = payload.previewUrl ? [{ id: payload.trackId, title: payload.trackName, artist: payload.artistName, album: payload.albumName, previewUrl: payload.previewUrl }] : [];
     }
   } catch (error) {
     searchError = error instanceof Error ? `${error.name}: ${error.message}` : String(error);
   }
 
   const remoteMatch = choosePreviewResult(track, results);
-  const stored = storedSource(track, key);
-  const chosen = remoteMatch ?? (stored && previewResultMatches(track, stored) ? stored : null);
+  const chosen = remoteMatch;
   const rejected = results.filter((result) => validPreview(result.previewUrl) && !previewResultMatches(track, result));
   return {
     key,
@@ -141,19 +153,16 @@ export async function resolvePreviewSource(track, key, fetchImpl = fetch) {
 
 export const previewSources = (track) => {
   if (!track) return [];
-  return ["deezer", "apple"].map((key) => {
+  const fresh = track.essentialPreview?.url ? [{ key: track.essentialPreview.key, url: track.essentialPreview.url, source: track.essentialPreview.source }] : [];
+  return ["apple", "deezer"].map((key) => {
+    const resolved = fresh.find((item) => item.key === key);
+    if (resolved) return resolved;
     const result = storedSource(track, key);
     return result ? { key, url: result.previewUrl, source: key === "deezer" ? "Deezer" : "Apple Music" } : null;
   }).filter(Boolean);
 };
 
 export const essentialPreviewStatus = (track) => {
-  const deezerValid = validPreview(track?.deezer?.previewUrl) && (
-    track?.deezer?.previewValidated === true ||
-    track?.deezer?.status === "verified" ||
-    track?.deezer?.previewValidationStatus === "verified"
-  );
-  if (deezerValid) return { playable: true, source: "Deezer", reason: "" };
   const appleUrl = track?.preview || track?.applePreviewUrl;
   const appleValid = validPreview(appleUrl) && (
     track?.previewValidated === true ||
@@ -161,6 +170,7 @@ export const essentialPreviewStatus = (track) => {
     track?.previewValidationStatus === "verified"
   );
   if (appleValid) return { playable: true, source: "Apple Music", reason: "" };
+  if (track?.deezer?.status === "verified" && track?.deezer?.trackId) return { playable: true, source: "Deezer", reason: "" };
   return { playable: false, source: null, reason: "assenza di preview valida su Deezer e Apple Music" };
 };
 
@@ -209,7 +219,7 @@ export function validateEssentialTrack(track, options = {}) {
   if (!options.force && essentialValidationCache.has(cacheKey)) return essentialValidationCache.get(cacheKey);
   const validation = (async () => {
     const attempts = [];
-    for (const key of ["deezer", "apple"]) {
+    for (const key of ["apple", "deezer"]) {
       const resolved = await resolvePreviewSource(track, key, options.fetchImpl ?? globalThis.fetch);
       const audioTest = resolved.url
         ? await validateAudioPreview(resolved.url, options)

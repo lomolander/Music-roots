@@ -398,7 +398,7 @@ function EssentialsPlayer({ tracks: playlist, openTrack, onInvalidate }) {
     if (!current || session !== sessionRef.current) return false;
     let rejectedTotal = rejectedSoFar;
     let lastReason = reason;
-    for (const key of ["deezer", "apple"]) {
+    for (const key of ["apple", "deezer"]) {
       if (attemptedRef.current.has(key)) continue;
       attemptedRef.current.add(key);
       setLoading(true);
@@ -456,7 +456,7 @@ function EssentialsPlayer({ tracks: playlist, openTrack, onInvalidate }) {
     setPlaying(false);
     setPreview(null);
     setPlayerError(`${type}${detail ? `: ${detail}` : ""}`);
-    debugTrack(current, { fonteEffettiva: failed.source, tipoErrore: type, dettaglioErrore: detail, azione: failed.key === "deezer" ? "fallback Apple Music" : "fonti esaurite" });
+    debugTrack(current, { fonteEffettiva: failed.source, tipoErrore: type, dettaglioErrore: detail, azione: failed.key === "apple" ? "fallback Deezer" : "fonti esaurite" });
     void tryNextSource(`${failed.source}: ${type}${detail ? ` (${detail})` : ""}`, sessionRef.current, failed.rejectedTotal);
   }, [current, debugTrack, preview, tryNextSource]);
 
@@ -486,7 +486,7 @@ function EssentialsPlayer({ tracks: playlist, openTrack, onInvalidate }) {
   useEffect(() => {
     const session = ++sessionRef.current;
     clearTimeout(stalledTimerRef.current);
-    attemptedRef.current = new Set(current?.essentialPreview?.key === "apple" ? ["deezer"] : []);
+    attemptedRef.current = new Set();
     switchingSourceRef.current = true;
     const audio = audioRef.current;
     if (audio) {

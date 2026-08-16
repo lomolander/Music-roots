@@ -1,4 +1,5 @@
 import applePreviewMetadata from "../apple-preview-metadata.js";
+import deezerPreviewMetadata from "../deezer-preview-metadata.js";
 import editorialArtwork from "../editorial-artwork.js";
 import youtubeLinkMetadata from "../youtube-link-metadata.js";
 import { essentialPlaylists } from "../libraryConfig.js";
@@ -215,6 +216,7 @@ const discographicCorrections = {
 const tracks = Object.entries(trackModules).flatMap(([sourceModule, moduleTracks]) =>
   moduleTracks.map((track) => {
   const apple = applePreviewMetadata[track.id] ?? {};
+  const deezer = deezerPreviewMetadata[track.id] ?? null;
   const rawSubgenre = track.subgenre || track.sottogenere || "";
   const subgenre = canonicalSubgenre(track, rawSubgenre);
   const meaning = track.meaning || track.significato || "";
@@ -243,6 +245,7 @@ const tracks = Object.entries(trackModules).flatMap(([sourceModule, moduleTracks
     correctAnswer: track.correctAnswer || track.title,
     answers: track.answers?.length ? track.answers : [track.title],
     ...apple,
+    deezer: deezer ? { ...deezer, previewUrl: "" } : editorialDefaults.deezer,
     ...revisedEditorial,
     meaning: revisedEditorial.meaning || meaning || editorialMeaning(track, ""),
     ...correctedEditorial,

@@ -29,7 +29,7 @@ for (const name of testedPlaylists) {
   for (const track of items) {
     const candidates = previewSources(track);
     assert.deepEqual(candidates.map((item) => item.key), candidates.some((item) => item.key === "deezer")
-      ? (candidates.some((item) => item.key === "apple") ? ["deezer", "apple"] : ["deezer"])
+      ? (candidates.some((item) => item.key === "apple") ? ["apple", "deezer"] : ["deezer"])
       : (candidates.some((item) => item.key === "apple") ? ["apple"] : []));
   }
 }
@@ -45,10 +45,10 @@ const removedEssentials = checkedEssentials.filter((track) => !isEssentialPlayab
 const appleUrl = "https://audio.example.test/apple.m4a";
 const deezerUrl = "https://audio.example.test/deezer.mp3";
 const sources = { preview: appleUrl, deezer: { previewUrl: deezerUrl } };
-assert.deepEqual(previewFor(sources), { key: "deezer", url: deezerUrl, source: "Deezer" });
-assert.deepEqual(previewFor(sources, new Set(["deezer"])), { key: "apple", url: appleUrl, source: "Apple Music" });
+assert.deepEqual(previewFor(sources), { key: "apple", url: appleUrl, source: "Apple Music" });
+assert.deepEqual(previewFor(sources, new Set(["apple"])), { key: "deezer", url: deezerUrl, source: "Deezer" });
 assert.equal(previewFor(sources, new Set(["deezer", "apple"])), null);
-assert.deepEqual(previewSources(sources).map((item) => item.key), ["deezer", "apple"]);
+assert.deepEqual(previewSources(sources).map((item) => item.key), ["apple", "deezer"]);
 assert.equal(normalizePreviewLookup("Song (2011 Remastered) - Radio Edit feat. Guest"), "song");
 assert.equal(previewSearchTerm({ title: "Song (Remastered)", artist: "Artist feat. Guest", album: "The Album" }), "Song Artist The Album".toLowerCase());
 
@@ -68,14 +68,15 @@ assert.equal(previewResultMatches(requested, wrongResult), false);
 assert.equal(previewResultMatches(requested, exactResult), true);
 assert.equal(choosePreviewResult(requested, [wrongResult, exactResult])?.id, 2);
 
-const deezerResolved = await resolvePreviewSource(requested, "deezer", async (url) => ({
+const verifiedDeezerRequest = { ...requested, id: 999, deezer: { trackId: 2, status: "verified" } };
+const deezerResolved = await resolvePreviewSource(verifiedDeezerRequest, "deezer", async (url) => ({
   ok: true,
-  json: async () => ({ data: url.includes("api.deezer.com") ? [{ id: 2, title: "Song", artist: { name: "Artist" }, album: { title: "The Album" }, preview: deezerUrl }] : [] }),
+  json: async () => ({ trackId: 2, trackName: "Song", artistName: "Artist", albumName: "The Album", previewUrl: deezerUrl }),
 }));
 assert.equal(deezerResolved.url, deezerUrl);
-assert.equal(deezerResolved.query.includes("album:"), true);
+assert.equal(deezerResolved.usedStoredResult, false);
 
-const noDeezer = await resolvePreviewSource(requested, "deezer", async () => ({ ok: true, json: async () => ({ data: [{ id: 1, title: "Different Song", artist: { name: "Artist" }, album: { title: "The Album" }, preview: deezerUrl }] }) }));
+const noDeezer = await resolvePreviewSource(verifiedDeezerRequest, "deezer", async () => ({ ok: true, json: async () => ({ trackId: 1, trackName: "Different Song", artistName: "Artist", albumName: "The Album", previewUrl: deezerUrl }) }));
 assert.equal(noDeezer.url, "");
 assert.equal(noDeezer.rejected.length, 1);
 
