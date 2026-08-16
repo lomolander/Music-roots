@@ -22,8 +22,36 @@ const includeEditorialArtwork = process.argv.includes("--include-editorial");
 const retryManualArtwork = process.argv.includes("--retry-manual");
 const pass2Mode = process.argv.includes("--pass2");
 const appleAlbumOnly = process.argv.includes("--apple-album-only");
+const directMastersOnly = process.argv.includes("--direct-masters-only");
 const manualArtworkIds = new Set([921, 1176, 1183, 1189, 1199, 1217, 1228, 1229, 1230, 1458, 1468, 1703, 1730, 1757]);
 const musicBrainzUserAgent = "MusicRoots/1.0 (artwork audit; contact: local-development)";
+const directDiscogsMasterByTrackId = new Map(Object.entries({
+  16: [695, "Strings Of Life"],
+  26: [1893120, "Together"],
+  110: [5405, "No UFO's"],
+  174: [20487, "Horizons"],
+  724: [30129, "Doggystyle"],
+  1176: [278976, "Ferry Cross The Mersey"],
+  1217: [63446, "Kings Of The Wild Frontier"],
+  1237: [53198, "Madchester Rave On"],
+  1256: [249750, "Emozioni"],
+  1275: [521913, "Paolo Conte"],
+  1297: [363964, "Mina"],
+  1314: [182111, "I Maschi"],
+  1484: [965114, "Timely!!"],
+  1492: [473998, "Cobalt Hour"],
+  1495: [431087, "Kyōiku"],
+  1508: [3719037, "834.194"],
+  1617: [209416, "Amazing Grace"],
+  1618: [209416, "Amazing Grace"],
+  1629: [134010, "Honeysuckle Rose"],
+  1680: [1181, "Undertow"],
+  1723: [97135, "The Rhythm Of The Night"],
+  1726: [98938, "Finally"],
+  1729: [92381, "Hypnotica"],
+  1752: [66263, "93 'Til Infinity"],
+  1783: [620408, "Cupid Deluxe"],
+}).map(([id, value]) => [Number(id), value]));
 
 const normalize = (value) => String(value ?? "")
   .normalize("NFKD")
@@ -280,6 +308,17 @@ async function findDiscogsMasterArtwork(track, attempts) {
   return null;
 }
 
+async function findDirectDiscogsMasterArtwork(track, attempts) {
+  const direct = directDiscogsMasterByTrackId.get(Number(track.id));
+  if (!direct) return null;
+  const [masterId, verifiedRelease] = direct;
+  const master = await getJson(`https://api.discogs.com/masters/${masterId}`, { "User-Agent": musicBrainzUserAgent, Accept: "application/json" });
+  const image = master?.images?.find((candidate) => candidate.type === "primary") ?? master?.images?.[0];
+  attempts.push({ provider: "Discogs master diretto", query: masterId, release: master?.title ?? verifiedRelease, result: image?.uri ? "candidate" : "no-cover-art" });
+  if (!image?.uri) return null;
+  return { provider: "Discogs master diretto", artworkUrl: image.uri, release: verifiedRelease, discogsReleaseId: masterId, confidence: "verified-direct-master", attempts };
+}
+
 async function findMusicBrainzReleaseGroupArtwork(track, attempts) {
   for (const releaseTitle of releaseCandidates(track)) {
     const query = [`release:\"${mbEscape(releaseTitle)}\"`, `artist:\"${mbEscape(mainArtist(track.artist))}\"`].join(" AND ");
@@ -331,6 +370,9 @@ async function findArtworkPass2(track) {
     const apple = await findAppleAlbumArtwork(track, attempts);
     return apple ?? { rejected: true, attempts };
   }
+  const directDiscogs = await findDirectDiscogsMasterArtwork(track, attempts);
+  if (directDiscogs) return directDiscogs;
+  if (directMastersOnly) return { rejected: true, attempts };
   const discogs = await findDiscogsMasterArtwork(track, attempts);
   if (discogs) return discogs;
   const musicBrainz = await findMusicBrainzReleaseGroupArtwork(track, attempts);
