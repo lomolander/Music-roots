@@ -20,7 +20,7 @@ const artists = [...new Set(tracks.map((track) => track.artist))].sort().map((na
     coordinates: metadata?.coordinates ?? null,
     activeYears: metadata?.activeYears ?? "",
     description: metadata?.description ?? "",
-    biography: metadata?.biography ?? buildArtistBiography({ name, genres, tracks: artistTracks, nationality: artistTracks.find((track) => track.paese)?.paese ?? "" }),
+    biography: buildArtistBiography({ name, genres, tracks: artistTracks, biography: metadata?.biography, nationality: artistTracks.find((track) => track.paese)?.paese ?? "" }),
     similarArtists: [...new Set([...(metadata?.relatedArtists ?? []), ...artistTracks.flatMap((track) => track.similarArtists ?? [])])],
     relatedArtists: metadata?.relatedArtists ?? [],
     relatedArtistIds: (metadata?.relatedArtists ?? []).map(entityId),

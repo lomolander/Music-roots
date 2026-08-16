@@ -6,6 +6,15 @@ import artistBiographyCorrections from "./artistBiographyCorrections.js";
 const sentenceParts = (value) => String(value ?? "").match(/[^.!?]+[.!?]+|[^.!?]+$/g) ?? [];
 const sentenceKey = (value) => value.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/gi, " ").trim().toLowerCase();
 const wordCount = (value) => value.trim().split(/\s+/).filter(Boolean).length;
+const escapeRegExp = (value) => String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const serialOpeningVerbs = [
+  "ha trasformato", "hanno trasformato", "trasformò", "trasformarono",
+  "ha ridefinito", "hanno ridefinito", "ridefinì", "ridefinirono",
+  "ha costruito", "hanno costruito", "costruì", "costruirono",
+  "ha portato", "hanno portato", "portò", "portarono",
+  "ha dato", "hanno dato", "diede", "diedero",
+  "ha reso", "hanno reso", "rese", "resero",
+];
 const genericEvidence = [
   /questa registrazione (?:e|è) stata selezionata/i,
   /la scheda (?:privilegia|documenta|presenta)/i,
@@ -37,8 +46,18 @@ const evidenceBiography = ({ name, tracks }) => {
   return sentences.join(" ");
 };
 
-export const buildArtistBiography = ({ name, tracks }) => {
-  const editorialBiography = artistBiographyCorrections[name] ?? artistExpansionBiographies[name] ?? artistBiographiesEditorial[name];
-  if (editorialBiography) return editorialBiography;
-  return evidenceBiography({ name, tracks });
+const withoutSerialOpening = (name, biography) => {
+  const sentences = sentenceParts(biography).map((sentence) => sentence.trim()).filter(Boolean);
+  if (sentences.length < 2) return biography;
+  const subject = `(?:(?:I|Gli|Le|La|Il|Lo)\\s+)?${escapeRegExp(name)}`;
+  const verbs = serialOpeningVerbs.map(escapeRegExp).join("|");
+  if (!new RegExp(`^${subject}\\s+(?:${verbs})(?=\\s|[,:;.!?]|$)`, "iu").test(sentences[0])) return biography;
+  if (!/^\p{Lu}/u.test(sentences[1])) return biography;
+  return sentences.slice(1).join(" ");
+};
+
+export const buildArtistBiography = ({ name, tracks, biography: suppliedBiography }) => {
+  const editorialBiography = suppliedBiography ?? artistBiographyCorrections[name] ?? artistExpansionBiographies[name] ?? artistBiographiesEditorial[name];
+  const biography = editorialBiography ?? evidenceBiography({ name, tracks });
+  return withoutSerialOpening(name, biography);
 };
