@@ -86,22 +86,18 @@ function Explore({ initialView = null, onBack, exitOnInitialBack = false, onOpen
     const subgenres = [...new Set(tracks.map((track) => track.subgenre).filter(Boolean))]
       .sort((left, right) => left.localeCompare(right, "it"))
       .map((name) => ({ name, tracks: tracks.filter((track) => track.subgenre === name) }));
-    const essentials = [
-      ...genres.filter((genre) => genre.essentialPlaylist).map((genre) => ({
-        key: `genre-${genre.id}`,
-        name: genre.name,
-        image: trackById.get(genre.trackIds.find((id) => trackById.get(id)?.artwork))?.artwork,
-        viewType: "playlist",
-        viewId: genre.id,
-      })),
-      ...subgenres.filter((item) => essentialPlaylists[item.name]?.trackIds?.length).map((item) => ({
-        key: `subgenre-${item.name}`,
-        name: item.name,
-        image: item.tracks.map((track) => track.artwork).find(Boolean),
-        viewType: "subgenre-playlist",
-        viewId: item.name,
-      })),
-    ].sort((left, right) => alphabeticalCollator.compare(left.name, right.name));
+    const essentials = Object.values(essentialPlaylists).map((playlist) => {
+      const genre = genres.find((item) => item.name === playlist.id);
+      return {
+        key: `essential-${playlist.id}`,
+        name: playlist.id,
+        image: playlist.trackIds.map((id) => trackById.get(id)?.artwork).find(Boolean)
+          ?? artworkByGenre.get(playlist.id)
+          ?? "",
+        viewType: genre ? "playlist" : "subgenre-playlist",
+        viewId: genre?.id ?? playlist.id,
+      };
+    }).sort((left, right) => alphabeticalCollator.compare(left.name, right.name));
     return { trackById, artistById, albumById, genreById, artworkByGenre, subgenres, essentials };
   }, []);
 

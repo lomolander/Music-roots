@@ -174,7 +174,27 @@ for (const [name, metadata] of Object.entries(artistContemporaryItaly)) {
   for (const trackTitle of metadata.recommendedTracks) if (!tracks.some((track) => track.artist === name && track.title === trackTitle)) warnings.push(`Scena italiana: brano consigliato non presente nel catalogo (${name} — ${trackTitle})`);
 }
 const curatedPlaylistIds = new Set(["Rock", "Classic Rock", "Psychedelic Rock", "Progressive Rock", "Hard Rock", "Blues Rock", "Glam Rock", "Arena Rock", "J-Pop", "Shibuya-kei"]);
+const normalizedEssentialNames = new Map();
+const essentialIds = new Map();
+const essentialTracklists = new Map();
 for (const playlist of Object.values(essentialPlaylists)) {
+  const normalizedName = normalize(playlist.label.replace(/^Essenziali:\s*/i, ""));
+  const previousName = normalizedEssentialNames.get(normalizedName);
+  if (previousName) errors.push(`Essentials con nome duplicato: ${previousName.label} | ${playlist.label}`);
+  else normalizedEssentialNames.set(normalizedName, playlist);
+
+  const normalizedId = normalize(playlist.id);
+  const previousId = essentialIds.get(normalizedId);
+  if (previousId) errors.push(`Essentials con ID duplicato: ${previousId.id} | ${playlist.id}`);
+  else essentialIds.set(normalizedId, playlist);
+
+  const canonicalTracklist = [...new Set(playlist.trackIds ?? [])].sort((left, right) => left - right).join(",");
+  if (canonicalTracklist) {
+    const previousTracklist = essentialTracklists.get(canonicalTracklist);
+    if (previousTracklist) errors.push(`Essentials con tracklist identica: ${previousTracklist.id} | ${playlist.id}`);
+    else essentialTracklists.set(canonicalTracklist, playlist);
+  }
+
   for (const trackId of playlist.trackIds ?? []) if (!trackIds.has(trackId)) errors.push(`Playlist ${playlist.id}: brano inesistente ${trackId}`);
   if (curatedPlaylistIds.has(playlist.id) && (playlist.trackIds.length < 12 || playlist.trackIds.length > 20)) errors.push(`Playlist ${playlist.id}: deve contenere 12–20 brani`);
 }
