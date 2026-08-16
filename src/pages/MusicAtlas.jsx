@@ -14,9 +14,10 @@ const countries = {
   birmingham: "Regno Unito", canterbury: "Regno Unito", newcastle: "Regno Unito",
   boston: "Stati Uniti", seattle: "Stati Uniti", jacksonville: "Stati Uniti", austin: "Stati Uniti",
   sydney: "Australia", melbourne: "Australia", toronto: "Canada", hannover: "Germania",
-  belfast: "Regno Unito", topeka: "Stati Uniti", tokyo: "Giappone", osaka: "Giappone",
+  belfast: "Regno Unito", dublin: "Irlanda", topeka: "Stati Uniti", tokyo: "Giappone", osaka: "Giappone",
   kyoto: "Giappone", yokohama: "Giappone", hiroshima: "Giappone", kanazawa: "Giappone",
   brescia: "Italia", palermo: "Italia", como: "Italia", siracusa: "Italia",
+  nashville: "Stati Uniti", memphis: "Stati Uniti", "las-vegas": "Stati Uniti", clarksdale: "Stati Uniti", bakersfield: "Stati Uniti",
   geneva: "Svizzera", oxford: "Regno Unito", "vega-baja": "Puerto Rico", portland: "Stati Uniti", veracruz: "Messico",
 };
 
