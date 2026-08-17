@@ -202,4 +202,102 @@ for (const [name, source, id] of batch2ArtistLinks) {
     : `https://musicbrainz.org/artist/${id}`;
 }
 
+const batch3ArtistLinks = `
+Alice|d|3046596
+Chip E.|d|28327
+Christine and the Queens|d|2714640
+Chromatics|d|415506
+Cibo Matto|d|18554
+Cigarettes After Sex|d|3426328
+Clara Nunes|d|342659
+Clark|d|6396
+Class Action|d|3478
+Classix Nouveaux|d|74188
+Cleo Sol|d|1511198
+Clio|d|154990
+Clipse|d|99679
+Cluster|d|40226
+Cocteau Twins|d|12373
+Colapesce|d|2684107
+Colonel Abrams|d|66261
+Commodores|d|38563
+Common|d|14014
+Con Funk Shun|d|78744
+Corduroy|d|28348
+Cornelius|d|3879
+Corona|d|23387
+Cosmic Baby|d|9178
+Cosmo|d|4107285
+Country Joe and the Fish|d|293477
+Craig David|d|12626
+Crass|d|83076
+Crazy P|d|82
+Cream|d|229621
+Creedence Clearwater Revival|d|252102
+Crookers|d|718833
+Crown Heights Affair|d|17958
+Crystal Waters|d|7278
+Culture|d|64683
+Culture Club|d|9706
+Curtis Mayfield|d|17589
+Curve|d|5373
+Cut Copy|d|60466
+Cut La Roc|d|1342
+Cybotron|d|3863
+Cymande|d|59250
+Cymbals|d|461846
+Cyndi Lauper|d|29718
+Cássia Eller|d|1105685
+D'Angelo|d|44944
+D'Bora|d|35126
+D-Train|d|14185
+D.O.P.|d|11055
+DJ Cam|d|776
+DJ Krush|d|996
+DJ Mehdi|d|5170
+DJ Pierre|d|2053
+DJ Shadow|d|219560
+DJ Sprinkles|d|51192
+Daft Punk|d|1289
+Dan Hartman|d|15165
+Dance 2 Trance|d|4762
+Daniel Janin|d|15506
+Dave Clarke|d|1000
+David Bowie|d|10263
+David Ruffin|d|86101
+Davy DMX|d|191375
+Dazz Band|d|198102
+De La Soul|d|4091
+Dead Kennedys|d|239092
+Deadmau5|d|257938
+Dean Martin|d|10533
+Deee-Lite|d|4119
+Deep Purple|d|170355
+Delegation|d|42191
+Dem 2|d|12892
+Demon|d|1091
+Den Harrow|d|19768
+Dennis Brown|d|77811
+Dennis Ferrer|d|3694
+Depeche Mode|d|2725
+Derrick May|d|650
+Destiny's Child|d|22008
+Devo|d|12834
+Dexter Gordon|d|145263
+Dexter Wansel|d|20559
+Diana Ross|d|47742
+Digable Planets|d|48393
+Digitalism|d|261045
+Dik Dik|d|583578
+Dillinja|d|315
+Dimartino|d|2117533
+Dimitri From Paris|d|1060
+`.trim().split("\n").map((row) => row.split("|"));
+
+for (const [name, source, id] of batch3ArtistLinks) {
+  artistDiscographyLinks[name] = source === "d"
+    ? `https://www.discogs.com/artist/${id}`
+    : `https://musicbrainz.org/artist/${id}`;
+}
+
 export default artistDiscographyLinks;
