@@ -3,10 +3,11 @@ import path from "node:path";
 
 import tracks from "../src/data/questions.js";
 import { trackModules } from "../src/data/tracks/index.js";
-import { allowedGenres, essentialPlaylists } from "../src/data/libraryConfig.js";
+import { allowedGenres, essentialPlaylists, essentialPlaylistDescriptions, subgenreDescriptions } from "../src/data/libraryConfig.js";
 import { artists, albums, genres } from "../src/data/entities/index.js";
 import { musicAtlasCities, musicAtlasVenues } from "../src/data/musicAtlas.js";
 import artistContemporaryItaly from "../src/data/artistContemporaryItaly.js";
+import { buildMusicTitleReferences, findUnquotedMusicTitles } from "../src/data/editorialTitleQuotes.js";
 
 const errors = [];
 const warnings = [];
@@ -24,6 +25,23 @@ const GENERIC_GENRES_REQUIRING_SPECIFIC_SUBGENRE = new Set([
 const validUrl = (value) => {
   if (!value) return true;
   try { return ["https:", "http:"].includes(new URL(value).protocol); } catch { return false; }
+};
+
+// Il controllo è volutamente contestuale: considera soltanto titoli presenti
+// nel catalogo e riferimenti accompagnati da indicatori editoriali certi
+// (album, singolo, brano, pubblicazione ecc.), evitando omonimie con persone,
+// luoghi, generi e altre espressioni comuni.
+const musicTitleReferences = buildMusicTitleReferences(tracks, [
+  ...artists.map((artist) => artist.name),
+  ...allowedGenres,
+  ...tracks.map((track) => track.subgenre).filter(Boolean),
+  ...musicAtlasCities.map((city) => city.name),
+  ...musicAtlasVenues.map((venue) => venue.name),
+]);
+const validateEditorialTitles = (scope, text, artist = "") => {
+  for (const finding of findUnquotedMusicTitles(text, musicTitleReferences, artist)) {
+    errors.push(`${scope}: titolo musicale noto senza virgolette (${finding.matched})`);
+  }
 };
 
 const scenarioBoilerplate = /la scheda|senza attribuire intenzioni|si colloca nel contesto|documenta la scena|documenta la stagione|paesaggio culturale|pubblicazione originale indicata|guardare oltre le classifiche/i;
@@ -87,6 +105,9 @@ for (const track of tracks) {
     warnings.push(`ID ${track.id}: contenuti editoriali ${editorialPending ? "da rigenerare" : "incompleti"}`);
   }
   if ((!track.musicalCharacteristics || !track.meaning) && !editorialPending) errors.push(`ID ${track.id}: revisione editoriale v2 incompleta`);
+  for (const field of ["musicalCharacteristics", "meaning", "scenario", "curiosity"]) {
+    validateEditorialTitles(`ID ${track.id} campo ${field}`, track[field], track.artist);
+  }
   if (track.id >= 301) {
     for (const field of ["subgenre", "curiosity", "meaning", "scenario", "essentialPlaylist", "artistId", "genreId"]) {
       if (!track[field]) errors.push(`ID ${track.id}: campo editoriale ${field} mancante`);
@@ -95,6 +116,16 @@ for (const track of tracks) {
     if (!track.artwork && !track.cover) warnings.push(`ID ${track.id}: copertina non disponibile da un match verificato`);
   }
 }
+
+for (const artist of artists) {
+  for (const field of ["biography", "description", "curiosity", "culturalScenario"]) {
+    validateEditorialTitles(`Artista ${artist.name} campo ${field}`, artist[field], artist.name);
+  }
+}
+for (const [name, description] of Object.entries(subgenreDescriptions)) validateEditorialTitles(`Sottogenere ${name}`, description);
+for (const [name, description] of Object.entries(essentialPlaylistDescriptions)) validateEditorialTitles(`Essential ${name}`, description);
+for (const city of musicAtlasCities) validateEditorialTitles(`Atlante città ${city.name}`, city.description);
+for (const venue of musicAtlasVenues) validateEditorialTitles(`Atlante venue ${venue.name}`, venue.description);
 
 const scenarioExact = new Map();
 const scenarioEightWords = new Map();

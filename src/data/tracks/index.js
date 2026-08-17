@@ -4,6 +4,7 @@ import editorialArtwork from "../editorial-artwork.js";
 import youtubeLinkMetadata from "../youtube-link-metadata.js";
 import { essentialPlaylists } from "../libraryConfig.js";
 import { entityId } from "../entityIds.js";
+import { buildMusicTitleReferences, quoteKnownMusicTitles } from "../editorialTitleQuotes.js";
 import editorial001100 from "../editorial/tracks-001-100.js";
 import editorial101200 from "../editorial/tracks-101-200.js";
 import editorial201300 from "../editorial/tracks-201-300.js";
@@ -215,6 +216,20 @@ const discographicCorrections = {
   1548: { year: 2000, originalReleaseYear: 2000, album: null, releaseType: "single" },
 };
 
+const rawTracks = Object.values(trackModules).flat();
+const titleReferences = buildMusicTitleReferences(rawTracks, [
+  ...rawTracks.map((track) => track.artist),
+  ...rawTracks.flatMap((track) => [track.genre, track.subgenre, track.sottogenere]).filter(Boolean),
+]);
+const quoteTrackField = (track, field) => quoteKnownMusicTitles(track[field], titleReferences, track.artist);
+const quoteTrackEditorial = (track) => ({
+  ...track,
+  musicalCharacteristics: quoteTrackField(track, "musicalCharacteristics"),
+  meaning: quoteTrackField(track, "meaning"),
+  scenario: quoteTrackField(track, "scenario"),
+  curiosity: quoteTrackField(track, "curiosity"),
+});
+
 const tracks = Object.entries(trackModules).flatMap(([sourceModule, moduleTracks]) =>
   moduleTracks.map((track) => {
   const apple = applePreviewMetadata[track.id] ?? {};
@@ -232,7 +247,7 @@ const tracks = Object.entries(trackModules).flatMap(([sourceModule, moduleTracks
   const correctedArtist = discographicCorrection.artist ?? track.artist;
   const correctedAlbum = Object.hasOwn(discographicCorrection, "album") ? discographicCorrection.album : track.album;
 
-  return {
+  return quoteTrackEditorial({
     ...editorialDefaults,
     ...track,
     sourceModule,
@@ -267,7 +282,7 @@ const tracks = Object.entries(trackModules).flatMap(([sourceModule, moduleTracks
     },
     artistId: entityId(correctedArtist),
     albumId: correctedAlbum ? entityId(correctedArtist, correctedAlbum) : null,
-  };
+  });
 }));
 
 export default tracks;
