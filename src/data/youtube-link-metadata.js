@@ -147,6 +147,8 @@ const youtubeLinkMetadata = {
   1781: "https://www.youtube.com/watch?v=9yEjT_pIkhU",
   1782: "https://www.youtube.com/watch?v=ABYnqp-bxvg",
   1783: "https://www.youtube.com/watch?v=1AfskykUCE8",
+  1899: "https://www.youtube.com/watch?v=88wHgiUAKoI",
+  1902: "https://www.youtube.com/watch?v=PUmtmopLwDY",
 };
 
 export default youtubeLinkMetadata;

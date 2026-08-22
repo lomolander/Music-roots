@@ -48,6 +48,7 @@ import beatSceneExpansion from "./beat-scene-expansion.js";
 import finalArtistExpansion from "./final-artist-expansion.js";
 import dublinExpansion from "./dublin-expansion.js";
 import italianDiscoExpansion from "./italian-disco-expansion.js";
+import targetedExpansion12 from "./targeted-expansion-12.js";
 
 export const trackModules = {
   "house-techno": houseTechno,
@@ -78,6 +79,7 @@ export const trackModules = {
   "final-artist-expansion": finalArtistExpansion,
   "dublin-expansion": dublinExpansion,
   "italian-disco-expansion": italianDiscoExpansion,
+  "targeted-expansion-12": targetedExpansion12,
 };
 
 const editorialDefaults = {
