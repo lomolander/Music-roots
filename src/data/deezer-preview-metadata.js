@@ -98,6 +98,16 @@ const deezerPreviewMetadata = {
   1704: { trackId: 477888092, trackName: "Flotation (Single Version)", artistName: "The Grid", albumName: "No Stress - Relaxing beats", status: "verified" },
   1680: { trackId: 722093132, trackName: "Sober", artistName: "TOOL", albumName: "Undertow", status: "verified" },
   1682: { trackId: 1137174412, trackName: "Touch Me I'm Sick", artistName: "Mudhoney", albumName: "Superfuzz Bigmuff (Deluxe Edition)", status: "verified" },
+  1341: { trackId: 4952885, trackName: "Purple Haze", artistName: "Jimi Hendrix", albumName: "Experience Hendrix: The Best Of Jimi Hendrix", status: "verified" },
+  1756: { trackId: 10236139, trackName: "The Blend", artistName: "The Herbaliser", albumName: "Herbal Tonic (Best Of)", status: "verified" },
+  1766: { trackId: 2125081317, trackName: "Nothing to Be Done", artistName: "The Pastels", albumName: "Truckload of Trouble", status: "verified" },
+  144: { trackId: 657188952, trackName: "21 Seconds", artistName: "So Solid Crew", albumName: "21 Seconds", status: "verified" },
+  228: { trackId: 1003141422, trackName: "Fuck the Pain Away", artistName: "Peaches", albumName: "The Teaches of Peaches", status: "verified" },
+  1737: { trackId: 620492442, trackName: "Deceptacon", artistName: "Le Tigre", albumName: "Le Tigre", status: "verified" },
+  1749: { trackId: 1408782122, trackName: "Proceed", artistName: "The Roots", albumName: "Do You Want More?!!!??! (Deluxe Version)", status: "verified" },
+  1776: { trackId: 1358702762, trackName: "Looking At The Front Door", artistName: "Main Source", albumName: "WIld Pitch Classics", status: "verified" },
+  757: { trackId: 925106, trackName: "Umbrella", artistName: "Rihanna", albumName: "Good Girl Gone Bad: Reloaded", status: "verified" },
+  1566: { trackId: 694770722, trackName: "Love Anthem, No. 1", artistName: "Venerus", albumName: "Love Anthem", status: "verified" },
 };
 
 export default deezerPreviewMetadata;
