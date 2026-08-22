@@ -733,24 +733,23 @@ const macroGenreEssentialTrackIds = {
 const minimumEssentialTrackIds = {
   "Ambient House": [77, 69, 1698, 1699, 1700, 1701, 1702, 1703, 1704, 1705],
   "Ambient Techno": [78, 1706, 1707, 1708, 1709, 1710, 1711, 1712, 1713, 1714],
-  Balearic: [1561, 245, 246, 248, 249, 250, 252, 69, 70, 300],
+  Balearic: [77, 70, 71, 73, 161, 245, 246, 1699, 1704, 1705],
   "Cinematic Music": [1551, 1552, 285, 286, 287, 288, 289, 290, 291, 292],
   Dance: [10, 1720, 1721, 1722, 1723, 1724, 1725, 1726, 1764, 1765],
-  "Disco Italiana": [1560, 1561, 205, 206, 207, 208, 209, 210, 211, 212],
+  "Disco Italiana": [1883, 1884, 1885, 1886, 1887, 1888, 1889, 1890, 1891, 1892, 1893, 1894, 1895, 1896, 1897, 54, 201],
   "Funk Italiano": [1550, 1552, 1553, 1554, 1560, 1272, 1274, 285, 290, 1000],
   "Jazz Funk": [1550, 1552, 1553, 1560, 280, 282, 283, 290, 4, 181],
   "Nu Soul": [1562, 1563, 229, 230, 231, 232, 233, 234, 235, 236],
   "Psychedelic Pop": [1557, 1564, 1567, 1339, 1341, 1343, 1345, 1347, 1349, 1353],
-  "Contemporary R&B": [1534, 1535, 1563, 1566, 229, 230, 231, 232, 233, 234],
+  "Contemporary R&B": [755, 756, 757, 758, 759, 760, 761, 762, 763, 764, 765, 1534, 1535, 1563, 1566],
   "Electro House": [29, 30, 1729, 1730, 1731, 1732, 1733, 1734, 1735, 1736],
-  "Elettronica Italiana": [1542, 1543, 1548, 1549, 1555, 1565, 1267, 1268, 1269, 1270],
+  "Elettronica Italiana": [1542, 1543, 1548, 1549, 1565, 1534, 1555, 1561, 1562, 1557, 1567, 1569, 1734],
   "Indie Dance": [255, 258, 1744, 1745, 1746, 1771, 1772, 1773, 1774, 1775],
   "Jazz Rap": [65, 66, 64, 266, 1748, 1749, 1750, 1751, 1752, 721, 1776, 1777],
-  "Rap Italiano": [1538, 1539, 1555, 1536, 1537, 1554, 1564, 1565, 1000, 1540],
-  "Cantautorato Italiano": [1540, 1541, 1544, 1546, 1556, 1558, 1559, 1569, 1258, 1260],
-  "Alternative Pop": [1534, 1544, 1545, 1547, 1549, 1557, 1559, 1565, 1568, 293, 296, 866, 1780, 1781, 1782, 863, 295, 1783, 698],
+  "Cantautorato Italiano": [988, 1263, 1257, 1259, 1276, 1279, 1283, 1287, 1291, 1271, 1267, 1303, 1311, 1540, 1556, 1558, 1546, 1266, 1273, 1285],
+  "Alternative Pop": [1534, 293, 296, 866, 1780, 1781, 1782, 863, 295, 1783, 698],
   Electroclash: [225, 226, 227, 228, 1737, 1738, 1739, 1740, 1741, 1742],
-  "Hip Hop Italiano": [1536, 1537, 1538, 1539, 1554, 1564, 1000, 1565, 1540, 1541],
+  "Hip Hop Italiano": [1536, 1537, 1538, 1539, 1554, 1555, 1564, 1000, 1565, 1540, 1541],
   Indie: [380, 381, 382, 383, 1743, 1766, 1767, 1768, 1769, 1770],
   "Indie Pop": [1536, 1537, 1540, 1541, 1545, 1546, 1547, 651, 650, 647],
   "Spiritual Jazz": [277, 278, 279, 283, 1757, 1758, 1759, 1049, 1761, 1762],
@@ -759,8 +758,19 @@ const minimumEssentialTrackIds = {
   "Nu Disco": [245, 246, 247, 248, 249, 250, 251, 252, 201, 1754],
   "Nu Jazz": [237, 238, 239, 240, 241, 242, 243, 244, 1755, 1756],
   "Pop elettronico": [293, 294, 295, 296, 297, 298, 299, 300, 1778, 1779],
+  "Neo Soul": [229, 230, 231, 232, 233, 234, 235, 236, 766, 767, 768, 769, 770, 771, 772, 773, 774, 775, 776, 777, 778, 779, 780, 1562, 1563, 1567],
+  "R&B": [358, 359, 360, 361, 362, 741, 742, 743, 744, 745, 746, 747, 748, 749, 750, 751, 752, 753, 754],
+  "Musica italiana": [986, 987, 988, 989, 990, 991, 992, 993, 994, 995, 997, 999, 1000, 1805, 1835, 1845, 1258, 1266, 1271, 1279, 1303, 1311, 1801, 1569],
+  "Library Music": [285, 287, 288, 1086, 1087, 1088, 1089, 1090, 1091, 1092, 1093, 1094, 1095, 1550, 1551],
   "UK Garage": [137, 138, 139, 140, 141, 142, 143, 144, 145, 1763],
 };
+
+// Le classificazioni restano disponibili nel catalogo, ma queste playlist
+// non hanno più una card Essential autonoma perché assorbite da selezioni più
+// specifiche e autorevoli.
+export const retiredEssentialIds = new Set([
+  "Cinematic Music", "Funk Italiano", "Rap Italiano", "Nu Soul", "Rock",
+]);
 
 export const essentialPlaylists = Object.fromEntries(
   [...new Set([...allowedGenres, ...Object.keys(rockEssentialTrackIds), ...Object.keys(phaseTwoEssentialTrackIds), ...Object.keys(macroGenreEssentialTrackIds), ...Object.keys(beatEssentialTrackIds)])].map((genre) => [genre, {
@@ -768,6 +778,7 @@ export const essentialPlaylists = Object.fromEntries(
     label: `Essenziali: ${genre}`,
     externalUrl: "",
     service: "",
+    visible: !retiredEssentialIds.has(genre),
     trackIds: rockEssentialTrackIds[genre] ?? phaseTwoEssentialTrackIds[genre] ?? macroGenreEssentialTrackIds[genre] ?? beatEssentialTrackIds[genre] ?? minimumEssentialTrackIds[genre] ?? [],
     ...(essentialPlaylistLinks[genre] ?? {}),
   }]),
