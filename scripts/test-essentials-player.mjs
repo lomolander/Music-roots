@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import genres from "../src/data/entities/genres.js";
 import tracks from "../src/data/questions.js";
 import { essentialPlaylists } from "../src/data/libraryConfig.js";
-import { choosePreviewResult, essentialPreviewStatus, findPlayableIndex, isEssentialPlayable, normalizePreviewLookup, previewFor, previewResultMatches, previewSearchTerm, previewSources, resolvePreviewSource, validateAudioPreview } from "../src/lib/essentialsPlayer.js";
+import { choosePreviewResult, essentialPreviewStatus, findPlayableIndex, isEssentialPlayable, normalizePreviewLookup, prepareEssentialPlaylist, previewFor, previewResultMatches, previewSearchTerm, previewSources, resolvePreviewSource, validateAudioPreview } from "../src/lib/essentialsPlayer.js";
 
 const trackById = new Map(tracks.map((track) => [track.id, track]));
 const playlist = (name) => {
@@ -41,6 +41,28 @@ const essentialIds = new Set([
 const checkedEssentials = [...essentialIds].map((id) => trackById.get(id)).filter(Boolean);
 const keptEssentials = checkedEssentials.filter(isEssentialPlayable);
 const removedEssentials = checkedEssentials.filter((track) => !isEssentialPlayable(track));
+
+const deterministicPlaylists = ["Hip Hop", "Chicago House", "New Romantic"];
+const deterministicReport = [];
+for (const name of deterministicPlaylists) {
+  const items = essentialPlaylists[name]?.trackIds?.length
+    ? essentialPlaylists[name].trackIds.map((id) => trackById.get(id)).filter(Boolean)
+    : playlist(name);
+  let unexpectedFetches = 0;
+  const unavailableFetch = async () => {
+    unexpectedFetches += 1;
+    throw new Error("La preparazione della playlist non deve risolvere URL remoti");
+  };
+  const initial = await prepareEssentialPlaylist(items, { fetchImpl: unavailableFetch });
+  const reload = await prepareEssentialPlaylist(items, { fetchImpl: unavailableFetch });
+  const newInitialization = await prepareEssentialPlaylist(items, { fetchImpl: unavailableFetch });
+  assert.equal(reload.tracks.length, initial.tracks.length, `${name}: conteggio diverso dopo reload`);
+  assert.equal(newInitialization.tracks.length, initial.tracks.length, `${name}: conteggio diverso dopo nuova inizializzazione`);
+  assert.equal(unexpectedFetches, 0, `${name}: fetch remoto durante il calcolo della disponibilita`);
+  const deezerOnly = items.filter((track) => !track.preview && track.deezer?.status === "verified" && track.deezer?.trackId).slice(0, 3);
+  assert.equal(deezerOnly.length, 3, `${name}: servono almeno tre fallback Deezer verificati`);
+  deterministicReport.push({ name, initial: initial.tracks.length, reload: reload.tracks.length, newInitialization: newInitialization.tracks.length, deezerOnly });
+}
 
 const appleUrl = "https://audio.example.test/apple.m4a";
 const deezerUrl = "https://audio.example.test/deezer.mp3";
@@ -99,8 +121,33 @@ for (const event of ["error", "stalled", "abort", "zero", "timeout"]) {
   assert.equal((await validateAudioPreview(deezerUrl, { AudioConstructor: FakeAudio, timeoutMs: 20 })).valid, false, `${event} deve rifiutare la preview`);
 }
 
+for (const item of deterministicReport) {
+  for (const track of item.deezerOnly) {
+    const resolved = await resolvePreviewSource(track, "deezer", async () => ({
+      ok: true,
+      json: async () => ({
+        trackId: track.deezer.trackId,
+        trackName: track.title,
+        artistName: track.artist,
+        albumName: track.album,
+        previewUrl: deezerUrl,
+      }),
+    }));
+    assert.equal(resolved.url, deezerUrl, `${item.name}: risoluzione Deezer fallita per ${track.artist} - ${track.title}`);
+    FakeAudio.outcome = "canplay";
+    assert.equal((await validateAudioPreview(resolved.url, { AudioConstructor: FakeAudio, timeoutMs: 20 })).valid, true);
+  }
+}
+
 console.log(JSON.stringify({
   testedPlaylists,
+  deterministicReport: deterministicReport.map(({ name, initial, reload, newInitialization, deezerOnly }) => ({
+    name,
+    initial,
+    reload,
+    newInitialization,
+    deezerTracksTested: deezerOnly.map((track) => `${track.artist} - ${track.title}`),
+  })),
   report: {
     totaleBraniVerificati: checkedEssentials.length,
     braniMantenuti: keptEssentials.length,

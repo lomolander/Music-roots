@@ -9,7 +9,7 @@ const json = (statusCode, body, extraHeaders = {}) => ({
   statusCode,
   headers: {
     "Content-Type": "application/json; charset=utf-8",
-    "Cache-Control": "public, max-age=60, s-maxage=300, stale-while-revalidate=60",
+    "Cache-Control": "no-store",
     ...extraHeaders,
   },
   body: JSON.stringify(body),

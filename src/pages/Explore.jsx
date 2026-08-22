@@ -6,7 +6,7 @@ import { artists, genres } from "../data/entities/index.js";
 import ArtworkFallback from "../components/ArtworkFallback.jsx";
 import { essentialPlaylistDescriptions, essentialPlaylists, exploreGenreNames, subgenreDescriptions } from "../data/libraryConfig.js";
 import { musicAtlasCities } from "../data/musicAtlas.js";
-import { prepareEssentialPlaylist, previewSearchQueries, resolvePreviewSource } from "../lib/essentialsPlayer.js";
+import { isEssentialPlayable, previewSearchQueries, previewSources, resolvePreviewSource } from "../lib/essentialsPlayer.js";
 
 const tabs = [
   ["genres", "Generi", Tags],
@@ -251,64 +251,13 @@ const formatTime = (seconds) => {
 const essentialsDebugReport = new Map();
 
 function VerifiedEssentialsPlaylist({ tracks: candidates, openTrack, essentialPlaylist }) {
-  const [verifiedTracks, setVerifiedTracks] = useState(null);
-  const [preparationStage, setPreparationStage] = useState("selecting");
-  useEffect(() => {
-    let cancelled = false;
-    let preparationTimer;
-    const selectionTimer = window.setTimeout(() => {
-      setVerifiedTracks(null);
-      setPreparationStage("selecting");
-      preparationTimer = window.setTimeout(() => {
-        if (cancelled) return;
-        setPreparationStage("audio");
-        prepareEssentialPlaylist(candidates)
-          .then(({ tracks, results }) => {
-            if (cancelled) return;
-            setVerifiedTracks(tracks);
-            const removed = results.map((result, index) => ({ result, track: candidates[index] })).filter(({ result }) => !result?.playable);
-            console.groupCollapsed("[Playlist Essentials] Report controllo reale");
-            console.info({ totaleBraniVerificati: candidates.length, braniMantenuti: tracks.length, braniRimossi: removed.length });
-            console.table(removed.map(({ result, track }) => ({
-              titolo: track?.title,
-              artista: track?.artist,
-              motivo: result?.reason ?? "assenza di preview audio caricabile",
-            })));
-            console.groupEnd();
-          })
-          .catch((error) => {
-            if (cancelled) return;
-            console.error("[Playlist Essentials] Preparazione non riuscita", error);
-            setVerifiedTracks([]);
-          });
-      }, 140);
-    }, 0);
-    return () => {
-      cancelled = true;
-      window.clearTimeout(selectionTimer);
-      window.clearTimeout(preparationTimer);
-    };
-  }, [candidates]);
+  const verifiedTracks = useMemo(() => candidates.filter(isEssentialPlayable), [candidates]);
 
   let playerContent;
-  if (!verifiedTracks) {
-    playerContent = (
-      <div className="essentials-preparing" role="status" aria-live="polite">
-        <div className="essentials-equalizer" aria-hidden="true">
-          <span />
-          <span />
-          <span />
-          <span />
-          <span />
-        </div>
-        <p>{preparationStage === "selecting" ? "Selezione dei brani…" : "Preparazione degli ascolti…"}</p>
-      </div>
-    );
-  } else if (!verifiedTracks.length) {
+  if (!verifiedTracks.length) {
     playerContent = <p className="atlas-empty">Nessuna anteprima riproducibile disponibile.</p>;
   } else {
-    const removeInvalidTrack = (trackId) => setVerifiedTracks((items) => items.filter((track) => track.id !== trackId));
-    playerContent = <EssentialsPlayer tracks={verifiedTracks} openTrack={openTrack} onInvalidate={removeInvalidTrack} />;
+    playerContent = <EssentialsPlayer tracks={verifiedTracks} openTrack={openTrack} />;
   }
   return (
     <>
@@ -334,7 +283,7 @@ function printEssentialsReport() {
   console.groupEnd();
 }
 
-function EssentialsPlayer({ tracks: playlist, openTrack, onInvalidate }) {
+function EssentialsPlayer({ tracks: playlist, openTrack }) {
   const audioRef = useRef(null);
   const sessionRef = useRef(0);
   const attemptedRef = useRef(new Set());
@@ -390,9 +339,9 @@ function EssentialsPlayer({ tracks: playlist, openTrack, onInvalidate }) {
     setLoading(false);
     setPlaying(false);
     setPlayerError(reason);
-    setIndex((position) => position >= playlist.length - 1 ? Math.max(0, position - 1) : position);
-    if (failedId) onInvalidate(failedId);
-  }, [current, debugTrack, onInvalidate, playlist.length]);
+    setMessage("Anteprima temporaneamente non disponibile");
+    if (failedId) debugTrack(current, { evento: "traccia mantenuta", disponibilitaCatalogo: "metadata verificati" });
+  }, [current, debugTrack]);
 
   const tryNextSource = useCallback(async (reason, session = sessionRef.current, rejectedSoFar = 0) => {
     if (!current || session !== sessionRef.current) return false;
@@ -497,7 +446,8 @@ function EssentialsPlayer({ tracks: playlist, openTrack, onInvalidate }) {
     }
     queueMicrotask(() => {
       if (session !== sessionRef.current) return;
-      setPreview(null);
+      const apple = previewSources(current).find((source) => source.key === "apple" && source.url);
+      setPreview(apple ? { ...apple, rejectedTotal: 0 } : null);
       setElapsed(0);
       setDuration(0);
       setMessage("");
@@ -505,7 +455,6 @@ function EssentialsPlayer({ tracks: playlist, openTrack, onInvalidate }) {
       setLoading(false);
       setPlaying(false);
       debugTrack(current, { evento: "cambio brano", resetCompleto: true });
-      void tryNextSource("inizio brano", session);
     });
     return () => {
       clearTimeout(stalledTimerRef.current);

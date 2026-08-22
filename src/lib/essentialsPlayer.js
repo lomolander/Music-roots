@@ -158,7 +158,11 @@ export const previewSources = (track) => {
     const resolved = fresh.find((item) => item.key === key);
     if (resolved) return resolved;
     const result = storedSource(track, key);
-    return result ? { key, url: result.previewUrl, source: key === "deezer" ? "Deezer" : "Apple Music" } : null;
+    if (result) return { key, url: result.previewUrl, source: key === "deezer" ? "Deezer" : "Apple Music" };
+    if (key === "deezer" && track?.deezer?.status === "verified" && track?.deezer?.trackId) {
+      return { key, url: "", source: "Deezer" };
+    }
+    return null;
   }).filter(Boolean);
 };
 
@@ -248,17 +252,12 @@ export function validateEssentialTrack(track, options = {}) {
 }
 
 export async function prepareEssentialPlaylist(tracks, options = {}) {
-  const results = new Array(tracks.length);
-  let cursor = 0;
-  const worker = async () => {
-    while (cursor < tracks.length) {
-      const position = cursor++;
-      const validation = await validateEssentialTrack(tracks[position], options);
-      results[position] = validation.playable ? { ...tracks[position], essentialPreview: validation } : null;
-    }
+  void options;
+  const results = tracks.map((track) => essentialPreviewStatus(track));
+  return {
+    tracks: tracks.filter((track) => isEssentialPlayable(track)),
+    results,
   };
-  await Promise.all(Array.from({ length: Math.min(4, tracks.length) }, worker));
-  return { tracks: results.filter(Boolean), results };
 }
 
 export const previewFor = (track, attempted = new Set()) => previewSources(track)
