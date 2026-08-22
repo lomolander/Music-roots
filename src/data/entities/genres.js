@@ -117,7 +117,7 @@ const genres = [...new Set(tracks.map((track) => track.genre))].sort().map((name
     characteristics: editorial[name]?.characteristics ?? [],
     essentialArtists: artists.slice(0, 12),
     essentialAlbums: albums.slice(0, 12),
-    essentialPlaylist: essentialPlaylists[name] ?? null,
+    essentialPlaylist: essentialPlaylists[name]?.visible === false ? null : essentialPlaylists[name] ?? null,
     trackIds: genreTracks.map((track) => track.id),
   };
 });

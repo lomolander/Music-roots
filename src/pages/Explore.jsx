@@ -84,7 +84,7 @@ function Explore({ initialView = null, onBack, exitOnInitialBack = false, onOpen
     const subgenres = [...new Set(tracks.map((track) => track.subgenre).filter(Boolean))]
       .sort((left, right) => left.localeCompare(right, "it"))
       .map((name) => ({ name, tracks: tracks.filter((track) => track.subgenre === name) }));
-    const essentials = Object.values(essentialPlaylists).map((playlist) => {
+    const essentials = Object.values(essentialPlaylists).filter((playlist) => playlist.visible !== false).map((playlist) => {
       const genre = genres.find((item) => item.name === playlist.id);
       return {
         key: `essential-${playlist.id}`,
