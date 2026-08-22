@@ -300,4 +300,70 @@ for (const [name, source, id] of batch3ArtistLinks) {
     : `https://musicbrainz.org/artist/${id}`;
 }
 
+const batch4ArtistLinks = `
+Alan Sorrenti|a5249ff4-11d4-4c19-afd4-94bb41c1756b
+Amanda Lear|2f2608ed-ff2b-400e-b614-8c648bfaae7b
+Âme|3bbdd45f-5654-47f3-b6c0-d806752b9fcf
+Cristiano Malgioglio|f5a9929b-53f8-4412-a14b-a8b1d762c3b2
+D.D. Sound|1d6916cc-0740-470a-a971-997fbf79604f
+Dinosaur Jr.|77c167d2-4965-4421-830a-9815e4956475
+Dinosaur L|8642a086-5eb7-4c61-88a9-77ae1d135491
+Dio|c55193fb-f5d2-4839-a263-4c044fca1456
+Dire Straits|614e3804-7d34-41ba-857f-811bad7c2b7a
+Dizzy Gillespie|e9ba8ccb-505f-4e5c-b909-65998d0d35b5
+Djavan|751e517d-9663-4692-8c20-942e16d484c5
+Dolly Parton|1d543e07-d0d2-4834-a8db-d65c50c2a856
+Don Cherry|adf3879a-e091-4f73-8792-861a7a3e3abe
+Donald Byrd|69f95e5c-4b34-4c8b-b8fe-c59f9296195a
+Donna Summer|b60527cc-54f3-4bbe-a01b-dcf34c95ae14
+Donny Hathaway|3f6ae36d-ffdb-40cf-98e6-8023cb1c41c9
+Double 99|d7de1988-b43b-4f53-87c9-4e96fedab3f5
+Doug Carn|44ba7dbf-c18d-4a35-9513-f554c1041266
+Dreadzone|a10ca116-02af-4989-9a91-fb25585216f7
+Drexciya|66f398bf-ae55-4f13-b993-fa871c57157f
+Drop Nineteens|266f5184-d8ab-40c3-9af2-b0c615b37b53
+Dub Syndicate|302ae60e-4c6f-444b-9a1f-8aa5f3aed57e
+Dua Lipa|6f1a58bf-9b1b-49cf-a44a-6cefad7ae04f
+Duran Duran|1a1cd7f3-e5df-4eca-bae2-2757c9e656b5
+Dynamix II|7a025186-92ea-40b4-8a9a-a6e452754033
+Eagles|f46bd570-5768-462e-b84c-c7c993bbf47e
+Earth, Wind & Fire|535afeda-2538-435d-9dd1-5e10be586774
+Eartha Kitt|02b4a39e-04c0-4eb7-a0eb-c919f3d14154
+Easy Going|74a3e6be-1ea6-4c87-a8fd-b4b46d90ee91
+Ed Rush & Optical|50c35b52-700a-4dc9-8d36-fd656b556886
+Edwin Hawkins Singers|a3d57b03-9fb7-4eee-9acd-17713803c553
+Edwin Starr|9eace815-06f3-487c-bf3a-1a817e248056
+Egisto Macchi|5f1867c6-fd49-4bab-ab7f-a35c34587f7e
+Elastica|46693641-1e2e-4aae-80ed-6b28170de63a
+Elis Regina|e9e85a54-074c-4d29-a886-bcaaa9d44f9f
+Ella Fitzgerald|54799c0e-eb45-4eea-996d-c4d71a63c499
+Elmore James|6fbd2cfb-5f9c-497c-8e06-3c6668367681
+Elvis Costello & The Attractions|0ffb6573-a98e-412e-aa01-0a580e9d8b06
+Emancipator|aa1d4315-5246-42b2-b62b-f997d046d8b2
+Emerson, Lake & Palmer|ad996aef-cc1c-42ac-af5c-619c370f4b8a
+EMF|26f94a6a-d60a-4bcc-a130-ce0e77122bd7
+Emmylou Harris|35ef61ca-43db-4772-ba27-0489e9ebcb69
+En Vogue|9a883a69-436b-4d17-9ffd-122a9bf4419a
+Energy 52|067f26c1-d678-410e-8217-e554a3418143
+Ennio Morricone|a16e47f5-aa54-47fe-87e4-bb8af91a9fdd
+Erasure|43b58c98-3779-4b04-9a23-1c95cca3a145
+Eric B. & Rakim|925228de-bbe5-4c7b-b76f-78e382ec9148
+Eric Dolphy|badda5cf-f2c5-4dc2-b3d3-07467bdf0f71
+Eric Prydz|35dac7d2-0b1f-470f-9a5a-c53c8821f6d6
+Erykah Badu|321531fc-db73-4ffa-a959-61a61a2908c1
+Étienne de Crécy|f174152d-da33-46bd-8cb4-c8d24b834bf7
+Étoile de Dakar|81672953-14d5-4113-8914-005f144062b3
+Etta James|e22d2f66-881e-41ca-9356-544697ee5f90
+Eurythmics|b4d32cff-f19e-455f-86c4-f347d824ca61
+Eva Eva Eva|e93653c2-31f0-4abd-b034-93ca1eb7fc53
+Evelyn "Champagne" King|f104e236-9655-4022-b794-d1567357e3b0
+Everything But The Girl|959cf5bf-ee29-4af6-a85a-0b480181d988
+Faith Evans|ebcd0bad-75ef-4203-b7b3-7af38a9ef198
+Faithless|23d9d74d-c95e-46a6-be26-a6075c49747a
+`.trim().split("\n").map((row) => row.split("|"));
+
+for (const [name, id] of batch4ArtistLinks) {
+  artistDiscographyLinks[name] = `https://musicbrainz.org/artist/${id}`;
+}
+
 export default artistDiscographyLinks;
