@@ -94,6 +94,10 @@ const deezerPreviewMetadata = {
   1713: { trackId: 29370751, trackName: "Utuba", artistName: "Beaumont Hannant", albumName: "Artificial Intelligence II", status: "verified" },
   1714: { trackId: 3851203441, trackName: "Amalia", artistName: "As One", albumName: "21st Century Soul", status: "verified" },
   1865: { trackId: 72194071, trackName: "Girls Just Want to Have Fun", artistName: "Cyndi Lauper", albumName: "She's So Unusual", status: "verified" },
+  283: { trackId: 1733771197, trackName: "Expansions", artistName: "Lonnie Liston Smith", albumName: "Expansions", status: "verified" },
+  1704: { trackId: 477888092, trackName: "Flotation (Single Version)", artistName: "The Grid", albumName: "No Stress - Relaxing beats", status: "verified" },
+  1680: { trackId: 722093132, trackName: "Sober", artistName: "TOOL", albumName: "Undertow", status: "verified" },
+  1682: { trackId: 1137174412, trackName: "Touch Me I'm Sick", artistName: "Mudhoney", albumName: "Superfuzz Bigmuff (Deluxe Edition)", status: "verified" },
 };
 
 export default deezerPreviewMetadata;
