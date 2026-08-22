@@ -31,7 +31,8 @@ const categoryMicroDescriptionOverrides = {
 
 const categoryMicroDescription = (name) => categoryMicroDescriptionOverrides[name]
   ?? essentialPlaylistDescriptions[name]
-  ?? subgenreDescriptions[name].replace(/[.!?].*$/s, "").split(/\s+/).slice(0, 5).join(" ");
+  ?? subgenreDescriptions[name]?.replace(/[.!?].*$/s, "").split(/\s+/).slice(0, 5).join(" ")
+  ?? "";
 
 const visibleGenreTrackIds = (genre) => genre.name === "Musica italiana"
   ? [...new Set([...genre.trackIds, ...contemporaryItalyTracks.map((track) => track.id)])]
