@@ -28,9 +28,7 @@ for (const name of testedPlaylists) {
   assert.equal(firstPlayable, expectedFirst, `${name}: individuazione prima preview incoerente`);
   for (const track of items) {
     const candidates = previewSources(track);
-    assert.deepEqual(candidates.map((item) => item.key), candidates.some((item) => item.key === "deezer")
-      ? (candidates.some((item) => item.key === "apple") ? ["apple", "deezer"] : ["deezer"])
-      : (candidates.some((item) => item.key === "apple") ? ["apple"] : []));
+    assert.deepEqual(candidates.map((item) => item.key), ["apple", "deezer", "youtube"].filter((key) => candidates.some((item) => item.key === key)));
   }
 }
 
@@ -71,6 +69,23 @@ assert.deepEqual(previewFor(sources), { key: "apple", url: appleUrl, source: "Ap
 assert.deepEqual(previewFor(sources, new Set(["apple"])), { key: "deezer", url: deezerUrl, source: "Deezer" });
 assert.equal(previewFor(sources, new Set(["deezer", "apple"])), null);
 assert.deepEqual(previewSources(sources).map((item) => item.key), ["apple", "deezer"]);
+
+const threeProviders = {
+  id: 9999,
+  title: "Three Sources",
+  artist: "Verified Artist",
+  preview: appleUrl,
+  appleMatchStatus: "verified",
+  deezer: { trackId: 123, status: "verified" },
+  youtubePreview: { videoId: "verifiedVideo", status: "verified", embeddable: true },
+};
+assert.deepEqual(previewSources(threeProviders).map((item) => item.key), ["apple", "deezer", "youtube"]);
+assert.equal(previewFor(threeProviders)?.key, "apple");
+assert.equal(previewFor(threeProviders, new Set(["apple"]))?.key, "deezer");
+assert.equal(previewFor(threeProviders, new Set(["apple", "deezer"]))?.key, "youtube");
+const resolvedYouTube = await resolvePreviewSource(threeProviders, "youtube", async () => { throw new Error("YouTube non deve fare fetch runtime"); });
+assert.equal(resolvedYouTube.videoId, "verifiedVideo");
+assert.equal(resolvedYouTube.usedStoredResult, true);
 assert.equal(normalizePreviewLookup("Song (2011 Remastered) - Radio Edit feat. Guest"), "song");
 assert.equal(previewSearchTerm({ title: "Song (Remastered)", artist: "Artist feat. Guest", album: "The Album" }), "Song Artist The Album".toLowerCase());
 
@@ -137,6 +152,32 @@ for (const item of deterministicReport) {
     FakeAudio.outcome = "canplay";
     assert.equal((await validateAudioPreview(resolved.url, { AudioConstructor: FakeAudio, timeoutMs: 20 })).valid, true);
   }
+}
+
+const youtubeCases = [
+  [145, "Zed Bias", "Neighbourhood"],
+  [177, "Adam F", "Circles"],
+  [178, "Shy FX", "Original Nuttah"],
+  [1381, "Caravan", "Nine Feet Underground"],
+  [1485, "Taeko Ohnuki", "4:00 A.M."],
+  [1717, "Piero Piccioni", "Camille 2000"],
+];
+for (const [id, artist, title] of youtubeCases) {
+  const track = trackById.get(id);
+  assert.equal(track?.artist, artist);
+  assert.equal(track?.title, title);
+  assert.equal(track?.youtubePreview?.status, "verified");
+  assert.equal(track?.youtubePreview?.embeddable, true);
+  assert.equal(isEssentialPlayable(track), true);
+  assert.equal(previewSources(track).at(-1)?.key, "youtube");
+}
+for (const name of ["Electro House", "UK Garage"]) {
+  const items = essentialPlaylists[name]?.trackIds?.length
+    ? essentialPlaylists[name].trackIds.map((id) => trackById.get(id)).filter(Boolean)
+    : playlist(name);
+  const counts = [];
+  for (let initialization = 0; initialization < 3; initialization += 1) counts.push((await prepareEssentialPlaylist(items)).tracks.length);
+  assert.deepEqual(counts, [items.length, items.length, items.length], `${name}: copertura o conteggio non deterministico`);
 }
 
 console.log(JSON.stringify({

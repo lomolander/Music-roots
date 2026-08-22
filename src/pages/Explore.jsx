@@ -4,6 +4,7 @@ import { ChevronRight, ListMusic, Music, Pause, Play, Search, SkipBack, SkipForw
 import tracks from "../data/questions.js";
 import { artists, genres } from "../data/entities/index.js";
 import ArtworkFallback from "../components/ArtworkFallback.jsx";
+import YouTubeEssentialsMedia from "../components/YouTubeEssentialsMedia.jsx";
 import { essentialPlaylistDescriptions, essentialPlaylists, exploreGenreNames, subgenreDescriptions } from "../data/libraryConfig.js";
 import { musicAtlasCities } from "../data/musicAtlas.js";
 import { isEssentialPlayable, previewSearchQueries, previewSources, resolvePreviewSource } from "../lib/essentialsPlayer.js";
@@ -285,6 +286,7 @@ function printEssentialsReport() {
 
 function EssentialsPlayer({ tracks: playlist, openTrack }) {
   const audioRef = useRef(null);
+  const youtubePlayerRef = useRef(null);
   const sessionRef = useRef(0);
   const attemptedRef = useRef(new Set());
   const wantsPlaybackRef = useRef(false);
@@ -303,6 +305,10 @@ function EssentialsPlayer({ tracks: playlist, openTrack }) {
 
   const setPlaybackIntent = useCallback((value) => {
     wantsPlaybackRef.current = value;
+  }, []);
+
+  const setYouTubeController = useCallback((controller) => {
+    youtubePlayerRef.current = controller;
   }, []);
 
   const debugTrack = useCallback((track, extra = {}) => {
@@ -326,6 +332,7 @@ function EssentialsPlayer({ tracks: playlist, openTrack }) {
       setPlaying(false);
       return;
     }
+    try { youtubePlayerRef.current?.stopVideo(); } catch { /* Player non ancora pronto. */ }
     setPlaybackIntent(autoplay);
     setIndex(next);
   }, [index, playlist.length, setPlaybackIntent]);
@@ -333,7 +340,7 @@ function EssentialsPlayer({ tracks: playlist, openTrack }) {
   const markUnavailable = useCallback((reason, matchErrati = 0) => {
     const failedId = current?.id;
     essentialsDebugReport.set(current?.id, { titolo: current?.title, artista: current?.artist, esito: "Nessuna anteprima", matchErrati, motivo: reason });
-    debugTrack(current, { fonteEffettiva: "nessuna", tipoErrore: reason, motivoRimozione: "Deezer e Apple Music non riproducibili" });
+    debugTrack(current, { fonteEffettiva: "nessuna", tipoErrore: reason, motivoRimozione: "Apple Music, Deezer e YouTube non riproducibili" });
     printEssentialsReport();
     setPreview(null);
     setLoading(false);
@@ -347,7 +354,7 @@ function EssentialsPlayer({ tracks: playlist, openTrack }) {
     if (!current || session !== sessionRef.current) return false;
     let rejectedTotal = rejectedSoFar;
     let lastReason = reason;
-    for (const key of ["apple", "deezer"]) {
+    for (const key of ["apple", "deezer", "youtube"]) {
       if (attemptedRef.current.has(key)) continue;
       attemptedRef.current.add(key);
       setLoading(true);
@@ -378,7 +385,7 @@ function EssentialsPlayer({ tracks: playlist, openTrack }) {
       });
 
       rejectedTotal += resolved.rejected.length;
-      if (!resolved.url) {
+      if (!resolved.url && !resolved.videoId) {
         lastReason = `${resolved.source}: ${resolved.searchError || (resolved.rejected.length ? "risultati esclusi per match errato" : "preview assente")}`;
         continue;
       }
@@ -388,7 +395,7 @@ function EssentialsPlayer({ tracks: playlist, openTrack }) {
       setDuration(0);
       setMessage("");
       setPlaying(false);
-      setPreview({ key, source: resolved.source, url: resolved.url, rejectedTotal });
+      setPreview({ key, source: resolved.source, url: resolved.url, videoId: resolved.videoId ?? "", rejectedTotal });
       setLoading(true);
       debugTrack(current, { fonteTentata: resolved.source, urlPreview: resolved.url, motivoTentativo: lastReason });
       return true;
@@ -405,13 +412,19 @@ function EssentialsPlayer({ tracks: playlist, openTrack }) {
     setPlaying(false);
     setPreview(null);
     setPlayerError(`${type}${detail ? `: ${detail}` : ""}`);
-    debugTrack(current, { fonteEffettiva: failed.source, tipoErrore: type, dettaglioErrore: detail, azione: failed.key === "apple" ? "fallback Deezer" : "fonti esaurite" });
+    debugTrack(current, { fonteEffettiva: failed.source, tipoErrore: type, dettaglioErrore: detail, azione: failed.key === "apple" ? "fallback Deezer" : failed.key === "deezer" ? "fallback YouTube" : "fonti esaurite" });
     void tryNextSource(`${failed.source}: ${type}${detail ? ` (${detail})` : ""}`, sessionRef.current, failed.rejectedTotal);
   }, [current, debugTrack, preview, tryNextSource]);
 
   const requestPlay = useCallback(async (reason) => {
+    if (!preview) return;
+    if (preview.key === "youtube") {
+      youtubePlayerRef.current?.playVideo();
+      debugTrack(current, { fonteEffettiva: preview.source, evento: reason });
+      return;
+    }
     const audio = audioRef.current;
-    if (!audio || !preview) return;
+    if (!audio) return;
     const session = sessionRef.current;
     try {
       await audio.play();
@@ -444,10 +457,15 @@ function EssentialsPlayer({ tracks: playlist, openTrack }) {
       audio.load();
       try { audio.currentTime = 0; } catch { /* Nessun media caricato. */ }
     }
+    try { youtubePlayerRef.current?.stopVideo(); } catch { /* Player non ancora pronto. */ }
+    youtubePlayerRef.current = null;
     queueMicrotask(() => {
       if (session !== sessionRef.current) return;
-      const apple = previewSources(current).find((source) => source.key === "apple" && source.url);
-      setPreview(apple ? { ...apple, rejectedTotal: 0 } : null);
+      const sources = previewSources(current);
+      const apple = sources.find((source) => source.key === "apple" && source.url);
+      const hasDeezer = sources.some((source) => source.key === "deezer");
+      const youtube = !apple && !hasDeezer ? sources.find((source) => source.key === "youtube" && source.videoId) : null;
+      setPreview(apple || youtube ? { ...(apple ?? youtube), rejectedTotal: 0 } : null);
       setElapsed(0);
       setDuration(0);
       setMessage("");
@@ -465,17 +483,36 @@ function EssentialsPlayer({ tracks: playlist, openTrack }) {
 
   useEffect(() => {
     const audio = audioRef.current;
-    if (!audio || !preview?.url) return;
+    if (!audio) return;
+    if (preview?.key === "youtube") {
+      audio.pause();
+      audio.removeAttribute("src");
+      audio.load();
+      return;
+    }
+    if (!preview?.url) return;
+    try { youtubePlayerRef.current?.stopVideo(); } catch { /* Player non ancora pronto. */ }
     switchingSourceRef.current = true;
     audio.pause();
     try { audio.currentTime = 0; } catch { /* Metadata non ancora disponibili. */ }
     audio.src = preview.url;
     audio.load();
-  }, [preview?.url]);
+  }, [preview?.key, preview?.url]);
 
   const toggle = async () => {
     const audio = audioRef.current;
-    if (!audio || message) return;
+    if (message) return;
+    if (preview?.key === "youtube") {
+      if (playing) {
+        setPlaybackIntent(false);
+        youtubePlayerRef.current?.pauseVideo();
+      } else {
+        setPlaybackIntent(true);
+        await requestPlay("pressione Play");
+      }
+      return;
+    }
+    if (!audio) return;
     if (!audio.paused) {
       setPlaybackIntent(false);
       audio.pause();
@@ -503,13 +540,26 @@ function EssentialsPlayer({ tracks: playlist, openTrack }) {
         onStalled={() => { clearTimeout(stalledTimerRef.current); setLoading(true); debugTrack(current, { fonteEffettiva: preview?.source, evento: "stalled", azione: "attesa 6 secondi" }); stalledTimerRef.current = setTimeout(() => failActiveSource("stalled", "nessun avanzamento per 6 secondi"), 6000); }}
         onAbort={() => { debugTrack(current, { fonteEffettiva: preview?.source, evento: "abort", cambioSorgente: switchingSourceRef.current }); if (!switchingSourceRef.current) { setLoading(false); setPlaying(false); setPlayerError("abort"); } }}
       />
+      {preview?.key === "youtube" && preview.videoId ? (
+        <YouTubeEssentialsMedia
+          videoId={preview.videoId}
+          playbackIntentRef={wantsPlaybackRef}
+          onController={setYouTubeController}
+          onReady={(controller) => { setDuration(controller.getDuration?.() || 0); setLoading(false); }}
+          onPlay={() => { audioRef.current?.pause(); setPlaying(true); setLoading(false); setMessage(""); essentialsDebugReport.set(current.id, { titolo: current.title, artista: current.artist, esito: "YouTube", matchErrati: preview.rejectedTotal ?? 0, motivo: "" }); printEssentialsReport(); }}
+          onPause={() => setPlaying(false)}
+          onEnded={() => { setPlaying(false); move(1, true); }}
+          onError={(detail) => failActiveSource("error", detail)}
+          onProgress={(time, total) => { setElapsed(time); if (Number.isFinite(total)) setDuration(total); }}
+        />
+      ) : null}
       <button className="essentials-now-playing" type="button" onClick={() => openTrack(current.id)} aria-label={`Apri la scheda di ${current.title}`}>
         {current.artwork && failedArtwork !== current.artwork ? <img src={current.artwork} alt="" onError={() => setFailedArtwork(current.artwork)} /> : <ArtworkFallback title={current.title} compact />}
         <span><small>{message ? message.toUpperCase() : `IN RIPRODUZIONE · ${preview?.source ?? (loading ? "CARICAMENTO" : "ANTEPRIMA")}`}</small><strong>{current.title}</strong><em>{current.artist}</em></span>
         <ChevronRight aria-hidden="true" />
       </button>
       <div className="essentials-progress">
-        <input aria-label="Avanzamento anteprima" type="range" min="0" max={duration || 0} step="0.1" value={Math.min(elapsed, duration || 0)} disabled={!preview || loading || Boolean(message)} onChange={(event) => { const time = Number(event.target.value); audioRef.current.currentTime = time; setElapsed(time); }} />
+        <input aria-label="Avanzamento anteprima" type="range" min="0" max={duration || 0} step="0.1" value={Math.min(elapsed, duration || 0)} disabled={!preview || loading || Boolean(message)} onChange={(event) => { const time = Number(event.target.value); if (preview?.key === "youtube") youtubePlayerRef.current?.seekTo(time, true); else audioRef.current.currentTime = time; setElapsed(time); }} />
         <div><span>{formatTime(elapsed)}</span><span>{formatTime(duration)}</span></div>
       </div>
       <div className="essentials-controls">

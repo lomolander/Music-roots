@@ -2,6 +2,7 @@ import applePreviewMetadata from "../apple-preview-metadata.js";
 import deezerPreviewMetadata from "../deezer-preview-metadata.js";
 import editorialArtwork from "../editorial-artwork.js";
 import youtubeLinkMetadata from "../youtube-link-metadata.js";
+import youtubePreviewMetadata from "../youtube-preview-metadata.js";
 import { essentialPlaylists } from "../libraryConfig.js";
 import { entityId } from "../entityIds.js";
 import { buildMusicTitleReferences, quoteKnownMusicTitles } from "../editorialTitleQuotes.js";
@@ -265,6 +266,7 @@ const tracks = Object.entries(trackModules).flatMap(([sourceModule, moduleTracks
     answers: track.answers?.length ? track.answers : [track.title],
     ...apple,
     deezer: deezer ? { ...deezer, previewUrl: "" } : editorialDefaults.deezer,
+    youtubePreview: youtubePreviewMetadata[track.id] ?? null,
     ...revisedEditorial,
     meaning: revisedEditorial.meaning || meaning || editorialMeaning(track, ""),
     ...correctedEditorial,

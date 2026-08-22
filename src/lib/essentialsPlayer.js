@@ -122,6 +122,22 @@ export async function resolvePreviewSource(track, key, fetchImpl = fetch) {
       usedStoredResult: Boolean(stored),
     };
   }
+  if (key === "youtube") {
+    const verified = track?.youtubePreview;
+    return {
+      key,
+      source: "YouTube",
+      query: "",
+      result: verified?.status === "verified" && verified?.embeddable && verified?.videoId
+        ? { id: verified.videoId, title: track.title, artist: track.artist, album: track.album }
+        : null,
+      url: "",
+      videoId: verified?.status === "verified" && verified?.embeddable ? verified.videoId : "",
+      rejected: [],
+      searchError: null,
+      usedStoredResult: Boolean(verified?.status === "verified" && verified?.embeddable && verified?.videoId),
+    };
+  }
   try {
     if (key === "deezer") {
       if (track?.deezer?.status !== "verified" || !track?.deezer?.trackId) {
@@ -154,13 +170,16 @@ export async function resolvePreviewSource(track, key, fetchImpl = fetch) {
 export const previewSources = (track) => {
   if (!track) return [];
   const fresh = track.essentialPreview?.url ? [{ key: track.essentialPreview.key, url: track.essentialPreview.url, source: track.essentialPreview.source }] : [];
-  return ["apple", "deezer"].map((key) => {
+  return ["apple", "deezer", "youtube"].map((key) => {
     const resolved = fresh.find((item) => item.key === key);
     if (resolved) return resolved;
     const result = storedSource(track, key);
     if (result) return { key, url: result.previewUrl, source: key === "deezer" ? "Deezer" : "Apple Music" };
     if (key === "deezer" && track?.deezer?.status === "verified" && track?.deezer?.trackId) {
       return { key, url: "", source: "Deezer" };
+    }
+    if (key === "youtube" && track?.youtubePreview?.status === "verified" && track?.youtubePreview?.embeddable && track?.youtubePreview?.videoId) {
+      return { key, url: "", videoId: track.youtubePreview.videoId, source: "YouTube" };
     }
     return null;
   }).filter(Boolean);
@@ -175,7 +194,8 @@ export const essentialPreviewStatus = (track) => {
   );
   if (appleValid) return { playable: true, source: "Apple Music", reason: "" };
   if (track?.deezer?.status === "verified" && track?.deezer?.trackId) return { playable: true, source: "Deezer", reason: "" };
-  return { playable: false, source: null, reason: "assenza di preview valida su Deezer e Apple Music" };
+  if (track?.youtubePreview?.status === "verified" && track?.youtubePreview?.embeddable && track?.youtubePreview?.videoId) return { playable: true, source: "YouTube", reason: "" };
+  return { playable: false, source: null, reason: "assenza di preview valida su Apple Music, Deezer e YouTube" };
 };
 
 export const isEssentialPlayable = (track) => essentialPreviewStatus(track).playable;

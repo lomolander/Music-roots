@@ -122,6 +122,8 @@ button:focus-visible {
 .archive-detail h2 { margin: 24px 0 10px; font-size: 17px; }
 .essentials-player { margin: 16px 0 28px; padding: 16px; border-radius: 22px; }
 .essentials-player audio { display: none; }
+.essentials-youtube-media { overflow: hidden; min-height: 200px; margin-bottom: 16px; border-radius: 14px; background: #000; }
+.essentials-youtube-media iframe { display: block; width: 100%; min-height: 200px; border: 0; }
 .essentials-now-playing { display: grid; grid-template-columns: 68px minmax(0, 1fr) 18px; align-items: center; gap: 14px; width: 100%; padding: 0; border: 0; background: transparent; color: var(--text); text-align: left; cursor: pointer; }
 .essentials-now-playing > img, .essentials-now-playing > .archive-placeholder, .essentials-now-playing > .artwork-fallback { width: 68px; height: 68px; border-radius: 14px; object-fit: cover; }
 .essentials-now-playing > span { min-width: 0; }
